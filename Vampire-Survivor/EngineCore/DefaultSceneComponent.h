@@ -1,7 +1,7 @@
 #pragma once
 #include "SceneComponent.h"
 
-// Ό³Έν :
+
 class UDefaultSceneComponent : public USceneComponent
 {
 public:

@@ -13,7 +13,7 @@ UVSCore::~UVSCore()
 
 void UVSCore::Initialize()
 {
-	/*{
+	{
 		UEngineDirectory Dir;
 		Dir.MoveToSearchChild("ContentsResources");
 		Dir.Move("Image");
@@ -22,13 +22,7 @@ void UVSCore::Initialize()
 		{
 			UEngineSprite::Load(File.GetFullPath());
 		}
-
-		std::vector<UEngineDirectory> Directorys = Dir.GetAllDirectory();
-		for (size_t i = 0; i < Directorys.size(); i++)
-		{
-			std::string Name = Directorys[i].GetFolderName();
-			UEngineSprite::LoadFolder(Directorys[i].GetFullPath());
-		}
+		UEngineSprite::CreateCutting("Player.png", 4, 1);
 	}
 
 
@@ -41,7 +35,7 @@ void UVSCore::Initialize()
 		{
 			UEngineSound::Load(File.GetFullPath());
 		}
-	}*/
+	}
 
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->ChangeLevel("PlayLevel");

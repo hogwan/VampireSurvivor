@@ -1,6 +1,20 @@
 #pragma once
 #include <EngineCore/GameMode.h>
 
+struct FIntPoint
+{
+	union
+	{
+		struct
+		{
+			int X;
+			int Y;
+		};
+
+		__int64 Key;
+	};
+};
+
 class APlayGameMode : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -17,6 +31,13 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-private:
 
+	std::shared_ptr<class APlayer> Player;
+	std::vector<std::shared_ptr<class ABackGroundMap>> Grounds;
+	float4 IndexToCenterPos(FIntPoint _Index);
+	FIntPoint PosToIndex(float4 _Pos);
+	void InfinityGroundCheck();
+private:
+	FIntPoint CurIndex;
+	std::shared_ptr<UCamera> Camera;
 };

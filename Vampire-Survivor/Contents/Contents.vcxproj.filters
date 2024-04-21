@@ -13,6 +13,15 @@
     <Filter Include="Level\PlayGameMode">
       <UniqueIdentifier>{9a25a65e-91a1-4040-bfcd-30f9f5c2ecec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{a20b5606-003b-4c08-80a6-41900863e87f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Map">
+      <UniqueIdentifier>{58e863fe-4bee-48ed-b457-3ead07f4ed46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Player">
+      <UniqueIdentifier>{16a76579-ca3a-46f5-a7f2-aef10426d12f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -24,6 +33,18 @@
     <ClInclude Include="PlayGameMode.h">
       <Filter>Level\PlayGameMode</Filter>
     </ClInclude>
+    <ClInclude Include="ContentsEnum.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsValue.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGroundMap.h">
+      <Filter>Level\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Level\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -34,6 +55,15 @@
     </ClCompile>
     <ClCompile Include="PlayGameMode.cpp">
       <Filter>Level\PlayGameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsValue.cpp">
+      <Filter>Header</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGroundMap.cpp">
+      <Filter>Level\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Level\Player</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
