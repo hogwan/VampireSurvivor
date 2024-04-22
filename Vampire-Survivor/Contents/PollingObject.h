@@ -16,8 +16,8 @@ public:
 	APollingObject& operator=(const APollingObject& _Other) = delete;
 	APollingObject& operator=(APollingObject&& _Other) noexcept = delete;
 
-	void ActiveOn();
-	void ActiveOff();
+	virtual void ActiveOn();
+	virtual void ActiveOff();
 
 	bool GetIsLive()
 	{

@@ -15,7 +15,7 @@ void APollingObject::ActiveOn()
 	IsLive = true;
 	Renderer->SetActive(true);
 	Collider->SetActive(true);
-	//SetActive(true);
+	SetActive(true);
 }
 
 void APollingObject::ActiveOff()
@@ -23,7 +23,7 @@ void APollingObject::ActiveOff()
 	IsLive = false;
 	Renderer->SetActive(false);
 	Collider->SetActive(false);
-	//SetActive(false);
+	SetActive(false);
 }
 
 void APollingObject::BeginPlay()

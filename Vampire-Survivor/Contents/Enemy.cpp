@@ -32,6 +32,17 @@ void AEnemy::Tick(float _DeltaTime)
 	SpriteDirCheck();
 }
 
+void AEnemy::ActiveOn()
+{
+	Super::ActiveOn();
+	Data.Hp = Data.MaxHp;
+}
+
+void AEnemy::ActiveOff()
+{
+	Super::ActiveOff();
+}
+
 void AEnemy::MoveLogic()
 {
 	MoveVector = FVector::Zero;
