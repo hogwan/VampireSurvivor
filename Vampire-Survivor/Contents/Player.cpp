@@ -3,20 +3,12 @@
 
 APlayer::APlayer()
 {
-	
-	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Root");
-
-	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	Renderer->SetupAttachment(Root);
-	Renderer->SetPivot(EPivot::BOT);
 
 	Collision = CreateDefaultSubObject<UCollision>("Collision");
 	Collision->SetupAttachment(Root);
 
 	Collision->SetCollisionGroup(ECollisionOrder::Player);
 	Collision->SetCollisionType(ECollisionType::Rect);
-
-	SetRoot(Root);
 
 	InputOn();
 }
@@ -38,23 +30,62 @@ void APlayer::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (IsPress(VK_RIGHT))
+	MoveLogic();
+	ColLogic(_DeltaTime);
+	
+
+	AddActorLocation(MoveVector * _DeltaTime);
+}
+
+void APlayer::MoveLogic()
+{
+	FVector DirVector = FVector::Zero;
+	if (IsPress(VK_RIGHT) && IsPress(VK_UP)) //ºÏµ¿
 	{
-		AddActorLocation(FVector::Right * 1000.f * _DeltaTime);
+		DirVector = FVector(1.f, 1.f, 0.f);
+		CurDir = AActorDir::NE;
+	}
+	else if (IsPress(VK_RIGHT) && IsPress(VK_DOWN)) // ³²µ¿
+	{
+		DirVector = FVector(1.f, -1.f, 0.f);
+		CurDir = AActorDir::SE;
+	}
+	else if (IsPress(VK_LEFT) && IsPress(VK_DOWN)) //³²¼­
+	{
+		DirVector = FVector(-1.f, -1.f, 0.f);
+		CurDir = AActorDir::SW;
+	}
+	else if (IsPress(VK_LEFT) && IsPress(VK_UP)) // ºÏ¼­
+	{
+		DirVector = FVector(-1.f, 1.f, 0.f);
+		CurDir = AActorDir::NW;
+	}
+	else if (IsPress(VK_UP)) // ºÏ
+	{
+		DirVector = FVector(0.f, 1.f, 0.f);
+		CurDir = AActorDir::N;
+	}
+	else if (IsPress(VK_RIGHT)) // µ¿
+	{
+		DirVector = FVector(1.f, 0.f, 0.f);
+		CurDir = AActorDir::E;
+	}
+	else if (IsPress(VK_DOWN)) // ³²
+	{
+		DirVector = FVector(0.f, -1.f, 0.f);
+		CurDir = AActorDir::S;
+	}
+	else if (IsPress(VK_LEFT)) // ¼­
+	{
+		DirVector = FVector(-1.f, 0.f, 0.f);
+		CurDir = AActorDir::W;
 	}
 
-	if (IsPress(VK_LEFT))
-	{
-		AddActorLocation(FVector::Left * 1000.f * _DeltaTime);
-	}
 
-	if (IsPress(VK_UP))
-	{
-		AddActorLocation(FVector::Up* 1000.f * _DeltaTime);
-	}
+	DirVector.Normalize3D();
+	MoveVector = DirVector * MoveSpeed;
+}
 
-	if (IsPress(VK_DOWN))
-	{
-		AddActorLocation(FVector::Down * 1000.f * _DeltaTime);
-	}
+void APlayer::ColLogic(float _DeltaTime)
+{
 }

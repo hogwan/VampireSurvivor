@@ -1,9 +1,21 @@
 #pragma once
-#include <EngineCore/Actor.h>
-class USpriteRenderer;
-class APlayer : public AActor
+#include "VSObject.h"
+enum class AActorDir
 {
-	GENERATED_BODY(AActor)
+	None,
+	N,
+	NE,
+	E,
+	SE,
+	S,
+	SW,
+	W,
+	NW
+};
+
+class APlayer : public AVSObject
+{
+	GENERATED_BODY(AVSObject)
 public:
 	//constructer destructer
 	APlayer();
@@ -18,7 +30,14 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	FVector MoveVector = FVector::Zero;
+	AActorDir CurDir = AActorDir::None;
+	EEngineDir SpriteDir = EEngineDir::MAX;
+
+	float MoveSpeed = 300.f;
+
 private:
-	USpriteRenderer* Renderer;
 	UCollision* Collision;
+	void MoveLogic();
+	void ColLogic(float _DeltaTime);
 };

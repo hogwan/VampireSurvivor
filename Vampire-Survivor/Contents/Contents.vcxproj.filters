@@ -19,8 +19,17 @@
     <Filter Include="Level\Map">
       <UniqueIdentifier>{58e863fe-4bee-48ed-b457-3ead07f4ed46}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\Player">
+    <Filter Include="Object">
+      <UniqueIdentifier>{73508ecc-85f3-4a8e-88ee-093effc93ac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Player">
       <UniqueIdentifier>{16a76579-ca3a-46f5-a7f2-aef10426d12f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy">
+      <UniqueIdentifier>{e0559366-b3a2-4b4c-9e69-548efd4ecda0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Spawner">
+      <UniqueIdentifier>{ac46f377-136c-4ae2-a0e8-96a96f10e151}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -43,7 +52,16 @@
       <Filter>Level\Map</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Level\Player</Filter>
+      <Filter>Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="VSObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Object\Spawner</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +81,16 @@
       <Filter>Level\Map</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Level\Player</Filter>
+      <Filter>Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="VSObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Object\Spawner</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

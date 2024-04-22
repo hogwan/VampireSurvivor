@@ -22,6 +22,7 @@ void APlayGameMode::BeginPlay()
 
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
 	Player->SetName("Kiara");
+	UContentsValue::StartPosition = Player->GetActorLocation();
 
 	for (int y = -1; y < 2; y++)
 	{
@@ -29,18 +30,18 @@ void APlayGameMode::BeginPlay()
 		{
 			std::shared_ptr<ABackGroundMap> Back = GetWorld()->SpawnActor<ABackGroundMap>("BackGroundMap");
 
-			Back->SetActorScale3D(ContentsValue::GroundTileSize);
+			Back->SetActorScale3D(UContentsValue::GroundTileSize);
 
 			FIntPoint Point;
 			Point.X = x;
 			Point.Y = y;
 
 			float4 Pos;
-			Pos.X = ContentsValue::GroundTileSize.X * x;
-			Pos.Y = ContentsValue::GroundTileSize.Y * y;
+			Pos.X = UContentsValue::GroundTileSize.X * x;
+			Pos.Y = UContentsValue::GroundTileSize.Y * y;
 
-			Pos.X += ContentsValue::GroundTileSize.hX();
-			Pos.Y += ContentsValue::GroundTileSize.hY();
+			Pos.X += UContentsValue::GroundTileSize.hX();
+			Pos.Y += UContentsValue::GroundTileSize.hY();
 			Back->SetActorLocation(Pos);
 
 			Grounds.push_back(Back);
@@ -61,11 +62,11 @@ void APlayGameMode::Tick(float _DeltaTime)
 float4 APlayGameMode::IndexToCenterPos(FIntPoint _Index)
 {
 	float4 Pos;
-	Pos.X = ContentsValue::GroundTileSize.X * _Index.X;
-	Pos.Y = ContentsValue::GroundTileSize.Y * _Index.Y;
+	Pos.X = UContentsValue::GroundTileSize.X * _Index.X;
+	Pos.Y = UContentsValue::GroundTileSize.Y * _Index.Y;
 
-	Pos.X += ContentsValue::GroundTileSize.hX();
-	Pos.Y += ContentsValue::GroundTileSize.hY();
+	Pos.X += UContentsValue::GroundTileSize.hX();
+	Pos.Y += UContentsValue::GroundTileSize.hY();
 
 	return Pos;
 }
@@ -77,8 +78,8 @@ FIntPoint APlayGameMode::PosToIndex(float4 _Pos)
 	float4 Location = _Pos;
 
 	float4 Pos;
-	Pos.X = Location.X / ContentsValue::GroundTileSize.X;
-	Pos.Y = Location.Y / ContentsValue::GroundTileSize.Y;
+	Pos.X = Location.X / UContentsValue::GroundTileSize.X;
+	Pos.Y = Location.Y / UContentsValue::GroundTileSize.Y;
 
 	if (0 >= Pos.X)
 	{
@@ -105,8 +106,8 @@ void APlayGameMode::InfinityGroundCheck()
 		int GroundCount = 0;
 
 		float4 MovePos;
-		MovePos.X = Index.X * ContentsValue::GroundTileSize.X;
-		MovePos.Y = Index.Y * ContentsValue::GroundTileSize.Y;
+		MovePos.X = Index.X * UContentsValue::GroundTileSize.X;
+		MovePos.Y = Index.Y * UContentsValue::GroundTileSize.Y;
 
 		for (int y = -1; y < 2; y++)
 		{
@@ -114,17 +115,17 @@ void APlayGameMode::InfinityGroundCheck()
 			{
 				std::shared_ptr<ABackGroundMap> Back = Grounds[GroundCount];
 
-				Back->SetActorScale3D(ContentsValue::GroundTileSize);
+				Back->SetActorScale3D(UContentsValue::GroundTileSize);
 				FIntPoint Point;
 				Point.X = x;
 				Point.Y = y;
 
 				float4 Pos;
-				Pos.X = ContentsValue::GroundTileSize.X * x;
-				Pos.Y = ContentsValue::GroundTileSize.Y * y;
+				Pos.X = UContentsValue::GroundTileSize.X * x;
+				Pos.Y = UContentsValue::GroundTileSize.Y * y;
 
-				Pos.X += ContentsValue::GroundTileSize.hX();
-				Pos.Y += ContentsValue::GroundTileSize.hY();
+				Pos.X += UContentsValue::GroundTileSize.hX();
+				Pos.Y += UContentsValue::GroundTileSize.hY();
 				Back->SetActorLocation(Pos + MovePos);
 				++GroundCount;
 			}

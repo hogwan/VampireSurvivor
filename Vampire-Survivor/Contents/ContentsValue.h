@@ -1,9 +1,10 @@
 #pragma once
 
-class ContentsValue
+class UContentsValue
 {
 public:
 	static const float4 GroundTileSize;
-	static float4 PlayLevelMousePos;
+	static std::shared_ptr<class APlayer> Player;
+	static FVector StartPosition;
 };
 
