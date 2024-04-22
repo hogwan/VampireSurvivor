@@ -63,6 +63,15 @@
     <ClInclude Include="Spawner.h">
       <Filter>Object\Spawner</Filter>
     </ClInclude>
+    <ClInclude Include="SpawnerManager.h">
+      <Filter>Object\Spawner</Filter>
+    </ClInclude>
+    <ClInclude Include="PollingManager.h">
+      <Filter>Object\Spawner</Filter>
+    </ClInclude>
+    <ClInclude Include="PollingObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -91,6 +100,15 @@
     </ClCompile>
     <ClCompile Include="Spawner.cpp">
       <Filter>Object\Spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnerManager.cpp">
+      <Filter>Object\Spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="PollingManager.cpp">
+      <Filter>Object\Spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="PollingObject.cpp">
+      <Filter>Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

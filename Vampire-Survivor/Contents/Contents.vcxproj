@@ -184,11 +184,23 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="PollingManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PollingObject.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PreCompile.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Spawner.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SpawnerManager.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -222,6 +234,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PollingManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PollingObject.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PreCompile.cpp">
       <SubType>
       </SubType>
@@ -231,6 +251,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Spawner.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SpawnerManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>

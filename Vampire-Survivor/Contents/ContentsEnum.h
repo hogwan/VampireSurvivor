@@ -13,3 +13,12 @@ enum class ECollisionOrder
 	Player,
 	Monster,
 };
+
+enum class EObjectType
+{
+	Enemy1,
+	Enemy2,
+	Item,
+	Money,
+	Weapon,
+};
