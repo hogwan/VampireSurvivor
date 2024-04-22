@@ -38,7 +38,9 @@ protected:
 
 	void MoveLogic();
 	void ColLogic();
-	void Death();
+	void DeathLogic();
+	void RepositionLogic();
+	void SpriteDirCheck();
 
 	EnemyData Data = { 0, };
 private:

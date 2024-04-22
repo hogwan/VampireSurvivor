@@ -20,6 +20,9 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	EEngineDir SpriteDir = EEngineDir::MAX;
+	void DirCheck();
+
 	UDefaultSceneComponent* Root = nullptr;
 	USpriteRenderer* Renderer = nullptr;
 	UCollision* Collider = nullptr;

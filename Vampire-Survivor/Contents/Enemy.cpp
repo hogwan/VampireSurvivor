@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Enemy.h"
 #include "Player.h"
+#include <EngineBase/EngineRandom.h>
 
 AEnemy::AEnemy() 
 {
@@ -22,11 +23,13 @@ void AEnemy::BeginPlay()
 void AEnemy::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	Death();
+	DeathLogic();
+	RepositionLogic();
 	MoveLogic();
 	ColLogic();
 
 	AddActorLocation(MoveVector * _DeltaTime);
+	SpriteDirCheck();
 }
 
 void AEnemy::MoveLogic()
@@ -46,7 +49,27 @@ void AEnemy::ColLogic()
 {
 	Collider->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
 		{
-			this;
+			AActor* Opponent = _Collision->GetActor();
+			Opponent;
+
+			if (this == Opponent)
+				return;
+
+
+			FVector OpponentPos = Opponent->GetActorLocation();
+			FVector CurPos = GetActorLocation();
+
+			FVector PushDir = CurPos - OpponentPos;
+			PushDir.Z = 0.f;
+			PushDir.Normalize3D();
+			FVector PushVector = PushDir * PushPower;
+
+			MoveVector += PushVector;
+		}
+	);
+
+	Collider->CollisionStay(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collision)
+		{
 			AActor* Opponent = _Collision->GetActor();
 			Opponent;
 
@@ -67,11 +90,46 @@ void AEnemy::ColLogic()
 	);
 }
 
-void AEnemy::Death()
+void AEnemy::DeathLogic()
 {
 	if (Data.Hp < 0.f)
 	{
 		ActiveOff();
+	}
+}
+
+void AEnemy::RepositionLogic()
+{
+	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+	PlayerPos.Z = 0.f;
+
+	FVector CurPos = GetActorLocation();
+	CurPos.Z = 0.f;
+
+	float Distance = (PlayerPos - CurPos).Size3D();
+
+	if (Distance > 1500.f)
+	{
+		PlayerPos += UContentsValue::Player->GetPlayerDir() * 1000.f;
+
+		float RandomX = UEngineRandom::MainRandom.RandomFloat(-300.f, 300.f);
+		float RandomY = UEngineRandom::MainRandom.RandomFloat(-300.f, 300.f);
+
+		PlayerPos += FVector(RandomX, RandomY, 0.f);
+		SetActorLocation(PlayerPos);
+	}
+
+}
+
+void AEnemy::SpriteDirCheck()
+{
+	if (MoveVector.X > 0.f)
+	{
+		SpriteDir = EEngineDir::Right;
+	}
+	else
+	{
+		SpriteDir = EEngineDir::Left;
 	}
 }
 

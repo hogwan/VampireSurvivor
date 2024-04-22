@@ -26,5 +26,21 @@ void AVSObject::BeginPlay()
 void AVSObject::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+	DirCheck();
+}
+
+void AVSObject::DirCheck()
+{
+	FVector Scale = GetActorScale3D();
+	float Scalar = fabs(Scale.X);
+	if (SpriteDir == EEngineDir::Right)
+	{
+		Scale = FVector(Scalar, Scale.Y, Scale.Z);
+	}
+	else
+	{
+		Scale = FVector(-Scalar, Scale.Y, Scale.Z);
+	}
+	SetActorScale3D(Scale);
 }
 

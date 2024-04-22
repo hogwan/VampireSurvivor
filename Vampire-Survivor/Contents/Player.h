@@ -32,18 +32,22 @@ public:
 		return InitialPos;
 	}
 
+	FVector GetPlayerDir()
+	{
+		return DirVector.Normalize3DReturn();
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 	FVector InitialPos = FVector::Zero;
-	AActorDir CurDir = AActorDir::None;
-	EEngineDir SpriteDir = EEngineDir::MAX;
+	FVector DirVector = FVector::Zero;
+	AActorDir ECurDir = AActorDir::None;
 
 	float MoveSpeed = 300.f;
 
 private:
-	UCollision* Collision;
 	void MoveLogic();
 	void ColLogic();
 };
