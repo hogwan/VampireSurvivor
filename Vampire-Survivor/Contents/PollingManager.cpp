@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "PollingManager.h"
 
-std::map<EObjectType, std::vector<std::shared_ptr<APollingObject>>> UPollingManager::PollingObjects;
+std::map<EPollingOrder, std::vector<std::shared_ptr<APollingObject>>> UPollingManager::PollingObjects;
 
 UPollingManager::UPollingManager() 
 {

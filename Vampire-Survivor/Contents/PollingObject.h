@@ -4,6 +4,7 @@
 // Ό³Έν :
 class APollingObject : public AVSObject
 {
+	GENERATED_BODY(AVSObject)
 public:
 	// constructor destructor
 	APollingObject();
@@ -14,6 +15,14 @@ public:
 	APollingObject(APollingObject&& _Other) noexcept = delete;
 	APollingObject& operator=(const APollingObject& _Other) = delete;
 	APollingObject& operator=(APollingObject&& _Other) noexcept = delete;
+
+	void ActiveOn();
+	void ActiveOff();
+
+	bool GetIsLive()
+	{
+		return IsLive;
+	}
 
 protected:
 	void BeginPlay() override;

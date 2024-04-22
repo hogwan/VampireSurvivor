@@ -72,6 +72,9 @@
     <ClInclude Include="PollingObject.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="Bat1.h">
+      <Filter>Object\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -109,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="PollingObject.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat1.cpp">
+      <Filter>Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

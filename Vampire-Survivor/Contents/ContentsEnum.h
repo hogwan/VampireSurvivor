@@ -12,13 +12,37 @@ enum class ECollisionOrder
 {
 	Player,
 	Monster,
+	Item,
 };
 
-enum class EObjectType
+enum class EPollingOrder
 {
-	Enemy1,
-	Enemy2,
-	Item,
+	None,
+	Bat1,
+	Bat2,
+	Bat3,
+	Zombie1,
+	Zombie2,
+	Zombie3,
+	Zombie4,
+	Mentis,
+	Skeleton,
+	WereWolf,
+	Medusa,
+	Experience,
 	Money,
 	Weapon,
+};
+
+enum class EEnemySpawnData
+{
+	Bat,
+	Zombie1,
+	Zombie2,
+	Zombie3,
+	Zombie4,
+	Mentis,
+	Skeleton,
+	WereWolf,
+	Medusa,
 };

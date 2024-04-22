@@ -38,6 +38,6 @@ protected:
 	FIntPoint PosToIndex(float4 _Pos);
 	void InfinityGroundCheck();
 private:
-	FIntPoint CurIndex;
+	FIntPoint CurIndex = { 0, };
 	std::shared_ptr<UCamera> Camera;
 };

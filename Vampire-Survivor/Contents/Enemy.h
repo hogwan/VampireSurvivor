@@ -1,19 +1,21 @@
 #pragma once
-#include "VSObject.h"
+#include "PollingObject.h"
 
-class EnemySpawnData
+class EnemyData
 {
 public:
-	float Speed;
-	float SpawnTime;
-	float MaxHp;
 	float Hp;
+	float MaxHp;
+	float Speed;
+	float Power;
+	float Knockback;
+	float MaxKnockBack;
+	float XP;
 };
-
 // Ό³Έν :
-class AEnemy : public AVSObject
+class AEnemy : public APollingObject
 {
-	GENERATED_BODY(AVSObject)
+	GENERATED_BODY(APollingObject)
 public:
 	// constructor destructor
 	AEnemy();
@@ -25,17 +27,21 @@ public:
 	AEnemy& operator=(const AEnemy& _Other) = delete;
 	AEnemy& operator=(AEnemy&& _Other) noexcept = delete;
 
-	void PushData(EnemySpawnData _Data)
+	EnemyData GetEnemyData()
 	{
-		Data = _Data;
+		return Data;
 	}
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void MoveLogic();
+	void ColLogic();
+	void Death();
+
+	EnemyData Data = { 0, };
 private:
-	EnemySpawnData Data;
 };
 
 

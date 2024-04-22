@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include "PollingManager.h"
 
 // Ό³Έν :
 class USpawner : public AActor
@@ -30,9 +31,42 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	template<typename Enemy>
+	void EnemySpawn()
+	{
+		std::shared_ptr<APollingObject> Monster = nullptr;
+
+		for (std::shared_ptr<APollingObject> Object : UPollingManager::PollingObjects[Enemy::PollingOrder])
+		{
+			if (Object->GetIsLive())
+			{
+				continue;
+			}
+			else
+			{
+				Monster = Object;
+				break;
+			}
+		}
+
+		if (Monster == nullptr)
+		{
+			Monster = GetWorld()->SpawnActor<Enemy>("Monster");
+			UPollingManager::PollingObjects[Enemy::PollingOrder].push_back(Monster);
+			int a = 0;
+		}
+
+		Monster->SetActorLocation(CurPos);
+		Monster->ActiveOn();
+	}
+
 private:
+	UDefaultSceneComponent* Root = nullptr;
+
 	FVector InitialPos = FVector::Zero;
 	FVector CurPos = FVector::Zero;
 
+	float SpawnTime = 5.f;
+	float RemainTime = SpawnTime;
 };
 

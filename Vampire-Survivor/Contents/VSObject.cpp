@@ -4,8 +4,13 @@
 AVSObject::AVSObject() 
 {
 	Root = CreateDefaultSubObject<UDefaultSceneComponent>("Root");
+	
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	Renderer->SetupAttachment(Root);
+
+	Collider = CreateDefaultSubObject<UCollision>("Collider");
+	Collider->SetupAttachment(Root);
+
 	SetRoot(Root);
 }
 

@@ -17,7 +17,7 @@ public:
 	UPollingManager& operator=(const UPollingManager& _Other) = delete;
 	UPollingManager& operator=(UPollingManager&& _Other) noexcept = delete;
 
-	static std::map<EObjectType, std::vector<std::shared_ptr<APollingObject>>> PollingObjects;
+	static std::map<EPollingOrder, std::vector<std::shared_ptr<APollingObject>>> PollingObjects;
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

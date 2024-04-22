@@ -3,12 +3,11 @@
 
 APlayer::APlayer()
 {
-
 	Collision = CreateDefaultSubObject<UCollision>("Collision");
 	Collision->SetupAttachment(Root);
 
 	Collision->SetCollisionGroup(ECollisionOrder::Player);
-	Collision->SetCollisionType(ECollisionType::Rect);
+	Collision->SetCollisionType(ECollisionType::CirCle);
 
 	InputOn();
 }
@@ -24,6 +23,7 @@ void APlayer::BeginPlay()
 	Renderer->SetSprite("Player.png", 0);
 	Renderer->SetAutoSize(1.f, true);
 	Renderer->SetOrder(ERenderOrder::Player);
+	PushPower = 500.f;
 }
 
 void APlayer::Tick(float _DeltaTime)
@@ -31,9 +31,8 @@ void APlayer::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 	MoveLogic();
-	ColLogic(_DeltaTime);
+	ColLogic();
 	
-
 	AddActorLocation(MoveVector * _DeltaTime);
 }
 
@@ -86,6 +85,7 @@ void APlayer::MoveLogic()
 	MoveVector = DirVector * MoveSpeed;
 }
 
-void APlayer::ColLogic(float _DeltaTime)
+void APlayer::ColLogic()
 {
+
 }

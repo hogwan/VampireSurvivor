@@ -37,7 +37,6 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	FVector InitialPos = FVector::Zero;
-	FVector MoveVector = FVector::Zero;
 	AActorDir CurDir = AActorDir::None;
 	EEngineDir SpriteDir = EEngineDir::MAX;
 
@@ -46,5 +45,5 @@ protected:
 private:
 	UCollision* Collision;
 	void MoveLogic();
-	void ColLogic(float _DeltaTime);
+	void ColLogic();
 };

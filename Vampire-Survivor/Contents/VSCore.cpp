@@ -23,6 +23,7 @@ void UVSCore::Initialize()
 			UEngineSprite::Load(File.GetFullPath());
 		}
 		UEngineSprite::CreateCutting("Player.png", 4, 1);
+		UEngineSprite::CreateCutting("BatIDLE.png", 4, 1);
 	}
 
 

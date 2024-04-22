@@ -20,6 +20,12 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	UDefaultSceneComponent* Root = nullptr;
+	USpriteRenderer* Renderer = nullptr;
+	UCollision* Collider = nullptr;
+
+	FVector MoveVector = FVector::Zero;
+	float PushPower = 0.f;
 
 private:
 

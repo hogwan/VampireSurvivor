@@ -2,6 +2,7 @@
 #include "PlayGameMode.h"
 #include "BackGroundMap.h"
 #include "Player.h"
+#include "SpawnerManager.h"
 #include <EngineCore/Camera.h>
 
 APlayGameMode::APlayGameMode()
@@ -22,7 +23,11 @@ void APlayGameMode::BeginPlay()
 
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
 	Player->SetName("Kiara");
+	UContentsValue::Player = Player;
 	UContentsValue::StartPosition = Player->GetActorLocation();
+
+	GetWorld()->SpawnActor<USpawnerManager>("SpawnerManager");
+
 
 	for (int y = -1; y < 2; y++)
 	{
