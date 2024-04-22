@@ -13,6 +13,7 @@ enum class ECollisionOrder
 	Player,
 	Monster,
 	Item,
+	PlayerWeapon,
 };
 
 enum class EPollingOrder

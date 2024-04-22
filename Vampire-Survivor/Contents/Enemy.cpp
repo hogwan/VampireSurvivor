@@ -43,6 +43,7 @@ void AEnemy::MoveLogic()
 	DirVector.Normalize3D();
 
 	MoveVector = DirVector * Data.Speed;
+	
 }
 
 void AEnemy::ColLogic()

@@ -1,24 +1,24 @@
 #include "PreCompile.h"
-#include "Weapon.h"
+#include "WeaponCenter.h"
 #include "Player.h"
 
-UWeaponCenter::UWeaponCenter()
+AWeaponCenter::AWeaponCenter()
 {
 	Root = CreateDefaultSubObject<UDefaultSceneComponent>("Root");
 
 	SetRoot(Root);
 }
 
-UWeaponCenter::~UWeaponCenter()
+AWeaponCenter::~AWeaponCenter()
 {
 }
 
-void UWeaponCenter::BeginPlay()
+void AWeaponCenter::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void UWeaponCenter::Tick(float _DeltaTime)
+void AWeaponCenter::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 

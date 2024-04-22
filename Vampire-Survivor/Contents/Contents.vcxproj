@@ -180,6 +180,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="KingBible.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="KingBibleCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Player.h">
       <SubType>
       </SubType>
@@ -216,7 +224,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
+    <ClInclude Include="WeaponCenter.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -235,6 +243,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KingBible.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KingBibleCenter.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -278,7 +294,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Weapon.cpp">
+    <ClCompile Include="WeaponCenter.cpp">
       <SubType>
       </SubType>
     </ClCompile>

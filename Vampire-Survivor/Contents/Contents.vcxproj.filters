@@ -37,6 +37,9 @@
     <Filter Include="Object\Weapon">
       <UniqueIdentifier>{e9e5b0d4-a20a-4f7e-94a4-86363e866e3c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Weapon\KingBible">
+      <UniqueIdentifier>{c39c0e2c-9c99-4ffb-b508-5dd9309edd7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -81,8 +84,14 @@
     <ClInclude Include="PollingObject.h">
       <Filter>Object\Polling</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
+    <ClInclude Include="WeaponCenter.h">
       <Filter>Object\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="KingBibleCenter.h">
+      <Filter>Object\Weapon\KingBible</Filter>
+    </ClInclude>
+    <ClInclude Include="KingBible.h">
+      <Filter>Object\Weapon\KingBible</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -125,8 +134,14 @@
     <ClCompile Include="PollingObject.cpp">
       <Filter>Object\Polling</Filter>
     </ClCompile>
-    <ClCompile Include="Weapon.cpp">
+    <ClCompile Include="WeaponCenter.cpp">
       <Filter>Object\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="KingBibleCenter.cpp">
+      <Filter>Object\Weapon\KingBible</Filter>
+    </ClCompile>
+    <ClCompile Include="KingBible.cpp">
+      <Filter>Object\Weapon\KingBible</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
