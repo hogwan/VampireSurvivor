@@ -31,6 +31,12 @@
     <Filter Include="Object\Spawner">
       <UniqueIdentifier>{ac46f377-136c-4ae2-a0e8-96a96f10e151}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Polling">
+      <UniqueIdentifier>{b356cfcb-fa2e-4def-b9b8-44e13322f85c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Weapon">
+      <UniqueIdentifier>{e9e5b0d4-a20a-4f7e-94a4-86363e866e3c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -66,14 +72,17 @@
     <ClInclude Include="SpawnerManager.h">
       <Filter>Object\Spawner</Filter>
     </ClInclude>
-    <ClInclude Include="PollingManager.h">
-      <Filter>Object\Spawner</Filter>
-    </ClInclude>
-    <ClInclude Include="PollingObject.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="Bat1.h">
       <Filter>Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="PollingManager.h">
+      <Filter>Object\Polling</Filter>
+    </ClInclude>
+    <ClInclude Include="PollingObject.h">
+      <Filter>Object\Polling</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Object\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -107,14 +116,17 @@
     <ClCompile Include="SpawnerManager.cpp">
       <Filter>Object\Spawner</Filter>
     </ClCompile>
-    <ClCompile Include="PollingManager.cpp">
-      <Filter>Object\Spawner</Filter>
-    </ClCompile>
-    <ClCompile Include="PollingObject.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="Bat1.cpp">
       <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="PollingManager.cpp">
+      <Filter>Object\Polling</Filter>
+    </ClCompile>
+    <ClCompile Include="PollingObject.cpp">
+      <Filter>Object\Polling</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Object\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

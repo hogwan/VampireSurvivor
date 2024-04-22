@@ -1,7 +1,7 @@
 #pragma once
 #include "PollingObject.h"
 
-class EnemyData
+struct FEnemyData
 {
 public:
 	float Hp;
@@ -27,7 +27,7 @@ public:
 	AEnemy& operator=(const AEnemy& _Other) = delete;
 	AEnemy& operator=(AEnemy&& _Other) noexcept = delete;
 
-	EnemyData GetEnemyData()
+	FEnemyData GetEnemyData()
 	{
 		return Data;
 	}
@@ -42,7 +42,7 @@ protected:
 	void RepositionLogic();
 	void SpriteDirCheck();
 
-	EnemyData Data = { 0, };
+	FEnemyData Data = { 0, };
 private:
 };
 
