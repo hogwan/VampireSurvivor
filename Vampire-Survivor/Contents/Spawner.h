@@ -53,7 +53,6 @@ protected:
 		{
 			Monster = GetWorld()->SpawnActor<Enemy>("Monster");
 			UPollingManager::PollingObjects[Enemy::PollingOrder].push_back(Monster);
-			int a = 0;
 		}
 
 		Monster->SetActorLocation(CurPos);

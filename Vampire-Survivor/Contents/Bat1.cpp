@@ -20,7 +20,7 @@ void ABat1::BeginPlay()
 	Renderer->SetOrder(ERenderOrder::Monster);
 	Renderer->ChangeAnimation("Idle");
 
-	Collider->SetScale(FVector(10.f, 10.f, 10.f));
+	Collider->SetScale(FVector(20.f, 20.f, 10.f));
 
 	Data.MaxHp = 10.f;
 	Data.Speed = 50.f;

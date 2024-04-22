@@ -90,6 +90,12 @@
     <ClInclude Include="KingBibleCenter.h">
       <Filter>Object\Weapon\KingBible</Filter>
     </ClInclude>
+    <ClInclude Include="KingBibleUnit.h">
+      <Filter>Object\Weapon\KingBible</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Object\Weapon</Filter>
+    </ClInclude>
     <ClInclude Include="KingBible.h">
       <Filter>Object\Weapon\KingBible</Filter>
     </ClInclude>
@@ -139,6 +145,12 @@
     </ClCompile>
     <ClCompile Include="KingBibleCenter.cpp">
       <Filter>Object\Weapon\KingBible</Filter>
+    </ClCompile>
+    <ClCompile Include="KingBibleUnit.cpp">
+      <Filter>Object\Weapon\KingBible</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Object\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="KingBible.cpp">
       <Filter>Object\Weapon\KingBible</Filter>

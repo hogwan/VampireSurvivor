@@ -48,6 +48,20 @@ void AEnemy::MoveLogic()
 
 void AEnemy::ColLogic()
 {
+
+	Collider->CollisionStay(ECollisionOrder::PlayerWeapon, [=](std::shared_ptr<UCollision> _Collision)
+		{
+			AActor* Opponent = _Collision->GetActor();
+			Opponent;
+
+			if (this == Opponent)
+				return;
+
+			Data.Hp -= 20.f;
+
+		}
+	);
+
 	Collider->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
 		{
 			AActor* Opponent = _Collision->GetActor();

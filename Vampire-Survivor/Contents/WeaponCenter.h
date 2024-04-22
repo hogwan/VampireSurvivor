@@ -1,19 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
-
-struct FWeaponData
-{
-public:
-	int Level;
-	int Amount;
-	int Penetration;
-	float Damage;
-	float Speed;
-	float Duration;
-	float Area;
-	float Cooldown;
-	float KnockbackPower;
-};
+#include "Weapon.h"
 
 class AWeaponCenter : public AActor
 {
@@ -29,22 +16,18 @@ public:
 	AWeaponCenter& operator=(const AWeaponCenter& _Other) = delete;
 	AWeaponCenter& operator=(AWeaponCenter&& _Other) noexcept = delete;
 
-
-	FWeaponData GetData()
+	void SetData(FWeaponData _Data)
 	{
-		return Data;
+		Data = _Data;
 	}
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	virtual void DataInit() = 0;
-	virtual void LevelUp() = 0;
-
 	UDefaultSceneComponent* Root = nullptr;
-
 	FWeaponData Data = { 0, };
+	
 
 private:
 

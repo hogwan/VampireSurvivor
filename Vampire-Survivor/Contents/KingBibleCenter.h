@@ -1,8 +1,9 @@
 #pragma once
 #include "WeaponCenter.h"
-#include "KingBible.h"
+#include "KingBibleUnit.h"
 class AKingBibleCenter : public AWeaponCenter
 {
+	GENERATED_BODY(AWeaponCenter)
 public:
 	//constructer destructer
 	AKingBibleCenter();
@@ -17,9 +18,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void DataInit() override;
-	void LevelUp() override;
-
+	void PushInfo();
 	void PushBible();
 	void PosInit();
 	void SpawnBible();
@@ -27,10 +26,10 @@ protected:
 	void BiblePosUpdate();
 	void RotateBible(float _DeltaTime);
 
-	
+	std::vector<UDefaultSceneComponent*> PositionInfo;
+	std::vector<std::shared_ptr<AKingBibleUnit>> Bibles;
 
-	std::vector<std::shared_ptr<UDefaultSceneComponent>> PositionInfo;
-	std::vector<std::shared_ptr<AKingBible>> Bibles;
+	float AccTime = 0.f;
 
 private:
 

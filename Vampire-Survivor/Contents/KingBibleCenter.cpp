@@ -1,8 +1,11 @@
 #include "PreCompile.h"
 #include "KingBibleCenter.h"
+#include "KingBible.h"
 
 AKingBibleCenter::AKingBibleCenter()
 {
+	SetData(UKingBible::Data);
+	PushInfo();
 }
 
 AKingBibleCenter::~AKingBibleCenter()
@@ -12,76 +15,19 @@ AKingBibleCenter::~AKingBibleCenter()
 void AKingBibleCenter::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
+
 	PushBible();
 	SpawnBible();
+	DelayCallBack(Data.Duration, [=] {
+		DestroyBible();
+		});
 }
 
 void AKingBibleCenter::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
 	RotateBible(_DeltaTime);
-}
-
-void AKingBibleCenter::DataInit()
-{
-	Data.Level = 1;
-	Data.Amount = 1;
-	Data.Penetration = -1;
-	Data.Damage = 10.f;
-	Data.Speed = 100.f;
-	Data.Duration = 3.f;
-	Data.Area = 100.f;
-	Data.Cooldown = 3.f;
-	Data.KnockbackPower = 100.f;
-}
-
-void AKingBibleCenter::LevelUp()
-{
-	int Level = ++Data.Level;
-
-	switch (Level)
-	{
-	case 1:
-		Data.Level = 1;
-		Data.Amount = 1;
-		Data.Penetration = -1;
-		Data.Damage = 10.f;
-		Data.Speed = 100.f;
-		Data.Duration = 3.f;
-		Data.Area = 100.f;
-		Data.Cooldown = 3.f;
-		Data.KnockbackPower = 100.f;
-		break;
-	case 2:
-		++Data.Amount;
-		PushBible();
-		break;
-	case 3:
-		Data.Speed = Data.Speed * 1.3f;
-		Data.Area = Data.Area * 1.25f;
-		break;
-	case 4:
-		Data.Duration += 0.5f;
-		Data.Damage += 10.f;
-		break;
-	case 5:
-		++Data.Amount;
-		PushBible();
-		break;
-	case 6:
-		Data.Speed = Data.Speed * 1.3f;
-		Data.Area = Data.Area * 1.25f;
-		break;
-	case 7:
-		Data.Duration += 0.5f;
-		Data.Damage += 10.f;
-		break;
-	case 8:
-		++Data.Amount;
-		PushBible();
-		break;
-	}
 }
 
 void AKingBibleCenter::BiblePosUpdate()
@@ -101,51 +47,48 @@ void AKingBibleCenter::RotateBible(float _DeltaTime)
 
 void AKingBibleCenter::PosInit()
 {
-	SetActorRotation(FVector::Zero);
 	for (int i = 0; i < Data.Amount; i++)
 	{
 		FVector Dir = FVector(0.f, -1.f, 0.f);
-		Dir.RotationZToDeg(360 / Data.Amount);
+		Dir.RotationZToDeg((360.f / static_cast<float>(Data.Amount)) * static_cast<float>(i));
 		PositionInfo[i]->SetPosition(Dir * Data.Area);
+		int a = 0;
 	}
 }
 
 
+void AKingBibleCenter::PushInfo()
+{
+	for (int i = 0; i < Data.Amount; i++)
+	{
+		UDefaultSceneComponent* Pos = CreateDefaultSubObject<UDefaultSceneComponent>("PosObject");
+		Pos->SetupAttachment(Root);
+		PositionInfo.push_back(Pos);
+	}
+}
+
 void AKingBibleCenter::PushBible()
 {
-	
-	std::shared_ptr<UDefaultSceneComponent> Pos = GetWorld()->SpawnActor<UDefaultSceneComponent>("Pos");
-	Pos->SetupAttachment(Root);
-	PositionInfo.push_back(Pos);
-	std::shared_ptr<AKingBible> Bible = nullptr;
-	Bibles.push_back(Bible);
+	for (int i = 0; i < Data.Amount; i++)
+	{
+		std::shared_ptr<AKingBibleUnit> Bible = GetWorld()->SpawnActor<AKingBibleUnit>("Bible");
+		Bibles.push_back(Bible);
+	}
 }
 
 void AKingBibleCenter::SpawnBible()
 {
 	PosInit();
-
-	for (std::shared_ptr<AKingBible> Bible: Bibles)
-	{
-		Bible = GetWorld()->SpawnActor<AKingBible>("Bible");
-	}
-
 	BiblePosUpdate();
-
-	DelayCallBack(Data.Duration, [=] {
-		DestroyBible();
-		});
 }
 
 void AKingBibleCenter::DestroyBible()
 {
-	for (std::shared_ptr<AKingBible> Bible : Bibles)
+	for (std::shared_ptr<AKingBibleUnit> Bible : Bibles)
 	{
 		Bible->Destroy();
-		Bible = nullptr;
 	}
 
-	DelayCallBack(Data.Cooldown, [=] {
-		SpawnBible();
-		});
+	Destroy();
+
 }

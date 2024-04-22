@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "SpawnerManager.h"
 #include <EngineCore/Camera.h>
+#include "KingBible.h"
 
 APlayGameMode::APlayGameMode()
 {
@@ -27,6 +28,7 @@ void APlayGameMode::BeginPlay()
 	UContentsValue::StartPosition = Player->GetActorLocation();
 
 	GetWorld()->SpawnActor<USpawnerManager>("SpawnerManager");
+	GetWorld()->SpawnActor<UKingBible>("KingBible");
 
 
 	for (int y = -1; y < 2; y++)
