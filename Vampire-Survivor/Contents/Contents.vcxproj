@@ -192,6 +192,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="MagicWand.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MagicWandCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MagicWandUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Player.h">
       <SubType>
       </SubType>
@@ -263,6 +275,18 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="KingBibleCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MagicWand.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MagicWandCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MagicWandUnit.cpp">
       <SubType>
       </SubType>
     </ClCompile>

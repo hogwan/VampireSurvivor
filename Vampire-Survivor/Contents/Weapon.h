@@ -35,6 +35,8 @@ protected:
 	virtual void DataInit() = 0;
 	virtual void LevelUp() = 0;
 	virtual void SpawnCenter() = 0;
+
+	float RemainTime = 0.f;
 private:
 
 };

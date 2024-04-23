@@ -24,12 +24,25 @@ void UKingBible::BeginPlay()
 void UKingBible::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
+	{
+		LevelUp();
+	}
+
+	RemainTime -= _DeltaTime;
+	if (RemainTime < 0.f)
+	{
+		RemainTime = Data.Cooldown + Data.Duration;
+		SpawnCenter();
+	}
+
 }
 
 void UKingBible::DataInit()
 {
 	Data.Level = 1;
-	Data.Amount = 5;
+	Data.Amount = 1;
 	Data.Penetration = -1;
 	Data.Damage = 10.f;
 	Data.Speed = 100.f;
@@ -37,6 +50,8 @@ void UKingBible::DataInit()
 	Data.Area = 100.f;
 	Data.Cooldown = 3.f;
 	Data.KnockbackPower = 100.f;
+
+	RemainTime = Data.Cooldown + Data.Duration;
 }
 
 void UKingBible::LevelUp()
@@ -81,6 +96,8 @@ void UKingBible::LevelUp()
 	case 8:
 		++Data.Amount;
 		break;
+	Default:
+		break;
 	}
 
 	SpawnCenter();
@@ -89,8 +106,4 @@ void UKingBible::LevelUp()
 void UKingBible::SpawnCenter()
 {
 	GetWorld()->SpawnActor<AKingBibleCenter>("Center");
-	DelayCallBack(Data.Duration + Data.Cooldown, [=]
-		{
-			SpawnCenter();
-		});
 }

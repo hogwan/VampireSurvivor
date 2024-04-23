@@ -40,6 +40,9 @@
     <Filter Include="Object\Weapon\KingBible">
       <UniqueIdentifier>{c39c0e2c-9c99-4ffb-b508-5dd9309edd7a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Weapon\MagicWand">
+      <UniqueIdentifier>{7783deb8-333c-422d-a624-f8ac1d84ff42}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -99,6 +102,15 @@
     <ClInclude Include="KingBible.h">
       <Filter>Object\Weapon\KingBible</Filter>
     </ClInclude>
+    <ClInclude Include="MagicWandCenter.h">
+      <Filter>Object\Weapon\MagicWand</Filter>
+    </ClInclude>
+    <ClInclude Include="MagicWand.h">
+      <Filter>Object\Weapon\MagicWand</Filter>
+    </ClInclude>
+    <ClInclude Include="MagicWandUnit.h">
+      <Filter>Object\Weapon\MagicWand</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -154,6 +166,15 @@
     </ClCompile>
     <ClCompile Include="KingBible.cpp">
       <Filter>Object\Weapon\KingBible</Filter>
+    </ClCompile>
+    <ClCompile Include="MagicWandCenter.cpp">
+      <Filter>Object\Weapon\MagicWand</Filter>
+    </ClCompile>
+    <ClCompile Include="MagicWand.cpp">
+      <Filter>Object\Weapon\MagicWand</Filter>
+    </ClCompile>
+    <ClCompile Include="MagicWandUnit.cpp">
+      <Filter>Object\Weapon\MagicWand</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

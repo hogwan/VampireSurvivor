@@ -26,6 +26,19 @@ void UVSCore::Initialize()
 		UEngineSprite::CreateCutting("BatIDLE.png", 4, 1);
 	}
 
+	{
+		UEngineDirectory Dir;
+		Dir.MoveToSearchChild("ContentsResources");
+		Dir.Move("Image");
+		Dir.Move("WeaponFX");
+		std::vector<UEngineDirectory> Directorys = Dir.GetAllDirectory();
+		for (size_t i = 0; i < Directorys.size(); i++)
+		{
+			std::string Name = Directorys[i].GetFolderName();
+			UEngineSprite::LoadFolder(Directorys[i].GetFullPath());
+		}
+	}
+
 
 	{
 		UEngineDirectory Dir;
