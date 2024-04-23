@@ -25,6 +25,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	void ColLogic();
+	void Release();
 
 	FVector MoveVector = FVector::Zero;
 	int Penetration = 0;

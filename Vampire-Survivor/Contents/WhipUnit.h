@@ -20,15 +20,17 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void ColLogic();
+	void IncreaseLogic(float _DeltaTime);
+
 	FVector InitialScale = FVector(73.f,11.f,10.f);
 	FVector MaxScale = FVector(147.f, 22.f, 10.f);
 	
 	float IncreaseTerm = 0.1f;
 	float DestroyTime = 0.15f;
 
-	void Reposition();
-
 	EEngineDir Dir = EEngineDir::MAX;
+	EEngineDir PlayerDir = EEngineDir::MAX;
 private:
 
 };

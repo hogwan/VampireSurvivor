@@ -196,6 +196,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Knife.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="KnifeCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="KnifeUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MagicWand.h">
       <SubType>
       </SubType>
@@ -295,6 +307,18 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="KingBibleCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Knife.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KnifeCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KnifeUnit.cpp">
       <SubType>
       </SubType>
     </ClCompile>

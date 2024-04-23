@@ -43,7 +43,7 @@ void UWhip::DataInit()
 	Data.Damage = 10.f;
 	Data.Speed = 500.f;
 	Data.Duration = 0.f;
-	Data.Area = 100.f;
+	Data.Area = 1.f;
 	Data.Cooldown = 1.35f;
 	Data.KnockbackPower = 100.f;
 

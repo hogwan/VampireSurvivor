@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "WhipUnit.h"
 #include "Player.h"
+#include "Enemy.h"
+#include "Whip.h"
 
 AWhipUnit::AWhipUnit() 
 {
@@ -17,8 +19,8 @@ void AWhipUnit::BeginPlay()
 	Renderer->SetScale(InitialScale);
 	Renderer->SetOrder(ERenderOrder::PlayerWeapon);
 	Renderer->SetPosition(FVector(Renderer->GetLocalScale().X / 2.f, 0.f, 0.f));
-
-	EEngineDir PlayerDir = UContentsValue::Player->GetSpriteDir();
+	
+	PlayerDir = UContentsValue::Player->GetSpriteDir();
 	EEngineDir Dir = EEngineDir::MAX;
 	if (PlayerDir == EEngineDir::Left)
 	{
@@ -32,9 +34,6 @@ void AWhipUnit::BeginPlay()
 	}
 	Renderer->SetDir(Dir);
 
-
-
-	
 	Collider->SetCollisionGroup(ECollisionOrder::PlayerWeapon);
 	Collider->SetCollisionType(ECollisionType::RotRect);
 
@@ -50,22 +49,43 @@ void AWhipUnit::Tick(float _DeltaTime)
 
 	SetActorLocation(UContentsValue::Player->GetActorLocation());
 
-	
-
 	Collider->SetScale(Renderer->GetLocalScale());
 	Collider->SetPosition(Renderer->GetLocalPosition());
 	Collider->SetRotationDeg(Renderer->GetLocalRotation());
 
-
+	ColLogic();
+	IncreaseLogic(_DeltaTime);
 }
 
-void AWhipUnit::Reposition()
+void AWhipUnit::ColLogic()
 {
-	Renderer->SetPosition(FVector(Renderer->GetLocalScale().X / 2.f, 0.f, 0.f));
+	Collider->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
+		{
+			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
-	if (Dir == EEngineDir::Left)
-	{
-		SetActorRotation(FVector(0.f, 0.f, 180.f));
-	}
+			Opponent->GetEnemyData().Hp -= UWhip::Data.Damage;
+		}
+	);
 }
+
+void AWhipUnit::IncreaseLogic(float _DeltaTime)
+{
+	FVector Gap = MaxScale - InitialScale;
+	
+	float XUp = (Gap.X / IncreaseTerm) * _DeltaTime;
+	float YUp = (Gap.Y / IncreaseTerm) * _DeltaTime;
+
+	if (PlayerDir == EEngineDir::Left)
+	{
+		Renderer->AddScale(FVector(XUp, YUp, 0.f));
+	}
+	else if (PlayerDir == EEngineDir::Right)
+	{
+		Renderer->AddScale(FVector(-XUp, YUp, 0.f));
+	}
+
+
+	
+}
+
 

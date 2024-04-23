@@ -1,56 +1,49 @@
 #include "PreCompile.h"
-#include "MagicWand.h"
-#include "MagicWandCenter.h"
+#include "Knife.h"
 
-FWeaponData UMagicWand::Data = { 0, };
+FWeaponData UKnife::Data;
 
-UMagicWand::UMagicWand() 
+UKnife::UKnife() 
 {
 }
 
-UMagicWand::~UMagicWand() 
+UKnife::~UKnife() 
 {
 }
 
-void UMagicWand::BeginPlay()
+void UKnife::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
-	SpawnCenter();
 }
 
-void UMagicWand::Tick(float _DeltaTime)
+void UKnife::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
 	RemainTime -= _DeltaTime;
 	if (RemainTime < 0.f)
 	{
 		RemainTime = Data.Cooldown;
 		SpawnCenter();
 	}
-
-	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
-	{
-		LevelUp();
-	}
 }
 
-void UMagicWand::DataInit()
+void UKnife::DataInit()
 {
 	Data.Level = 1;
 	Data.Amount = 1;
 	Data.Penetration = 1;
-	Data.Damage = 10.f;
+	Data.Damage = 6.5f;
 	Data.Speed = 500.f;
-	Data.Duration = 0.f;
+	Data.Duration = 1.f;
 	Data.Area = 0.f;
-	Data.Cooldown = 1.2f;
+	Data.Cooldown = 1.0f;
 	Data.KnockbackPower = 100.f;
 
 	RemainTime = Data.Cooldown;
 }
 
-void UMagicWand::LevelUp()
+void UKnife::LevelUp()
 {
 	int Level = ++Data.Level;
 	switch (Level)
@@ -59,40 +52,42 @@ void UMagicWand::LevelUp()
 		Data.Level = 1;
 		Data.Amount = 1;
 		Data.Penetration = 1;
-		Data.Damage = 10.f;
+		Data.Damage = 6.5f;
 		Data.Speed = 500.f;
-		Data.Duration = 0.f;
+		Data.Duration = 1.f;
 		Data.Area = 0.f;
-		Data.Cooldown = 1.2f;
+		Data.Cooldown = 1.0f;
 		Data.KnockbackPower = 100.f;
 		break;
 	case 2:
 		++Data.Amount;
 		break;
 	case 3:
-		Data.Cooldown -= 0.2f;
+		++Data.Amount;
+		Data.Damage += 5.f;
 		break;
 	case 4:
 		++Data.Amount;
 		break;
 	case 5:
-		Data.Damage += 10.f;
+		++Data.Penetration;
 		break;
 	case 6:
 		++Data.Amount;
 		break;
 	case 7:
 		++Data.Penetration;
+		Data.Damage += 5.f;
 		break;
 	case 8:
-		Data.Damage += 10.f;
+		++Data.Penetration;
 		break;
 	default:
 		break;
 	}
 }
 
-void UMagicWand::SpawnCenter()
+void UKnife::SpawnCenter()
 {
-	GetWorld()->SpawnActor<AMagicWandCenter>("Center");
+
 }

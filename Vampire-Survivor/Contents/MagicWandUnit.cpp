@@ -2,6 +2,7 @@
 #include "MagicWandUnit.h"
 #include "MagicWand.h"
 #include "Enemy.h"
+#include "Player.h"
 
 AMagicWandUnit::AMagicWandUnit() 
 {
@@ -32,6 +33,7 @@ void AMagicWandUnit::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	Release();
 	if (Penetration <= 0)
 	{
 		Destroy();
@@ -51,5 +53,20 @@ void AMagicWandUnit::ColLogic()
 			--Penetration;
 		}
 	);
+}
+
+void AMagicWandUnit::Release()
+{
+	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+	FVector CurPos = GetActorLocation();
+
+	PlayerPos.Z = 0;
+	CurPos.Z = 0;
+
+	float Distance = (PlayerPos - CurPos).Size3D();
+	if (Distance > 1500.f)
+	{
+		Destroy();
+	}
 }
 

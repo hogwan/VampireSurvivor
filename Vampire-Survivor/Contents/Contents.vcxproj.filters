@@ -49,6 +49,9 @@
     <Filter Include="Object\Weapon\Whip">
       <UniqueIdentifier>{f870257c-4e68-4948-93a4-6f6b4667720f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Weapon\Knife">
+      <UniqueIdentifier>{ee4e59e8-15b3-43f9-9ceb-10006522e4f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -129,6 +132,15 @@
     <ClInclude Include="WhipUnit.h">
       <Filter>Object\Weapon\Whip</Filter>
     </ClInclude>
+    <ClInclude Include="Knife.h">
+      <Filter>Object\Weapon\Knife</Filter>
+    </ClInclude>
+    <ClInclude Include="KnifeCenter.h">
+      <Filter>Object\Weapon\Knife</Filter>
+    </ClInclude>
+    <ClInclude Include="KnifeUnit.h">
+      <Filter>Object\Weapon\Knife</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -205,6 +217,15 @@
     </ClCompile>
     <ClCompile Include="WhipUnit.cpp">
       <Filter>Object\Weapon\Whip</Filter>
+    </ClCompile>
+    <ClCompile Include="Knife.cpp">
+      <Filter>Object\Weapon\Knife</Filter>
+    </ClCompile>
+    <ClCompile Include="KnifeCenter.cpp">
+      <Filter>Object\Weapon\Knife</Filter>
+    </ClCompile>
+    <ClCompile Include="KnifeUnit.cpp">
+      <Filter>Object\Weapon\Knife</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
