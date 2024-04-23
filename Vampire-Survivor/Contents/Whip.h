@@ -25,6 +25,7 @@ protected:
 	void LevelUp() override;
 
 	void SpawnCenter() override;
+
 private:
 };
 

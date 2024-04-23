@@ -28,6 +28,11 @@ void UWhip::Tick(float _DeltaTime)
 		RemainTime = Data.Cooldown;
 		SpawnCenter();
 	}
+
+	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
+	{
+		LevelUp();
+	}
 }
 
 void UWhip::DataInit()

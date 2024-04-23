@@ -16,6 +16,11 @@ public:
 	AVSObject& operator=(const AVSObject& _Other) = delete;
 	AVSObject& operator=(AVSObject&& _Other) noexcept = delete;
 
+	EEngineDir GetSpriteDir()
+	{
+		return SpriteDir;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

@@ -96,7 +96,7 @@ void UKingBible::LevelUp()
 	case 8:
 		++Data.Amount;
 		break;
-	Default:
+	default:
 		break;
 	}
 

@@ -5,6 +5,7 @@
 class AWhipCenter
 	: public AWeaponCenter
 {
+	GENERATED_BODY(AWeaponCenter)
 public:
 	// constructor destructor
 	AWhipCenter();
@@ -25,6 +26,10 @@ protected:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+
+	void WhipSpawnLogic();
+
+	float SecondTerm = 0.1f;
 
 	UDefaultSceneComponent* Root = nullptr;
 	FWeaponData Data = { 0, };

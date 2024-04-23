@@ -1,21 +1,34 @@
 #pragma once
+#include "VSObject.h"
 
 // Ό³Έν :
-class WhipUnit
+class AWhipUnit : public AVSObject
 {
+	GENERATED_BODY(AVSObject)
 public:
 	// constructor destructor
-	WhipUnit();
-	~WhipUnit();
+	AWhipUnit();
+	~AWhipUnit();
 
 	// delete Function
-	WhipUnit(const WhipUnit& _Other) = delete;
-	WhipUnit(WhipUnit&& _Other) noexcept = delete;
-	WhipUnit& operator=(const WhipUnit& _Other) = delete;
-	WhipUnit& operator=(WhipUnit&& _Other) noexcept = delete;
+	AWhipUnit(const AWhipUnit& _Other) = delete;
+	AWhipUnit(AWhipUnit&& _Other) noexcept = delete;
+	AWhipUnit& operator=(const AWhipUnit& _Other) = delete;
+	AWhipUnit& operator=(AWhipUnit&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
+	FVector InitialScale = FVector(73.f,11.f,10.f);
+	FVector MaxScale = FVector(147.f, 22.f, 10.f);
+	
+	float IncreaseTerm = 0.1f;
+	float DestroyTime = 0.15f;
+
+	void Reposition();
+
+	EEngineDir Dir = EEngineDir::MAX;
 private:
 
 };

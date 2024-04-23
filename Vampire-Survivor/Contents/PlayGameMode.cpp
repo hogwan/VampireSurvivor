@@ -7,6 +7,7 @@
 #include "KingBible.h"
 #include "MagicWand.h"
 #include "DetectManager.h"
+#include "Whip.h"
 
 APlayGameMode::APlayGameMode()
 {
@@ -33,6 +34,7 @@ void APlayGameMode::BeginPlay()
 	//GetWorld()->SpawnActor<UDetectManager>("DetectManager");
 	GetWorld()->SpawnActor<UKingBible>("KingBible");
 	GetWorld()->SpawnActor<UMagicWand>("MagicWand");
+	GetWorld()->SpawnActor<UWhip>("Whip");
 
 
 	for (int y = -1; y < 2; y++)
