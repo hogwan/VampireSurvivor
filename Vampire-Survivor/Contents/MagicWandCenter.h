@@ -20,7 +20,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	float ShootTerm = 0.1f;
+	float ShootTerm = 0.05f;
 	float RemainTime = 0.f;
 	void ShootLogic();
 	int ShootCount = 0;

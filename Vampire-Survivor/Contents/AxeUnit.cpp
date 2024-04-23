@@ -1,61 +1,72 @@
 #include "PreCompile.h"
-#include "MagicWandUnit.h"
-#include "MagicWand.h"
+#include "AxeUnit.h"
+#include "Axe.h"
 #include "Enemy.h"
 #include "Player.h"
 
-AMagicWandUnit::AMagicWandUnit() 
-{
-
-}
-
-AMagicWandUnit::~AMagicWandUnit() 
+AAxeUnit::AAxeUnit()
 {
 }
 
-void AMagicWandUnit::BeginPlay()
+AAxeUnit::~AAxeUnit()
+{
+}
+
+void AAxeUnit::BeginPlay()
 {
 	Super::BeginPlay();
-	Renderer->CreateAnimation("Flying", "MagicWand", 0, 1, 0.1f, true);
+
+	Renderer->SetSprite("Axe_0.png");
 	Renderer->SetAutoSize(2.f, true);
 	Renderer->SetOrder(ERenderOrder::PlayerWeapon);
 
-	Renderer->ChangeAnimation("Flying");
-
 	Collider->SetCollisionGroup(ECollisionOrder::PlayerWeapon);
-	Collider->SetCollisionType(ECollisionType::CirCle);
-	Collider->SetScale(FVector(30.f, 30.f, 10.f));
+	Collider->SetCollisionType(ECollisionType::RotRect);
+	Collider->SetScale(FVector(32.f, 36.f, 10.f));
 
-	Penetration = UMagicWand::Data.Penetration;
+	Penetration = UAxe::Data.Penetration;
 }
 
-void AMagicWandUnit::Tick(float _DeltaTime)
+void AAxeUnit::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	Release();
 	if (Penetration <= 0)
 	{
 		Destroy();
 	}
+	Release();
 
 	ColLogic();
+
+	if (MoveVector.X < 0)
+	{
+		AddActorRotation(FVector(0.f, 0.f, RotationSpeed * _DeltaTime));
+	}
+	else
+	{
+		AddActorRotation(FVector(0.f, 0.f, -RotationSpeed * _DeltaTime));
+	}
+
+
+	MoveVector += Gravity * _DeltaTime;
+
 	AddActorLocation(MoveVector * _DeltaTime);
 }
 
-void AMagicWandUnit::ColLogic()
+void AAxeUnit::ColLogic()
 {
 	Collider->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
 		{
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
-			Opponent->GetEnemyData().Hp -= UMagicWand::Data.Damage;
+			Opponent->GetEnemyData().Hp -= UAxe::Data.Damage;
 			--Penetration;
 		}
 	);
 }
 
-void AMagicWandUnit::Release()
+void AAxeUnit::Release()
 {
 	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
 	FVector CurPos = GetActorLocation();
@@ -69,4 +80,3 @@ void AMagicWandUnit::Release()
 		Destroy();
 	}
 }
-

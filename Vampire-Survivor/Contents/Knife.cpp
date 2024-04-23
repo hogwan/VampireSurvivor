@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Knife.h"
+#include "KnifeCenter.h"
 
 FWeaponData UKnife::Data;
 
@@ -14,6 +15,8 @@ UKnife::~UKnife()
 void UKnife::BeginPlay()
 {
 	Super::BeginPlay();
+	DataInit();
+	SpawnCenter();
 }
 
 void UKnife::Tick(float _DeltaTime)
@@ -25,6 +28,11 @@ void UKnife::Tick(float _DeltaTime)
 	{
 		RemainTime = Data.Cooldown;
 		SpawnCenter();
+	}
+
+	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
+	{
+		LevelUp();
 	}
 }
 
@@ -89,5 +97,5 @@ void UKnife::LevelUp()
 
 void UKnife::SpawnCenter()
 {
-
+	GetWorld()->SpawnActor<AKnifeCenter>("Center");
 }

@@ -45,7 +45,6 @@ protected:
 	void DeathLogic();
 	void RepositionLogic();
 	void SpriteDirCheck();
-	void DetectLogic();
 
 	FEnemyData Data = { 0, };
 private:

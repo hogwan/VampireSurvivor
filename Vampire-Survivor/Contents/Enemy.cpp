@@ -2,7 +2,6 @@
 #include "Enemy.h"
 #include "Player.h"
 #include <EngineBase/EngineRandom.h>
-#include "DetectManager.h"
 
 AEnemy::AEnemy() 
 {
@@ -109,7 +108,8 @@ void AEnemy::DeathLogic()
 {
 	if (Data.Hp < 0.f)
 	{
-		ActiveOff();
+		//ActiveOff();
+		Destroy();
 	}
 }
 
@@ -145,26 +145,6 @@ void AEnemy::SpriteDirCheck()
 	else
 	{
 		SpriteDir = EEngineDir::Left;
-	}
-}
-
-void AEnemy::DetectLogic()
-{
-	if (!IsLive) return;
-
-	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
-	PlayerPos.Z = 0.f;
-
-	FVector CurPos = GetActorLocation();
-	CurPos.Z = 0.f;
-
-	FVector DistanceVector = PlayerPos - CurPos;
-	float Distance = DistanceVector.Size3D();
-
-	if (Distance < UDetectManager::DetectRange)
-	{
-		InDetectRange = true;
-		UDetectManager::AllDetectedEnemy.push_back(this);
 	}
 }
 

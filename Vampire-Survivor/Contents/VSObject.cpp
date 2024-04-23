@@ -33,13 +33,13 @@ void AVSObject::DirCheck()
 {
 	FVector Scale = GetActorScale3D();
 	float Scalar = fabs(Scale.X);
-	if (SpriteDir == EEngineDir::Right)
+	if (SpriteDir == EEngineDir::Left)
 	{
-		Scale = FVector(Scalar, Scale.Y, Scale.Z);
+		Scale = FVector(-Scalar, Scale.Y, Scale.Z);
 	}
 	else
 	{
-		Scale = FVector(-Scalar, Scale.Y, Scale.Z);
+		Scale = FVector(Scalar, Scale.Y, Scale.Z);
 	}
 	SetActorScale3D(Scale);
 }

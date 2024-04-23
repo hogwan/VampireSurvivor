@@ -20,10 +20,10 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	float OffSet = 5.f;
-	float SpawnInterval = 0.1f;
+	float Offset = 5.f;
+	float SpawnInterval = 0.08f;
 	float RemainTime = 0.f;
-	int RemainKnifeCount = Data.Amount;
+	int RemainKnifeCount = 0;
 
 	bool UpSpawn = true;
 	void SpawnLogic(float _DeltaTime);

@@ -163,6 +163,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Axe.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="AxeCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="AxeUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BackGroundMap.h">
       <SubType>
       </SubType>
@@ -176,11 +188,43 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="DetectManager.h">
+    <ClInclude Include="Cross.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CrossCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CrossUnit.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Enemy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FireWand.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FireWandCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FireWandUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Garlic.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GarlicCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GarlicUnit.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -278,6 +322,18 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Axe.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="AxeCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="AxeUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BackGroundMap.cpp">
       <SubType>
       </SubType>
@@ -290,11 +346,43 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="DetectManager.cpp">
+    <ClCompile Include="Cross.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CrossCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CrossUnit.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FireWand.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FireWandCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FireWandUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Garlic.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GarlicCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GarlicUnit.cpp">
       <SubType>
       </SubType>
     </ClCompile>

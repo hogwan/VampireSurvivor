@@ -2,7 +2,6 @@
 #include "MagicWandCenter.h"
 #include "MagicWandUnit.h"
 #include "Enemy.h"
-#include "DetectManager.h"
 #include "MagicWand.h"
 #include "Player.h"
 
@@ -53,6 +52,15 @@ void AMagicWandCenter::ShootLogic()
 	std::shared_ptr<AMagicWandUnit> Projectile = GetWorld()->SpawnActor<AMagicWandUnit>("Projectile");
 	Projectile->SetActorLocation(GetActorLocation());
 	Projectile->SetMoveVector(DirVector * Data.Speed);
+
+	if (DirVector.X >= 0)
+	{
+		Projectile->SetActorRotation(FVector(0.f, 0.f, DirVector.Y * 90.f));
+	}
+	else
+	{
+		Projectile->SetActorRotation(FVector(0.f, 0.f, 180 - (DirVector.Y * 90.f)));
+	}
 
 	++ShootCount;
 }

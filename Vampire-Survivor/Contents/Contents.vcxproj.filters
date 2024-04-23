@@ -52,6 +52,18 @@
     <Filter Include="Object\Weapon\Knife">
       <UniqueIdentifier>{ee4e59e8-15b3-43f9-9ceb-10006522e4f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Weapon\Axe">
+      <UniqueIdentifier>{e1fde786-8472-4adc-b5d3-52e6a9e48fc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Weapon\Cross">
+      <UniqueIdentifier>{93b84004-e642-4172-9dde-90eb6013b9cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Weapon\FireWand">
+      <UniqueIdentifier>{0e1097a0-06d9-47c9-91d8-735240beef55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Weapon\Garlic">
+      <UniqueIdentifier>{686f12b6-c0e9-4056-a729-8b38ccd05451}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -120,9 +132,6 @@
     <ClInclude Include="PollingManager.h">
       <Filter>Object\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="DetectManager.h">
-      <Filter>Object\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="Whip.h">
       <Filter>Object\Weapon\Whip</Filter>
     </ClInclude>
@@ -140,6 +149,42 @@
     </ClInclude>
     <ClInclude Include="KnifeUnit.h">
       <Filter>Object\Weapon\Knife</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe.h">
+      <Filter>Object\Weapon\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="AxeCenter.h">
+      <Filter>Object\Weapon\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="AxeUnit.h">
+      <Filter>Object\Weapon\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="Cross.h">
+      <Filter>Object\Weapon\Cross</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossCenter.h">
+      <Filter>Object\Weapon\Cross</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossUnit.h">
+      <Filter>Object\Weapon\Cross</Filter>
+    </ClInclude>
+    <ClInclude Include="FireWand.h">
+      <Filter>Object\Weapon\FireWand</Filter>
+    </ClInclude>
+    <ClInclude Include="FireWandCenter.h">
+      <Filter>Object\Weapon\FireWand</Filter>
+    </ClInclude>
+    <ClInclude Include="FireWandUnit.h">
+      <Filter>Object\Weapon\FireWand</Filter>
+    </ClInclude>
+    <ClInclude Include="Garlic.h">
+      <Filter>Object\Weapon\Garlic</Filter>
+    </ClInclude>
+    <ClInclude Include="GarlicCenter.h">
+      <Filter>Object\Weapon\Garlic</Filter>
+    </ClInclude>
+    <ClInclude Include="GarlicUnit.h">
+      <Filter>Object\Weapon\Garlic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -206,9 +251,6 @@
     <ClCompile Include="PollingManager.cpp">
       <Filter>Object\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="DetectManager.cpp">
-      <Filter>Object\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="Whip.cpp">
       <Filter>Object\Weapon\Whip</Filter>
     </ClCompile>
@@ -226,6 +268,42 @@
     </ClCompile>
     <ClCompile Include="KnifeUnit.cpp">
       <Filter>Object\Weapon\Knife</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe.cpp">
+      <Filter>Object\Weapon\Axe</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeCenter.cpp">
+      <Filter>Object\Weapon\Axe</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeUnit.cpp">
+      <Filter>Object\Weapon\Axe</Filter>
+    </ClCompile>
+    <ClCompile Include="Cross.cpp">
+      <Filter>Object\Weapon\Cross</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossCenter.cpp">
+      <Filter>Object\Weapon\Cross</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossUnit.cpp">
+      <Filter>Object\Weapon\Cross</Filter>
+    </ClCompile>
+    <ClCompile Include="FireWand.cpp">
+      <Filter>Object\Weapon\FireWand</Filter>
+    </ClCompile>
+    <ClCompile Include="FireWandCenter.cpp">
+      <Filter>Object\Weapon\FireWand</Filter>
+    </ClCompile>
+    <ClCompile Include="FireWandUnit.cpp">
+      <Filter>Object\Weapon\FireWand</Filter>
+    </ClCompile>
+    <ClCompile Include="Garlic.cpp">
+      <Filter>Object\Weapon\Garlic</Filter>
+    </ClCompile>
+    <ClCompile Include="GarlicCenter.cpp">
+      <Filter>Object\Weapon\Garlic</Filter>
+    </ClCompile>
+    <ClCompile Include="GarlicUnit.cpp">
+      <Filter>Object\Weapon\Garlic</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

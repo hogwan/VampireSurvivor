@@ -24,13 +24,13 @@ void AWhipUnit::BeginPlay()
 	EEngineDir Dir = EEngineDir::MAX;
 	if (PlayerDir == EEngineDir::Left)
 	{
-		Dir = EEngineDir::Right;
-		Renderer->SetPosition(FVector(Renderer->GetLocalScale().X / 2.f, 0.f, 0.f));
+		Dir = EEngineDir::Left;
+		Renderer->SetPosition(FVector(-Renderer->GetLocalScale().X / 2.f, 0.f, 0.f));
 	}
 	else if (PlayerDir == EEngineDir::Right)
 	{
-		Dir = EEngineDir::Left;
-		Renderer->SetPosition(FVector(-Renderer->GetLocalScale().X / 2.f, 0.f, 0.f));
+		Dir = EEngineDir::Right;
+		Renderer->SetPosition(FVector(Renderer->GetLocalScale().X / 2.f, 0.f, 0.f));
 	}
 	Renderer->SetDir(Dir);
 
@@ -77,11 +77,11 @@ void AWhipUnit::IncreaseLogic(float _DeltaTime)
 
 	if (PlayerDir == EEngineDir::Left)
 	{
-		Renderer->AddScale(FVector(XUp, YUp, 0.f));
+		Renderer->AddScale(FVector(-XUp, YUp, 0.f));
 	}
 	else if (PlayerDir == EEngineDir::Right)
 	{
-		Renderer->AddScale(FVector(-XUp, YUp, 0.f));
+		Renderer->AddScale(FVector(XUp, YUp, 0.f));
 	}
 
 

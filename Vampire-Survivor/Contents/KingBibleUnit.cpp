@@ -15,7 +15,7 @@ void AKingBibleUnit::BeginPlay()
 {
 	Super::BeginPlay();
 	Renderer->SetSprite("KingBible_0.png");
-	Renderer->SetAutoSize(1.f, true);
+	Renderer->SetAutoSize(2.f, true);
 	Renderer->SetOrder(ERenderOrder::PlayerWeapon);
 
 	Collider->SetScale(FVector(30.f, 30.f, 10.f));

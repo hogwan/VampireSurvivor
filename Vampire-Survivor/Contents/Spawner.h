@@ -31,7 +31,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	template<typename Enemy>
+	/*template<typename Enemy>
 	void EnemySpawn()
 	{
 		std::shared_ptr<APollingObject> Monster = nullptr;
@@ -57,7 +57,7 @@ protected:
 
 		Monster->SetActorLocation(CurPos);
 		Monster->ActiveOn();
-	}
+	}*/
 
 private:
 	UDefaultSceneComponent* Root = nullptr;

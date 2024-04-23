@@ -1,25 +1,23 @@
 #include "PreCompile.h"
-#include "MagicWand.h"
-#include "MagicWandCenter.h"
-
-FWeaponData UMagicWand::Data = { 0, };
-
-UMagicWand::UMagicWand() 
+#include "Cross.h"
+#include "CrossCenter.h"
+FWeaponData UCross::Data = { 0, };
+UCross::UCross()
 {
 }
 
-UMagicWand::~UMagicWand() 
+UCross::~UCross()
 {
 }
 
-void UMagicWand::BeginPlay()
+void UCross::BeginPlay()
 {
 	Super::BeginPlay();
 	DataInit();
 	SpawnCenter();
 }
 
-void UMagicWand::Tick(float _DeltaTime)
+void UCross::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	RemainTime -= _DeltaTime;
@@ -35,22 +33,22 @@ void UMagicWand::Tick(float _DeltaTime)
 	}
 }
 
-void UMagicWand::DataInit()
+void UCross::DataInit()
 {
 	Data.Level = 1;
 	Data.Amount = 1;
-	Data.Penetration = 1;
-	Data.Damage = 10.f;
+	Data.Penetration = 0;
+	Data.Damage = 5.f;
 	Data.Speed = 300.f;
 	Data.Duration = 0.f;
-	Data.Area = 0.f;
-	Data.Cooldown = 1.2f;
+	Data.Area = 1.f;
+	Data.Cooldown = 2.f;
 	Data.KnockbackPower = 100.f;
 
 	RemainTime = Data.Cooldown;
 }
 
-void UMagicWand::LevelUp()
+void UCross::LevelUp()
 {
 	int Level = ++Data.Level;
 	switch (Level)
@@ -58,19 +56,20 @@ void UMagicWand::LevelUp()
 	case 1:
 		Data.Level = 1;
 		Data.Amount = 1;
-		Data.Penetration = 1;
-		Data.Damage = 10.f;
-		Data.Speed = 500.f;
+		Data.Penetration = 0;
+		Data.Damage = 5.f;
+		Data.Speed = 300.f;
 		Data.Duration = 0.f;
-		Data.Area = 0.f;
-		Data.Cooldown = 1.2f;
+		Data.Area = 1.f;
+		Data.Cooldown = 2.f;
 		Data.KnockbackPower = 100.f;
 		break;
 	case 2:
-		++Data.Amount;
+		Data.Damage += 10;
 		break;
 	case 3:
-		Data.Cooldown -= 0.2f;
+		Data.Speed *= 1.25f;
+		Data.Area *= 1.1f;
 		break;
 	case 4:
 		++Data.Amount;
@@ -79,10 +78,11 @@ void UMagicWand::LevelUp()
 		Data.Damage += 10.f;
 		break;
 	case 6:
-		++Data.Amount;
+		Data.Speed *= 1.25f;
+		Data.Area *= 1.1f;
 		break;
 	case 7:
-		++Data.Penetration;
+		++Data.Amount;
 		break;
 	case 8:
 		Data.Damage += 10.f;
@@ -92,7 +92,7 @@ void UMagicWand::LevelUp()
 	}
 }
 
-void UMagicWand::SpawnCenter()
+void UCross::SpawnCenter()
 {
-	GetWorld()->SpawnActor<AMagicWandCenter>("Center");
+	GetWorld()->SpawnActor<ACrossCenter>("Center");
 }

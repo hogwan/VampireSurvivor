@@ -42,6 +42,11 @@ public:
 		return NearestEnemy;
 	}
 
+	class AEnemy* GetRandomEnemy()
+	{
+		return RandomEnemy;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -56,7 +61,9 @@ protected:
 	float MoveSpeed = 300.f;
 
 	class AEnemy* NearestEnemy = nullptr;
+	class AEnemy* RandomEnemy = nullptr;
 	void NearEnemyCheck();
+	void RandomEnemyCheck();
 
 private:
 	void MoveLogic();

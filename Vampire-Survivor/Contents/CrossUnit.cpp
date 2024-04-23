@@ -1,61 +1,65 @@
 #include "PreCompile.h"
-#include "MagicWandUnit.h"
-#include "MagicWand.h"
+#include "CrossUnit.h"
+#include "Cross.h"
 #include "Enemy.h"
 #include "Player.h"
 
-AMagicWandUnit::AMagicWandUnit() 
-{
-
-}
-
-AMagicWandUnit::~AMagicWandUnit() 
+ACrossUnit::ACrossUnit()
 {
 }
 
-void AMagicWandUnit::BeginPlay()
+ACrossUnit::~ACrossUnit()
+{
+}
+
+void ACrossUnit::BeginPlay()
 {
 	Super::BeginPlay();
-	Renderer->CreateAnimation("Flying", "MagicWand", 0, 1, 0.1f, true);
+
+	Renderer->SetSprite("Cross_0.png");
 	Renderer->SetAutoSize(2.f, true);
 	Renderer->SetOrder(ERenderOrder::PlayerWeapon);
 
-	Renderer->ChangeAnimation("Flying");
-
 	Collider->SetCollisionGroup(ECollisionOrder::PlayerWeapon);
-	Collider->SetCollisionType(ECollisionType::CirCle);
-	Collider->SetScale(FVector(30.f, 30.f, 10.f));
-
-	Penetration = UMagicWand::Data.Penetration;
+	Collider->SetCollisionType(ECollisionType::RotRect);
+	Collider->SetScale(FVector(32.f, 36.f, 10.f));
 }
 
-void AMagicWandUnit::Tick(float _DeltaTime)
+void ACrossUnit::Tick(float _DeltaTime)
 {
-	Super::Tick(_DeltaTime);
+	Super::BeginPlay();
 
 	Release();
-	if (Penetration <= 0)
-	{
-		Destroy();
-	}
 
 	ColLogic();
+
+	if (MoveVector.X < 0)
+	{
+		AddActorRotation(FVector(0.f, 0.f, RotationSpeed * _DeltaTime));
+	}
+	else
+	{
+		AddActorRotation(FVector(0.f, 0.f, -RotationSpeed * _DeltaTime));
+	}
+
+
+	MoveVector += ReverseVector * ReverseVectorForce * _DeltaTime;
+
 	AddActorLocation(MoveVector * _DeltaTime);
 }
 
-void AMagicWandUnit::ColLogic()
+void ACrossUnit::ColLogic()
 {
 	Collider->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
 		{
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
-			Opponent->GetEnemyData().Hp -= UMagicWand::Data.Damage;
-			--Penetration;
+			Opponent->GetEnemyData().Hp -= UCross::Data.Damage;
 		}
 	);
 }
 
-void AMagicWandUnit::Release()
+void ACrossUnit::Release()
 {
 	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
 	FVector CurPos = GetActorLocation();
@@ -69,4 +73,3 @@ void AMagicWandUnit::Release()
 		Destroy();
 	}
 }
-

@@ -18,7 +18,7 @@ void APlayer::BeginPlay()
 	Super::BeginPlay();
 
 	Renderer->SetSprite("Player.png", 0);
-	Renderer->SetAutoSize(1.f, true);
+	Renderer->SetAutoSize(1.5f, true);
 	Renderer->SetOrder(ERenderOrder::Player);
 
 	Collider->SetCollisionGroup(ECollisionOrder::Player);
@@ -42,6 +42,7 @@ void APlayer::Tick(float _DeltaTime)
 	AddActorLocation(MoveVector * _DeltaTime);
 
 	NearEnemyCheck();
+	RandomEnemyCheck();
 }
 
 void APlayer::NearEnemyCheck()
@@ -67,59 +68,79 @@ void APlayer::NearEnemyCheck()
 	);
 }
 
+void APlayer::RandomEnemyCheck()
+{
+	RandomEnemy = nullptr;
+	DetectCollider->CollisionStay(ECollisionOrder::Monster, [&](std::shared_ptr<UCollision> _Collision)
+		{
+			AEnemy* Monster = dynamic_cast<AEnemy*>(_Collision->GetActor());
+
+			RandomEnemy = Monster;
+		}
+	);
+}
+
 void APlayer::MoveLogic()
 {
-	DirVector = FVector::Zero;
+	FVector TempVector = FVector::Zero;
 	if (IsPress(VK_RIGHT) && IsPress(VK_UP)) //ºÏµ¿
 	{
 		DirVector = FVector(1.f, 1.f, 0.f);
+		TempVector = FVector(1.f, 1.f, 0.f);
 		ECurDir = AActorDir::NE;
 		SpriteDir = EEngineDir::Right;
 	}
 	else if (IsPress(VK_RIGHT) && IsPress(VK_DOWN)) // ³²µ¿
 	{
 		DirVector = FVector(1.f, -1.f, 0.f);
+		TempVector = FVector(1.f, -1.f, 0.f);
 		ECurDir = AActorDir::SE;
 		SpriteDir = EEngineDir::Right;
 	}
 	else if (IsPress(VK_LEFT) && IsPress(VK_DOWN)) //³²¼­
 	{
 		DirVector = FVector(-1.f, -1.f, 0.f);
+		TempVector = FVector(-1.f, -1.f, 0.f);
 		ECurDir = AActorDir::SW;
 		SpriteDir = EEngineDir::Left;
 	}
 	else if (IsPress(VK_LEFT) && IsPress(VK_UP)) // ºÏ¼­
 	{
 		DirVector = FVector(-1.f, 1.f, 0.f);
+		TempVector = FVector(-1.f, 1.f, 0.f);
 		ECurDir = AActorDir::NW;
 		SpriteDir = EEngineDir::Left;
 	}
 	else if (IsPress(VK_UP)) // ºÏ
 	{
 		DirVector = FVector(0.f, 1.f, 0.f);
+		TempVector = FVector(0.f, 1.f, 0.f);
 		ECurDir = AActorDir::N;
 	}
 	else if (IsPress(VK_RIGHT)) // µ¿
 	{
 		DirVector = FVector(1.f, 0.f, 0.f);
+		TempVector = FVector(1.f, 0.f, 0.f);
 		ECurDir = AActorDir::E;
 		SpriteDir = EEngineDir::Right;
 	}
 	else if (IsPress(VK_DOWN)) // ³²
 	{
 		DirVector = FVector(0.f, -1.f, 0.f);
+		TempVector = FVector(0.f, -1.f, 0.f);
 		ECurDir = AActorDir::S;
 	}
 	else if (IsPress(VK_LEFT)) // ¼­
 	{
 		DirVector = FVector(-1.f, 0.f, 0.f);
+		TempVector = FVector(-1.f, 0.f, 0.f);
 		ECurDir = AActorDir::W;
 		SpriteDir = EEngineDir::Left;
 	}
 
 
-	DirVector.Normalize3D();
-	MoveVector = DirVector * MoveSpeed;
+	TempVector.Normalize3D();
+	MoveVector = TempVector * MoveSpeed;
 }
 
 void APlayer::ColLogic()

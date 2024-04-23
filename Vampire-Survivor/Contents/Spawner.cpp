@@ -30,7 +30,9 @@ void USpawner::Tick(float _DeltaTime)
 	if (RemainTime < 0.f)
 	{
 		RemainTime = SpawnTime;
-		EnemySpawn<ABat1>();
+		//EnemySpawn<ABat1>();
+		std::shared_ptr<ABat1> Bat = GetWorld()->SpawnActor<ABat1>("Bat1");
+		Bat->SetActorLocation(CurPos);
 	}
 }
 

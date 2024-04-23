@@ -18,7 +18,7 @@ void ABackGroundMap::BeginPlay()
 
 	// 내부에서 샘플러도 같이 찾을
 	Renderer->SetSprite("BG_1.png");
-	Renderer->SetAutoSize(1.0f, true);
+	Renderer->SetAutoSize(1.5f, true);
 	Renderer->SetOrder(ERenderOrder::Back);
 }
 

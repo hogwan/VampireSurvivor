@@ -6,8 +6,12 @@
 #include <EngineCore/Camera.h>
 #include "KingBible.h"
 #include "MagicWand.h"
-#include "DetectManager.h"
 #include "Whip.h"
+#include "Knife.h"
+#include "Axe.h"
+#include "Cross.h"
+#include "FireWand.h"
+#include "Garlic.h"
 
 APlayGameMode::APlayGameMode()
 {
@@ -26,15 +30,18 @@ void APlayGameMode::BeginPlay()
 	std::shared_ptr<UEngineTexture> Tex = UEngineTexture::FindRes("BG_1.png");
 
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
-	Player->SetName("Kiara");
 	UContentsValue::Player = Player;
 	UContentsValue::StartPosition = Player->GetActorLocation();
 
 	GetWorld()->SpawnActor<USpawnerManager>("SpawnerManager");
-	//GetWorld()->SpawnActor<UDetectManager>("DetectManager");
 	GetWorld()->SpawnActor<UKingBible>("KingBible");
 	GetWorld()->SpawnActor<UMagicWand>("MagicWand");
 	GetWorld()->SpawnActor<UWhip>("Whip");
+	GetWorld()->SpawnActor<UKnife>("Knife");
+	GetWorld()->SpawnActor<UAxe>("Axe");
+	GetWorld()->SpawnActor<UCross>("Cross");
+	GetWorld()->SpawnActor<UFireWand>("FireWand");
+	GetWorld()->SpawnActor<UGarlic>("Garlic");
 
 
 	for (int y = -1; y < 2; y++)
