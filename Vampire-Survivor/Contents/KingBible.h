@@ -3,7 +3,6 @@
 class UKingBible : public UWeapon
 {
 	GENERATED_BODY(UWeapon)
-	friend class AKingBibleCenter;
 public:
 	//constructer destructer
 	UKingBible();
@@ -15,8 +14,8 @@ public:
 	UKingBible& operator=(const UKingBible& _Other) = delete;
 	UKingBible& operator=(UKingBible&& _Other) noexcept = delete;
 
-protected:
 	static FWeaponData Data;
+protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 

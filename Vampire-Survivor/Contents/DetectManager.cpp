@@ -26,6 +26,8 @@ void UDetectManager::Tick(float _DeltaTime)
 
 void UDetectManager::DetectUpdate()
 {
+	if (0 == AllDetectedEnemy.size()) return;
+
 	std::list<AEnemy*>::iterator iter = AllDetectedEnemy.begin();
 	for (; iter == AllDetectedEnemy.end();)
 	{

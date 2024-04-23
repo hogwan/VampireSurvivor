@@ -22,11 +22,11 @@ protected:
 
 	float ShootTerm = 0.1f;
 	float RemainTime = 0.f;
-	class AEnemy* DetectNearest();
 	void ShootLogic();
 	int ShootCount = 0;
 
 	class AEnemy* Target = nullptr;
+
 	std::vector<std::shared_ptr<class AMagicWandUnit>> ProjectileStack;
 private:
 

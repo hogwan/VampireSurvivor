@@ -27,6 +27,7 @@ protected:
 	void ColLogic();
 
 	FVector MoveVector = FVector::Zero;
+	int Penetration = 0;
 private:
 
 };

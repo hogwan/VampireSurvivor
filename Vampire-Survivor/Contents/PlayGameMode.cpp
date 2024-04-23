@@ -5,6 +5,8 @@
 #include "SpawnerManager.h"
 #include <EngineCore/Camera.h>
 #include "KingBible.h"
+#include "MagicWand.h"
+#include "DetectManager.h"
 
 APlayGameMode::APlayGameMode()
 {
@@ -28,7 +30,9 @@ void APlayGameMode::BeginPlay()
 	UContentsValue::StartPosition = Player->GetActorLocation();
 
 	GetWorld()->SpawnActor<USpawnerManager>("SpawnerManager");
+	//GetWorld()->SpawnActor<UDetectManager>("DetectManager");
 	GetWorld()->SpawnActor<UKingBible>("KingBible");
+	GetWorld()->SpawnActor<UMagicWand>("MagicWand");
 
 
 	for (int y = -1; y < 2; y++)

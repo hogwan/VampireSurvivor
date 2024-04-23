@@ -15,6 +15,7 @@ enum class ECollisionOrder
 	Monster,
 	Item,
 	PlayerWeapon,
+	Detect,
 };
 
 enum class EPollingOrder

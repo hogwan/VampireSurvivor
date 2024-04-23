@@ -1,9 +1,11 @@
 #include "PreCompile.h"
 #include "Player.h"
+#include "Enemy.h"
 
 APlayer::APlayer()
 {
-
+	DetectCollider = CreateDefaultSubObject<UCollision>("Collider");
+	DetectCollider->SetupAttachment(Root);
 	InputOn();
 }
 
@@ -22,6 +24,10 @@ void APlayer::BeginPlay()
 	Collider->SetCollisionGroup(ECollisionOrder::Player);
 	Collider->SetCollisionType(ECollisionType::CirCle);
 	Collider->SetScale(FVector(30.f, 30.f, 20.f));
+
+	DetectCollider->SetCollisionGroup(ECollisionOrder::Detect);
+	DetectCollider->SetCollisionType(ECollisionType::CirCle);
+	DetectCollider->SetScale(FVector(DetectDistance, DetectDistance, 10.f));
 	PushPower = 10.f;
 }
 
@@ -34,6 +40,31 @@ void APlayer::Tick(float _DeltaTime)
 	ColLogic();
 	
 	AddActorLocation(MoveVector * _DeltaTime);
+
+	NearEnemyCheck();
+}
+
+void APlayer::NearEnemyCheck()
+{
+	NearestEnemy = nullptr;
+	int Min = INT_MAX;
+	DetectCollider->CollisionStay(ECollisionOrder::Monster, [&](std::shared_ptr<UCollision> _Collision)
+		{
+			AEnemy* Monster = dynamic_cast<AEnemy*>(_Collision->GetActor());
+
+			FVector DistanceVector = Monster->GetActorLocation() - GetActorLocation();
+			float Distance = DistanceVector.Size3D();
+
+			if (Distance < DetectDistance)
+			{
+				if (Distance < Min)
+				{
+					Min = Distance;
+					NearestEnemy = Monster;
+				}
+			}
+		}
+	);
 }
 
 void APlayer::MoveLogic()

@@ -1,5 +1,7 @@
 #include "PreCompile.h"
 #include "KingBibleUnit.h"
+#include "Enemy.h"
+#include "KingBible.h"
 
 AKingBibleUnit::AKingBibleUnit()
 {
@@ -29,5 +31,11 @@ void AKingBibleUnit::Tick(float _DeltaTime)
 
 void AKingBibleUnit::ColLogic()
 {
+	Collider->CollisionEnter(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
+		{
+			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
+			Opponent->GetEnemyData().Hp -= UKingBible::Data.Damage;
+		}
+	);
 }

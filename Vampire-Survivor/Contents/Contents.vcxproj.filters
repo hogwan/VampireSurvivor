@@ -46,6 +46,9 @@
     <Filter Include="Object\Manager">
       <UniqueIdentifier>{b59e79af-2fc8-4dcf-b4e2-59cf6727617b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Weapon\Whip">
+      <UniqueIdentifier>{f870257c-4e68-4948-93a4-6f6b4667720f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -117,6 +120,15 @@
     <ClInclude Include="DetectManager.h">
       <Filter>Object\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Whip.h">
+      <Filter>Object\Weapon\Whip</Filter>
+    </ClInclude>
+    <ClInclude Include="WhipCenter.h">
+      <Filter>Object\Weapon\Whip</Filter>
+    </ClInclude>
+    <ClInclude Include="WhipUnit.h">
+      <Filter>Object\Weapon\Whip</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -184,6 +196,15 @@
     </ClCompile>
     <ClCompile Include="DetectManager.cpp">
       <Filter>Object\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Whip.cpp">
+      <Filter>Object\Weapon\Whip</Filter>
+    </ClCompile>
+    <ClCompile Include="WhipCenter.cpp">
+      <Filter>Object\Weapon\Whip</Filter>
+    </ClCompile>
+    <ClCompile Include="WhipUnit.cpp">
+      <Filter>Object\Weapon\Whip</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

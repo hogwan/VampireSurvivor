@@ -37,6 +37,11 @@ public:
 		return DirVector.Normalize3DReturn();
 	}
 
+	class AEnemy* GetNearestEnemy()
+	{
+		return NearestEnemy;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -45,7 +50,13 @@ protected:
 	FVector DirVector = FVector::Zero;
 	AActorDir ECurDir = AActorDir::None;
 
+	UCollision* DetectCollider = nullptr;
+
+	float DetectDistance = 600.f;
 	float MoveSpeed = 300.f;
+
+	class AEnemy* NearestEnemy = nullptr;
+	void NearEnemyCheck();
 
 private:
 	void MoveLogic();

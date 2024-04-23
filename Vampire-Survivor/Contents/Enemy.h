@@ -27,7 +27,7 @@ public:
 	AEnemy& operator=(const AEnemy& _Other) = delete;
 	AEnemy& operator=(AEnemy&& _Other) noexcept = delete;
 
-	FEnemyData GetEnemyData()
+	FEnemyData& GetEnemyData()
 	{
 		return Data;
 	}

@@ -252,6 +252,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Whip.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="WhipCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="WhipUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackGroundMap.cpp">
@@ -343,6 +355,18 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="WeaponCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Whip.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="WhipCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="WhipUnit.cpp">
       <SubType>
       </SubType>
     </ClCompile>
