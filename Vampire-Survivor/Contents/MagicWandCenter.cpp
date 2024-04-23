@@ -2,6 +2,7 @@
 #include "MagicWandCenter.h"
 #include "MagicWandUnit.h"
 #include "Enemy.h"
+#include "DetectManager.h"
 
 AMagicWandCenter::AMagicWandCenter() 
 {
@@ -28,6 +29,7 @@ void AMagicWandCenter::Tick(float _DeltaTime)
 	RemainTime -= _DeltaTime;
 	if (RemainTime < 0.f)
 	{
+		RemainTime = ShootTerm;
 		ShootLogic();
 	}
 
@@ -35,13 +37,28 @@ void AMagicWandCenter::Tick(float _DeltaTime)
 
 AEnemy* AMagicWandCenter::DetectNearest()
 {
+	int Min = INT_MAX;
+	AEnemy* TempEnemy = nullptr;
+	for (AEnemy* Enemy : UDetectManager::AllDetectedEnemy)
+	{
+		FVector EnemyPos = Enemy->GetActorLocation();
+		FVector PlayerPos =GetActorLocation();
+		EnemyPos.Z = 0.f;
+		PlayerPos.Z = 0.f;
 
-	return nullptr;
+		TempEnemy = Enemy;
+		int ret = (EnemyPos - PlayerPos).Size3D();
+
+		Min = min(ret, Min);
+	}
+
+	return Min == INT_MAX ? nullptr : TempEnemy;
 }
 
 void AMagicWandCenter::ShootLogic()
 {
 	Target = DetectNearest();
+	if (Target == nullptr) return;
 	FVector DirVector = Target->GetActorLocation() - GetActorLocation();
 	DirVector.Z = 0.f;
 	DirVector.Normalize3D();

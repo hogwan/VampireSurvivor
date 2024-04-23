@@ -43,6 +43,9 @@
     <Filter Include="Object\Weapon\MagicWand">
       <UniqueIdentifier>{7783deb8-333c-422d-a624-f8ac1d84ff42}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Manager">
+      <UniqueIdentifier>{b59e79af-2fc8-4dcf-b4e2-59cf6727617b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -81,9 +84,6 @@
     <ClInclude Include="Bat1.h">
       <Filter>Object\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="PollingManager.h">
-      <Filter>Object\Polling</Filter>
-    </ClInclude>
     <ClInclude Include="PollingObject.h">
       <Filter>Object\Polling</Filter>
     </ClInclude>
@@ -110,6 +110,12 @@
     </ClInclude>
     <ClInclude Include="MagicWandUnit.h">
       <Filter>Object\Weapon\MagicWand</Filter>
+    </ClInclude>
+    <ClInclude Include="PollingManager.h">
+      <Filter>Object\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="DetectManager.h">
+      <Filter>Object\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -146,9 +152,6 @@
     <ClCompile Include="Bat1.cpp">
       <Filter>Object\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="PollingManager.cpp">
-      <Filter>Object\Polling</Filter>
-    </ClCompile>
     <ClCompile Include="PollingObject.cpp">
       <Filter>Object\Polling</Filter>
     </ClCompile>
@@ -175,6 +178,12 @@
     </ClCompile>
     <ClCompile Include="MagicWandUnit.cpp">
       <Filter>Object\Weapon\MagicWand</Filter>
+    </ClCompile>
+    <ClCompile Include="PollingManager.cpp">
+      <Filter>Object\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="DetectManager.cpp">
+      <Filter>Object\Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

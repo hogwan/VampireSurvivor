@@ -32,6 +32,7 @@ public:
 		return Data;
 	}
 
+	bool InDetectRange = false;
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -44,6 +45,7 @@ protected:
 	void DeathLogic();
 	void RepositionLogic();
 	void SpriteDirCheck();
+	void DetectLogic();
 
 	FEnemyData Data = { 0, };
 private:
