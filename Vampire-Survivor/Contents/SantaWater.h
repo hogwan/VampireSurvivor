@@ -21,10 +21,22 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void RotAround(float _DeltaTime);
+
 	void DataInit() override;
 	void LevelUp() override;
 
 	void SpawnCenter() override;
+	void SpawnLoop(float _DeltaTime);
+	int RemainCount = 0;;
+
+	float LoopTime = 0.2f;
+	float LoopRemainTime = 0.f;
+
+	bool IsLoop = false;
+
+	UDefaultSceneComponent* TargetPoint = nullptr;
+	float RotSpeed = 240.f;
 private:
 };
 

@@ -1,11 +1,17 @@
 #include "PreCompile.h"
 #include "SantaWater.h"
 #include "SantaWaterCenter.h"
+#include "Player.h"
 
 FWeaponData USantaWater::Data = { 0, };
 
 USantaWater::USantaWater() 
 {
+	UDefaultSceneComponent* Root = CreateDefaultSubObject<UDefaultSceneComponent>("Root");
+	TargetPoint = CreateDefaultSubObject<UDefaultSceneComponent>("TargetPoint");
+	TargetPoint->SetupAttachment(Root);
+
+	SetRoot(Root);
 }
 
 USantaWater::~USantaWater() 
@@ -16,18 +22,30 @@ void USantaWater::BeginPlay()
 {
 	Super::BeginPlay();
 	DataInit();
-	SpawnCenter();
+	RemainCount = Data.Amount;
+	
 }
 
 void USantaWater::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	RemainTime -= _DeltaTime;
-	if (RemainTime < 0.f)
+
+	SetActorLocation(UContentsValue::Player->GetActorLocation());
+	TargetPoint->SetPosition(FVector::Right * 300.f);
+
+	RotAround(_DeltaTime);
+
+	if (IsLoop == false)
 	{
-		RemainTime = Data.Cooldown;
-		SpawnCenter();
+		RemainTime -= _DeltaTime;
+		if (RemainTime < 0.f)
+		{
+			RemainTime = Data.Cooldown;
+			IsLoop = true;
+		}
 	}
+
+	SpawnLoop(_DeltaTime);
 
 	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
 	{
@@ -42,7 +60,7 @@ void USantaWater::DataInit()
 	Data.Penetration = 0;
 	Data.Damage = 10.f;
 	Data.Speed = 0.f;
-	Data.Duration = 0.f;
+	Data.Duration = 2.f;
 	Data.Area = 1.f;
 	Data.Cooldown = 2.f;
 	Data.KnockbackPower = 100.f;
@@ -62,7 +80,7 @@ void USantaWater::LevelUp()
 		Data.Damage = 10.f;
 		Data.Speed = 0.f;
 		Data.Duration = 2.f;
-		Data.Area = 300.f;
+		Data.Area = 1.f;
 		Data.Cooldown = 2.f;
 		Data.KnockbackPower = 100.f;
 		break;
@@ -99,7 +117,35 @@ void USantaWater::LevelUp()
 	}
 }
 
+void USantaWater::RotAround(float _DeltaTime)
+{
+	AddActorRotation(FVector(0.f,0.f,RotSpeed * _DeltaTime));
+} 
+
 void USantaWater::SpawnCenter()
 {
-	GetWorld()->SpawnActor<ASantaWaterCenter>("Center");
+	std::shared_ptr<ASantaWaterCenter> SantaWaterCenter = GetWorld()->SpawnActor<ASantaWaterCenter>("Center");
+	FVector TargetPos = TargetPoint->GetWorldPosition();
+	SantaWaterCenter->SetTargetPos(TargetPoint->GetWorldPosition());
+	--RemainCount;
+}
+
+void USantaWater::SpawnLoop(float _DeltaTime)
+{
+	if (IsLoop)
+	{
+		LoopRemainTime -= _DeltaTime;
+		if (LoopRemainTime < 0.f)
+		{
+			LoopRemainTime = LoopTime;
+			SpawnCenter();
+		}
+
+		if (RemainCount <= 0)
+		{
+			RemainCount = Data.Amount;
+			IsLoop = false;
+		}
+	}
+
 }

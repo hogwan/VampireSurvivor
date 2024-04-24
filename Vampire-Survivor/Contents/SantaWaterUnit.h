@@ -5,7 +5,7 @@
 // Ό³Έν :
 class ASantaWaterUnit : public AVSObject
 {
-	GENERATED_BODY(AVSObejct);
+	GENERATED_BODY(AVSObject);
 public:
 	// constructor destructor
 	ASantaWaterUnit();
@@ -31,10 +31,12 @@ protected:
 	void ColLogic();
 	FVector Gravity = FVector(0.f, -300.f, 0.f);
 
-	float RotationSpeed = 50.f;
+	float RotationSpeed = 720.f;
 	float DamageTerm = 0.2f;
 	float RemainTime = 0.f;
+	float Duration = 0.f;
 	FVector TargetPos = FVector::Zero;
+	FVector InitialScale = FVector(60.f, 60.f, 10.f);
 
 	void Fall(float _DeltaTime);
 	void Broken(float _DeltaTime);

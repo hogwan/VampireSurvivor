@@ -16,17 +16,16 @@ public:
 	ASantaWaterCenter& operator=(const ASantaWaterCenter& _Other) = delete;
 	ASantaWaterCenter& operator=(ASantaWaterCenter&& _Other) noexcept = delete;
 
+	void SetTargetPos(FVector _TargetPos)
+	{
+		TargetPos = _TargetPos;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
-	float RemainTime = 0.f;
-	float SpawnTerm = 0.5f;
-	int RemainCount = 0;
-
-	UDefaultSceneComponent* TargetPoint = nullptr;
-	float RotSpeed = 360.f;
-	void RotAround(float _DeltaTime);
+	
+	FVector TargetPos = FVector::Zero;
 	void SpawnLogic();
 	
 private:

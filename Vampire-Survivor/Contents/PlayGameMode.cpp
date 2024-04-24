@@ -12,6 +12,7 @@
 #include "Cross.h"
 #include "FireWand.h"
 #include "Garlic.h"
+#include "SantaWater.h"
 
 APlayGameMode::APlayGameMode()
 {
@@ -42,6 +43,7 @@ void APlayGameMode::BeginPlay()
 	GetWorld()->SpawnActor<UCross>("Cross");
 	GetWorld()->SpawnActor<UFireWand>("FireWand");
 	GetWorld()->SpawnActor<UGarlic>("Garlic");
+	GetWorld()->SpawnActor<USantaWater>("SantaWater");
 
 
 	for (int y = -1; y < 2; y++)

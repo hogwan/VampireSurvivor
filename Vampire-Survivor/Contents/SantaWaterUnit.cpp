@@ -16,26 +16,29 @@ void ASantaWaterUnit::BeginPlay()
 	Super::BeginPlay();
 
 	Renderer->SetSprite("SantaWaterBottle_0.png");
-	Renderer->SetAutoSize(2.f, true);
+	Renderer->SetScale(FVector(32.f, 32.f, 10.f));
 	Renderer->SetOrder(ERenderOrder::PlayerWeapon);
-	Renderer->CreateAnimation("Broken","SantaWaterBroken",0.2f,true);
+	Renderer->CreateAnimation("Broken","SantaWaterBroken",0.1f,false);
 
 	Collider->SetCollisionGroup(ECollisionOrder::PlayerWeapon);
 	Collider->SetCollisionType(ECollisionType::RotRect);
 	Collider->SetScale(FVector(60.f, 60.f, 10.f));
 
+	Duration = USantaWater::Data.Duration;
 	StateInit();
+
+	
 }
 
 void ASantaWaterUnit::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	State.Update(_DeltaTime);
+	
 }
 
 void ASantaWaterUnit::ColLogic()
 {
-	Collider->SetScale(Collider->GetLocalScale() * USantaWater::Data.Area);
 	Collider->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
 		{
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
@@ -48,6 +51,7 @@ void ASantaWaterUnit::ColLogic()
 void ASantaWaterUnit::Fall(float _DeltaTime)
 {
 	AddActorLocation(Gravity * _DeltaTime);
+	AddActorRotation(FVector(0.f, 0.f, RotationSpeed * _DeltaTime));
 
 	FVector CurPos = GetActorLocation();
 	if (CurPos.Y < TargetPos.Y)
@@ -61,6 +65,7 @@ void ASantaWaterUnit::Broken(float _DeltaTime)
 {
 	if (Renderer->IsCurAnimationEnd())
 	{
+		Renderer->AnimationReset();
 		State.ChangeState("Spread");
 		return;
 	}
@@ -68,11 +73,18 @@ void ASantaWaterUnit::Broken(float _DeltaTime)
 
 void ASantaWaterUnit::Spread(float _DeltaTime)
 {
+	SetActorScale3D(FVector(USantaWater::Data.Area, USantaWater::Data.Area, 1.f));
 	RemainTime -= _DeltaTime;
 	if (RemainTime < 0.f)
 	{
 		RemainTime = DamageTerm;
 		ColLogic();
+	}
+
+	Duration -= _DeltaTime;
+	if (Duration < 0.f)
+	{
+		//Destroy();
 	}
 }
 
@@ -84,19 +96,22 @@ void ASantaWaterUnit::StateInit()
 
 	State.SetStartFunction("Fall", [=]
 		{
-			Renderer->SetSprite("SantaWater_0.png");
+			Renderer->SetSprite("SantaWaterBottle_0.png");
 		});
 	State.SetUpdateFunction("Fall", std::bind(&ASantaWaterUnit::Fall, this, std::placeholders::_1));
 
 	State.SetStartFunction("Broken", [=]
 		{
+			Renderer->SetScale(FVector(50.f, 50.f, 10.f));
 			Renderer->ChangeAnimation("Broken");
 		});
 	State.SetUpdateFunction("Broken", std::bind(&ASantaWaterUnit::Broken, this, std::placeholders::_1));
 
 	State.SetStartFunction("Spread", [=]
 		{
-			//Renderer->SetSprite("");
+			Renderer->SetSprite("CircleFX.png");
+			Renderer->SetScale(FVector(100.f, 100.f, 10.f));
+			Renderer->SetPlusColor({ 0.f, 0.f, 0.5f });
 		});
 	State.SetUpdateFunction("Spread", std::bind(&ASantaWaterUnit::Spread, this, std::placeholders::_1));
 
