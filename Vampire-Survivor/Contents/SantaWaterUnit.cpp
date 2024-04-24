@@ -100,7 +100,7 @@ void ASantaWaterUnit::SpawnFlame(float _DeltaTime)
 		FlameSpawnRemainTime = FlameSpawnTime;
 		std::shared_ptr<ASantaWaterFlame> Flame = GetWorld()->SpawnActor<ASantaWaterFlame>("Flame");
 
-		float r = Renderer->GetLocalScale().X/2.f;
+		float r = Renderer->GetWorldScale().X/2.f;
 		float Y = UEngineRandom::MainRandom.RandomFloat(-r, r);
 		float X = UEngineRandom::MainRandom.RandomFloat(-r, r);
 		
