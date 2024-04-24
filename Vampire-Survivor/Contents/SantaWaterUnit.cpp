@@ -84,7 +84,7 @@ void ASantaWaterUnit::Spread(float _DeltaTime)
 	Duration -= _DeltaTime;
 	if (Duration < 0.f)
 	{
-		//Destroy();
+		Destroy();
 	}
 }
 
