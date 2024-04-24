@@ -27,7 +27,6 @@ protected:
 
 	class AEnemy* Target = nullptr;
 
-	std::vector<std::shared_ptr<class AMagicWandUnit>> ProjectileStack;
 private:
 
 };

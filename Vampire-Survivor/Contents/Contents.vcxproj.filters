@@ -70,6 +70,9 @@
     <Filter Include="Object\ContentsEditor">
       <UniqueIdentifier>{f3cbf5ec-57ce-4f03-8f85-f47e74597434}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Weapon\RuneTracer">
+      <UniqueIdentifier>{da511a24-4459-4e01-8e47-21fcbc5337f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -207,6 +210,15 @@
     <ClInclude Include="ContentsEditerGUI.h">
       <Filter>Object\ContentsEditor</Filter>
     </ClInclude>
+    <ClInclude Include="RuneTracer.h">
+      <Filter>Object\Weapon\RuneTracer</Filter>
+    </ClInclude>
+    <ClInclude Include="RuneTracerCenter.h">
+      <Filter>Object\Weapon\RuneTracer</Filter>
+    </ClInclude>
+    <ClInclude Include="RuneTracerUnit.h">
+      <Filter>Object\Weapon\RuneTracer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -340,6 +352,15 @@
     </ClCompile>
     <ClCompile Include="ContentsEditerGUI.cpp">
       <Filter>Object\ContentsEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="RuneTracer.cpp">
+      <Filter>Object\Weapon\RuneTracer</Filter>
+    </ClCompile>
+    <ClCompile Include="RuneTracerCenter.cpp">
+      <Filter>Object\Weapon\RuneTracer</Filter>
+    </ClCompile>
+    <ClCompile Include="RuneTracerUnit.cpp">
+      <Filter>Object\Weapon\RuneTracer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

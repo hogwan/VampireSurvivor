@@ -13,6 +13,7 @@
 #include "FireWand.h"
 #include "Garlic.h"
 #include "SantaWater.h"
+#include "RuneTracer.h"
 
 APlayGameMode::APlayGameMode()
 {
@@ -35,7 +36,7 @@ void APlayGameMode::BeginPlay()
 	UContentsValue::StartPosition = Player->GetActorLocation();
 
 	GetWorld()->SpawnActor<USpawnerManager>("SpawnerManager");
-	GetWorld()->SpawnActor<UKingBible>("KingBible");
+	/*GetWorld()->SpawnActor<UKingBible>("KingBible");
 	GetWorld()->SpawnActor<UMagicWand>("MagicWand");
 	GetWorld()->SpawnActor<UWhip>("Whip");
 	GetWorld()->SpawnActor<UKnife>("Knife");
@@ -43,7 +44,8 @@ void APlayGameMode::BeginPlay()
 	GetWorld()->SpawnActor<UCross>("Cross");
 	GetWorld()->SpawnActor<UFireWand>("FireWand");
 	GetWorld()->SpawnActor<UGarlic>("Garlic");
-	GetWorld()->SpawnActor<USantaWater>("SantaWater");
+	GetWorld()->SpawnActor<USantaWater>("SantaWater");*/
+	GetWorld()->SpawnActor<URuneTracer>("RuneTracer");
 
 
 	for (int y = -1; y < 2; y++)
