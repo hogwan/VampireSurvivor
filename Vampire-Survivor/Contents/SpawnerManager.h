@@ -18,12 +18,14 @@ public:
 	USpawnerManager& operator=(const USpawnerManager& _Other) = delete;
 	USpawnerManager& operator=(USpawnerManager&& _Other) noexcept = delete;
 
+	static int EnemyCount;
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 	void SpawnPointInit();
 	void SpawnPointReposition();
+
 private:
 	std::vector<std::shared_ptr<USpawner>> Spawners;
 };

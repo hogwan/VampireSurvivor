@@ -2,6 +2,8 @@
 #include "SpawnerManager.h"
 #include "Player.h"
 
+int USpawnerManager::EnemyCount=0;
+
 USpawnerManager::USpawnerManager() 
 {
 }

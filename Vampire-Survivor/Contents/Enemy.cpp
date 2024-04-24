@@ -2,6 +2,8 @@
 #include "Enemy.h"
 #include "Player.h"
 #include <EngineBase/EngineRandom.h>
+#include <EngineCore/SpriteInstancingRender.h>
+#include "SpawnerManager.h"
 
 AEnemy::AEnemy() 
 {
@@ -13,11 +15,16 @@ AEnemy::~AEnemy()
 
 void AEnemy::BeginPlay()
 {
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Monster);
+
 	Super::BeginPlay();
+
 	PushPower = 100.f;
 
 	Collider->SetCollisionGroup(ECollisionOrder::Monster);
 	Collider->SetCollisionType(ECollisionType::CirCle);
+
+	
 }
 
 void AEnemy::Tick(float _DeltaTime)
@@ -110,6 +117,7 @@ void AEnemy::DeathLogic()
 	{
 		//ActiveOff();
 		Destroy();
+		USpawnerManager::EnemyCount--;
 	}
 }
 

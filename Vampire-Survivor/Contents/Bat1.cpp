@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Bat1.h"
+#include <EngineCore/SpriteInstancingRender.h>
 
 EPollingOrder ABat1::PollingOrder = EPollingOrder::Bat1;
 
@@ -28,6 +29,8 @@ void ABat1::BeginPlay()
 	Data.Knockback = 1.f;
 	Data.MaxKnockBack = 3.f;
 	Data.XP = 1;
+
+	
 }
 
 void ABat1::Tick(float _DeltaTime)

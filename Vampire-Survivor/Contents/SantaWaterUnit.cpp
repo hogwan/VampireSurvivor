@@ -2,6 +2,8 @@
 #include "SantaWaterUnit.h"
 #include "SantaWater.h"
 #include "Enemy.h"
+#include "SantaWaterFlame.h"
+#include <EngineBase/EngineRandom.h>
 
 ASantaWaterUnit::ASantaWaterUnit() 
 {
@@ -86,6 +88,25 @@ void ASantaWaterUnit::Spread(float _DeltaTime)
 	{
 		Destroy();
 	}
+
+	SpawnFlame(_DeltaTime);
+}
+
+void ASantaWaterUnit::SpawnFlame(float _DeltaTime)
+{
+	FlameSpawnRemainTime -= _DeltaTime;
+	if (FlameSpawnRemainTime < 0.f)
+	{
+		FlameSpawnRemainTime = FlameSpawnTime;
+		std::shared_ptr<ASantaWaterFlame> Flame = GetWorld()->SpawnActor<ASantaWaterFlame>("Flame");
+
+		float r = Renderer->GetLocalScale().X/2.f;
+		float Y = UEngineRandom::MainRandom.RandomFloat(-r, r);
+		float X = UEngineRandom::MainRandom.RandomFloat(-r, r);
+		
+		Flame->SetActorLocation(GetActorLocation() + FVector(X, Y, 10.f));
+	}
+	
 }
 
 void ASantaWaterUnit::StateInit()

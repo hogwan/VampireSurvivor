@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "SpawnerManager.h"
 
 APlayer::APlayer()
 {
@@ -43,6 +44,8 @@ void APlayer::Tick(float _DeltaTime)
 
 	NearEnemyCheck();
 	RandomEnemyCheck();
+
+	DebugMessageFunction(_DeltaTime);
 }
 
 void APlayer::NearEnemyCheck()
@@ -78,6 +81,19 @@ void APlayer::RandomEnemyCheck()
 			RandomEnemy = Monster;
 		}
 	);
+}
+
+void APlayer::DebugMessageFunction(float _Delta)
+{
+	{
+		std::string Msg = std::format("Frame : {}\n", 1.0f / _Delta);
+		UEngineDebugMsgWindow::PushMsg(Msg);
+	}
+
+	{
+		std::string Msg = std::format("EnemyCount : {}\n", USpawnerManager::EnemyCount);
+		UEngineDebugMsgWindow::PushMsg(Msg);
+	}
 }
 
 void APlayer::MoveLogic()

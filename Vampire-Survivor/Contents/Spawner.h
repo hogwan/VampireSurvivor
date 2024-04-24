@@ -65,7 +65,7 @@ private:
 	FVector InitialPos = FVector::Zero;
 	FVector CurPos = FVector::Zero;
 
-	float SpawnTime = 5.f;
+	float SpawnTime = 3.f;
 	float RemainTime = SpawnTime;
 };
 

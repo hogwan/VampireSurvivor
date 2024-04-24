@@ -6,6 +6,7 @@ enum class ERenderOrder
 	Monster,
 	Garlic,
 	PlayerWeapon,
+	Particle,
 	Player,
 
 };

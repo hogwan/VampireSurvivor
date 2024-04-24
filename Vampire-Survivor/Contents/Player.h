@@ -64,7 +64,7 @@ protected:
 	class AEnemy* RandomEnemy = nullptr;
 	void NearEnemyCheck();
 	void RandomEnemyCheck();
-
+	void DebugMessageFunction(float _Delta);
 private:
 	void MoveLogic();
 	void ColLogic();

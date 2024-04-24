@@ -41,6 +41,9 @@ protected:
 	void Fall(float _DeltaTime);
 	void Broken(float _DeltaTime);
 	void Spread(float _DeltaTime);
+	void SpawnFlame(float _DeltaTime);
+	float FlameSpawnTime = 0.03f;
+	float FlameSpawnRemainTime = 0.f;
 
 	void StateInit();
 private:
