@@ -16,7 +16,7 @@ AMagicWandUnit::~AMagicWandUnit()
 void AMagicWandUnit::BeginPlay()
 {
 	Super::BeginPlay();
-	Renderer->CreateAnimation("Flying", "MagicWand", 0, 1, 0.1f, true);
+	Renderer->CreateAnimation("Flying", "MagicWand", 0.1f, true);
 	Renderer->SetAutoSize(2.f, true);
 	Renderer->SetOrder(ERenderOrder::PlayerWeapon);
 

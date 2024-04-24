@@ -48,7 +48,7 @@ void APlayer::Tick(float _DeltaTime)
 void APlayer::NearEnemyCheck()
 {
 	NearestEnemy = nullptr;
-	int Min = INT_MAX;
+	float Min = 999999.f;
 	DetectCollider->CollisionStay(ECollisionOrder::Monster, [&](std::shared_ptr<UCollision> _Collision)
 		{
 			AEnemy* Monster = dynamic_cast<AEnemy*>(_Collision->GetActor());

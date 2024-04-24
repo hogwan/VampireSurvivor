@@ -1,25 +1,25 @@
 #include "PreCompile.h"
-#include "Whip.h"
-#include "WhipCenter.h"
+#include "SantaWater.h"
+#include "SantaWaterCenter.h"
 
-FWeaponData UWhip::Data = { 0, };
+FWeaponData USantaWater::Data = { 0, };
 
-UWhip::UWhip() 
+USantaWater::USantaWater() 
 {
 }
 
-UWhip::~UWhip() 
+USantaWater::~USantaWater() 
 {
 }
 
-void UWhip::BeginPlay()
+void USantaWater::BeginPlay()
 {
 	Super::BeginPlay();
 	DataInit();
 	SpawnCenter();
 }
 
-void UWhip::Tick(float _DeltaTime)
+void USantaWater::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	RemainTime -= _DeltaTime;
@@ -35,22 +35,22 @@ void UWhip::Tick(float _DeltaTime)
 	}
 }
 
-void UWhip::DataInit()
+void USantaWater::DataInit()
 {
 	Data.Level = 1;
 	Data.Amount = 1;
-	Data.Penetration = 1;
+	Data.Penetration = 0;
 	Data.Damage = 10.f;
-	Data.Speed = 500.f;
+	Data.Speed = 0.f;
 	Data.Duration = 0.f;
 	Data.Area = 1.f;
-	Data.Cooldown = 1.35f;
+	Data.Cooldown = 2.f;
 	Data.KnockbackPower = 100.f;
 
 	RemainTime = Data.Cooldown;
 }
 
-void UWhip::LevelUp()
+void USantaWater::LevelUp()
 {
 	int Level = ++Data.Level;
 	switch (Level)
@@ -58,46 +58,48 @@ void UWhip::LevelUp()
 	case 1:
 		Data.Level = 1;
 		Data.Amount = 1;
-		Data.Penetration = 1;
+		Data.Penetration = 0;
 		Data.Damage = 10.f;
-		Data.Speed = 500.f;
-		Data.Duration = 0.f;
-		Data.Area = 100.f;
-		Data.Cooldown = 1.35f;
+		Data.Speed = 0.f;
+		Data.Duration = 2.f;
+		Data.Area = 300.f;
+		Data.Cooldown = 2.f;
 		Data.KnockbackPower = 100.f;
 		break;
 	case 2:
 		++Data.Amount;
+		Data.Area *= 1.2f;
 		break;
 	case 3:
-		Data.Damage += 5.f;
+		Data.Damage += 10.f;
+		Data.Duration += 0.5f;
 		break;
 	case 4:
-		Data.Damage += 5.f;
-		Data.Area *= 1.1f;
+		++Data.Amount;
+		Data.Area *= 1.2f;
 		break;
 	case 5:
-		Data.Damage += 5.f;
+		Data.Damage += 10.f;
+		Data.Duration += 0.3f;
 		break;
 	case 6:
-		Data.Damage += 5.f;
-		Data.Area *= 1.1f;
+		++Data.Amount;
+		Data.Area *= 1.2f;
 		break;
 	case 7:
-		Data.Damage += 5.f;
+		Data.Damage += 10.f;
+		Data.Duration += 0.3f;
 		break;
 	case 8:
 		Data.Damage += 5.f;
+		Data.Duration += 0.3f;
 		break;
 	default:
 		break;
 	}
-
-	SpawnCenter();
 }
 
-void UWhip::SpawnCenter()
+void USantaWater::SpawnCenter()
 {
-	GetWorld()->SpawnActor<AWhipCenter>("Center");
+	GetWorld()->SpawnActor<ASantaWaterCenter>("Center");
 }
-

@@ -284,6 +284,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SantaWater.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SantaWaterCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SantaWaterUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Spawner.h">
       <SubType>
       </SubType>
@@ -445,6 +457,18 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SantaWater.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SantaWaterCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SantaWaterUnit.cpp">
+      <SubType>
+      </SubType>
     </ClCompile>
     <ClCompile Include="Spawner.cpp">
       <SubType>

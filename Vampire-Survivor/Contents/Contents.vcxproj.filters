@@ -64,6 +64,9 @@
     <Filter Include="Object\Weapon\Garlic">
       <UniqueIdentifier>{686f12b6-c0e9-4056-a729-8b38ccd05451}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Weapon\SantaWater">
+      <UniqueIdentifier>{99920457-943e-4f65-aae0-544ffa429bd5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -186,6 +189,15 @@
     <ClInclude Include="GarlicUnit.h">
       <Filter>Object\Weapon\Garlic</Filter>
     </ClInclude>
+    <ClInclude Include="SantaWater.h">
+      <Filter>Object\Weapon\SantaWater</Filter>
+    </ClInclude>
+    <ClInclude Include="SantaWaterCenter.h">
+      <Filter>Object\Weapon\SantaWater</Filter>
+    </ClInclude>
+    <ClInclude Include="SantaWaterUnit.h">
+      <Filter>Object\Weapon\SantaWater</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -304,6 +316,15 @@
     </ClCompile>
     <ClCompile Include="GarlicUnit.cpp">
       <Filter>Object\Weapon\Garlic</Filter>
+    </ClCompile>
+    <ClCompile Include="SantaWater.cpp">
+      <Filter>Object\Weapon\SantaWater</Filter>
+    </ClCompile>
+    <ClCompile Include="SantaWaterCenter.cpp">
+      <Filter>Object\Weapon\SantaWater</Filter>
+    </ClCompile>
+    <ClCompile Include="SantaWaterUnit.cpp">
+      <Filter>Object\Weapon\SantaWater</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

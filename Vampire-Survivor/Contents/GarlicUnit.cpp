@@ -18,7 +18,7 @@ void AGarlicUnit::BeginPlay()
 
 	Renderer->SetSprite("Garlic_0.png");
 	Renderer->SetAutoSize(4.f, true);
-	Renderer->SetOrder(ERenderOrder::PlayerWeapon);
+	Renderer->SetOrder(ERenderOrder::Garlic);
 
 	Collider->SetCollisionGroup(ECollisionOrder::PlayerWeapon);
 	Collider->SetCollisionType(ECollisionType::RotRect);
