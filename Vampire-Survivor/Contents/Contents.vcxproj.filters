@@ -73,6 +73,9 @@
     <Filter Include="Object\Weapon\RuneTracer">
       <UniqueIdentifier>{da511a24-4459-4e01-8e47-21fcbc5337f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Weapon\LightingRing">
+      <UniqueIdentifier>{f2b1da35-99be-4628-9738-638f078840c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -219,6 +222,18 @@
     <ClInclude Include="RuneTracerUnit.h">
       <Filter>Object\Weapon\RuneTracer</Filter>
     </ClInclude>
+    <ClInclude Include="LightingRing.h">
+      <Filter>Object\Weapon\LightingRing</Filter>
+    </ClInclude>
+    <ClInclude Include="LightingRingCenter.h">
+      <Filter>Object\Weapon\LightingRing</Filter>
+    </ClInclude>
+    <ClInclude Include="LightingRingUnit.h">
+      <Filter>Object\Weapon\LightingRing</Filter>
+    </ClInclude>
+    <ClInclude Include="ThunderShock.h">
+      <Filter>Object\Weapon\LightingRing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -361,6 +376,18 @@
     </ClCompile>
     <ClCompile Include="RuneTracerUnit.cpp">
       <Filter>Object\Weapon\RuneTracer</Filter>
+    </ClCompile>
+    <ClCompile Include="LightingRing.cpp">
+      <Filter>Object\Weapon\LightingRing</Filter>
+    </ClCompile>
+    <ClCompile Include="LightingRingCenter.cpp">
+      <Filter>Object\Weapon\LightingRing</Filter>
+    </ClCompile>
+    <ClCompile Include="LightingRingUnit.cpp">
+      <Filter>Object\Weapon\LightingRing</Filter>
+    </ClCompile>
+    <ClCompile Include="ThunderShock.cpp">
+      <Filter>Object\Weapon\LightingRing</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

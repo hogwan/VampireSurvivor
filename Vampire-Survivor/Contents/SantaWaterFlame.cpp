@@ -34,6 +34,10 @@ void ASantaWaterFlame::Tick(float _DeltaTime)
 	AddActorScale3D(IncreaseTerm * _DeltaTime);
 
 	Alpha -= AlphaDecrease * _DeltaTime;
+	if (Alpha < 0.f)
+	{
+		Alpha = 0.f;
+	}
 	Renderer->SetMulColor({ 0.3f, 0.7f, 1.0f, Alpha});
 }
 

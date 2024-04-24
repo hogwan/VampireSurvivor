@@ -59,13 +59,10 @@ void APlayer::NearEnemyCheck()
 			FVector DistanceVector = Monster->GetActorLocation() - GetActorLocation();
 			float Distance = DistanceVector.Size3D();
 
-			if (Distance < DetectDistance)
+			if (Distance < Min)
 			{
-				if (Distance < Min)
-				{
-					Min = Distance;
-					NearestEnemy = Monster;
-				}
+				Min = Distance;
+				NearestEnemy = Monster;
 			}
 		}
 	);

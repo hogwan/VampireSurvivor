@@ -256,6 +256,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="LightingRing.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LightingRingCenter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LightingRingUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MagicWand.h">
       <SubType>
       </SubType>
@@ -321,6 +333,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="SpawnerManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ThunderShock.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -446,6 +462,18 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="LightingRing.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="LightingRingCenter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="LightingRingUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MagicWand.cpp">
       <SubType>
       </SubType>
@@ -515,6 +543,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SpawnerManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ThunderShock.cpp">
       <SubType>
       </SubType>
     </ClCompile>
