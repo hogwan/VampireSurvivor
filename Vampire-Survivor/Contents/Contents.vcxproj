@@ -183,6 +183,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ContentsEditerGUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="ContentsValue.h">
       <SubType>
@@ -355,6 +359,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Bat1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ContentsEditerGUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>

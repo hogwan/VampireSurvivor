@@ -67,8 +67,8 @@
     <Filter Include="Object\Weapon\SantaWater">
       <UniqueIdentifier>{99920457-943e-4f65-aae0-544ffa429bd5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Weapon\NewFilter1">
-      <UniqueIdentifier>{defddfc7-3e85-4f3d-b769-dc4b0543b90c}</UniqueIdentifier>
+    <Filter Include="Object\ContentsEditor">
+      <UniqueIdentifier>{f3cbf5ec-57ce-4f03-8f85-f47e74597434}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +204,9 @@
     <ClInclude Include="SantaWaterFlame.h">
       <Filter>Object\Weapon\SantaWater</Filter>
     </ClInclude>
+    <ClInclude Include="ContentsEditerGUI.h">
+      <Filter>Object\ContentsEditor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -334,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="SantaWaterFlame.cpp">
       <Filter>Object\Weapon\SantaWater</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsEditerGUI.cpp">
+      <Filter>Object\ContentsEditor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
