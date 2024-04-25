@@ -88,6 +88,12 @@
     <Filter Include="Object\Accesory\HollowHeart">
       <UniqueIdentifier>{adb5d0e7-1468-4f03-a499-82c5fe4556b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Accesory\Pummarola">
+      <UniqueIdentifier>{884fde33-4206-4dbe-a1fb-21543dc77cbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\EmptyTome">
+      <UniqueIdentifier>{5d77db94-ea50-4430-817d-d6c2e79e0cfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -258,6 +264,12 @@
     <ClInclude Include="HollowHeart.h">
       <Filter>Object\Accesory\HollowHeart</Filter>
     </ClInclude>
+    <ClInclude Include="Pummarola.h">
+      <Filter>Object\Accesory\Pummarola</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyTome.h">
+      <Filter>Object\Accesory\EmptyTome</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -424,6 +436,12 @@
     </ClCompile>
     <ClCompile Include="HollowHeart.cpp">
       <Filter>Object\Accesory\HollowHeart</Filter>
+    </ClCompile>
+    <ClCompile Include="Pummarola.cpp">
+      <Filter>Object\Accesory\Pummarola</Filter>
+    </ClCompile>
+    <ClCompile Include="EmptyTome.cpp">
+      <Filter>Object\Accesory\EmptyTome</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,33 +1,33 @@
-#include "PreCompile.h"
-#include "Spinach.h"
+#include "PreCompile.h0"
+#include "Pummarola.h"
 
-FAccesoryData USpinach::Data;
+FAccesoryData UPummarola::Data;
 
-USpinach::USpinach() 
+UPummarola::UPummarola() 
 {
 }
 
-USpinach::~USpinach() 
+UPummarola::~UPummarola() 
 {
 }
 
-void USpinach::BeginPlay()
+void UPummarola::BeginPlay()
 {
 	Super::BeginPlay();
 	DataInit();
 }
 
-void USpinach::Tick(float _DeltaTime)
+void UPummarola::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }
 
-void USpinach::DataInit()
+void UPummarola::DataInit()
 {
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;
-	Data.Recovery = 0.f;
+	Data.Recovery = 0.2f;
 	Data.Armor = 0.f;
 	Data.MoveSpeed = 0.f;
 	Data.Might = 0.0f;
@@ -44,7 +44,7 @@ void USpinach::DataInit()
 	Data.Amount = 0;
 }
 
-void USpinach::LevelUp()
+void UPummarola::LevelUp()
 {
 	int Level = ++Data.Level;
 	switch (Level)
@@ -53,7 +53,7 @@ void USpinach::LevelUp()
 		Data.Level = 1;
 
 		Data.MaxHealth = 0.f;
-		Data.Recovery = 0.f;
+		Data.Recovery = 0.2f;
 		Data.Armor = 0.f;
 		Data.MoveSpeed = 0.f;
 		Data.Might = 0.f;
@@ -70,16 +70,16 @@ void USpinach::LevelUp()
 		Data.Amount = 0;
 		break;
 	case 2:
-		Data.Might += 0.1f;
+		Data.Recovery += 0.2f;
 		break;
 	case 3:
-		Data.Might += 0.1f;
+		Data.Recovery += 0.2f;
 		break;
 	case 4:
-		Data.Might += 0.1f;
+		Data.Recovery += 0.2f;
 		break;
 	case 5:
-		Data.Might += 0.1f;
+		Data.Recovery += 0.2f;
 		break;
 	default:
 		break;

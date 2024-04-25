@@ -1,28 +1,28 @@
 #include "PreCompile.h"
-#include "Spinach.h"
+#include "EmptyTome.h"
 
-FAccesoryData USpinach::Data;
+FAccesoryData UEmptyTome::Data;
 
-USpinach::USpinach() 
+UEmptyTome::UEmptyTome() 
 {
 }
 
-USpinach::~USpinach() 
+UEmptyTome::~UEmptyTome() 
 {
 }
 
-void USpinach::BeginPlay()
+void UEmptyTome::BeginPlay()
 {
 	Super::BeginPlay();
 	DataInit();
 }
 
-void USpinach::Tick(float _DeltaTime)
+void UEmptyTome::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }
 
-void USpinach::DataInit()
+void UEmptyTome::DataInit()
 {
 	Data.Level = 1;
 
@@ -34,7 +34,7 @@ void USpinach::DataInit()
 	Data.Speed = 0.f;
 	Data.Duration = 0.f;
 	Data.Area = 0.f;
-	Data.Cooldown = 0.f;
+	Data.Cooldown = 8.f;
 	Data.Magnet = 0.f;
 	Data.Luck = 0.f;
 	Data.Growth = 0.f;
@@ -44,7 +44,7 @@ void USpinach::DataInit()
 	Data.Amount = 0;
 }
 
-void USpinach::LevelUp()
+void UEmptyTome::LevelUp()
 {
 	int Level = ++Data.Level;
 	switch (Level)
@@ -60,7 +60,7 @@ void USpinach::LevelUp()
 		Data.Speed = 0.f;
 		Data.Duration = 0.f;
 		Data.Area = 0.f;
-		Data.Cooldown = 0.f;
+		Data.Cooldown = 8.f;
 		Data.Magnet = 0.f;
 		Data.Luck = 0.f;
 		Data.Growth = 0.f;
@@ -70,16 +70,16 @@ void USpinach::LevelUp()
 		Data.Amount = 0;
 		break;
 	case 2:
-		Data.Might += 0.1f;
+		Data.Cooldown += 8.f;
 		break;
 	case 3:
-		Data.Might += 0.1f;
+		Data.Cooldown += 8.f;
 		break;
 	case 4:
-		Data.Might += 0.1f;
+		Data.Cooldown += 8.f;
 		break;
 	case 5:
-		Data.Might += 0.1f;
+		Data.Cooldown += 8.f;
 		break;
 	default:
 		break;
