@@ -40,6 +40,29 @@ protected:
 	void InfinityGroundCheck();
 	void MapSpawn();
 
+	void UISpawn();
+	void UIUpdate();
+
+	void UIHPUpdate();
+	void UILevelUpdate();
+	void WeaponTilesUpdate();
+	void AccessoryTilesUpdate();
+	
+	class UImage* HPBar = nullptr;
+	class UImage* HPBarBack = nullptr;
+	class UImage* LevelBar = nullptr;
+	class UImage* LevelBarBack = nullptr;
+	class UImage* LevelVal = nullptr;
+	class UImage* EquipTile = nullptr;
+	class UImage* Gold = nullptr;
+	class UImage* KillCount = nullptr;
+
+	std::vector<UImage*> WeaponTilesBack;
+	std::vector<UImage*> AccessoryTilesBack;
+
+	std::vector<UImage*> WeaponTiles;
+	std::vector<UImage*> AccessoryTiles;
+
 private:
 	FIntPoint CurIndex = { 0, };
 	std::shared_ptr<UCamera> Camera;

@@ -15,10 +15,13 @@ enum class AActorDir
 
 struct FPlayerData
 {
+	float TargetExp;
+	float CurExp;
 	float MaxHealth = 100.f;
+	float Hp = 100.f;
 	float Recovery = 0.f;
 	float Armor = 0.f;
-	float MoveSpeed = 100.f;
+	float MoveSpeed = 200.f;
 	float Might = 1.f;
 	float Speed = 1.f;
 	float Duration = 1.f;

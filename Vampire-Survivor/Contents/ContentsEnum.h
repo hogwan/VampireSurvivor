@@ -54,6 +54,19 @@ enum class EAccessory
 	Wings,
 };
 
+enum class EUI
+{
+	HPBar,
+	HPBar_Back,
+	LevelBar,
+	LevelBar_Back,
+	LevelVal,
+	KillCount,
+	Gold,
+	EquipList,
+
+};
+
 enum class EPollingOrder
 {
 	None,

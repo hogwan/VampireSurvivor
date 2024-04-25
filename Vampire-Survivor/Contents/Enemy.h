@@ -41,7 +41,7 @@ protected:
 	void ActiveOff() override;
 
 	void MoveLogic();
-	void ColLogic();
+	void ColLogic(float _DeltaTime);
 	void DeathLogic();
 	void RepositionLogic();
 	void SpriteDirCheck();

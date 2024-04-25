@@ -33,7 +33,7 @@ void AEnemy::Tick(float _DeltaTime)
 	DeathLogic();
 	RepositionLogic();
 	MoveLogic();
-	ColLogic();
+	ColLogic(_DeltaTime);
 
 	AddActorLocation(MoveVector * _DeltaTime);
 
@@ -66,7 +66,7 @@ void AEnemy::MoveLogic()
 	
 }
 
-void AEnemy::ColLogic()
+void AEnemy::ColLogic(float _DeltaTime)
 {
 	Collider->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
 		{
@@ -91,12 +91,11 @@ void AEnemy::ColLogic()
 
 	Collider->CollisionStay(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collision)
 		{
-			AActor* Opponent = _Collision->GetActor();
+			APlayer* Opponent = dynamic_cast<APlayer*>(_Collision->GetActor());
 			Opponent;
 
-			if (this == Opponent)
-				return;
-
+			FPlayerData* PlayerData = Opponent->GetPlayerDataReference();
+			PlayerData->Hp -= Data.Power * _DeltaTime;
 
 			FVector OpponentPos = Opponent->GetActorLocation();
 			FVector CurPos = GetActorLocation();

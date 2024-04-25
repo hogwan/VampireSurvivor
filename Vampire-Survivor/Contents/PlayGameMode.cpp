@@ -5,6 +5,7 @@
 #include "SpawnerManager.h"
 #include "EquipManager.h"
 #include "ContentsEditerGUI.h"
+#include <EngineCore/Image.h>
 #include <EngineCore/Camera.h>
 
 APlayGameMode::APlayGameMode()
@@ -32,18 +33,18 @@ void APlayGameMode::BeginPlay()
 
 	GetWorld()->SpawnActor<USpawnerManager>("SpawnerManager");
 	std::shared_ptr<UEquipManager> EquipManager = GetWorld()->SpawnActor<UEquipManager>("EquipManager");
-	EquipManager->EquipWeapon(EWeapon::Axe);
-	EquipManager->EquipWeapon(EWeapon::Cross);
-	EquipManager->EquipWeapon(EWeapon::FireWand);
-	EquipManager->EquipWeapon(EWeapon::Garlic);
-	EquipManager->EquipWeapon(EWeapon::KingBible);
-	EquipManager->EquipWeapon(EWeapon::Knife);
-	/*EquipManager->EquipWeapon(EWeapon::LightingRing);
-	EquipManager->EquipWeapon(EWeapon::MagicWand);
-	EquipManager->EquipWeapon(EWeapon::RuneTracer);
-	EquipManager->EquipWeapon(EWeapon::SantaWater);*/
+	//EquipManager->EquipWeapon(EWeapon::Axe);
+	//EquipManager->EquipWeapon(EWeapon::Cross);
+	//EquipManager->EquipWeapon(EWeapon::FireWand);
+	//EquipManager->EquipWeapon(EWeapon::Garlic);
+	//EquipManager->EquipWeapon(EWeapon::KingBible);
+	//EquipManager->EquipWeapon(EWeapon::Knife);
+	//EquipManager->EquipWeapon(EWeapon::LightingRing);
+	//EquipManager->EquipWeapon(EWeapon::MagicWand);
+	//EquipManager->EquipWeapon(EWeapon::RuneTracer);
+	//EquipManager->EquipWeapon(EWeapon::SantaWater);
 
-
+	UISpawn();
 }
 
 void APlayGameMode::Tick(float _DeltaTime)
@@ -52,6 +53,7 @@ void APlayGameMode::Tick(float _DeltaTime)
 
 	Camera->SetActorLocation(Player->GetActorLocation() - FVector(0.f,0.f,1000.f));
 	InfinityGroundCheck();
+	UIUpdate();
 }
 
 float4 APlayGameMode::IndexToCenterPos(FIntPoint _Index)
@@ -156,4 +158,119 @@ void APlayGameMode::MapSpawn()
 
 		}
 	}
+}
+
+void APlayGameMode::UISpawn()
+{
+	HPBar = CreateWidget<UImage>(GetWorld(),"HPBar");
+	HPBar->AddToViewPort(1);
+	HPBar->SetSprite("HpBar.png");
+	HPBar->SetScale({ 54.f,7.f });
+	HPBar->SetPosition(FVector(0.f, -30.f));
+
+	HPBarBack = CreateWidget<UImage>(GetWorld(), "HPBarBack");
+	HPBarBack->AddToViewPort(0);
+	HPBarBack->SetSprite("HpBar2.png");
+	HPBarBack->SetScale({ 54.f,7.f });
+	HPBarBack->SetPosition(FVector(0.f, -30.f));
+
+	LevelBar = CreateWidget<UImage>(GetWorld(), "LevelBar");
+	LevelBar->AddToViewPort(1);
+	LevelBar->SetSprite("Level.png");
+	LevelBar->SetScale(FVector(1270.f, 22.f));
+	LevelBar->SetPosition(FVector(0.f, 344.f));
+	LevelBar->SetPlusColor({ 0.2f,0.2f,0.5f,1.0f });
+
+	LevelBarBack = CreateWidget<UImage>(GetWorld(), "LevelBarBack");
+	LevelBarBack->AddToViewPort(0);
+	LevelBarBack->SetSprite("LevelBar.png");
+	LevelBarBack->SetScale(FVector(1280.f, 32.f));
+	LevelBarBack->SetPosition(FVector(0.f, 344.f));
+
+	for (int i = 0; i < 6; i++)
+	{
+		UImage* EquipTileBack = CreateWidget<UImage>(GetWorld(), "EquipTileBack");
+		EquipTileBack->AddToViewPort(1);
+		EquipTileBack->SetSprite("EquipedTile.png",0);
+		EquipTileBack->SetScale(FVector(28.f, 28.f));
+		EquipTileBack->SetPosition(FVector(-620.f + 32.f*i, 310.f));
+		EquipTileBack->SetMulColor({ 1.f,1.f,1.f,0.7f });
+		WeaponTilesBack.push_back(EquipTileBack);
+
+		UImage* EquipTile = CreateWidget<UImage>(GetWorld(), "EquipTile");
+		EquipTile->AddToViewPort(2);
+		EquipTile->SetScale(FVector(28.f, 28.f));
+		EquipTile->SetPosition(FVector(-620.f + 32.f * i, 310.f));
+		EquipTile->SetActive(false);
+		WeaponTiles.push_back(EquipTile);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		UImage* EquipTileBack = CreateWidget<UImage>(GetWorld(), "EquipTileBack");
+		EquipTileBack->AddToViewPort(1);
+		EquipTileBack->SetSprite("EquipedTile.png", 1);
+		EquipTileBack->SetScale(FVector(28.f, 28.f));
+		EquipTileBack->SetPosition(FVector(-620.f + 32.f * i, 278.f));
+		EquipTileBack->SetMulColor({ 1.f,1.f,1.f,0.7f });
+		AccessoryTilesBack.push_back(EquipTileBack);
+
+		UImage* EquipTile = CreateWidget<UImage>(GetWorld(), "EquipTile");
+		EquipTile->AddToViewPort(2);
+		EquipTile->SetScale(FVector(28.f, 28.f));
+		EquipTile->SetPosition(FVector(-620.f + 32.f * i, 278.f));
+		EquipTile->SetActive(false);
+		AccessoryTiles.push_back(EquipTile);
+	}
+
+
+	Gold = CreateWidget<UImage>(GetWorld(), "Gold");
+	Gold->AddToViewPort(1);
+	Gold->SetSprite("Gold.png");
+	Gold->SetScale(FVector(18.f, 18.f));
+	Gold->SetPosition(FVector(620.f, 315.f));
+	Gold->SetPlusColor({ 0.2f,0.2f,0.2f });
+
+	KillCount = CreateWidget<UImage>(GetWorld(), "KillCount");
+	KillCount->AddToViewPort(1);
+	KillCount->SetSprite("KillCount.png");
+	KillCount->SetScale(FVector(12.f, 12.f));
+	KillCount->SetPosition(FVector(400.f, 315.f));
+
+
+	LevelVal = CreateWidget<UImage>(GetWorld(), "LevelVal");
+}
+
+void APlayGameMode::UIUpdate()
+{
+	UIHPUpdate();
+	UILevelUpdate();
+	WeaponTilesUpdate();
+	AccessoryTilesUpdate();
+
+}
+
+void APlayGameMode::UIHPUpdate()
+{
+	FPlayerData PlayerData = UContentsValue::Player->GetPlayerDataCopy();
+	float Ratio = PlayerData.Hp / PlayerData.MaxHealth;
+	float Origin = 54.f;
+
+	float Scale = HPBar->GetLocalScale().X * Ratio;
+	HPBar->SetScale({ Scale, HPBar->GetLocalScale().Y });
+
+	float LeftX = (Origin - Scale) / 2.f;
+	HPBar->SetPosition({ -LeftX ,-30.f });
+}
+
+void APlayGameMode::UILevelUpdate()
+{
+}
+
+void APlayGameMode::WeaponTilesUpdate()
+{
+}
+
+void APlayGameMode::AccessoryTilesUpdate()
+{
 }
