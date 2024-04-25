@@ -16,7 +16,6 @@ UKnife::~UKnife()
 void UKnife::BeginPlay()
 {
 	Super::BeginPlay();
-	SpawnCenter();
 }
 
 void UKnife::Tick(float _DeltaTime)

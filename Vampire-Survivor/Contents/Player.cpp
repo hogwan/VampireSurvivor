@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "SpawnerManager.h"
 
+
 APlayer::APlayer()
 {
 	DetectCollider = CreateDefaultSubObject<UCollision>("Collider");

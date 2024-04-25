@@ -38,6 +38,7 @@ protected:
 	float4 IndexToCenterPos(FIntPoint _Index);
 	FIntPoint PosToIndex(float4 _Pos);
 	void InfinityGroundCheck();
+	void MapSpawn();
 
 private:
 	FIntPoint CurIndex = { 0, };

@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "SpawnerManager.h"
 #include "EquipManager.h"
+#include "ContentsEditerGUI.h"
 #include <EngineCore/Camera.h>
 
 APlayGameMode::APlayGameMode()
@@ -22,6 +23,8 @@ void APlayGameMode::BeginPlay()
 
 	std::shared_ptr<UEngineTexture> Tex = UEngineTexture::FindRes("BG_1.png");
 
+	MapSpawn();
+
 	Player = GetWorld()->SpawnActor<APlayer>("Player");
 	UContentsValue::Player = Player;
 	UContentsValue::StartPosition = Player->GetActorLocation();
@@ -34,37 +37,10 @@ void APlayGameMode::BeginPlay()
 	EquipManager->EquipWeapon(EWeapon::Garlic);
 	EquipManager->EquipWeapon(EWeapon::KingBible);
 	EquipManager->EquipWeapon(EWeapon::Knife);
-	//EquipManager->EquipWeapon(EWeapon::LightingRing);
-	//EquipManager->EquipWeapon(EWeapon::MagicWand);
-	//EquipManager->EquipWeapon(EWeapon::RuneTracer);
-	//EquipManager->EquipWeapon(EWeapon::SantaWater);
-
-
-
-	for (int y = -1; y < 2; y++)
-	{
-		for (int x = -1; x < 2; x++)
-		{
-			std::shared_ptr<ABackGroundMap> Back = GetWorld()->SpawnActor<ABackGroundMap>("BackGroundMap");
-
-			Back->SetActorScale3D(UContentsValue::GroundTileSize);
-
-			FIntPoint Point;
-			Point.X = x;
-			Point.Y = y;
-
-			float4 Pos;
-			Pos.X = UContentsValue::GroundTileSize.X * x;
-			Pos.Y = UContentsValue::GroundTileSize.Y * y;
-
-			Pos.X += UContentsValue::GroundTileSize.hX();
-			Pos.Y += UContentsValue::GroundTileSize.hY();
-			Back->SetActorLocation(Pos);
-
-			Grounds.push_back(Back);
-
-		}
-	}
+	/*EquipManager->EquipWeapon(EWeapon::LightingRing);
+	EquipManager->EquipWeapon(EWeapon::MagicWand);
+	EquipManager->EquipWeapon(EWeapon::RuneTracer);
+	EquipManager->EquipWeapon(EWeapon::SantaWater);*/
 
 }
 
@@ -149,5 +125,33 @@ void APlayGameMode::InfinityGroundCheck()
 		}
 
 		CurIndex = Index;
+	}
+}
+
+void APlayGameMode::MapSpawn()
+{
+	for (int y = -1; y < 2; y++)
+	{
+		for (int x = -1; x < 2; x++)
+		{
+			std::shared_ptr<ABackGroundMap> Back = GetWorld()->SpawnActor<ABackGroundMap>("BackGroundMap");
+
+			Back->SetActorScale3D(UContentsValue::GroundTileSize);
+
+			FIntPoint Point;
+			Point.X = x;
+			Point.Y = y;
+
+			float4 Pos;
+			Pos.X = UContentsValue::GroundTileSize.X * x;
+			Pos.Y = UContentsValue::GroundTileSize.Y * y;
+
+			Pos.X += UContentsValue::GroundTileSize.hX();
+			Pos.Y += UContentsValue::GroundTileSize.hY();
+			Back->SetActorLocation(Pos);
+
+			Grounds.push_back(Back);
+
+		}
 	}
 }

@@ -83,6 +83,7 @@ void UEquipManager::EquipAccessory(EAccessory _Accessory)
 		if (_AccessoryPair.first == _Accessory)
 		{
 			_AccessoryPair.second->LevelUp();
+			AccessoryApply();
 			return;
 		}
 	}
@@ -91,6 +92,7 @@ void UEquipManager::EquipAccessory(EAccessory _Accessory)
 	{
 		std::shared_ptr<UAccessory> Accessory= SpawnAccessory(_Accessory);
 		Accessories.push_back(std::make_pair(_Accessory, Accessory));
+		AccessoryApply();
 		return;
 	}
 
@@ -109,6 +111,40 @@ void UEquipManager::StatusApplyToWeapon()
 		_WeaponPair.second->ApplyStatus(Data);
 	}
 
+}
+void UEquipManager::AccessoryApply()
+{
+	std::shared_ptr<APlayer> Player = UContentsValue::Player;
+	FPlayerData* Data = Player->GetPlayerDataReference();
+	FAccessoryData AccessoryData = GetAccessoryResult();
+
+	Data->MaxHealth += AccessoryData.MaxHealth;
+	Data->Recovery += AccessoryData.Recovery;
+	Data->Armor += AccessoryData.Armor;
+	Data->MoveSpeed *= AccessoryData.MoveSpeed;
+	Data->Might += AccessoryData.Might;
+	Data->Speed += AccessoryData.Speed;
+	Data->Duration += AccessoryData.Duration;
+	Data->Area += AccessoryData.Area;
+	Data->Cooldown += AccessoryData.Cooldown;
+	Data->Magnet += AccessoryData.Magnet;
+	Data->Luck += AccessoryData.Luck;
+	Data->Growth += AccessoryData.Growth;
+	Data->Greed += AccessoryData.Greed;
+	Data->Curse += AccessoryData.Curse;
+	Data->Amount += AccessoryData.Amount;
+}
+
+FAccessoryData UEquipManager::GetAccessoryResult()
+{
+	FAccessoryData Result;
+
+	for (std::pair<EAccessory, std::shared_ptr<UAccessory>> _AccessoryPair : Accessories)
+	{
+		Result += _AccessoryPair.second->GetData();
+	}
+
+	return Result;
 }
 
 std::shared_ptr<UWeapon> UEquipManager::SpawnWeapon(EWeapon _WeaponType)
@@ -220,38 +256,4 @@ std::shared_ptr<UAccessory> UEquipManager::SpawnAccessory(EAccessory _AccessoryT
 	return Accessory;
 }
 
-void UEquipManager::AccessoryApply()
-{
-	std::shared_ptr<APlayer> Player = UContentsValue::Player;
-	FPlayerData* Data = Player->GetPlayerDataReference();
-	FAccessoryData AccessoryData = GetAccessoryResult();
-
-	Data->MaxHealth += AccessoryData.MaxHealth;
-	Data->Recovery += AccessoryData.Recovery;
-	Data->Armor += AccessoryData.Armor;
-	Data->MoveSpeed *= AccessoryData.MoveSpeed;
-	Data->Might += AccessoryData.Might;
-	Data->Speed += AccessoryData.Speed;
-	Data->Duration += AccessoryData.Duration;
-	Data->Area += AccessoryData.Area;
-	Data->Cooldown += AccessoryData.Cooldown;
-	Data->Magnet += AccessoryData.Magnet;
-	Data->Luck += AccessoryData.Luck;
-	Data->Growth += AccessoryData.Growth;
-	Data->Greed += AccessoryData.Greed;
-	Data->Curse += AccessoryData.Curse;
-	Data->Amount += AccessoryData.Amount;
-}
-
-FAccessoryData UEquipManager::GetAccessoryResult()
-{
-	FAccessoryData Result;
-
-	for (std::pair<EAccessory, std::shared_ptr<UAccessory>> _AccessoryPair : Accessories)
-	{
-		Result += _AccessoryPair.second->GetData();
-	}
-
-	return Result;
-}
 

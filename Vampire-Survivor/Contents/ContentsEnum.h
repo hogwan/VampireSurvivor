@@ -2,6 +2,7 @@
 
 enum class ERenderOrder
 {
+	Knife,
 	Back,
 	Monster,
 	Garlic,

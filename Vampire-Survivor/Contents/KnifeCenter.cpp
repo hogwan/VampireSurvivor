@@ -59,7 +59,7 @@ void AKnifeCenter::SpawnLogic(float _DeltaTime)
 		{
 			Knife->SetActorLocation(GetActorLocation() - UpVector * Offset);
 		}
-		if (PlayerDir.Size3D() < 0.01f)
+		if (PlayerDir.Size3D() < 0.001f)
 		{
 			PlayerDir = FVector::Right;
 		}
