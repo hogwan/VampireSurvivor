@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "EmptyTome.h"
 
-FAccesoryData UEmptyTome::Data = { 0, };
-
 UEmptyTome::UEmptyTome() 
 {
 }
@@ -24,6 +22,8 @@ void UEmptyTome::Tick(float _DeltaTime)
 
 void UEmptyTome::DataInit()
 {
+	AccessoryType = EAccessory::EmptyTome;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;

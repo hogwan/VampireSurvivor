@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Weapon.h"
+#include "Player.h"
 
 UWeapon::UWeapon()
 {

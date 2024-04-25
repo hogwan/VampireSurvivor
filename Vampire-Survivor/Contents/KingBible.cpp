@@ -41,6 +41,8 @@ void UKingBible::Tick(float _DeltaTime)
 
 void UKingBible::DataInit()
 {
+	Type = EWeapon::KingBible;
+
 	Data.Level = 1;
 	Data.Amount = 1;
 	Data.Penetration = -1;
@@ -106,4 +108,23 @@ void UKingBible::LevelUp()
 void UKingBible::SpawnCenter()
 {
 	GetWorld()->SpawnActor<AKingBibleCenter>("Center");
+}
+
+void UKingBible::ApplyStatus(FPlayerData _Data)
+{
+	FWeaponData TempData = { 0, };
+
+	TempData.Amount = OriginalData.Amount + _Data.Amount;
+	TempData.Damage = OriginalData.Damage * _Data.Might;
+	TempData.Speed = OriginalData.Speed * _Data.Speed;
+	TempData.Duration = OriginalData.Duration * _Data.Duration;
+	TempData.Area = OriginalData.Area * _Data.Area;
+	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+
+	Data.Amount = TempData.Amount;
+	Data.Damage = TempData.Damage;
+	Data.Speed = TempData.Speed;
+	Data.Duration = TempData.Duration;
+	Data.Area = TempData.Area;
+	Data.Cooldown = TempData.Cooldown;
 }

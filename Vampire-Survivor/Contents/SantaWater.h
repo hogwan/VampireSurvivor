@@ -27,6 +27,8 @@ protected:
 	void LevelUp() override;
 
 	void SpawnCenter() override;
+	void ApplyStatus(struct FPlayerData _Data) override;
+
 	void SpawnLoop(float _DeltaTime);
 	int RemainCount = 0;;
 

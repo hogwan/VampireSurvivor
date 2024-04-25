@@ -55,6 +55,8 @@ void USantaWater::Tick(float _DeltaTime)
 
 void USantaWater::DataInit()
 {
+	Type = EWeapon::SantaWater;
+
 	Data.Level = 1;
 	Data.Amount = 1;
 	Data.Penetration = 0;
@@ -128,6 +130,25 @@ void USantaWater::SpawnCenter()
 	FVector TargetPos = TargetPoint->GetWorldPosition();
 	SantaWaterCenter->SetTargetPos(TargetPoint->GetWorldPosition());
 	--RemainCount;
+}
+
+void USantaWater::ApplyStatus(FPlayerData _Data)
+{
+	FWeaponData TempData = { 0, };
+
+	TempData.Amount = OriginalData.Amount + _Data.Amount;
+	TempData.Damage = OriginalData.Damage * _Data.Might;
+	TempData.Speed = OriginalData.Speed * _Data.Speed;
+	TempData.Duration = OriginalData.Duration * _Data.Duration;
+	TempData.Area = OriginalData.Area * _Data.Area;
+	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+
+	Data.Amount = TempData.Amount;
+	Data.Damage = TempData.Damage;
+	Data.Speed = TempData.Speed;
+	Data.Duration = TempData.Duration;
+	Data.Area = TempData.Area;
+	Data.Cooldown = TempData.Cooldown;
 }
 
 void USantaWater::SpawnLoop(float _DeltaTime)

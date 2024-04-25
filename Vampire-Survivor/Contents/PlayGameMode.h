@@ -1,7 +1,5 @@
 #pragma once
 #include <EngineCore/GameMode.h>
-#include "Weapon.h"
-#include "Accesory.h"
 
 struct FIntPoint
 {
@@ -31,9 +29,6 @@ public:
 	APlayGameMode& operator=(const APlayGameMode& _Other) = delete;
 	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;
 
-	static std::vector<UWeapon> EquipWeapon;
-	static std::vector<UAccesory> EquipAccessory;
-
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -43,6 +38,7 @@ protected:
 	float4 IndexToCenterPos(FIntPoint _Index);
 	FIntPoint PosToIndex(float4 _Pos);
 	void InfinityGroundCheck();
+
 private:
 	FIntPoint CurIndex = { 0, };
 	std::shared_ptr<UCamera> Camera;

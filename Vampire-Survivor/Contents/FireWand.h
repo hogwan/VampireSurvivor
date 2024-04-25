@@ -22,5 +22,6 @@ protected:
 	void LevelUp() override;
 
 	void SpawnCenter() override;
+	void ApplyStatus(struct FPlayerData _Data) override;
 private:
 };

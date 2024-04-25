@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Whip.h"
 #include "WhipCenter.h"
+#include "Player.h"
 
 FWeaponData UWhip::Data = { 0, };
 
@@ -37,17 +38,19 @@ void UWhip::Tick(float _DeltaTime)
 
 void UWhip::DataInit()
 {
-	Data.Level = 1;
-	Data.Amount = 1;
-	Data.Penetration = 1;
-	Data.Damage = 10.f;
-	Data.Speed = 500.f;
-	Data.Duration = 0.f;
-	Data.Area = 1.f;
-	Data.Cooldown = 1.35f;
-	Data.KnockbackPower = 100.f;
+	Type = EWeapon::Whip;
 
-	RemainTime = Data.Cooldown;
+	OriginalData.Level = 1;
+	OriginalData.Amount = 1;
+	OriginalData.Penetration = 1;
+	OriginalData.Damage = 10.f;
+	OriginalData.Speed = 500.f;
+	OriginalData.Duration = 0.f;
+	OriginalData.Area = 1.f;
+	OriginalData.Cooldown = 1.35f;
+	OriginalData.KnockbackPower = 100.f;
+
+	RemainTime = OriginalData.Cooldown;
 }
 
 void UWhip::LevelUp()
@@ -56,38 +59,38 @@ void UWhip::LevelUp()
 	switch (Level)
 	{
 	case 1:
-		Data.Level = 1;
-		Data.Amount = 1;
-		Data.Penetration = 1;
-		Data.Damage = 10.f;
-		Data.Speed = 500.f;
-		Data.Duration = 0.f;
-		Data.Area = 100.f;
-		Data.Cooldown = 1.35f;
-		Data.KnockbackPower = 100.f;
+		OriginalData.Level = 1;
+		OriginalData.Amount = 1;
+		OriginalData.Penetration = 1;
+		OriginalData.Damage = 10.f;
+		OriginalData.Speed = 500.f;
+		OriginalData.Duration = 0.f;
+		OriginalData.Area = 100.f;
+		OriginalData.Cooldown = 1.35f;
+		OriginalData.KnockbackPower = 100.f;
 		break;
 	case 2:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 3:
-		Data.Damage += 5.f;
+		OriginalData.Damage += 5.f;
 		break;
 	case 4:
-		Data.Damage += 5.f;
-		Data.Area *= 1.1f;
+		OriginalData.Damage += 5.f;
+		OriginalData.Area *= 1.1f;
 		break;
 	case 5:
-		Data.Damage += 5.f;
+		OriginalData.Damage += 5.f;
 		break;
 	case 6:
-		Data.Damage += 5.f;
-		Data.Area *= 1.1f;
+		OriginalData.Damage += 5.f;
+		OriginalData.Area *= 1.1f;
 		break;
 	case 7:
-		Data.Damage += 5.f;
+		OriginalData.Damage += 5.f;
 		break;
 	case 8:
-		Data.Damage += 5.f;
+		OriginalData.Damage += 5.f;
 		break;
 	default:
 		break;
@@ -99,5 +102,24 @@ void UWhip::LevelUp()
 void UWhip::SpawnCenter()
 {
 	GetWorld()->SpawnActor<AWhipCenter>("Center");
+}
+
+void UWhip::ApplyStatus(FPlayerData _Data)
+{
+	FWeaponData TempData = { 0, };
+
+	TempData.Amount = OriginalData.Amount + _Data.Amount;
+	TempData.Damage = OriginalData.Damage * _Data.Might;
+	TempData.Speed = OriginalData.Speed * _Data.Speed;
+	TempData.Duration = OriginalData.Duration * _Data.Duration;
+	TempData.Area = OriginalData.Area * _Data.Area;
+	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+
+	Data.Amount = TempData.Amount;
+	Data.Damage = TempData.Damage;
+	Data.Speed = TempData.Speed;
+	Data.Duration = TempData.Duration;
+	Data.Area = TempData.Area;
+	Data.Cooldown = TempData.Cooldown;
 }
 

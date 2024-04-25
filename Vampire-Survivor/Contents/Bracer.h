@@ -1,10 +1,10 @@
 #pragma once
-#include "Accesory.h"
+#include "Accessory.h"
 
 // Ό³Έν :
-class UBracer : public UAccesory
+class UBracer : public UAccessory
 {
-	GENERATED_BODY(UAccesory)
+	GENERATED_BODY(UAccessory)
 public:
 	// constructor destructor
 	UBracer();
@@ -16,9 +16,9 @@ public:
 	UBracer& operator=(const UBracer& _Other) = delete;
 	UBracer& operator=(UBracer&& _Other) noexcept = delete;
 
-	static FAccesoryData Data;
+	static FAccessoryData Data;
 
-	FAccesoryData GetData() override
+	FAccessoryData GetData() override
 	{
 		return Data;
 	}

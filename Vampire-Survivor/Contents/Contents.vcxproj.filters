@@ -76,43 +76,46 @@
     <Filter Include="Object\Weapon\LightingRing">
       <UniqueIdentifier>{f2b1da35-99be-4628-9738-638f078840c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory">
+    <Filter Include="Object\EquipManager">
+      <UniqueIdentifier>{632f5acc-4418-4f53-b257-eb97626738d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accessory">
       <UniqueIdentifier>{01be0f97-6030-4ef1-bc64-889a1c2a2095}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Spinach">
+    <Filter Include="Object\Accessory\Spinach">
       <UniqueIdentifier>{c62a4f26-6529-4b6a-8e88-1f29c4f7307c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Armor">
+    <Filter Include="Object\Accessory\Armor">
       <UniqueIdentifier>{49e25961-eda1-4d65-a458-d16a6ea7b1e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\HollowHeart">
+    <Filter Include="Object\Accessory\HollowHeart">
       <UniqueIdentifier>{adb5d0e7-1468-4f03-a499-82c5fe4556b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Pummarola">
+    <Filter Include="Object\Accessory\Pummarola">
       <UniqueIdentifier>{884fde33-4206-4dbe-a1fb-21543dc77cbe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\EmptyTome">
+    <Filter Include="Object\Accessory\EmptyTome">
       <UniqueIdentifier>{5d77db94-ea50-4430-817d-d6c2e79e0cfd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Candelabrador">
+    <Filter Include="Object\Accessory\Candelabrador">
       <UniqueIdentifier>{541014e2-a531-43a5-93fb-2d803ce2a14d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Bracer">
+    <Filter Include="Object\Accessory\Bracer">
       <UniqueIdentifier>{566064d2-276c-47eb-b008-01e940b48c62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Spellbinder">
+    <Filter Include="Object\Accessory\Spellbinder">
       <UniqueIdentifier>{cf9567c0-a523-46f9-8bb5-1f16859ac1b1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Duplicator">
+    <Filter Include="Object\Accessory\Duplicator">
       <UniqueIdentifier>{cd4fd1c0-3439-4a36-b7bc-6e065b123f96}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Wings">
+    <Filter Include="Object\Accessory\Wings">
       <UniqueIdentifier>{ca7023a8-7528-48ac-bfdf-e0fe5ec55edf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Attractorb">
+    <Filter Include="Object\Accessory\Attractorb">
       <UniqueIdentifier>{8a11ffb6-41df-4310-a8ac-15a7fcb52a27}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Accesory\Clover">
+    <Filter Include="Object\Accessory\Clover">
       <UniqueIdentifier>{86e42a50-69e0-48a2-b9e1-6df9a01fae0f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -273,44 +276,47 @@
     <ClInclude Include="ThunderShock.h">
       <Filter>Object\Weapon\LightingRing</Filter>
     </ClInclude>
-    <ClInclude Include="Accesory.h">
-      <Filter>Object\Accesory</Filter>
+    <ClInclude Include="Accessory.h">
+      <Filter>Object\Accessory</Filter>
     </ClInclude>
     <ClInclude Include="Spinach.h">
-      <Filter>Object\Accesory\Spinach</Filter>
+      <Filter>Object\Accessory\Spinach</Filter>
     </ClInclude>
     <ClInclude Include="Armor.h">
-      <Filter>Object\Accesory\Armor</Filter>
+      <Filter>Object\Accessory\Armor</Filter>
     </ClInclude>
     <ClInclude Include="HollowHeart.h">
-      <Filter>Object\Accesory\HollowHeart</Filter>
+      <Filter>Object\Accessory\HollowHeart</Filter>
     </ClInclude>
     <ClInclude Include="Pummarola.h">
-      <Filter>Object\Accesory\Pummarola</Filter>
+      <Filter>Object\Accessory\Pummarola</Filter>
     </ClInclude>
     <ClInclude Include="EmptyTome.h">
-      <Filter>Object\Accesory\EmptyTome</Filter>
+      <Filter>Object\Accessory\EmptyTome</Filter>
     </ClInclude>
     <ClInclude Include="Candelabrador.h">
-      <Filter>Object\Accesory\Candelabrador</Filter>
+      <Filter>Object\Accessory\Candelabrador</Filter>
     </ClInclude>
     <ClInclude Include="Bracer.h">
-      <Filter>Object\Accesory\Bracer</Filter>
+      <Filter>Object\Accessory\Bracer</Filter>
     </ClInclude>
     <ClInclude Include="Spellbinder.h">
-      <Filter>Object\Accesory\Spellbinder</Filter>
+      <Filter>Object\Accessory\Spellbinder</Filter>
     </ClInclude>
     <ClInclude Include="Duplicator.h">
-      <Filter>Object\Accesory\Duplicator</Filter>
+      <Filter>Object\Accessory\Duplicator</Filter>
     </ClInclude>
     <ClInclude Include="Wings.h">
-      <Filter>Object\Accesory\Wings</Filter>
+      <Filter>Object\Accessory\Wings</Filter>
     </ClInclude>
     <ClInclude Include="Attractorb.h">
-      <Filter>Object\Accesory\Attractorb</Filter>
+      <Filter>Object\Accessory\Attractorb</Filter>
     </ClInclude>
     <ClInclude Include="Clover.h">
-      <Filter>Object\Accesory\Clover</Filter>
+      <Filter>Object\Accessory\Clover</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipManager.h">
+      <Filter>Object\EquipManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -467,44 +473,47 @@
     <ClCompile Include="ThunderShock.cpp">
       <Filter>Object\Weapon\LightingRing</Filter>
     </ClCompile>
-    <ClCompile Include="Accesory.cpp">
-      <Filter>Object\Accesory</Filter>
+    <ClCompile Include="Accessory.cpp">
+      <Filter>Object\Accessory</Filter>
     </ClCompile>
     <ClCompile Include="Spinach.cpp">
-      <Filter>Object\Accesory\Spinach</Filter>
+      <Filter>Object\Accessory\Spinach</Filter>
     </ClCompile>
     <ClCompile Include="Armor.cpp">
-      <Filter>Object\Accesory\Armor</Filter>
+      <Filter>Object\Accessory\Armor</Filter>
     </ClCompile>
     <ClCompile Include="HollowHeart.cpp">
-      <Filter>Object\Accesory\HollowHeart</Filter>
+      <Filter>Object\Accessory\HollowHeart</Filter>
     </ClCompile>
     <ClCompile Include="Pummarola.cpp">
-      <Filter>Object\Accesory\Pummarola</Filter>
+      <Filter>Object\Accessory\Pummarola</Filter>
     </ClCompile>
     <ClCompile Include="EmptyTome.cpp">
-      <Filter>Object\Accesory\EmptyTome</Filter>
+      <Filter>Object\Accessory\EmptyTome</Filter>
     </ClCompile>
     <ClCompile Include="Candelabrador.cpp">
-      <Filter>Object\Accesory\Candelabrador</Filter>
+      <Filter>Object\Accessory\Candelabrador</Filter>
     </ClCompile>
     <ClCompile Include="Bracer.cpp">
-      <Filter>Object\Accesory\Bracer</Filter>
+      <Filter>Object\Accessory\Bracer</Filter>
     </ClCompile>
     <ClCompile Include="Spellbinder.cpp">
-      <Filter>Object\Accesory\Spellbinder</Filter>
+      <Filter>Object\Accessory\Spellbinder</Filter>
     </ClCompile>
     <ClCompile Include="Duplicator.cpp">
-      <Filter>Object\Accesory\Duplicator</Filter>
+      <Filter>Object\Accessory\Duplicator</Filter>
     </ClCompile>
     <ClCompile Include="Wings.cpp">
-      <Filter>Object\Accesory\Wings</Filter>
+      <Filter>Object\Accessory\Wings</Filter>
     </ClCompile>
     <ClCompile Include="Attractorb.cpp">
-      <Filter>Object\Accesory\Attractorb</Filter>
+      <Filter>Object\Accessory\Attractorb</Filter>
     </ClCompile>
     <ClCompile Include="Clover.cpp">
-      <Filter>Object\Accesory\Clover</Filter>
+      <Filter>Object\Accessory\Clover</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipManager.cpp">
+      <Filter>Object\EquipManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

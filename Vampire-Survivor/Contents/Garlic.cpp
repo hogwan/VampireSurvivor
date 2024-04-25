@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Garlic.h"
 #include "GarlicCenter.h"
+#include "Player.h"
 
 FWeaponData UGarlic::Data = { 0, };
 UGarlic::UGarlic()
@@ -36,6 +37,8 @@ void UGarlic::Tick(float _DeltaTime)
 
 void UGarlic::DataInit()
 {
+	Type = EWeapon::Garlic;
+
 	Data.Level = 1;
 	Data.Amount = 0;
 	Data.Penetration = 0;
@@ -101,4 +104,23 @@ void UGarlic::LevelUp()
 void UGarlic::SpawnCenter()
 {
 	GetWorld()->SpawnActor<AGarlicCenter>("Center");
+}
+
+void UGarlic::ApplyStatus(FPlayerData _Data)
+{
+	FWeaponData TempData = { 0, };
+
+	TempData.Amount = OriginalData.Amount + _Data.Amount;
+	TempData.Damage = OriginalData.Damage * _Data.Might;
+	TempData.Speed = OriginalData.Speed * _Data.Speed;
+	TempData.Duration = OriginalData.Duration * _Data.Duration;
+	TempData.Area = OriginalData.Area * _Data.Area;
+	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+
+	Data.Amount = TempData.Amount;
+	Data.Damage = TempData.Damage;
+	Data.Speed = TempData.Speed;
+	Data.Duration = TempData.Duration;
+	Data.Area = TempData.Area;
+	Data.Cooldown = TempData.Cooldown;
 }

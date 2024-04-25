@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Axe.h"
 #include "AxeCenter.h"
+#include "Player.h"
 
 FWeaponData UAxe::Data = { 0, };
 
@@ -37,6 +38,8 @@ void UAxe::Tick(float _DeltaTime)
 
 void UAxe::DataInit()
 {
+	Type = EWeapon::Axe;
+
 	Data.Level = 1;
 	Data.Amount = 1;
 	Data.Penetration = 3;
@@ -95,4 +98,23 @@ void UAxe::LevelUp()
 void UAxe::SpawnCenter()
 {
 	GetWorld()->SpawnActor<AAxeCenter>("Center");
+}
+
+void UAxe::ApplyStatus(FPlayerData _Data)
+{
+	FWeaponData TempData = { 0, };
+
+	TempData.Amount = OriginalData.Amount + _Data.Amount;
+	TempData.Damage = OriginalData.Damage * _Data.Might;
+	TempData.Speed = OriginalData.Speed * _Data.Speed;
+	TempData.Duration = OriginalData.Duration * _Data.Duration;
+	TempData.Area = OriginalData.Area * _Data.Area;
+	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+
+	Data.Amount = TempData.Amount;
+	Data.Damage = TempData.Damage;
+	Data.Speed = TempData.Speed;
+	Data.Duration = TempData.Duration;
+	Data.Area = TempData.Area;
+	Data.Cooldown = TempData.Cooldown;
 }

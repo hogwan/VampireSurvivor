@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "LightingRing.h"
 #include "LightingRingCenter.h"
+#include "Player.h"
 
 FWeaponData ULightingRing::Data = { 0, };
 
@@ -37,6 +38,8 @@ void ULightingRing::Tick(float _DeltaTime)
 
 void ULightingRing::DataInit()
 {
+	Type = EWeapon::LightingRing;
+
 	Data.Level = 1;
 	Data.Amount = 2;
 	Data.Penetration = 0;
@@ -97,4 +100,23 @@ void ULightingRing::LevelUp()
 void ULightingRing::SpawnCenter()
 {
 	GetWorld()->SpawnActor<ALightingRingCenter>("Center");
+}
+
+void ULightingRing::ApplyStatus(FPlayerData _Data)
+{
+	FWeaponData TempData = { 0, };
+
+	TempData.Amount = OriginalData.Amount + _Data.Amount;
+	TempData.Damage = OriginalData.Damage * _Data.Might;
+	TempData.Speed = OriginalData.Speed * _Data.Speed;
+	TempData.Duration = OriginalData.Duration * _Data.Duration;
+	TempData.Area = OriginalData.Area * _Data.Area;
+	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+
+	Data.Amount = TempData.Amount;
+	Data.Damage = TempData.Damage;
+	Data.Speed = TempData.Speed;
+	Data.Duration = TempData.Duration;
+	Data.Area = TempData.Area;
+	Data.Cooldown = TempData.Cooldown;
 }

@@ -28,15 +28,26 @@ public:
 	UWeapon(UWeapon&& _Other) noexcept = delete;
 	UWeapon& operator=(const UWeapon& _Other) = delete;
 	UWeapon& operator=(UWeapon&& _Other) noexcept = delete;
+
+	EWeapon GetWeaponType()
+	{
+		return Type;
+	}
+
+	virtual void ApplyStatus(struct FPlayerData _Data) = 0;
+
+	virtual void LevelUp() = 0;
+	virtual void DataInit() = 0;
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	virtual void DataInit() = 0;
-	virtual void LevelUp() = 0;
 	virtual void SpawnCenter() = 0;
 
+	EWeapon Type = EWeapon::None;
 	float RemainTime = 0.f;
+
+	FWeaponData OriginalData = { 0, };
 private:
 
 };

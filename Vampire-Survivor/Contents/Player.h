@@ -15,11 +15,10 @@ enum class AActorDir
 
 struct FPlayerData
 {
-public:
 	float MaxHealth = 100.f;
 	float Recovery = 0.f;
 	float Armor = 0.f;
-	float MoveSpeed = 1.f;
+	float MoveSpeed = 100.f;
 	float Might = 1.f;
 	float Speed = 1.f;
 	float Duration = 1.f;
@@ -71,6 +70,16 @@ public:
 		return RandomEnemy;
 	}
 
+	FPlayerData* GetPlayerDataReference()
+	{
+		return &Data;
+	}
+
+	FPlayerData GetPlayerDataCopy()
+	{
+		return Data;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -82,14 +91,16 @@ protected:
 	UCollision* DetectCollider = nullptr;
 
 	float DetectDistance = 600.f;
-	float MoveSpeed = 300.f;
 
 	class AEnemy* NearestEnemy = nullptr;
 	class AEnemy* RandomEnemy = nullptr;
 	void NearEnemyCheck();
 	void RandomEnemyCheck();
 	void DebugMessageFunction(float _Delta);
-private:
+
+	void StatusInit();
+	FPlayerData Data = { 0, };
+ private:
 	void MoveLogic();
 	void ColLogic();
 };

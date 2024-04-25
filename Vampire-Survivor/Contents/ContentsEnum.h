@@ -20,6 +20,39 @@ enum class ECollisionOrder
 	Detect,
 };
 
+enum class EWeapon
+{
+	None,
+	Axe,
+	Cross,
+	FireWand,
+	Garlic,
+	KingBible,
+	Knife,
+	LightingRing,
+	MagicWand,
+	RuneTracer,
+	SantaWater,
+	Whip,
+};
+
+enum class EAccessory
+{
+	None,
+	Armor,
+	Attractorb,
+	Bracer,
+	Candelabrador,
+	Clover,
+	Duplicator,
+	EmptyTome,
+	HollowHeart,
+	Pummarola,
+	Spellbinder,
+	Spinach,
+	Wings,
+};
+
 enum class EPollingOrder
 {
 	None,

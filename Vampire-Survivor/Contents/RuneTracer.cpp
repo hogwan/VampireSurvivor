@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "RuneTracer.h"
 #include "RuneTracerCenter.h"
+#include "player.h"
 
 FWeaponData URuneTracer::Data = { 0, };
 
@@ -37,6 +38,8 @@ void URuneTracer::Tick(float _DeltaTime)
 
 void URuneTracer::DataInit()
 {
+	Type = EWeapon::RuneTracer;
+
 	Data.Level = 1;
 	Data.Amount = 1;
 	Data.Penetration = 1;
@@ -99,4 +102,23 @@ void URuneTracer::LevelUp()
 void URuneTracer::SpawnCenter()
 {
 	GetWorld()->SpawnActor<ARuneTracerCenter>("Center");
+}
+
+void URuneTracer::ApplyStatus(FPlayerData _Data)
+{
+	FWeaponData TempData = { 0, };
+
+	TempData.Amount = OriginalData.Amount + _Data.Amount;
+	TempData.Damage = OriginalData.Damage * _Data.Might;
+	TempData.Speed = OriginalData.Speed * _Data.Speed;
+	TempData.Duration = OriginalData.Duration * _Data.Duration;
+	TempData.Area = OriginalData.Area * _Data.Area;
+	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+
+	Data.Amount = TempData.Amount;
+	Data.Damage = TempData.Damage;
+	Data.Speed = TempData.Speed;
+	Data.Duration = TempData.Duration;
+	Data.Area = TempData.Area;
+	Data.Cooldown = TempData.Cooldown;
 }

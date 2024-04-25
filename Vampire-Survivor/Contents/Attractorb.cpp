@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Attractorb.h"
 
-FAccesoryData UAttractorb::Data = { 0, };
-
 UAttractorb::UAttractorb() 
 {
 }
@@ -24,6 +22,8 @@ void UAttractorb::Tick(float _DeltaTime)
 
 void UAttractorb::DataInit()
 {
+	AccessoryType = EAccessory::Attractorb;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;

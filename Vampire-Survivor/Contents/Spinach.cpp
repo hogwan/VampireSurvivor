@@ -1,7 +1,6 @@
 #include "PreCompile.h"
 #include "Spinach.h"
 
-FAccesoryData USpinach::Data = { 0, };
 
 USpinach::USpinach() 
 {
@@ -24,13 +23,15 @@ void USpinach::Tick(float _DeltaTime)
 
 void USpinach::DataInit()
 {
+	AccessoryType = EAccessory::Spinach;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;
 	Data.Recovery = 0.f;
 	Data.Armor = 0.f;
 	Data.MoveSpeed = 0.f;
-	Data.Might = 0.0f;
+	Data.Might = 0.1f;
 	Data.Speed = 0.f;
 	Data.Duration = 0.f;
 	Data.Area = 0.f;
@@ -56,7 +57,7 @@ void USpinach::LevelUp()
 		Data.Recovery = 0.f;
 		Data.Armor = 0.f;
 		Data.MoveSpeed = 0.f;
-		Data.Might = 0.f;
+		Data.Might = 0.1f;
 		Data.Speed = 0.f;
 		Data.Duration = 0.f;
 		Data.Area = 0.f;

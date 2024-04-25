@@ -1,8 +1,9 @@
 #include "PreCompile.h"
 #include "Knife.h"
 #include "KnifeCenter.h"
+#include "player.h"
 
-FWeaponData UKnife::Data;
+FWeaponData UKnife::Data = { 0, };
 
 UKnife::UKnife() 
 {
@@ -38,6 +39,8 @@ void UKnife::Tick(float _DeltaTime)
 
 void UKnife::DataInit()
 {
+	Type = EWeapon::Knife;
+
 	Data.Level = 1;
 	Data.Amount = 1;
 	Data.Penetration = 1;
@@ -98,4 +101,23 @@ void UKnife::LevelUp()
 void UKnife::SpawnCenter()
 {
 	GetWorld()->SpawnActor<AKnifeCenter>("Center");
+}
+
+void UKnife::ApplyStatus(FPlayerData _Data)
+{
+	FWeaponData TempData = { 0, };
+
+	TempData.Amount = OriginalData.Amount + _Data.Amount;
+	TempData.Damage = OriginalData.Damage * _Data.Might;
+	TempData.Speed = OriginalData.Speed * _Data.Speed;
+	TempData.Duration = OriginalData.Duration * _Data.Duration;
+	TempData.Area = OriginalData.Area * _Data.Area;
+	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+
+	Data.Amount = TempData.Amount;
+	Data.Damage = TempData.Damage;
+	Data.Speed = TempData.Speed;
+	Data.Duration = TempData.Duration;
+	Data.Area = TempData.Area;
+	Data.Cooldown = TempData.Cooldown;
 }

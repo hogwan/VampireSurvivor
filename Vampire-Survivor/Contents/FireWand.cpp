@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "FireWand.h"
 #include "FireWandCenter.h"
+#include "Player.h"
 
 FWeaponData UFireWand::Data = { 0, };
 
@@ -37,6 +38,8 @@ void UFireWand::Tick(float _DeltaTime)
 
 void UFireWand::DataInit()
 {
+	Type = EWeapon::FireWand;
+
 	Data.Level = 1;
 	Data.Amount = 3;
 	Data.Penetration = 1;
@@ -98,4 +101,23 @@ void UFireWand::LevelUp()
 void UFireWand::SpawnCenter()
 {
 	GetWorld()->SpawnActor<AFireWandCenter>("Center");
+}
+
+void UFireWand::ApplyStatus(FPlayerData _Data)
+{
+	FWeaponData TempData = { 0, };
+
+	TempData.Amount = OriginalData.Amount + _Data.Amount;
+	TempData.Damage = OriginalData.Damage * _Data.Might;
+	TempData.Speed = OriginalData.Speed * _Data.Speed;
+	TempData.Duration = OriginalData.Duration * _Data.Duration;
+	TempData.Area = OriginalData.Area * _Data.Area;
+	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+
+	Data.Amount = TempData.Amount;
+	Data.Damage = TempData.Damage;
+	Data.Speed = TempData.Speed;
+	Data.Duration = TempData.Duration;
+	Data.Area = TempData.Area;
+	Data.Cooldown = TempData.Cooldown;
 }

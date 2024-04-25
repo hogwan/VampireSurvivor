@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Pummarola.h"
 
-FAccesoryData UPummarola::Data = { 0, };
-
 UPummarola::UPummarola() 
 {
 }
@@ -24,6 +22,8 @@ void UPummarola::Tick(float _DeltaTime)
 
 void UPummarola::DataInit()
 {
+	AccessoryType = EAccessory::Pummarola;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;

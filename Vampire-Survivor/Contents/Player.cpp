@@ -17,6 +17,7 @@ APlayer::~APlayer()
 void APlayer::BeginPlay()
 {
 	Super::BeginPlay();
+	StatusInit();
 
 	Renderer->SetSprite("Player.png", 0);
 	Renderer->SetAutoSize(1.5f, true);
@@ -93,6 +94,11 @@ void APlayer::DebugMessageFunction(float _Delta)
 	}
 }
 
+void APlayer::StatusInit()
+{
+	Data.MaxHealth = 100.f;
+}
+
 void APlayer::MoveLogic()
 {
 	FVector TempVector = FVector::Zero;
@@ -153,7 +159,7 @@ void APlayer::MoveLogic()
 
 
 	TempVector.Normalize3D();
-	MoveVector = TempVector * MoveSpeed;
+	MoveVector = TempVector * Data.MoveSpeed;
 }
 
 void APlayer::ColLogic()

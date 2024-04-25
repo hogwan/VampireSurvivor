@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "HollowHeart.h"
 
-FAccesoryData UHollowHeart::Data = { 0, };
-
 UHollowHeart::UHollowHeart() 
 {
 }
@@ -24,6 +22,8 @@ void UHollowHeart::Tick(float _DeltaTime)
 
 void UHollowHeart::DataInit()
 {
+	AccessoryType = EAccessory::HollowHeart;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 20.f;

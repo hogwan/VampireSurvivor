@@ -25,6 +25,7 @@ protected:
 	void LevelUp() override;
 
 	void SpawnCenter() override;
+	void ApplyStatus(struct FPlayerData _Data) override;
 
 	float RemainTime = 0.f;
 private:

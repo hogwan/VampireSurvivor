@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Candelabrador.h"
 
-FAccesoryData UCandelabrador::Data = { 0, };
-
 UCandelabrador::UCandelabrador() 
 {
 }
@@ -24,6 +22,8 @@ void UCandelabrador::Tick(float _DeltaTime)
 
 void UCandelabrador::DataInit()
 {
+	AccessoryType = EAccessory::Candelabrador;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;

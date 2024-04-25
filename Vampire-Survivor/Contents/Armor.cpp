@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Armor.h"
 
-FAccesoryData UArmor::Data = { 0, };
-
 UArmor::UArmor() 
 {
 }
@@ -24,6 +22,8 @@ void UArmor::Tick(float _DeltaTime)
 
 void UArmor::DataInit()
 {
+	AccessoryType = EAccessory::Armor;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;

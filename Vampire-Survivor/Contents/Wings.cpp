@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Wings.h"
 
-FAccesoryData UWings::Data = { 0, };
-
 UWings::UWings() 
 {
 }
@@ -24,6 +22,8 @@ void UWings::Tick(float _DeltaTime)
 
 void UWings::DataInit()
 {
+	AccessoryType = EAccessory::Wings;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;

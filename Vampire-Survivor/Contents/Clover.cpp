@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Clover.h"
 
-FAccesoryData UClover::Data = { 0, };
-
 UClover::UClover() 
 {
 }
@@ -24,6 +22,8 @@ void UClover::Tick(float _DeltaTime)
 
 void UClover::DataInit()
 {
+	AccessoryType = EAccessory::Clover;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;

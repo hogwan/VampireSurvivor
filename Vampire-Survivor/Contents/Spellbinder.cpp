@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Spellbinder.h"
 
-FAccesoryData USpellbinder::Data = { 0, };
-
 USpellbinder::USpellbinder() 
 {
 }
@@ -24,6 +22,8 @@ void USpellbinder::Tick(float _DeltaTime)
 
 void USpellbinder::DataInit()
 {
+	AccessoryType = EAccessory::Spellbinder;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;

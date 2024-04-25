@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Duplicator.h"
 
-FAccesoryData UDuplicator::Data = { 0, };
-
 UDuplicator::UDuplicator() 
 {
 }
@@ -24,6 +22,8 @@ void UDuplicator::Tick(float _DeltaTime)
 
 void UDuplicator::DataInit()
 {
+	AccessoryType = EAccessory::Duplicator;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;

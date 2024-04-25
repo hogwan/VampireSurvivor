@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Bracer.h"
 
-FAccesoryData UBracer::Data = { 0, };
-
 UBracer::UBracer() 
 {
 }
@@ -24,6 +22,8 @@ void UBracer::Tick(float _DeltaTime)
 
 void UBracer::DataInit()
 {
+	AccessoryType = EAccessory::Bracer;
+
 	Data.Level = 1;
 
 	Data.MaxHealth = 0.f;
