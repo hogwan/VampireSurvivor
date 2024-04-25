@@ -18,6 +18,7 @@ APlayGameMode::~APlayGameMode()
 void APlayGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+	
 
 	Camera = GetWorld()->GetMainCamera();
 
@@ -41,6 +42,7 @@ void APlayGameMode::BeginPlay()
 	EquipManager->EquipWeapon(EWeapon::MagicWand);
 	EquipManager->EquipWeapon(EWeapon::RuneTracer);
 	EquipManager->EquipWeapon(EWeapon::SantaWater);*/
+
 
 }
 

@@ -2,6 +2,8 @@
 #include "VSCore.h"
 #include "PlayGameMode.h"
 #include <EngineCore/EngineSprite.h>
+#include "ContentsEditerGUI.h"
+#include <EngineCore/EngineEditorGUI.h>
 
 UVSCore::UVSCore()
 {
@@ -50,7 +52,7 @@ void UVSCore::Initialize()
 			UEngineSound::Load(File.GetFullPath());
 		}
 	}
-
+	UEngineEditorGUI::CreateEditorWindow<ContentsEditerGUI>("ddd");
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->ChangeLevel("PlayLevel");
 
