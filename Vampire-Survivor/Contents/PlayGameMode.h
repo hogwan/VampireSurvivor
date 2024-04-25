@@ -28,6 +28,10 @@ public:
 	APlayGameMode(APlayGameMode&& _Other) noexcept = delete;
 	APlayGameMode& operator=(const APlayGameMode& _Other) = delete;
 	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;
+
+	static std::vector<UWeapon> EquipWeapon;
+	static std::vector<UAccessory> EquipAccessory;
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

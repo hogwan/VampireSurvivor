@@ -13,6 +13,30 @@ enum class AActorDir
 	NW
 };
 
+struct FPlayerData
+{
+public:
+	float MaxHealth = 100.f;
+	float Recovery = 0.f;
+	float Armor = 0.f;
+	float MoveSpeed = 1.f;
+	float Might = 1.f;
+	float Speed = 1.f;
+	float Duration = 1.f;
+	float Area = 1.f;
+	float Cooldown = 1.f;
+	float Magnet = 30.f;
+	float Luck = 1.f;
+	float Growth = 1.f;
+	float Greed = 1.f;
+	float Curse = 1.f;
+
+	int Amount = 0;
+	int Revival = 0;
+	int Skip = 0;
+	int Banish = 0;
+};
+
 class APlayer : public AVSObject
 {
 	GENERATED_BODY(AVSObject)

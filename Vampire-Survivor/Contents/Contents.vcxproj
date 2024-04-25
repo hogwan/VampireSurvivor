@@ -163,6 +163,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Armor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Axe.h">
       <SubType>
       </SubType>
@@ -229,6 +233,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="GarlicUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HollowHeart.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -336,7 +344,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Spinach.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ThunderShock.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Accesory.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -370,6 +386,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Armor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Axe.cpp">
       <SubType>
       </SubType>
@@ -435,6 +455,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GarlicUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HollowHeart.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -546,7 +570,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Spinach.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ThunderShock.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Accesory.cpp">
       <SubType>
       </SubType>
     </ClCompile>

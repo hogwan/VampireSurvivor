@@ -76,6 +76,18 @@
     <Filter Include="Object\Weapon\LightingRing">
       <UniqueIdentifier>{f2b1da35-99be-4628-9738-638f078840c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Accesory">
+      <UniqueIdentifier>{01be0f97-6030-4ef1-bc64-889a1c2a2095}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\Spinach">
+      <UniqueIdentifier>{c62a4f26-6529-4b6a-8e88-1f29c4f7307c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\Armor">
+      <UniqueIdentifier>{49e25961-eda1-4d65-a458-d16a6ea7b1e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\HollowHeart">
+      <UniqueIdentifier>{adb5d0e7-1468-4f03-a499-82c5fe4556b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -234,6 +246,18 @@
     <ClInclude Include="ThunderShock.h">
       <Filter>Object\Weapon\LightingRing</Filter>
     </ClInclude>
+    <ClInclude Include="Accesory.h">
+      <Filter>Object\Accesory</Filter>
+    </ClInclude>
+    <ClInclude Include="Spinach.h">
+      <Filter>Object\Accesory\Spinach</Filter>
+    </ClInclude>
+    <ClInclude Include="Armor.h">
+      <Filter>Object\Accesory\Armor</Filter>
+    </ClInclude>
+    <ClInclude Include="HollowHeart.h">
+      <Filter>Object\Accesory\HollowHeart</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -388,6 +412,18 @@
     </ClCompile>
     <ClCompile Include="ThunderShock.cpp">
       <Filter>Object\Weapon\LightingRing</Filter>
+    </ClCompile>
+    <ClCompile Include="Accesory.cpp">
+      <Filter>Object\Accesory</Filter>
+    </ClCompile>
+    <ClCompile Include="Spinach.cpp">
+      <Filter>Object\Accesory\Spinach</Filter>
+    </ClCompile>
+    <ClCompile Include="Armor.cpp">
+      <Filter>Object\Accesory\Armor</Filter>
+    </ClCompile>
+    <ClCompile Include="HollowHeart.cpp">
+      <Filter>Object\Accesory\HollowHeart</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
