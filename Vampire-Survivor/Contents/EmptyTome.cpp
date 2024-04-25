@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "EmptyTome.h"
 
-FAccesoryData UEmptyTome::Data;
+FAccesoryData UEmptyTome::Data = { 0, };
 
 UEmptyTome::UEmptyTome() 
 {
@@ -34,7 +34,7 @@ void UEmptyTome::DataInit()
 	Data.Speed = 0.f;
 	Data.Duration = 0.f;
 	Data.Area = 0.f;
-	Data.Cooldown = 8.f;
+	Data.Cooldown = 0.08f;
 	Data.Magnet = 0.f;
 	Data.Luck = 0.f;
 	Data.Growth = 0.f;
@@ -60,7 +60,7 @@ void UEmptyTome::LevelUp()
 		Data.Speed = 0.f;
 		Data.Duration = 0.f;
 		Data.Area = 0.f;
-		Data.Cooldown = 8.f;
+		Data.Cooldown = 0.08f;
 		Data.Magnet = 0.f;
 		Data.Luck = 0.f;
 		Data.Growth = 0.f;
@@ -70,16 +70,16 @@ void UEmptyTome::LevelUp()
 		Data.Amount = 0;
 		break;
 	case 2:
-		Data.Cooldown += 8.f;
+		Data.Cooldown += 0.08f;
 		break;
 	case 3:
-		Data.Cooldown += 8.f;
+		Data.Cooldown += 0.08f;
 		break;
 	case 4:
-		Data.Cooldown += 8.f;
+		Data.Cooldown += 0.08f;
 		break;
 	case 5:
-		Data.Cooldown += 8.f;
+		Data.Cooldown += 0.08f;
 		break;
 	default:
 		break;

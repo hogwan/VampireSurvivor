@@ -1,37 +1,37 @@
 #include "PreCompile.h"
-#include "HollowHeart.h"
+#include "Bracer.h"
 
-FAccesoryData UHollowHeart::Data = { 0, };
+FAccesoryData UBracer::Data = { 0, };
 
-UHollowHeart::UHollowHeart() 
+UBracer::UBracer() 
 {
 }
 
-UHollowHeart::~UHollowHeart() 
+UBracer::~UBracer() 
 {
 }
 
-void UHollowHeart::BeginPlay()
+void UBracer::BeginPlay()
 {
 	Super::BeginPlay();
 	DataInit();
 }
 
-void UHollowHeart::Tick(float _DeltaTime)
+void UBracer::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }
 
-void UHollowHeart::DataInit()
+void UBracer::DataInit()
 {
 	Data.Level = 1;
 
-	Data.MaxHealth = 20.f;
+	Data.MaxHealth = 0.f;
 	Data.Recovery = 0.f;
 	Data.Armor = 0.f;
 	Data.MoveSpeed = 0.f;
 	Data.Might = 0.0f;
-	Data.Speed = 0.f;
+	Data.Speed = 0.1f;
 	Data.Duration = 0.f;
 	Data.Area = 0.f;
 	Data.Cooldown = 0.f;
@@ -44,7 +44,7 @@ void UHollowHeart::DataInit()
 	Data.Amount = 0;
 }
 
-void UHollowHeart::LevelUp()
+void UBracer::LevelUp()
 {
 	int Level = ++Data.Level;
 	switch (Level)
@@ -52,12 +52,12 @@ void UHollowHeart::LevelUp()
 	case 1:
 		Data.Level = 1;
 
-		Data.MaxHealth = 20.f;
+		Data.MaxHealth = 0.f;
 		Data.Recovery = 0.f;
 		Data.Armor = 0.f;
 		Data.MoveSpeed = 0.f;
-		Data.Might = 0.0f;
-		Data.Speed = 0.f;
+		Data.Might = 0.f;
+		Data.Speed = 0.1f;
 		Data.Duration = 0.f;
 		Data.Area = 0.f;
 		Data.Cooldown = 0.f;
@@ -70,16 +70,16 @@ void UHollowHeart::LevelUp()
 		Data.Amount = 0;
 		break;
 	case 2:
-		Data.MaxHealth += 20.f;
+		Data.Speed += 0.1f;
 		break;
 	case 3:
-		Data.MaxHealth += 20.f;
+		Data.Speed += 0.1f;
 		break;
 	case 4:
-		Data.MaxHealth += 20.f;
+		Data.Speed += 0.1f;
 		break;
 	case 5:
-		Data.MaxHealth += 20.f;
+		Data.Speed += 0.1f;
 		break;
 	default:
 		break;

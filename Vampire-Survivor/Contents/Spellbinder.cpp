@@ -1,38 +1,38 @@
 #include "PreCompile.h"
-#include "HollowHeart.h"
+#include "Spellbinder.h"
 
-FAccesoryData UHollowHeart::Data = { 0, };
+FAccesoryData USpellbinder::Data = { 0, };
 
-UHollowHeart::UHollowHeart() 
+USpellbinder::USpellbinder() 
 {
 }
 
-UHollowHeart::~UHollowHeart() 
+USpellbinder::~USpellbinder() 
 {
 }
 
-void UHollowHeart::BeginPlay()
+void USpellbinder::BeginPlay()
 {
 	Super::BeginPlay();
 	DataInit();
 }
 
-void UHollowHeart::Tick(float _DeltaTime)
+void USpellbinder::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }
 
-void UHollowHeart::DataInit()
+void USpellbinder::DataInit()
 {
 	Data.Level = 1;
 
-	Data.MaxHealth = 20.f;
+	Data.MaxHealth = 0.f;
 	Data.Recovery = 0.f;
 	Data.Armor = 0.f;
 	Data.MoveSpeed = 0.f;
 	Data.Might = 0.0f;
 	Data.Speed = 0.f;
-	Data.Duration = 0.f;
+	Data.Duration = 0.1f;
 	Data.Area = 0.f;
 	Data.Cooldown = 0.f;
 	Data.Magnet = 0.f;
@@ -44,7 +44,7 @@ void UHollowHeart::DataInit()
 	Data.Amount = 0;
 }
 
-void UHollowHeart::LevelUp()
+void USpellbinder::LevelUp()
 {
 	int Level = ++Data.Level;
 	switch (Level)
@@ -52,13 +52,13 @@ void UHollowHeart::LevelUp()
 	case 1:
 		Data.Level = 1;
 
-		Data.MaxHealth = 20.f;
+		Data.MaxHealth = 0.f;
 		Data.Recovery = 0.f;
 		Data.Armor = 0.f;
 		Data.MoveSpeed = 0.f;
-		Data.Might = 0.0f;
+		Data.Might = 0.f;
 		Data.Speed = 0.f;
-		Data.Duration = 0.f;
+		Data.Duration = 0.1f;
 		Data.Area = 0.f;
 		Data.Cooldown = 0.f;
 		Data.Magnet = 0.f;
@@ -70,16 +70,16 @@ void UHollowHeart::LevelUp()
 		Data.Amount = 0;
 		break;
 	case 2:
-		Data.MaxHealth += 20.f;
+		Data.Duration += 0.1f;
 		break;
 	case 3:
-		Data.MaxHealth += 20.f;
+		Data.Duration += 0.1f;
 		break;
 	case 4:
-		Data.MaxHealth += 20.f;
+		Data.Duration += 0.1f;
 		break;
 	case 5:
-		Data.MaxHealth += 20.f;
+		Data.Duration += 0.1f;
 		break;
 	default:
 		break;

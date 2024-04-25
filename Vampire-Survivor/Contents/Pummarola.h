@@ -4,6 +4,7 @@
 // Ό³Έν :
 class UPummarola : public UAccesory
 {
+	GENERATED_BODY(UAccesory)
 public:
 	// constructor destructor
 	UPummarola();

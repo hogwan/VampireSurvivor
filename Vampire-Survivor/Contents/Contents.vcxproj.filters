@@ -94,6 +94,27 @@
     <Filter Include="Object\Accesory\EmptyTome">
       <UniqueIdentifier>{5d77db94-ea50-4430-817d-d6c2e79e0cfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Accesory\Candelabrador">
+      <UniqueIdentifier>{541014e2-a531-43a5-93fb-2d803ce2a14d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\Bracer">
+      <UniqueIdentifier>{566064d2-276c-47eb-b008-01e940b48c62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\Spellbinder">
+      <UniqueIdentifier>{cf9567c0-a523-46f9-8bb5-1f16859ac1b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\Duplicator">
+      <UniqueIdentifier>{cd4fd1c0-3439-4a36-b7bc-6e065b123f96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\Wings">
+      <UniqueIdentifier>{ca7023a8-7528-48ac-bfdf-e0fe5ec55edf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\Attractorb">
+      <UniqueIdentifier>{8a11ffb6-41df-4310-a8ac-15a7fcb52a27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Accesory\Clover">
+      <UniqueIdentifier>{86e42a50-69e0-48a2-b9e1-6df9a01fae0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -270,6 +291,27 @@
     <ClInclude Include="EmptyTome.h">
       <Filter>Object\Accesory\EmptyTome</Filter>
     </ClInclude>
+    <ClInclude Include="Candelabrador.h">
+      <Filter>Object\Accesory\Candelabrador</Filter>
+    </ClInclude>
+    <ClInclude Include="Bracer.h">
+      <Filter>Object\Accesory\Bracer</Filter>
+    </ClInclude>
+    <ClInclude Include="Spellbinder.h">
+      <Filter>Object\Accesory\Spellbinder</Filter>
+    </ClInclude>
+    <ClInclude Include="Duplicator.h">
+      <Filter>Object\Accesory\Duplicator</Filter>
+    </ClInclude>
+    <ClInclude Include="Wings.h">
+      <Filter>Object\Accesory\Wings</Filter>
+    </ClInclude>
+    <ClInclude Include="Attractorb.h">
+      <Filter>Object\Accesory\Attractorb</Filter>
+    </ClInclude>
+    <ClInclude Include="Clover.h">
+      <Filter>Object\Accesory\Clover</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -442,6 +484,27 @@
     </ClCompile>
     <ClCompile Include="EmptyTome.cpp">
       <Filter>Object\Accesory\EmptyTome</Filter>
+    </ClCompile>
+    <ClCompile Include="Candelabrador.cpp">
+      <Filter>Object\Accesory\Candelabrador</Filter>
+    </ClCompile>
+    <ClCompile Include="Bracer.cpp">
+      <Filter>Object\Accesory\Bracer</Filter>
+    </ClCompile>
+    <ClCompile Include="Spellbinder.cpp">
+      <Filter>Object\Accesory\Spellbinder</Filter>
+    </ClCompile>
+    <ClCompile Include="Duplicator.cpp">
+      <Filter>Object\Accesory\Duplicator</Filter>
+    </ClCompile>
+    <ClCompile Include="Wings.cpp">
+      <Filter>Object\Accesory\Wings</Filter>
+    </ClCompile>
+    <ClCompile Include="Attractorb.cpp">
+      <Filter>Object\Accesory\Attractorb</Filter>
+    </ClCompile>
+    <ClCompile Include="Clover.cpp">
+      <Filter>Object\Accesory\Clover</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

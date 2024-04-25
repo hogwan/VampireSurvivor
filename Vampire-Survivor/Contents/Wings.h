@@ -2,19 +2,19 @@
 #include "Accesory.h"
 
 // Ό³Έν :
-class USpinach : public UAccesory
+class UWings : public UAccesory
 {
 	GENERATED_BODY(UAccesory)
 public:
 	// constructor destructor
-	USpinach();
-	~USpinach();
+	UWings();
+	~UWings();
 
 	// delete Function
-	USpinach(const USpinach& _Other) = delete;
-	USpinach(USpinach&& _Other) noexcept = delete;
-	USpinach& operator=(const USpinach& _Other) = delete;
-	USpinach& operator=(USpinach&& _Other) noexcept = delete;
+	UWings(const UWings& _Other) = delete;
+	UWings(UWings&& _Other) noexcept = delete;
+	UWings& operator=(const UWings& _Other) = delete;
+	UWings& operator=(UWings&& _Other) noexcept = delete;
 
 	static FAccesoryData Data;
 

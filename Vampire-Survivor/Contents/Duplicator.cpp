@@ -1,32 +1,32 @@
 #include "PreCompile.h"
-#include "HollowHeart.h"
+#include "Duplicator.h"
 
-FAccesoryData UHollowHeart::Data = { 0, };
+FAccesoryData UDuplicator::Data = { 0, };
 
-UHollowHeart::UHollowHeart() 
+UDuplicator::UDuplicator() 
 {
 }
 
-UHollowHeart::~UHollowHeart() 
+UDuplicator::~UDuplicator() 
 {
 }
 
-void UHollowHeart::BeginPlay()
+void UDuplicator::BeginPlay()
 {
 	Super::BeginPlay();
 	DataInit();
 }
 
-void UHollowHeart::Tick(float _DeltaTime)
+void UDuplicator::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }
 
-void UHollowHeart::DataInit()
+void UDuplicator::DataInit()
 {
 	Data.Level = 1;
 
-	Data.MaxHealth = 20.f;
+	Data.MaxHealth = 0.f;
 	Data.Recovery = 0.f;
 	Data.Armor = 0.f;
 	Data.MoveSpeed = 0.f;
@@ -41,10 +41,10 @@ void UHollowHeart::DataInit()
 	Data.Greed = 0.f;
 	Data.Curse = 0.f;
 
-	Data.Amount = 0;
+	Data.Amount = 1;
 }
 
-void UHollowHeart::LevelUp()
+void UDuplicator::LevelUp()
 {
 	int Level = ++Data.Level;
 	switch (Level)
@@ -52,7 +52,7 @@ void UHollowHeart::LevelUp()
 	case 1:
 		Data.Level = 1;
 
-		Data.MaxHealth = 20.f;
+		Data.MaxHealth = 0.f;
 		Data.Recovery = 0.f;
 		Data.Armor = 0.f;
 		Data.MoveSpeed = 0.f;
@@ -67,19 +67,19 @@ void UHollowHeart::LevelUp()
 		Data.Greed = 0.f;
 		Data.Curse = 0.f;
 
-		Data.Amount = 0;
+		Data.Amount = 1;
 		break;
 	case 2:
-		Data.MaxHealth += 20.f;
+		Data.Amount += 1;
 		break;
 	case 3:
-		Data.MaxHealth += 20.f;
+		Data.Amount += 1;
 		break;
 	case 4:
-		Data.MaxHealth += 20.f;
+		Data.Amount += 1;
 		break;
 	case 5:
-		Data.MaxHealth += 20.f;
+		Data.Amount += 1;
 		break;
 	default:
 		break;

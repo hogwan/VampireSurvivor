@@ -2,19 +2,19 @@
 #include "Accesory.h"
 
 // Ό³Έν :
-class USpinach : public UAccesory
+class UCandelabrador : public UAccesory
 {
 	GENERATED_BODY(UAccesory)
 public:
 	// constructor destructor
-	USpinach();
-	~USpinach();
+	UCandelabrador();
+	~UCandelabrador();
 
 	// delete Function
-	USpinach(const USpinach& _Other) = delete;
-	USpinach(USpinach&& _Other) noexcept = delete;
-	USpinach& operator=(const USpinach& _Other) = delete;
-	USpinach& operator=(USpinach&& _Other) noexcept = delete;
+	UCandelabrador(const UCandelabrador& _Other) = delete;
+	UCandelabrador(UCandelabrador&& _Other) noexcept = delete;
+	UCandelabrador& operator=(const UCandelabrador& _Other) = delete;
+	UCandelabrador& operator=(UCandelabrador&& _Other) noexcept = delete;
 
 	static FAccesoryData Data;
 
@@ -29,6 +29,7 @@ protected:
 
 	void DataInit() override;
 	void LevelUp() override;
+
 private:
 
 };

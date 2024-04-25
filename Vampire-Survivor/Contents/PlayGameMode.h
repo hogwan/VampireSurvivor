@@ -1,5 +1,7 @@
 #pragma once
 #include <EngineCore/GameMode.h>
+#include "Weapon.h"
+#include "Accesory.h"
 
 struct FIntPoint
 {
@@ -30,7 +32,7 @@ public:
 	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;
 
 	static std::vector<UWeapon> EquipWeapon;
-	static std::vector<UAccessory> EquipAccessory;
+	static std::vector<UAccesory> EquipAccessory;
 
 protected:
 	void BeginPlay() override;
