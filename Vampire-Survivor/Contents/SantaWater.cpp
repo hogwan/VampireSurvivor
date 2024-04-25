@@ -21,9 +21,6 @@ USantaWater::~USantaWater()
 void USantaWater::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
-	RemainCount = Data.Amount;
-	
 }
 
 void USantaWater::Tick(float _DeltaTime)
@@ -46,11 +43,6 @@ void USantaWater::Tick(float _DeltaTime)
 	}
 
 	SpawnLoop(_DeltaTime);
-
-	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
-	{
-		LevelUp();
-	}
 }
 
 void USantaWater::DataInit()
@@ -58,16 +50,17 @@ void USantaWater::DataInit()
 	Type = EWeapon::SantaWater;
 
 	Data.Level = 1;
-	Data.Amount = 1;
-	Data.Penetration = 0;
-	Data.Damage = 10.f;
-	Data.Speed = 0.f;
-	Data.Duration = 2.f;
-	Data.Area = 1.f;
-	Data.Cooldown = 2.f;
-	Data.KnockbackPower = 100.f;
+	OriginalData.Amount = 1;
+	OriginalData.Penetration = 0;
+	OriginalData.Damage = 10.f;
+	OriginalData.Speed = 0.f;
+	OriginalData.Duration = 2.f;
+	OriginalData.Area = 1.f;
+	OriginalData.Cooldown = 2.f;
+	OriginalData.KnockbackPower = 100.f;
 
-	RemainTime = Data.Cooldown;
+	RemainTime = OriginalData.Cooldown;
+	RemainCount = OriginalData.Amount;
 }
 
 void USantaWater::LevelUp()
@@ -77,42 +70,42 @@ void USantaWater::LevelUp()
 	{
 	case 1:
 		Data.Level = 1;
-		Data.Amount = 1;
-		Data.Penetration = 0;
-		Data.Damage = 10.f;
-		Data.Speed = 0.f;
-		Data.Duration = 2.f;
-		Data.Area = 1.f;
-		Data.Cooldown = 2.f;
-		Data.KnockbackPower = 100.f;
+		OriginalData.Amount = 1;
+		OriginalData.Penetration = 0;
+		OriginalData.Damage = 10.f;
+		OriginalData.Speed = 0.f;
+		OriginalData.Duration = 2.f;
+		OriginalData.Area = 1.f;
+		OriginalData.Cooldown = 2.f;
+		OriginalData.KnockbackPower = 100.f;
 		break;
 	case 2:
-		++Data.Amount;
-		Data.Area *= 1.2f;
+		++OriginalData.Amount;
+		OriginalData.Area *= 1.2f;
 		break;
 	case 3:
-		Data.Damage += 10.f;
-		Data.Duration += 0.5f;
+		OriginalData.Damage += 10.f;
+		OriginalData.Duration += 0.5f;
 		break;
 	case 4:
-		++Data.Amount;
-		Data.Area *= 1.2f;
+		++OriginalData.Amount;
+		OriginalData.Area *= 1.2f;
 		break;
 	case 5:
-		Data.Damage += 10.f;
-		Data.Duration += 0.3f;
+		OriginalData.Damage += 10.f;
+		OriginalData.Duration += 0.3f;
 		break;
 	case 6:
-		++Data.Amount;
-		Data.Area *= 1.2f;
+		++OriginalData.Amount;
+		OriginalData.Area *= 1.2f;
 		break;
 	case 7:
-		Data.Damage += 10.f;
-		Data.Duration += 0.3f;
+		OriginalData.Damage += 10.f;
+		OriginalData.Duration += 0.3f;
 		break;
 	case 8:
-		Data.Damage += 5.f;
-		Data.Duration += 0.3f;
+		OriginalData.Damage += 5.f;
+		OriginalData.Duration += 0.3f;
 		break;
 	default:
 		break;
@@ -142,6 +135,7 @@ void USantaWater::ApplyStatus(FPlayerData _Data)
 	TempData.Duration = OriginalData.Duration * _Data.Duration;
 	TempData.Area = OriginalData.Area * _Data.Area;
 	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+	TempData.Penetration = OriginalData.Penetration;
 
 	Data.Amount = TempData.Amount;
 	Data.Damage = TempData.Damage;
@@ -149,6 +143,8 @@ void USantaWater::ApplyStatus(FPlayerData _Data)
 	Data.Duration = TempData.Duration;
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
+	Data.Penetration = TempData.Penetration;
+	RemainTime = Data.Cooldown;
 }
 
 void USantaWater::SpawnLoop(float _DeltaTime)

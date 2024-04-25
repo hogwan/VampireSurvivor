@@ -17,7 +17,6 @@ UKingBible::~UKingBible()
 void UKingBible::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
 	SpawnCenter();
 }
 
@@ -44,16 +43,16 @@ void UKingBible::DataInit()
 	Type = EWeapon::KingBible;
 
 	Data.Level = 1;
-	Data.Amount = 1;
-	Data.Penetration = -1;
-	Data.Damage = 10.f;
-	Data.Speed = 100.f;
-	Data.Duration = 3.f;
-	Data.Area = 100.f;
-	Data.Cooldown = 3.f;
-	Data.KnockbackPower = 100.f;
+	OriginalData.Amount = 1;
+	OriginalData.Penetration = -1;
+	OriginalData.Damage = 10.f;
+	OriginalData.Speed = 100.f;
+	OriginalData.Duration = 3.f;
+	OriginalData.Area = 100.f;
+	OriginalData.Cooldown = 3.f;
+	OriginalData.KnockbackPower = 100.f;
 
-	RemainTime = Data.Cooldown + Data.Duration;
+	RemainTime = Data.Cooldown + OriginalData.Duration;
 }
 
 void UKingBible::LevelUp()
@@ -64,39 +63,39 @@ void UKingBible::LevelUp()
 	{
 	case 1:
 		Data.Level = 1;
-		Data.Amount = 1;
-		Data.Penetration = -1;
-		Data.Damage = 10.f;
-		Data.Speed = 100.f;
-		Data.Duration = 3.f;
-		Data.Area = 100.f;
-		Data.Cooldown = 3.f;
-		Data.KnockbackPower = 100.f;
+		OriginalData.Amount = 1;
+		OriginalData.Penetration = -1;
+		OriginalData.Damage = 10.f;
+		OriginalData.Speed = 100.f;
+		OriginalData.Duration = 3.f;
+		OriginalData.Area = 100.f;
+		OriginalData.Cooldown = 3.f;
+		OriginalData.KnockbackPower = 100.f;
 		break;
 	case 2:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 3:
-		Data.Speed = Data.Speed * 1.3f;
-		Data.Area = Data.Area * 1.25f;
+		OriginalData.Speed = Data.Speed * 1.3f;
+		OriginalData.Area = Data.Area * 1.25f;
 		break;
 	case 4:
-		Data.Duration += 0.5f;
-		Data.Damage += 10.f;
+		OriginalData.Duration += 0.5f;
+		OriginalData.Damage += 10.f;
 		break;
 	case 5:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 6:
-		Data.Speed = Data.Speed * 1.3f;
-		Data.Area = Data.Area * 1.25f;
+		OriginalData.Speed = Data.Speed * 1.3f;
+		OriginalData.Area = Data.Area * 1.25f;
 		break;
 	case 7:
-		Data.Duration += 0.5f;
-		Data.Damage += 10.f;
+		OriginalData.Duration += 0.5f;
+		OriginalData.Damage += 10.f;
 		break;
 	case 8:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	default:
 		break;
@@ -120,6 +119,7 @@ void UKingBible::ApplyStatus(FPlayerData _Data)
 	TempData.Duration = OriginalData.Duration * _Data.Duration;
 	TempData.Area = OriginalData.Area * _Data.Area;
 	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+	TempData.Penetration = OriginalData.Penetration;
 
 	Data.Amount = TempData.Amount;
 	Data.Damage = TempData.Damage;
@@ -127,4 +127,6 @@ void UKingBible::ApplyStatus(FPlayerData _Data)
 	Data.Duration = TempData.Duration;
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
+	Data.Penetration = TempData.Penetration;
+	RemainTime = Data.Cooldown;
 }

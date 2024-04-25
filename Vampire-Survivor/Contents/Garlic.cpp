@@ -15,7 +15,6 @@ UGarlic::~UGarlic()
 void UGarlic::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
 	SpawnCenter();
 }
 
@@ -28,11 +27,6 @@ void UGarlic::Tick(float _DeltaTime)
 		RemainTime = Data.Cooldown;
 		SpawnCenter();
 	}
-
-	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
-	{
-		LevelUp();
-	}
 }
 
 void UGarlic::DataInit()
@@ -40,16 +34,16 @@ void UGarlic::DataInit()
 	Type = EWeapon::Garlic;
 
 	Data.Level = 1;
-	Data.Amount = 0;
-	Data.Penetration = 0;
-	Data.Damage = 5.f;
-	Data.Speed = 0.f;
-	Data.Duration = 0.f;
-	Data.Area = 1.f;
-	Data.Cooldown = 0.5f;
-	Data.KnockbackPower = 100.f;
+	OriginalData.Amount = 0;
+	OriginalData.Penetration = 0;
+	OriginalData.Damage = 5.f;
+	OriginalData.Speed = 0.f;
+	OriginalData.Duration = 0.f;
+	OriginalData.Area = 1.f;
+	OriginalData.Cooldown = 0.5f;
+	OriginalData.KnockbackPower = 100.f;
 
-	RemainTime = Data.Cooldown;
+	RemainTime = OriginalData.Cooldown;
 }
 
 void UGarlic::LevelUp()
@@ -59,42 +53,42 @@ void UGarlic::LevelUp()
 	{
 	case 1:
 		Data.Level = 1;
-		Data.Amount = 0;
-		Data.Penetration = 0;
-		Data.Damage = 5.f;
-		Data.Speed = 0.f;
-		Data.Duration = 0.f;
-		Data.Area = 1.f;
-		Data.Cooldown = 0.5f;
-		Data.KnockbackPower = 100.f;
+		OriginalData.Amount = 0;
+		OriginalData.Penetration = 0;
+		OriginalData.Damage = 5.f;
+		OriginalData.Speed = 0.f;
+		OriginalData.Duration = 0.f;
+		OriginalData.Area = 1.f;
+		OriginalData.Cooldown = 0.5f;
+		OriginalData.KnockbackPower = 100.f;
 		break;
 	case 2:
-		Data.Area *= 1.4f;
-		Data.Damage += 2.f;
+		OriginalData.Area *= 1.4f;
+		OriginalData.Damage += 2.f;
 		break;
 	case 3:
-		Data.Cooldown -= 0.1f;
-		Data.Damage += 1.f;
+		OriginalData.Cooldown -= 0.1f;
+		OriginalData.Damage += 1.f;
 		break;
 	case 4:
-		Data.Area *= 1.2f;
-		Data.Damage += 1.f;
+		OriginalData.Area *= 1.2f;
+		OriginalData.Damage += 1.f;
 		break;
 	case 5:
-		Data.Cooldown -= 0.1f;
-		Data.Damage += 2.f;
+		OriginalData.Cooldown -= 0.1f;
+		OriginalData.Damage += 2.f;
 		break;
 	case 6:
-		Data.Area *= 1.2f;
-		Data.Damage += 1.f;
+		OriginalData.Area *= 1.2f;
+		OriginalData.Damage += 1.f;
 		break;
 	case 7:
-		Data.Cooldown -= 0.1f;
-		Data.Damage += 1.f;
+		OriginalData.Cooldown -= 0.1f;
+		OriginalData.Damage += 1.f;
 		break;
 	case 8:
-		Data.Area *= 1.2f;
-		Data.Damage += 2.f;
+		OriginalData.Area *= 1.2f;
+		OriginalData.Damage += 2.f;
 		break;
 	default:
 		break;
@@ -116,6 +110,7 @@ void UGarlic::ApplyStatus(FPlayerData _Data)
 	TempData.Duration = OriginalData.Duration * _Data.Duration;
 	TempData.Area = OriginalData.Area * _Data.Area;
 	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+	TempData.Penetration = OriginalData.Penetration;
 
 	Data.Amount = TempData.Amount;
 	Data.Damage = TempData.Damage;
@@ -123,4 +118,6 @@ void UGarlic::ApplyStatus(FPlayerData _Data)
 	Data.Duration = TempData.Duration;
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
+	Data.Penetration = TempData.Penetration;
+	RemainTime = Data.Cooldown;
 }

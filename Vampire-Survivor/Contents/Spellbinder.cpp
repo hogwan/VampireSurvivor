@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Spellbinder.h"
 
+FAccessoryData USpellbinder::Data = { 0, };
+
 USpellbinder::USpellbinder() 
 {
 }

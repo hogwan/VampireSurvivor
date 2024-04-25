@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Pummarola.h"
 
+FAccessoryData UPummarola::Data = { 0, };
+
 UPummarola::UPummarola() 
 {
 }

@@ -14,7 +14,6 @@ UCross::~UCross()
 void UCross::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
 	SpawnCenter();
 }
 
@@ -27,11 +26,6 @@ void UCross::Tick(float _DeltaTime)
 		RemainTime = Data.Cooldown;
 		SpawnCenter();
 	}
-
-	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
-	{
-		LevelUp();
-	}
 }
 
 void UCross::DataInit()
@@ -39,16 +33,16 @@ void UCross::DataInit()
 	Type = EWeapon::Cross;
 
 	Data.Level = 1;
-	Data.Amount = 1;
-	Data.Penetration = 0;
-	Data.Damage = 5.f;
-	Data.Speed = 300.f;
-	Data.Duration = 0.f;
-	Data.Area = 1.f;
-	Data.Cooldown = 2.f;
-	Data.KnockbackPower = 100.f;
+	OriginalData.Amount = 1;
+	OriginalData.Penetration = 0;
+	OriginalData.Damage = 5.f;
+	OriginalData.Speed = 300.f;
+	OriginalData.Duration = 0.f;
+	OriginalData.Area = 1.f;
+	OriginalData.Cooldown = 2.f;
+	OriginalData.KnockbackPower = 100.f;
 
-	RemainTime = Data.Cooldown;
+	RemainTime = OriginalData.Cooldown;
 }
 
 void UCross::LevelUp()
@@ -58,37 +52,37 @@ void UCross::LevelUp()
 	{
 	case 1:
 		Data.Level = 1;
-		Data.Amount = 1;
-		Data.Penetration = 0;
-		Data.Damage = 5.f;
-		Data.Speed = 300.f;
-		Data.Duration = 0.f;
-		Data.Area = 1.f;
-		Data.Cooldown = 2.f;
-		Data.KnockbackPower = 100.f;
+		OriginalData.Amount = 1;
+		OriginalData.Penetration = 0;
+		OriginalData.Damage = 5.f;
+		OriginalData.Speed = 300.f;
+		OriginalData.Duration = 0.f;
+		OriginalData.Area = 1.f;
+		OriginalData.Cooldown = 2.f;
+		OriginalData.KnockbackPower = 100.f;
 		break;
 	case 2:
-		Data.Damage += 10;
+		OriginalData.Damage += 10;
 		break;
 	case 3:
-		Data.Speed *= 1.25f;
-		Data.Area *= 1.1f;
+		OriginalData.Speed *= 1.25f;
+		OriginalData.Area *= 1.1f;
 		break;
 	case 4:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 5:
-		Data.Damage += 10.f;
+		OriginalData.Damage += 10.f;
 		break;
 	case 6:
-		Data.Speed *= 1.25f;
-		Data.Area *= 1.1f;
+		OriginalData.Speed *= 1.25f;
+		OriginalData.Area *= 1.1f;
 		break;
 	case 7:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 8:
-		Data.Damage += 10.f;
+		OriginalData.Damage += 10.f;
 		break;
 	default:
 		break;
@@ -110,6 +104,7 @@ void UCross::ApplyStatus(FPlayerData _Data)
 	TempData.Duration = OriginalData.Duration * _Data.Duration;
 	TempData.Area = OriginalData.Area * _Data.Area;
 	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+	TempData.Penetration = OriginalData.Penetration;
 
 	Data.Amount = TempData.Amount;
 	Data.Damage = TempData.Damage;
@@ -117,4 +112,6 @@ void UCross::ApplyStatus(FPlayerData _Data)
 	Data.Duration = TempData.Duration;
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
+	Data.Penetration = TempData.Penetration;
+	RemainTime = Data.Cooldown;
 }

@@ -16,7 +16,6 @@ UFireWand::~UFireWand()
 void UFireWand::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
 	SpawnCenter();
 }
 
@@ -29,11 +28,6 @@ void UFireWand::Tick(float _DeltaTime)
 		RemainTime = Data.Cooldown;
 		SpawnCenter();
 	}
-
-	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
-	{
-		LevelUp();
-	}
 }
 
 void UFireWand::DataInit()
@@ -41,16 +35,16 @@ void UFireWand::DataInit()
 	Type = EWeapon::FireWand;
 
 	Data.Level = 1;
-	Data.Amount = 3;
-	Data.Penetration = 1;
-	Data.Damage = 20.f;
-	Data.Speed = 100.f;
-	Data.Duration = 2.f;
-	Data.Area = 1.f;
-	Data.Cooldown = 3.f;
-	Data.KnockbackPower = 100.f;
+	OriginalData.Amount = 3;
+	OriginalData.Penetration = 1;
+	OriginalData.Damage = 20.f;
+	OriginalData.Speed = 100.f;
+	OriginalData.Duration = 2.f;
+	OriginalData.Area = 1.f;
+	OriginalData.Cooldown = 3.f;
+	OriginalData.KnockbackPower = 100.f;
 
-	RemainTime = Data.Cooldown;
+	RemainTime = OriginalData.Cooldown;
 }
 
 void UFireWand::LevelUp()
@@ -60,38 +54,38 @@ void UFireWand::LevelUp()
 	{
 	case 1:
 		Data.Level = 1;
-		Data.Amount = 3;
-		Data.Penetration = 1;
-		Data.Damage = 20.f;
-		Data.Speed = 100.f;
-		Data.Duration = 2.f;
-		Data.Area = 1.f;
-		Data.Cooldown = 3.f;
-		Data.KnockbackPower = 100.f;
+		OriginalData.Amount = 3;
+		OriginalData.Penetration = 1;
+		OriginalData.Damage = 20.f;
+		OriginalData.Speed = 100.f;
+		OriginalData.Duration = 2.f;
+		OriginalData.Area = 1.f;
+		OriginalData.Cooldown = 3.f;
+		OriginalData.KnockbackPower = 100.f;
 		break;
 	case 2:
-		Data.Damage += 10.f;
+		OriginalData.Damage += 10.f;
 		break;
 	case 3:
-		Data.Damage += 10.f;
-		Data.Speed *= 1.2f;
+		OriginalData.Damage += 10.f;
+		OriginalData.Speed *= 1.2f;
 		break;
 	case 4:
-		Data.Damage += 10.f;
+		OriginalData.Damage += 10.f;
 		break;
 	case 5:
-		Data.Damage += 10.f;
-		Data.Speed *= 1.2f;
+		OriginalData.Damage += 10.f;
+		OriginalData.Speed *= 1.2f;
 		break;
 	case 6:
-		Data.Damage += 10.f;
+		OriginalData.Damage += 10.f;
 		break;
 	case 7:
-		Data.Damage += 10.f;
-		Data.Speed *= 1.2f;
+		OriginalData.Damage += 10.f;
+		OriginalData.Speed *= 1.2f;
 		break;
 	case 8:
-		Data.Damage += 10.f;
+		OriginalData.Damage += 10.f;
 		break;
 	default:
 		break;
@@ -113,6 +107,7 @@ void UFireWand::ApplyStatus(FPlayerData _Data)
 	TempData.Duration = OriginalData.Duration * _Data.Duration;
 	TempData.Area = OriginalData.Area * _Data.Area;
 	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+	TempData.Penetration = OriginalData.Penetration;
 
 	Data.Amount = TempData.Amount;
 	Data.Damage = TempData.Damage;
@@ -120,4 +115,6 @@ void UFireWand::ApplyStatus(FPlayerData _Data)
 	Data.Duration = TempData.Duration;
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
+	Data.Penetration = TempData.Penetration;
+	RemainTime = Data.Cooldown;
 }

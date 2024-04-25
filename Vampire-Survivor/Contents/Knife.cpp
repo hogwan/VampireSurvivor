@@ -16,7 +16,6 @@ UKnife::~UKnife()
 void UKnife::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
 	SpawnCenter();
 }
 
@@ -31,10 +30,6 @@ void UKnife::Tick(float _DeltaTime)
 		SpawnCenter();
 	}
 
-	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
-	{
-		LevelUp();
-	}
 }
 
 void UKnife::DataInit()
@@ -42,16 +37,16 @@ void UKnife::DataInit()
 	Type = EWeapon::Knife;
 
 	Data.Level = 1;
-	Data.Amount = 1;
-	Data.Penetration = 1;
-	Data.Damage = 6.5f;
-	Data.Speed = 500.f;
-	Data.Duration = 1.f;
-	Data.Area = 0.f;
-	Data.Cooldown = 1.0f;
-	Data.KnockbackPower = 100.f;
+	OriginalData.Amount = 1;
+	OriginalData.Penetration = 1;
+	OriginalData.Damage = 6.5f;
+	OriginalData.Speed = 500.f;
+	OriginalData.Duration = 1.f;
+	OriginalData.Area = 0.f;
+	OriginalData.Cooldown = 1.0f;
+	OriginalData.KnockbackPower = 100.f;
 
-	RemainTime = Data.Cooldown;
+	RemainTime = OriginalData.Cooldown;
 }
 
 void UKnife::LevelUp()
@@ -61,37 +56,37 @@ void UKnife::LevelUp()
 	{
 	case 1:
 		Data.Level = 1;
-		Data.Amount = 1;
-		Data.Penetration = 1;
-		Data.Damage = 6.5f;
-		Data.Speed = 500.f;
-		Data.Duration = 1.f;
-		Data.Area = 0.f;
-		Data.Cooldown = 1.0f;
-		Data.KnockbackPower = 100.f;
+		OriginalData.Amount = 1;
+		OriginalData.Penetration = 1;
+		OriginalData.Damage = 6.5f;
+		OriginalData.Speed = 500.f;
+		OriginalData.Duration = 1.f;
+		OriginalData.Area = 0.f;
+		OriginalData.Cooldown = 1.0f;
+		OriginalData.KnockbackPower = 100.f;
 		break;
 	case 2:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 3:
-		++Data.Amount;
-		Data.Damage += 5.f;
+		++OriginalData.Amount;
+		OriginalData.Damage += 5.f;
 		break;
 	case 4:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 5:
-		++Data.Penetration;
+		++OriginalData.Penetration;
 		break;
 	case 6:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 7:
-		++Data.Penetration;
-		Data.Damage += 5.f;
+		++OriginalData.Penetration;
+		OriginalData.Damage += 5.f;
 		break;
 	case 8:
-		++Data.Penetration;
+		++OriginalData.Penetration;
 		break;
 	default:
 		break;
@@ -113,6 +108,7 @@ void UKnife::ApplyStatus(FPlayerData _Data)
 	TempData.Duration = OriginalData.Duration * _Data.Duration;
 	TempData.Area = OriginalData.Area * _Data.Area;
 	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+	TempData.Penetration = OriginalData.Penetration;
 
 	Data.Amount = TempData.Amount;
 	Data.Damage = TempData.Damage;
@@ -120,4 +116,6 @@ void UKnife::ApplyStatus(FPlayerData _Data)
 	Data.Duration = TempData.Duration;
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
+	Data.Penetration = TempData.Penetration;
+	RemainTime = Data.Cooldown;
 }

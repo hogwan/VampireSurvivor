@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Attractorb.h"
 
+FAccessoryData UAttractorb::Data = { 0, };
+
 UAttractorb::UAttractorb() 
 {
 }

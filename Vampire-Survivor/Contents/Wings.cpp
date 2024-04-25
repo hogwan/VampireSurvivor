@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Wings.h"
 
+FAccessoryData UWings::Data = { 0, };
+
 UWings::UWings() 
 {
 }

@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Candelabrador.h"
 
+FAccessoryData UCandelabrador::Data = { 0, };
+
 UCandelabrador::UCandelabrador() 
 {
 }

@@ -3,18 +3,8 @@
 #include "BackGroundMap.h"
 #include "Player.h"
 #include "SpawnerManager.h"
+#include "EquipManager.h"
 #include <EngineCore/Camera.h>
-#include "KingBible.h"
-#include "MagicWand.h"
-#include "Whip.h"
-#include "Knife.h"
-#include "Axe.h"
-#include "Cross.h"
-#include "FireWand.h"
-#include "Garlic.h"
-#include "SantaWater.h"
-#include "RuneTracer.h"
-#include "LightingRing.h"
 
 APlayGameMode::APlayGameMode()
 {
@@ -37,17 +27,18 @@ void APlayGameMode::BeginPlay()
 	UContentsValue::StartPosition = Player->GetActorLocation();
 
 	GetWorld()->SpawnActor<USpawnerManager>("SpawnerManager");
-	//GetWorld()->SpawnActor<UKingBible>("KingBible");
-	//GetWorld()->SpawnActor<UMagicWand>("MagicWand");
-	GetWorld()->SpawnActor<UWhip>("Whip");
-	//GetWorld()->SpawnActor<UKnife>("Knife");
-	//GetWorld()->SpawnActor<UAxe>("Axe");
-	//GetWorld()->SpawnActor<UCross>("Cross");
-	//GetWorld()->SpawnActor<UFireWand>("FireWand");
-	//GetWorld()->SpawnActor<UGarlic>("Garlic");
-	//GetWorld()->SpawnActor<USantaWater>("SantaWater");
-	//GetWorld()->SpawnActor<URuneTracer>("RuneTracer");
-	//GetWorld()->SpawnActor<ULightingRing>("LightingRing");
+	std::shared_ptr<UEquipManager> EquipManager = GetWorld()->SpawnActor<UEquipManager>("EquipManager");
+	EquipManager->EquipWeapon(EWeapon::Axe);
+	EquipManager->EquipWeapon(EWeapon::Cross);
+	EquipManager->EquipWeapon(EWeapon::FireWand);
+	EquipManager->EquipWeapon(EWeapon::Garlic);
+	EquipManager->EquipWeapon(EWeapon::KingBible);
+	EquipManager->EquipWeapon(EWeapon::Knife);
+	//EquipManager->EquipWeapon(EWeapon::LightingRing);
+	//EquipManager->EquipWeapon(EWeapon::MagicWand);
+	//EquipManager->EquipWeapon(EWeapon::RuneTracer);
+	//EquipManager->EquipWeapon(EWeapon::SantaWater);
+
 
 
 	for (int y = -1; y < 2; y++)

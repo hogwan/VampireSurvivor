@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "HollowHeart.h"
 
+FAccessoryData UHollowHeart::Data = { 0, };
+
 UHollowHeart::UHollowHeart() 
 {
 }

@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Clover.h"
 
+FAccessoryData UClover::Data = { 0, };
+
 UClover::UClover() 
 {
 }

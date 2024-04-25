@@ -16,6 +16,8 @@ public:
 	UWings& operator=(const UWings& _Other) = delete;
 	UWings& operator=(UWings&& _Other) noexcept = delete;
 
+	static FAccessoryData Data;
+
 	FAccessoryData GetData() override
 	{
 		return Data;

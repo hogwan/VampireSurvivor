@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "EmptyTome.h"
 
+FAccessoryData UEmptyTome::Data = { 0, };
+
 UEmptyTome::UEmptyTome() 
 {
 }

@@ -16,7 +16,6 @@ UWhip::~UWhip()
 void UWhip::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
 	SpawnCenter();
 }
 
@@ -29,18 +28,13 @@ void UWhip::Tick(float _DeltaTime)
 		RemainTime = Data.Cooldown;
 		SpawnCenter();
 	}
-
-	if (UEngineInput::IsDown('l') || UEngineInput::IsDown('L'))
-	{
-		LevelUp();
-	}
 }
 
 void UWhip::DataInit()
 {
 	Type = EWeapon::Whip;
 
-	OriginalData.Level = 1;
+	Data.Level = 1;
 	OriginalData.Amount = 1;
 	OriginalData.Penetration = 1;
 	OriginalData.Damage = 10.f;
@@ -59,7 +53,7 @@ void UWhip::LevelUp()
 	switch (Level)
 	{
 	case 1:
-		OriginalData.Level = 1;
+		Data.Level = 1;
 		OriginalData.Amount = 1;
 		OriginalData.Penetration = 1;
 		OriginalData.Damage = 10.f;
@@ -114,6 +108,7 @@ void UWhip::ApplyStatus(FPlayerData _Data)
 	TempData.Duration = OriginalData.Duration * _Data.Duration;
 	TempData.Area = OriginalData.Area * _Data.Area;
 	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+	TempData.Penetration = OriginalData.Penetration;
 
 	Data.Amount = TempData.Amount;
 	Data.Damage = TempData.Damage;
@@ -121,5 +116,7 @@ void UWhip::ApplyStatus(FPlayerData _Data)
 	Data.Duration = TempData.Duration;
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
+	Data.Penetration = TempData.Penetration;
+	RemainTime = Data.Cooldown;
 }
 

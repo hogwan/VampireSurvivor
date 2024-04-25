@@ -16,7 +16,6 @@ UMagicWand::~UMagicWand()
 void UMagicWand::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
 	SpawnCenter();
 }
 
@@ -41,14 +40,14 @@ void UMagicWand::DataInit()
 	Type = EWeapon::MagicWand;
 
 	Data.Level = 1;
-	Data.Amount = 1;
-	Data.Penetration = 1;
-	Data.Damage = 10.f;
-	Data.Speed = 300.f;
-	Data.Duration = 0.f;
-	Data.Area = 0.f;
-	Data.Cooldown = 1.2f;
-	Data.KnockbackPower = 100.f;
+	OriginalData.Amount = 1;
+	OriginalData.Penetration = 1;
+	OriginalData.Damage = 10.f;
+	OriginalData.Speed = 300.f;
+	OriginalData.Duration = 0.f;
+	OriginalData.Area = 0.f;
+	OriginalData.Cooldown = 1.2f;
+	OriginalData.KnockbackPower = 100.f;
 
 	RemainTime = Data.Cooldown;
 }
@@ -60,35 +59,35 @@ void UMagicWand::LevelUp()
 	{
 	case 1:
 		Data.Level = 1;
-		Data.Amount = 1;
-		Data.Penetration = 1;
-		Data.Damage = 10.f;
-		Data.Speed = 500.f;
-		Data.Duration = 0.f;
-		Data.Area = 0.f;
-		Data.Cooldown = 1.2f;
-		Data.KnockbackPower = 100.f;
+		OriginalData.Amount = 1;
+		OriginalData.Penetration = 1;
+		OriginalData.Damage = 10.f;
+		OriginalData.Speed = 500.f;
+		OriginalData.Duration = 0.f;
+		OriginalData.Area = 0.f;
+		OriginalData.Cooldown = 1.2f;
+		OriginalData.KnockbackPower = 100.f;
 		break;
 	case 2:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 3:
-		Data.Cooldown -= 0.2f;
+		OriginalData.Cooldown -= 0.2f;
 		break;
 	case 4:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 5:
-		Data.Damage += 10.f;
+		OriginalData.Damage += 10.f;
 		break;
 	case 6:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 7:
-		++Data.Penetration;
+		++OriginalData.Penetration;
 		break;
 	case 8:
-		Data.Damage += 10.f;
+		OriginalData.Damage += 10.f;
 		break;
 	default:
 		break;
@@ -110,6 +109,7 @@ void UMagicWand::ApplyStatus(FPlayerData _Data)
 	TempData.Duration = OriginalData.Duration * _Data.Duration;
 	TempData.Area = OriginalData.Area * _Data.Area;
 	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+	TempData.Penetration = OriginalData.Penetration;
 
 	Data.Amount = TempData.Amount;
 	Data.Damage = TempData.Damage;
@@ -117,4 +117,6 @@ void UMagicWand::ApplyStatus(FPlayerData _Data)
 	Data.Duration = TempData.Duration;
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
+	Data.Penetration = TempData.Penetration;
+	RemainTime = Data.Cooldown;
 }

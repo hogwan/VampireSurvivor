@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Duplicator.h"
 
+FAccessoryData UDuplicator::Data = { 0, };
+
 UDuplicator::UDuplicator() 
 {
 }

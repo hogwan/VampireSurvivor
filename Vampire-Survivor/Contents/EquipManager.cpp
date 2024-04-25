@@ -63,6 +63,8 @@ void UEquipManager::EquipWeapon(EWeapon _Weapon)
 	if (Equipsize < EquipCapacity)
 	{
 		std::shared_ptr<UWeapon> Weapon = SpawnWeapon(_Weapon);
+		Weapon->DataInit();
+		Weapon->ApplyStatus(UContentsValue::Player->GetPlayerDataCopy());
 		Weapons.push_back(std::make_pair(_Weapon, Weapon));
 		return;
 	}

@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Spinach.h"
 
+FAccessoryData USpinach::Data = { 0, };
 
 USpinach::USpinach() 
 {

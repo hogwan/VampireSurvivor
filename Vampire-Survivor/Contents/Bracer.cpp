@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Bracer.h"
 
+FAccessoryData UBracer::Data = { 0, };
+
 UBracer::UBracer() 
 {
 }

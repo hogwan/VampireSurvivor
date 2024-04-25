@@ -16,7 +16,6 @@ URuneTracer::~URuneTracer()
 void URuneTracer::BeginPlay()
 {
 	Super::BeginPlay();
-	DataInit();
 	SpawnCenter();
 }
 
@@ -41,16 +40,16 @@ void URuneTracer::DataInit()
 	Type = EWeapon::RuneTracer;
 
 	Data.Level = 1;
-	Data.Amount = 1;
-	Data.Penetration = 1;
-	Data.Damage = 10.f;
-	Data.Speed = 300.f;
-	Data.Duration = 2.25f;
-	Data.Area = 1.f;
-	Data.Cooldown = 3.f;
-	Data.KnockbackPower = 100.f;
+	OriginalData.Amount = 1;
+	OriginalData.Penetration = 1;
+	OriginalData.Damage = 10.f;
+	OriginalData.Speed = 300.f;
+	OriginalData.Duration = 2.25f;
+	OriginalData.Area = 1.f;
+	OriginalData.Cooldown = 3.f;
+	OriginalData.KnockbackPower = 100.f;
 
-	RemainTime = Data.Cooldown;
+	RemainTime = OriginalData.Cooldown;
 }
 
 void URuneTracer::LevelUp()
@@ -60,39 +59,39 @@ void URuneTracer::LevelUp()
 	{
 	case 1:
 		Data.Level = 1;
-		Data.Amount = 1;
-		Data.Penetration = 1;
-		Data.Damage = 10.f;
-		Data.Speed = 300.f;
-		Data.Duration = 2.25f;
-		Data.Area = 1.f;
-		Data.Cooldown = 3.f;
-		Data.KnockbackPower = 100.f;
+		OriginalData.Amount = 1;
+		OriginalData.Penetration = 1;
+		OriginalData.Damage = 10.f;
+		OriginalData.Speed = 300.f;
+		OriginalData.Duration = 2.25f;
+		OriginalData.Area = 1.f;
+		OriginalData.Cooldown = 3.f;
+		OriginalData.KnockbackPower = 100.f;
 		break;
 	case 2:
-		Data.Damage += 5.f;
-		Data.Speed *= 1.2f;
+		OriginalData.Damage += 5.f;
+		OriginalData.Speed *= 1.2f;
 		break;
 	case 3:
-		Data.Damage += 5.f;
-		Data.Duration += 0.3f;
+		OriginalData.Damage += 5.f;
+		OriginalData.Duration += 0.3f;
 		break;
 	case 4:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 5:
-		Data.Damage += 5.f;
-		Data.Speed *= 1.2f;
+		OriginalData.Damage += 5.f;
+		OriginalData.Speed *= 1.2f;
 		break;
 	case 6:
-		Data.Damage += 5.f;
-		Data.Duration += 0.3f;
+		OriginalData.Damage += 5.f;
+		OriginalData.Duration += 0.3f;
 		break;
 	case 7:
-		++Data.Amount;
+		++OriginalData.Amount;
 		break;
 	case 8:
-		Data.Duration += 0.5f;
+		OriginalData.Duration += 0.5f;
 		break;
 	default:
 		break;
@@ -114,6 +113,7 @@ void URuneTracer::ApplyStatus(FPlayerData _Data)
 	TempData.Duration = OriginalData.Duration * _Data.Duration;
 	TempData.Area = OriginalData.Area * _Data.Area;
 	TempData.Cooldown = OriginalData.Cooldown * _Data.Cooldown;
+	TempData.Penetration = OriginalData.Penetration;
 
 	Data.Amount = TempData.Amount;
 	Data.Damage = TempData.Damage;
@@ -121,4 +121,6 @@ void URuneTracer::ApplyStatus(FPlayerData _Data)
 	Data.Duration = TempData.Duration;
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
+	Data.Penetration = TempData.Penetration;
+	RemainTime = Data.Cooldown;
 }

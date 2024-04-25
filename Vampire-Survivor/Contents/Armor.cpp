@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Armor.h"
 
+FAccessoryData UArmor::Data = { 0, };
+
 UArmor::UArmor() 
 {
 }
