@@ -8,13 +8,13 @@ struct FAccessoryData
 	float MaxHealth = 0.f;
 	float Recovery = 0.f;
 	float Armor = 0.f;
-	float MoveSpeed = 0.f;
+	float MoveSpeed = 1.f;
 	float Might = 0.f;
 	float Speed = 0.f;
 	float Duration = 0.f;
 	float Area = 0.f;
 	float Cooldown = 0.f;
-	float Magnet = 0.f;
+	float Magnet = 1.f;
 	float Luck = 0.f;
 	float Growth = 0.f;
 	float Greed = 0.f;

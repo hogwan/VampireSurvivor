@@ -44,6 +44,18 @@ void APlayGameMode::BeginPlay()
 	//EquipManager->EquipWeapon(EWeapon::RuneTracer);
 	//EquipManager->EquipWeapon(EWeapon::SantaWater);
 
+	EquipManager->EquipAccessory(EAccessory::Armor);
+	EquipManager->EquipAccessory(EAccessory::Attractorb);
+	EquipManager->EquipAccessory(EAccessory::Bracer);
+	EquipManager->EquipAccessory(EAccessory::Candelabrador);
+	EquipManager->EquipAccessory(EAccessory::Duplicator);
+	EquipManager->EquipAccessory(EAccessory::HollowHeart);
+	//EquipManager->EquipAccessory(EAccessory::Clover);
+	//EquipManager->EquipAccessory(EAccessory::EmptyTome);
+	//EquipManager->EquipAccessory(EAccessory::Pummarola);
+	//EquipManager->EquipAccessory(EAccessory::Wings);
+	//EquipManager->EquipAccessory(EAccessory::Spinach);
+
 	UISpawn();
 }
 
@@ -327,6 +339,53 @@ void APlayGameMode::WeaponTilesUpdate()
 
 void APlayGameMode::AccessoryTilesUpdate()
 {
+	int i = 0;
+	for (std::pair<EAccessory, std::shared_ptr<UAccessory>> _Accessory : UEquipManager::Accessories)
+	{
+		AccessoryTiles[i]->SetActive(true);
+		switch (_Accessory.first)
+		{
+		case EAccessory::Armor:
+			AccessoryTiles[i]->SetSprite("ArmorSprite.png");
+			break;
+		case EAccessory::Attractorb:
+			AccessoryTiles[i]->SetSprite("AttractorbSprite.png");
+			break;
+		case EAccessory::Bracer:
+			AccessoryTiles[i]->SetSprite("BracerSprite.png");
+			break;
+		case EAccessory::Candelabrador:
+			AccessoryTiles[i]->SetSprite("CandelabradorSprite.png");
+			break;
+		case EAccessory::Clover:
+			AccessoryTiles[i]->SetSprite("CloverSprite.png");
+			break;
+		case EAccessory::Duplicator:
+			AccessoryTiles[i]->SetSprite("DuplicatorSprite.png");
+			break;
+		case EAccessory::EmptyTome:
+			AccessoryTiles[i]->SetSprite("EmptyTomeSprite.png");
+			break;
+		case EAccessory::HollowHeart:
+			AccessoryTiles[i]->SetSprite("HollowHeartSprite.png");
+			break;
+		case EAccessory::Pummarola:
+			AccessoryTiles[i]->SetSprite("PummarolaSprite.png");
+			break;
+		case EAccessory::Spellbinder:
+			AccessoryTiles[i]->SetSprite("SpellbinderSprite.png");
+			break;
+		case EAccessory::Spinach:
+			AccessoryTiles[i]->SetSprite("SpinachSprite.png");
+			break;
+		case EAccessory::Wings:
+			AccessoryTiles[i]->SetSprite("WingsSprite.png");
+			break;
+		default:
+			break;
+		}
+		i++;
+	}
 }
 
 void APlayGameMode::LevelUpEvent()

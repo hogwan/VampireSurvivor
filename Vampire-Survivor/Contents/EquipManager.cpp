@@ -127,7 +127,7 @@ void UEquipManager::AccessoryApply()
 	Data->Duration += AccessoryData.Duration;
 	Data->Area += AccessoryData.Area;
 	Data->Cooldown += AccessoryData.Cooldown;
-	Data->Magnet += AccessoryData.Magnet;
+	Data->Magnet *= AccessoryData.Magnet;
 	Data->Luck += AccessoryData.Luck;
 	Data->Growth += AccessoryData.Growth;
 	Data->Greed += AccessoryData.Greed;
