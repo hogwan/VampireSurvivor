@@ -15,8 +15,9 @@ enum class AActorDir
 
 struct FPlayerData
 {
-	float TargetExp;
-	float CurExp;
+	int Level = 1;
+	float TargetExp = 5.f;
+	float CurExp = 0.f;
 	float MaxHealth = 100.f;
 	float Hp = 100.f;
 	float Recovery = 0.f;
@@ -100,7 +101,7 @@ protected:
 	void NearEnemyCheck();
 	void RandomEnemyCheck();
 	void DebugMessageFunction(float _Delta);
-
+	void LevelUpLogic();
 	void StatusInit();
 	FPlayerData Data = { 0, };
  private:

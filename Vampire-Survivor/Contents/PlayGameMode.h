@@ -29,6 +29,7 @@ public:
 	APlayGameMode& operator=(const APlayGameMode& _Other) = delete;
 	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;
 
+	static void LevelUpEvent();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

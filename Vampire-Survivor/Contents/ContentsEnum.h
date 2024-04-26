@@ -4,6 +4,7 @@ enum class ERenderOrder
 {
 	Knife,
 	Back,
+	Exp,
 	Monster,
 	Garlic,
 	PlayerWeapon,
@@ -19,6 +20,7 @@ enum class ECollisionOrder
 	Item,
 	PlayerWeapon,
 	Detect,
+	Exp,
 };
 
 enum class EWeapon

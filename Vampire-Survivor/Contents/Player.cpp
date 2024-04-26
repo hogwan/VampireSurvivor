@@ -41,6 +41,7 @@ void APlayer::Tick(float _DeltaTime)
 	MoveVector = FVector::Zero;
 	MoveLogic();
 	ColLogic();
+	LevelUpLogic();
 	
 	AddActorLocation(MoveVector * _DeltaTime);
 
@@ -48,6 +49,7 @@ void APlayer::Tick(float _DeltaTime)
 	RandomEnemyCheck();
 
 	DebugMessageFunction(_DeltaTime);
+
 }
 
 void APlayer::NearEnemyCheck()
@@ -92,6 +94,19 @@ void APlayer::DebugMessageFunction(float _Delta)
 	{
 		std::string Msg = std::format("EnemyCount : {}\n", USpawnerManager::EnemyCount);
 		UEngineDebugMsgWindow::PushMsg(Msg);
+	}
+}
+
+void APlayer::LevelUpLogic()
+{
+	float CurExp = Data.CurExp;
+	float MaxExp = Data.TargetExp;
+
+	if (CurExp >= MaxExp)
+	{
+		++Data.Level;
+		Data.CurExp -= Data.TargetExp;
+		Data.TargetExp = 5.f * static_cast<float>(pow(Data.Level, 2));
 	}
 }
 
@@ -167,13 +182,7 @@ void APlayer::ColLogic()
 {
 	Collider->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
 		{
-			this;
 			AActor* Opponent = _Collision->GetActor();
-			Opponent;
-
-			if (this == Opponent)
-				return;
-
 
 			FVector OpponentPos = Opponent->GetActorLocation();
 			FVector CurPos = GetActorLocation();
@@ -187,3 +196,4 @@ void APlayer::ColLogic()
 		}
 	);
 }
+

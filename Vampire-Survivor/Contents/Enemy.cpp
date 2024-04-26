@@ -4,6 +4,7 @@
 #include <EngineBase/EngineRandom.h>
 #include <EngineCore/SpriteInstancingRender.h>
 #include "SpawnerManager.h"
+#include "Exp.h"
 
 AEnemy::AEnemy() 
 {
@@ -11,6 +12,7 @@ AEnemy::AEnemy()
 
 AEnemy::~AEnemy() 
 {
+	
 }
 
 void AEnemy::BeginPlay()
@@ -115,6 +117,10 @@ void AEnemy::DeathLogic()
 	if (Data.Hp < 0.f)
 	{
 		//ActiveOff();
+		std::shared_ptr<AExp> Exp = GetWorld()->SpawnActor<AExp>("Exp");
+		Exp->SetActorLocation(GetActorLocation());
+		Exp->SetExp(Data.XP);
+
 		Destroy();
 		USpawnerManager::EnemyCount--;
 	}

@@ -26,7 +26,8 @@ void UVSCore::Initialize()
 		}
 		UEngineSprite::CreateCutting("Player.png", 4, 1);
 		UEngineSprite::CreateCutting("BatIDLE.png", 4, 1);
-		UEngineSprite::CreateCutting("EquipedTile.png", 2, 1);
+		UEngineSprite::CreateCutting("EquipedTile.png", 2, 1); 
+		UEngineSprite::CreateCutting("Exp.png", 3, 1);
 	}
 
 	{

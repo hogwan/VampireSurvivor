@@ -67,9 +67,6 @@
     <Filter Include="Object\Weapon\SantaWater">
       <UniqueIdentifier>{99920457-943e-4f65-aae0-544ffa429bd5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\ContentsEditor">
-      <UniqueIdentifier>{f3cbf5ec-57ce-4f03-8f85-f47e74597434}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Weapon\RuneTracer">
       <UniqueIdentifier>{da511a24-4459-4e01-8e47-21fcbc5337f1}</UniqueIdentifier>
     </Filter>
@@ -117,6 +114,12 @@
     </Filter>
     <Filter Include="Object\Accessory\Clover">
       <UniqueIdentifier>{86e42a50-69e0-48a2-b9e1-6df9a01fae0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsEditor">
+      <UniqueIdentifier>{f3cbf5ec-57ce-4f03-8f85-f47e74597434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Exp">
+      <UniqueIdentifier>{2844fe27-ec9a-4663-bc58-890f3469ca86}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -253,7 +256,7 @@
       <Filter>Object\Weapon\SantaWater</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEditerGUI.h">
-      <Filter>Object\ContentsEditor</Filter>
+      <Filter>ContentsEditor</Filter>
     </ClInclude>
     <ClInclude Include="RuneTracer.h">
       <Filter>Object\Weapon\RuneTracer</Filter>
@@ -317,6 +320,9 @@
     </ClInclude>
     <ClInclude Include="EquipManager.h">
       <Filter>Object\EquipManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Exp.h">
+      <Filter>Object\Exp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -450,7 +456,7 @@
       <Filter>Object\Weapon\SantaWater</Filter>
     </ClCompile>
     <ClCompile Include="ContentsEditerGUI.cpp">
-      <Filter>Object\ContentsEditor</Filter>
+      <Filter>ContentsEditor</Filter>
     </ClCompile>
     <ClCompile Include="RuneTracer.cpp">
       <Filter>Object\Weapon\RuneTracer</Filter>
@@ -514,6 +520,9 @@
     </ClCompile>
     <ClCompile Include="EquipManager.cpp">
       <Filter>Object\EquipManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Exp.cpp">
+      <Filter>Object\Exp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
