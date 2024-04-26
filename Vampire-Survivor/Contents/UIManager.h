@@ -17,7 +17,9 @@ public:
 	UIManager& operator=(const UIManager& _Other) = delete;
 	UIManager& operator=(UIManager&& _Other) noexcept = delete;
 
-	static void LevelUpEvent();
+	void LevelUpEventStart();
+	void LevelUpEventEnd();
+	void LevelUpEventTick();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -29,6 +31,9 @@ protected:
 	void UILevelUpdate();
 	void WeaponTilesUpdate();
 	void AccessoryTilesUpdate();
+
+	void LevelUpUIOn();
+	void LevelUpUIOff();
 
 	UImage* HPBar = nullptr;
 	UImage* HPBarBack = nullptr;
@@ -49,12 +54,16 @@ protected:
 
 	std::vector<std::vector<UImage*>> WeaponInfo;
 	std::vector<std::vector<UImage*>> AccessoryInfo;
-
 	std::vector<std::vector<UImage*>> PlayerStatusInfo;
-
 	std::vector<std::vector<UImage*>> LevelUpList;
+	std::pair<UImage*, UImage*> SelectArrows;
+
+	std::list<ESelectList> SelectList;
+	std::vector<ESelectList> InfoVec;
 
 
+	bool IsSelecting = false;
+	int SelectIndex = 0;
 private:
 
 };

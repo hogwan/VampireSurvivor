@@ -2,7 +2,6 @@
 
 enum class ERenderOrder
 {
-	Knife,
 	Back,
 	Exp,
 	Monster,
@@ -54,6 +53,37 @@ enum class EAccessory
 	Spellbinder,
 	Spinach,
 	Wings,
+};
+
+enum class ESelectList
+{
+	None,
+
+	Axe,
+	Cross,
+	FireWand,
+	Garlic,
+	KingBible,
+	Knife,
+	LightingRing,
+	MagicWand,
+	RuneTracer,
+	SantaWater,
+	Whip,
+
+	Armor,
+	Attractorb,
+	Bracer,
+	Candelabrador,
+	Clover,
+	Duplicator,
+	EmptyTome,
+	HollowHeart,
+	Pummarola,
+	Spellbinder,
+	Spinach,
+	Wings,
+
 };
 
 enum class EUI

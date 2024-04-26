@@ -43,6 +43,19 @@ void UVSCore::Initialize()
 		}
 	}
 
+	{
+		UEngineDirectory Dir;
+		Dir.MoveToSearchChild("ContentsResources");
+		Dir.Move("Image");
+		Dir.Move("UI");
+		std::vector<UEngineDirectory> Directorys = Dir.GetAllDirectory();
+		for (size_t i = 0; i < Directorys.size(); i++)
+		{
+			std::string Name = Directorys[i].GetFolderName();
+			UEngineSprite::LoadFolder(Directorys[i].GetFullPath());
+		}
+	}
+
 
 	{
 		UEngineDirectory Dir;
@@ -54,6 +67,11 @@ void UVSCore::Initialize()
 			UEngineSound::Load(File.GetFullPath());
 		}
 	}
+
+
+
+
+
 	UEngineEditorGUI::CreateEditorWindow<ContentsEditerGUI>("ddd");
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->ChangeLevel("PlayLevel");

@@ -18,7 +18,7 @@ void AKnifeUnit::BeginPlay()
 
 	Renderer->SetSprite("Knife_1.png");
 	Renderer->SetAutoSize(2.f, true);
-	Renderer->SetOrder(ERenderOrder::Knife);
+	Renderer->SetOrder(ERenderOrder::PlayerWeapon);
 
 	Collider->SetCollisionGroup(ECollisionOrder::PlayerWeapon);
 	Collider->SetCollisionType(ECollisionType::RotRect);

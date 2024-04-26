@@ -9,6 +9,9 @@
 #include <EngineCore/Camera.h>
 #include "UIManager.h"
 
+std::shared_ptr<class UIManager> APlayGameMode::PlayUIManager;
+std::shared_ptr<UEquipManager> APlayGameMode::EquipManager;
+
 APlayGameMode::APlayGameMode()
 {
 }
@@ -33,26 +36,27 @@ void APlayGameMode::BeginPlay()
 	UContentsValue::StartPosition = Player->GetActorLocation();
 
 	GetWorld()->SpawnActor<USpawnerManager>("SpawnerManager");
-	std::shared_ptr<UEquipManager> EquipManager = GetWorld()->SpawnActor<UEquipManager>("EquipManager");
+	EquipManager = GetWorld()->SpawnActor<UEquipManager>("EquipManager");
 
-	GetWorld()->SpawnActor<UIManager>("UIManager");
-	EquipManager->EquipWeapon(EWeapon::Axe);
-	EquipManager->EquipWeapon(EWeapon::Cross);
-	EquipManager->EquipWeapon(EWeapon::FireWand);
+	PlayUIManager = GetWorld()->SpawnActor<UIManager>("UIManager");
+	//EquipManager->EquipWeapon(EWeapon::Axe);
+	//EquipManager->EquipWeapon(EWeapon::Cross);
+	//EquipManager->EquipWeapon(EWeapon::FireWand);
 	//EquipManager->EquipWeapon(EWeapon::Garlic);
-	EquipManager->EquipWeapon(EWeapon::KingBible);
-	EquipManager->EquipWeapon(EWeapon::Knife);
+	//EquipManager->EquipWeapon(EWeapon::KingBible);
+	//EquipManager->EquipWeapon(EWeapon::Knife);
 	//EquipManager->EquipWeapon(EWeapon::LightingRing);
 	//EquipManager->EquipWeapon(EWeapon::MagicWand);
 	//EquipManager->EquipWeapon(EWeapon::RuneTracer);
-	EquipManager->EquipWeapon(EWeapon::SantaWater);
-
-	EquipManager->EquipAccessory(EAccessory::Armor);
-	EquipManager->EquipAccessory(EAccessory::Attractorb);
-	EquipManager->EquipAccessory(EAccessory::Bracer);
-	EquipManager->EquipAccessory(EAccessory::Candelabrador);
-	EquipManager->EquipAccessory(EAccessory::Duplicator);
-	EquipManager->EquipAccessory(EAccessory::HollowHeart);
+	//EquipManager->EquipWeapon(EWeapon::SantaWater);
+	EquipManager->EquipWeapon(EWeapon::Whip);
+	
+	//EquipManager->EquipAccessory(EAccessory::Armor);
+	//EquipManager->EquipAccessory(EAccessory::Attractorb);
+	//EquipManager->EquipAccessory(EAccessory::Bracer);
+	//EquipManager->EquipAccessory(EAccessory::Candelabrador);
+	//EquipManager->EquipAccessory(EAccessory::Duplicator);
+	//EquipManager->EquipAccessory(EAccessory::HollowHeart);
 	//EquipManager->EquipAccessory(EAccessory::Clover);
 	//EquipManager->EquipAccessory(EAccessory::EmptyTome);
 	//EquipManager->EquipAccessory(EAccessory::Pummarola);

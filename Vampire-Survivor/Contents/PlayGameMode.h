@@ -28,8 +28,9 @@ public:
 	APlayGameMode(APlayGameMode&& _Other) noexcept = delete;
 	APlayGameMode& operator=(const APlayGameMode& _Other) = delete;
 	APlayGameMode& operator=(APlayGameMode&& _Other) noexcept = delete;
-
-	static void LevelUpEvent();
+	
+	static std::shared_ptr<class UIManager> PlayUIManager;
+	static std::shared_ptr<class UEquipManager> EquipManager;
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
