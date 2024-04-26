@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "SpawnerManager.h"
+#include "UIManager.h"
 
 
 APlayer::APlayer()
@@ -107,6 +108,7 @@ void APlayer::LevelUpLogic()
 		++Data.Level;
 		Data.CurExp -= Data.TargetExp;
 		Data.TargetExp = 5.f * static_cast<float>(pow(Data.Level, 2));
+		UIManager::LevelUpEvent();
 	}
 }
 

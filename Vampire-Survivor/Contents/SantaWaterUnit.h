@@ -29,7 +29,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void ColLogic();
-	FVector Gravity = FVector(0.f, -300.f, 0.f);
+	FVector Gravity = FVector(0.f, -500.f, 0.f);
 
 	float RotationSpeed = 720.f;
 	float DamageTerm = 0.2f;

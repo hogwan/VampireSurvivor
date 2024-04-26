@@ -121,6 +121,9 @@
     <Filter Include="Object\Exp">
       <UniqueIdentifier>{2844fe27-ec9a-4663-bc58-890f3469ca86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\UIManager">
+      <UniqueIdentifier>{a3de9e2e-a147-4710-ae19-8f4e5ed9ad76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -324,6 +327,9 @@
     <ClInclude Include="Exp.h">
       <Filter>Object\Exp</Filter>
     </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>Object\UIManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -523,6 +529,9 @@
     </ClCompile>
     <ClCompile Include="Exp.cpp">
       <Filter>Object\Exp</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>Object\UIManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
