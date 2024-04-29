@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "VSCore.h"
 #include "PlayGameMode.h"
+#include "TitleGameMode.h"
 #include <EngineCore/EngineSprite.h>
 #include "ContentsEditerGUI.h"
 #include <EngineCore/EngineEditorGUI.h>
@@ -73,8 +74,10 @@ void UVSCore::Initialize()
 
 
 	UEngineEditorGUI::CreateEditorWindow<ContentsEditerGUI>("ddd");
+	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
-	GEngine->ChangeLevel("PlayLevel");
+	GEngine->ChangeLevel("TitleLevel");
+	//GEngine->ChangeLevel("PlayLevel");
 
 	
 }

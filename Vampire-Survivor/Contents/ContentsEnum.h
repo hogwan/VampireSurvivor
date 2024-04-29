@@ -3,6 +3,7 @@
 enum class ERenderOrder
 {
 	Back,
+	Title,
 	Exp,
 	Monster,
 	Garlic,

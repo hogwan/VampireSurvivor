@@ -73,11 +73,9 @@ void AEnemy::ColLogic(float _DeltaTime)
 	Collider->CollisionStay(ECollisionOrder::Monster, [=](std::shared_ptr<UCollision> _Collision)
 		{
 			AActor* Opponent = _Collision->GetActor();
-			Opponent;
 
 			if (this == Opponent)
 				return;
-
 
 			FVector OpponentPos = Opponent->GetActorLocation();
 			FVector CurPos = GetActorLocation();
@@ -94,9 +92,13 @@ void AEnemy::ColLogic(float _DeltaTime)
 	Collider->CollisionStay(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collision)
 		{
 			APlayer* Opponent = dynamic_cast<APlayer*>(_Collision->GetActor());
-			Opponent;
 
 			FPlayerData* PlayerData = Opponent->GetPlayerDataReference();
+			if (PlayerData->Hp < 0.f)
+			{
+				return;
+			}
+
 			PlayerData->Hp -= Data.Power * _DeltaTime;
 
 			FVector OpponentPos = Opponent->GetActorLocation();

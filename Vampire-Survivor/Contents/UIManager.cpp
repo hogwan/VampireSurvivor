@@ -173,10 +173,10 @@ void UIManager::UISpawn()
 	SelectArrows.second->CreateAnimation("Rotate", "Arrow", 0.1f, true);
 	SelectArrows.second->SetAutoSize(2.f, true);
 	
-	FVector Scale = SelectArrows.second->GetLocalScale();
+	/*FVector Scale = SelectArrows.second->GetLocalScale();
 	Scale.X = -Scale.X;
-	SelectArrows.second->SetScale(Scale);
-
+	SelectArrows.second->SetScale(Scale);*/
+	SelectArrows.second->SetRotationDeg(FVector(0.f, 0.f, 180.f));
 	SelectArrows.second->ChangeAnimation("Rotate");
 }
 
