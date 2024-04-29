@@ -25,6 +25,7 @@ protected:
 	USpriteRenderer* Title = nullptr;
 	USpriteRenderer* Cash = nullptr;
 	USpriteRenderer* CashBoard = nullptr;
+	USpriteRenderer* BlackBack = nullptr;
 
 
 	int SelectIndex = 0;

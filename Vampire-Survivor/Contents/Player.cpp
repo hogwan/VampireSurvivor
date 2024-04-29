@@ -52,6 +52,9 @@ void APlayer::Tick(float _DeltaTime)
 
 	DebugMessageFunction(_DeltaTime);
 
+	Data;
+
+	int a = 0;
 }
 
 void APlayer::NearEnemyCheck()

@@ -17,6 +17,9 @@ ATitleGameMode::ATitleGameMode()
 	CashBoard = CreateDefaultSubObject<USpriteRenderer>("CashBoard");
 	CashBoard->SetupAttachment(Root);
 
+	BlackBack = CreateDefaultSubObject<USpriteRenderer>("BlackBack");
+	BlackBack->SetupAttachment(Root);
+
 	SetRoot(Root);
 }
 
@@ -48,6 +51,12 @@ void ATitleGameMode::BeginPlay()
 	CashBoard->SetScale(FVector(250.f, 50.f, 10.f));
 	CashBoard->SetPosition(FVector(0.f, 330.f, 0.f));
 	CashBoard->SetOrder(ERenderOrder::Title);
+
+	BlackBack->SetSprite("HpBar2.png");
+	BlackBack->SetScale(FVector(1280.f, 80.f, 10.f));
+	BlackBack->SetPosition(FVector(0.f, 330.f, 0.f));
+	BlackBack->SetOrder(ERenderOrder::Title);
+	BlackBack->SetMulColor(FVector(1.f, 1.f, 1.f, 0.5f));
 
 	
 
