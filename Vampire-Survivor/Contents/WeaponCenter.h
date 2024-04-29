@@ -26,7 +26,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	UDefaultSceneComponent* Root = nullptr;
-	FWeaponData Data = { 0, };
+	FWeaponData Data = { "",};
 	
 
 private:

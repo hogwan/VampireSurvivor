@@ -50,7 +50,7 @@ protected:
 	EWeapon Type = EWeapon::None;
 	float RemainTime = 0.f;
 
-	FWeaponData OriginalData = { 0, };
+	FWeaponData OriginalData = { "",};
 private:
 
 };

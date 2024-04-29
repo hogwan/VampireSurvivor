@@ -67,7 +67,7 @@ public:
 		return AccessoryType;
 	}
 
-	FAccessoryData Data = { 0, };
+	FAccessoryData Data = { "",};
 
 protected:
 	void BeginPlay() override;

@@ -32,7 +32,7 @@ protected:
 	float SecondTerm = 0.1f;
 
 	UDefaultSceneComponent* Root = nullptr;
-	FWeaponData Data = { 0, };
+	FWeaponData Data = { "",};
 
 
 private:
