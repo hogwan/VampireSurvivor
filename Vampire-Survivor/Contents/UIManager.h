@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore/Actor.h>
 #include <EngineCore/Image.h>
+#include <EngineCore/TextWidget.h>
 
 // Ό³Έν :
 class UIManager : public AActor
@@ -56,6 +57,7 @@ protected:
 	std::vector<std::vector<UImage*>> AccessoryInfo;
 	std::vector<std::vector<UImage*>> PlayerStatusInfo;
 	std::vector<std::vector<UImage*>> LevelUpList;
+	std::vector<std::vector<UTextWidget*>> LevelUpListExplain;
 	std::pair<UImage*, UImage*> SelectArrows;
 
 	std::list<ESelectList> SelectList;
