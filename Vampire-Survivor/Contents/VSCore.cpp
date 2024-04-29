@@ -16,6 +16,9 @@ UVSCore::~UVSCore()
 
 void UVSCore::Initialize()
 {
+	UEngineFont::Load("±√º≠");
+	UEngineFont::Load("Liberation Sans ∫∏≈Î");
+
 	{
 		UEngineDirectory Dir;
 		Dir.MoveToSearchChild("ContentsResources");

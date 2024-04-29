@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Spellbinder.h"
 
-FAccessoryData USpellbinder::Data = { 0, };
+FAccessoryData USpellbinder::Data = { "레벨당 지속시간이 10% 증가한다.",0,};
 
 USpellbinder::USpellbinder() 
 {

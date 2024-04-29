@@ -3,7 +3,7 @@
 #include "AxeCenter.h"
 #include "Player.h"
 
-FWeaponData UAxe::Data = { 0, };
+FWeaponData UAxe::Data = { "피해량이 높고 공격 범위가 넓습니다.",0,};
 
 UAxe::UAxe()
 {
@@ -43,6 +43,7 @@ void UAxe::DataInit()
 	OriginalData.Area = 50.f;
 	OriginalData.Cooldown = 4.f;
 	OriginalData.KnockbackPower = 100.f;
+	OriginalData.ExplainText = "투사체 수 1 증가";
 
 	RemainTime = OriginalData.Cooldown;
 }
@@ -62,27 +63,35 @@ void UAxe::LevelUp()
 		OriginalData.Area = 50.f;
 		OriginalData.Cooldown = 4.f;
 		OriginalData.KnockbackPower = 100.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 2:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "공격력 20 증가";
 		break;
 	case 3:
 		OriginalData.Damage += 20.f;
+		OriginalData.ExplainText = "적 2체 추가 관통";
 		break;
 	case 4:
 		OriginalData.Penetration += 2;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 5:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "공격력 20 증가";
 		break;
 	case 6:
 		OriginalData.Damage += 20.f;
+		OriginalData.ExplainText = "적 2체 추가 관통";
 		break;
 	case 7:
 		OriginalData.Penetration += 2;
+		OriginalData.ExplainText = "공격력 20 증가";
 		break;
 	case 8:
 		OriginalData.Damage += 20.f;
+		OriginalData.ExplainText = "최대 레벨 증가";
 		break;
 	default:
 		break;
@@ -96,7 +105,7 @@ void UAxe::SpawnCenter()
 
 void UAxe::ApplyStatus(FPlayerData _Data)
 {
-	FWeaponData TempData = { 0, };
+	FWeaponData TempData;
 
 	TempData.Amount = OriginalData.Amount + _Data.Amount;
 	TempData.Damage = OriginalData.Damage * _Data.Might;

@@ -4,7 +4,7 @@
 #include "Bat1.h"
 #include "Player.h"
 
-FWeaponData UKingBible::Data = { 0, };
+FWeaponData UKingBible::Data = { "주변을 회전하며 공격합니다.",0,};
 
 UKingBible::UKingBible()
 {
@@ -51,6 +51,7 @@ void UKingBible::DataInit()
 	OriginalData.Area = 100.f;
 	OriginalData.Cooldown = 3.f;
 	OriginalData.KnockbackPower = 100.f;
+	OriginalData.ExplainText = "투사체 수 1 증가";
 
 	RemainTime = Data.Cooldown + OriginalData.Duration;
 }
@@ -71,31 +72,39 @@ void UKingBible::LevelUp()
 		OriginalData.Area = 100.f;
 		OriginalData.Cooldown = 3.f;
 		OriginalData.KnockbackPower = 100.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 2:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "투사체 속도 30% 증가, 공격범위 25% 증가";
 		break;
 	case 3:
 		OriginalData.Speed = Data.Speed * 1.3f;
 		OriginalData.Area = Data.Area * 1.25f;
+		OriginalData.ExplainText = "지속시간 0.5초 증가, 공격력 10 증가";
 		break;
 	case 4:
 		OriginalData.Duration += 0.5f;
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 5:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "투사체 속도 30% 증가, 공격범위 25% 증가";
 		break;
 	case 6:
 		OriginalData.Speed = Data.Speed * 1.3f;
 		OriginalData.Area = Data.Area * 1.25f;
+		OriginalData.ExplainText = "지속시간 0.5초 증가, 공격력 10 증가";
 		break;
 	case 7:
 		OriginalData.Duration += 0.5f;
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 8:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "최대 레벨 도달";
 		break;
 	default:
 		break;
@@ -111,7 +120,7 @@ void UKingBible::SpawnCenter()
 
 void UKingBible::ApplyStatus(FPlayerData _Data)
 {
-	FWeaponData TempData = { 0, };
+	FWeaponData TempData;
 
 	TempData.Amount = OriginalData.Amount + _Data.Amount;
 	TempData.Damage = OriginalData.Damage * _Data.Might;

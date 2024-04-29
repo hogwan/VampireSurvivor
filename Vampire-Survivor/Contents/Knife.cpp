@@ -3,7 +3,7 @@
 #include "KnifeCenter.h"
 #include "player.h"
 
-FWeaponData UKnife::Data = { 0, };
+FWeaponData UKnife::Data = { "바라보는 방향으로 단검을 투척합니다.",0,};
 
 UKnife::UKnife() 
 {
@@ -44,6 +44,7 @@ void UKnife::DataInit()
 	OriginalData.Area = 0.f;
 	OriginalData.Cooldown = 1.0f;
 	OriginalData.KnockbackPower = 100.f;
+	OriginalData.ExplainText = "투사체 수 1 증가";
 
 	RemainTime = OriginalData.Cooldown;
 }
@@ -63,29 +64,37 @@ void UKnife::LevelUp()
 		OriginalData.Area = 0.f;
 		OriginalData.Cooldown = 1.0f;
 		OriginalData.KnockbackPower = 100.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 2:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "투사체 수 1 증가, 공격력 5 증가";
 		break;
 	case 3:
 		++OriginalData.Amount;
 		OriginalData.Damage += 5.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 4:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "관통 1회 증가";
 		break;
 	case 5:
 		++OriginalData.Penetration;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 6:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "투사체 수 1 증가, 공격력 5 증가";
 		break;
 	case 7:
 		++OriginalData.Penetration;
 		OriginalData.Damage += 5.f;
+		OriginalData.ExplainText = "관통 1회 증가";
 		break;
 	case 8:
 		++OriginalData.Penetration;
+		OriginalData.ExplainText = "최대 레벨 도달";
 		break;
 	default:
 		break;

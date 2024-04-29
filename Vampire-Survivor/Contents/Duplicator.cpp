@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Duplicator.h"
 
-FAccessoryData UDuplicator::Data = { 0, };
+FAccessoryData UDuplicator::Data = { "레벨당 투사체 수가 1개 증가한다.",0,};
 
 UDuplicator::UDuplicator() 
 {

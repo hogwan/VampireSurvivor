@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Armor.h"
 
-FAccessoryData UArmor::Data = { 0, };
+FAccessoryData UArmor::Data = { "레벨당 방어력이 1, 반격 데미지가 10% 증가한다.",0,};
 
 UArmor::UArmor() 
 {

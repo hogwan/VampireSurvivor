@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Wings.h"
 
-FAccessoryData UWings::Data = { 0, };
+FAccessoryData UWings::Data = { "레벨당 이동속도가 10% 상승한다.",0,};
 
 UWings::UWings() 
 {

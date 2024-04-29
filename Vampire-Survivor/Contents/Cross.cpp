@@ -2,7 +2,7 @@
 #include "Cross.h"
 #include "CrossCenter.h"
 #include "Player.h"
-FWeaponData UCross::Data = { 0, };
+FWeaponData UCross::Data = { "가장 가까운 적에게 날아가며 부메랑처럼 돌아옵니다.",0,};
 UCross::UCross()
 {
 }
@@ -41,6 +41,7 @@ void UCross::DataInit()
 	OriginalData.Area = 1.f;
 	OriginalData.Cooldown = 2.f;
 	OriginalData.KnockbackPower = 100.f;
+	OriginalData.ExplainText = "공격력 10 증가";
 
 	RemainTime = OriginalData.Cooldown;
 }
@@ -60,29 +61,37 @@ void UCross::LevelUp()
 		OriginalData.Area = 1.f;
 		OriginalData.Cooldown = 2.f;
 		OriginalData.KnockbackPower = 100.f;
+		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 2:
 		OriginalData.Damage += 10;
+		OriginalData.ExplainText = "투사체 속도 25%증가, 공격범위 10% 증가";
 		break;
 	case 3:
 		OriginalData.Speed *= 1.25f;
 		OriginalData.Area *= 1.1f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 4:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 5:
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "투사체 속도 25%증가, 공격범위 10% 증가";
 		break;
 	case 6:
 		OriginalData.Speed *= 1.25f;
 		OriginalData.Area *= 1.1f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 7:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 8:
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "최대 레벨 도달";
 		break;
 	default:
 		break;
@@ -96,7 +105,7 @@ void UCross::SpawnCenter()
 
 void UCross::ApplyStatus(FPlayerData _Data)
 {
-	FWeaponData TempData = { 0, };
+	FWeaponData TempData;
 
 	TempData.Amount = OriginalData.Amount + _Data.Amount;
 	TempData.Damage = OriginalData.Damage * _Data.Might;

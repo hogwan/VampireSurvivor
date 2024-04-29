@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "EmptyTome.h"
 
-FAccessoryData UEmptyTome::Data = { 0, };
+FAccessoryData UEmptyTome::Data = { "레벨당 쿨타임이 8% 감소한다.",0,};
 
 UEmptyTome::UEmptyTome() 
 {

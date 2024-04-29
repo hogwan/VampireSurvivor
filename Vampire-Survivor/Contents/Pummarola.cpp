@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Pummarola.h"
 
-FAccessoryData UPummarola::Data = { 0, };
+FAccessoryData UPummarola::Data = { "레벨 당 매 초 0.2의 체력이 회복된다.",0,};
 
 UPummarola::UPummarola() 
 {

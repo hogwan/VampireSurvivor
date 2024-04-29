@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Candelabrador.h"
 
-FAccessoryData UCandelabrador::Data = { 0, };
+FAccessoryData UCandelabrador::Data = { "레벨당 공격범위가 10% 증가한다.",};
 
 UCandelabrador::UCandelabrador() 
 {

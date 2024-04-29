@@ -68,14 +68,27 @@ void ATitleGameMode::BeginPlay()
 	Buttons[0].first->SetSprite("BlueButton.png");
 	Buttons[0].first->SetScale(FVector(220.f, 70.f, 10.f));
 	Buttons[0].first->SetPosition(FVector(0.f, -50.f));
-	//Button[0].second = text
+	
+	Buttons[0].second = CreateWidget<UTextWidget>(GetWorld(), "GameStartButton");
+	Buttons[0].second->SetFont("Liberation Sans 보통");
+	Buttons[0].second->SetScale(30.0f);
+	Buttons[0].second->SetColor(Color8Bit::White);
+	Buttons[0].second->SetPosition({ 0.f, -50.f });
+	Buttons[0].second->SetText("시작");
+	Buttons[0].second->AddToViewPort(3);
 
 	Buttons[1].first = CreateWidget<UImage>(GetWorld(), "PowerUpButton");
 	Buttons[1].first->AddToViewPort(1);
 	Buttons[1].first->SetSprite("GreenButton.png");
 	Buttons[1].first->SetScale(FVector(150.f, 70.f, 10.f));
 	Buttons[1].first->SetPosition(FVector(0.f, -200.f));
-	//Button[1].second = textp
+	Buttons[1].second = CreateWidget<UTextWidget>(GetWorld(), "GameStartButton");
+	Buttons[1].second->SetFont("Liberation Sans 보통");
+	Buttons[1].second->SetScale(30.0f);
+	Buttons[1].second->SetColor(Color8Bit::White);
+	Buttons[1].second->SetPosition(FVector(0.f, -200.f));
+	Buttons[1].second->SetText("강화");
+	Buttons[1].second->AddToViewPort(3);
 
 
 	SelectArrows.first = CreateWidget<UImage>(GetWorld(), "ArrowLeft");

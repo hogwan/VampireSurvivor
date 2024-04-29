@@ -3,7 +3,7 @@
 #include "FireWandCenter.h"
 #include "Player.h"
 
-FWeaponData UFireWand::Data = { 0, };
+FWeaponData UFireWand::Data = { "무작위 방향을 향해 발사되며 큰 피해를 줍니다.",0, };
 
 UFireWand::UFireWand()
 {
@@ -43,6 +43,7 @@ void UFireWand::DataInit()
 	OriginalData.Area = 1.f;
 	OriginalData.Cooldown = 3.f;
 	OriginalData.KnockbackPower = 100.f;
+	OriginalData.ExplainText = "공격력 10 증가";
 
 	RemainTime = OriginalData.Cooldown;
 }
@@ -62,30 +63,38 @@ void UFireWand::LevelUp()
 		OriginalData.Area = 1.f;
 		OriginalData.Cooldown = 3.f;
 		OriginalData.KnockbackPower = 100.f;
+		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 2:
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "공격력 10 증가, 투사체 속도 20% 증가";
 		break;
 	case 3:
 		OriginalData.Damage += 10.f;
 		OriginalData.Speed *= 1.2f;
+		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 4:
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "공격력 10 증가, 투사체 속도 20% 증가";
 		break;
 	case 5:
 		OriginalData.Damage += 10.f;
 		OriginalData.Speed *= 1.2f;
+		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 6:
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "공격력 10 증가, 투사체 속도 20% 증가";
 		break;
 	case 7:
 		OriginalData.Damage += 10.f;
 		OriginalData.Speed *= 1.2f;
+		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 8:
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "최대 레벨 도달";
 		break;
 	default:
 		break;
@@ -99,7 +108,7 @@ void UFireWand::SpawnCenter()
 
 void UFireWand::ApplyStatus(FPlayerData _Data)
 {
-	FWeaponData TempData = { 0, };
+	FWeaponData TempData;
 
 	TempData.Amount = OriginalData.Amount + _Data.Amount;
 	TempData.Damage = OriginalData.Damage * _Data.Might;

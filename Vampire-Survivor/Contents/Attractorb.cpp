@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Attractorb.h"
 
-FAccessoryData UAttractorb::Data = { 0, };
+FAccessoryData UAttractorb::Data = { "레벨당 아이템 획득 범위가 증가한다.",};
 
 UAttractorb::UAttractorb() 
 {

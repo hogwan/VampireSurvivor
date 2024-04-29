@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Clover.h"
 
-FAccessoryData UClover::Data = { 0, };
+FAccessoryData UClover::Data = { "레벨당 행운이 10% 증가한다.",};
 
 UClover::UClover() 
 {

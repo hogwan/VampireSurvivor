@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Spinach.h"
 
-FAccessoryData USpinach::Data = { 0, };
+FAccessoryData USpinach::Data = { "레벨당 공격력이 10% 증가한다.",0,};
 
 USpinach::USpinach() 
 {

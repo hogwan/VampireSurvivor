@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore/GameMode.h>
 #include <EngineCore/Image.h>
+#include <EngineCore/TextWidget.h>
 // Ό³Έν :
 class ATitleGameMode : public AGameMode
 {
@@ -29,7 +30,7 @@ protected:
 
 
 	int SelectIndex = 0;
-	std::vector<std::pair<UImage*, UImage*>> Buttons;
+	std::vector<std::pair<UImage*, UTextWidget*>> Buttons;
 	std::pair<UImage*, UImage*> SelectArrows;
 
 	void OpenPowerUpUI();

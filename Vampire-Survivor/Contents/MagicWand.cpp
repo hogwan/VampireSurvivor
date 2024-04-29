@@ -3,7 +3,7 @@
 #include "MagicWandCenter.h"
 #include "Player.h"
 
-FWeaponData UMagicWand::Data = { 0, };
+FWeaponData UMagicWand::Data = { "가장 가까운 적을 공격합니다.",0,};
 
 UMagicWand::UMagicWand() 
 {
@@ -48,6 +48,7 @@ void UMagicWand::DataInit()
 	OriginalData.Area = 0.f;
 	OriginalData.Cooldown = 1.2f;
 	OriginalData.KnockbackPower = 100.f;
+	OriginalData.ExplainText = "투사체 수 1 증가";
 
 	RemainTime = Data.Cooldown;
 }
@@ -67,27 +68,35 @@ void UMagicWand::LevelUp()
 		OriginalData.Area = 0.f;
 		OriginalData.Cooldown = 1.2f;
 		OriginalData.KnockbackPower = 100.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 2:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "쿨타임 0.2초 감소";
 		break;
 	case 3:
 		OriginalData.Cooldown -= 0.2f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 4:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 5:
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 6:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "관통 1회 증가";
 		break;
 	case 7:
 		++OriginalData.Penetration;
+		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 8:
 		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "최대레벨 도달";
 		break;
 	default:
 		break;

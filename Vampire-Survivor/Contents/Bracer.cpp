@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Bracer.h"
 
-FAccessoryData UBracer::Data = { 0, };
+FAccessoryData UBracer::Data = { "레벨당 투사체 속도가 10% 증가한다.",0,};
 
 UBracer::UBracer() 
 {

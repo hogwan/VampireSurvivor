@@ -3,6 +3,8 @@
 
 struct FAccessoryData
 {
+	std::string ExplainText;
+
 	int Level = 1;
 
 	float MaxHealth = 0.f;

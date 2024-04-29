@@ -4,6 +4,8 @@
 struct FWeaponData
 {
 public:
+	std::string ExplainText;
+
 	int Level;
 	int Amount;
 	int Penetration;
@@ -13,6 +15,7 @@ public:
 	float Area;
 	float Cooldown;
 	float KnockbackPower;
+
 };
 
 class UWeapon : public AActor

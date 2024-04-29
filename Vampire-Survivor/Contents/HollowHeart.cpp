@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "HollowHeart.h"
 
-FAccessoryData UHollowHeart::Data = { 0, };
+FAccessoryData UHollowHeart::Data = { "레벨당 최대 체력이 20% 증가한다.",0,};
 
 UHollowHeart::UHollowHeart() 
 {

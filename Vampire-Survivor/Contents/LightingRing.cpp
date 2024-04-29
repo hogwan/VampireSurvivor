@@ -3,7 +3,7 @@
 #include "LightingRingCenter.h"
 #include "Player.h"
 
-FWeaponData ULightingRing::Data = { 0, };
+FWeaponData ULightingRing::Data = { "무작위 적에게 번개를 내려칩니다.",0,};
 
 ULightingRing::ULightingRing()
 {
@@ -44,6 +44,7 @@ void ULightingRing::DataInit()
 	OriginalData.Area = 1.f;
 	OriginalData.Cooldown = 4.5f;
 	OriginalData.KnockbackPower = 100.f;
+	OriginalData.ExplainText = "투사체 수 1 증가";
 
 	RemainTime = OriginalData.Cooldown;
 }
@@ -63,29 +64,38 @@ void ULightingRing::LevelUp()
 		OriginalData.Area = 1.f;
 		OriginalData.Cooldown = 4.5f;
 		OriginalData.KnockbackPower = 100.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 2:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "공격범위 100% 증가, 공격력 10 증가";
 		break;
 	case 3:
 		OriginalData.Damage += 10.f;
 		OriginalData.Area *= 2.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 4:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "공격범위 100% 증가, 공격력 20 증가";
 		break;
 	case 5:
 		OriginalData.Damage += 20.f;
 		OriginalData.Area *= 2.f;
+		OriginalData.ExplainText = "공격범위 10% 증가";
 		break;
 	case 6:
-		++OriginalData.Amount;
+		OriginalData.Area *= 1.1f;
+		OriginalData.ExplainText = "공격범위 100% 증가, 공격력 10 증가";
 		break;
 	case 7:
-		++OriginalData.Penetration;
+		OriginalData.Area *= 2.f;
+		OriginalData.Damage += 10.f;
+		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 8:
-		OriginalData.Damage += 10.f;
+		++OriginalData.Amount;
+		OriginalData.ExplainText = "최대 레벨 도달";
 		break;
 	default:
 		break;
@@ -99,7 +109,7 @@ void ULightingRing::SpawnCenter()
 
 void ULightingRing::ApplyStatus(FPlayerData _Data)
 {
-	FWeaponData TempData = { 0, };
+	FWeaponData TempData;
 
 	TempData.Amount = OriginalData.Amount + _Data.Amount;
 	TempData.Damage = OriginalData.Damage * _Data.Might;

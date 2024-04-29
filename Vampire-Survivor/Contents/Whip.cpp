@@ -3,7 +3,7 @@
 #include "WhipCenter.h"
 #include "Player.h"
 
-FWeaponData UWhip::Data = { 0, };
+FWeaponData UWhip::Data = { "좌우로 적을 관통해 공격합니다.",0,};
 
 UWhip::UWhip() 
 {
@@ -43,6 +43,7 @@ void UWhip::DataInit()
 	OriginalData.Area = 1.f;
 	OriginalData.Cooldown = 1.35f;
 	OriginalData.KnockbackPower = 100.f;
+	OriginalData.ExplainText = "투사체 1 증가";
 
 	RemainTime = OriginalData.Cooldown;
 }
@@ -62,26 +63,33 @@ void UWhip::LevelUp()
 		OriginalData.Area = 100.f;
 		OriginalData.Cooldown = 1.35f;
 		OriginalData.KnockbackPower = 100.f;
+		OriginalData.ExplainText = "투사체 1 증가";
 		break;
 	case 2:
 		++OriginalData.Amount;
+		OriginalData.ExplainText = "공격력 5 증가";
 		break;
 	case 3:
 		OriginalData.Damage += 5.f;
+		OriginalData.ExplainText = "공격력 5 증가, 공격범위 10% 증가";
 		break;
 	case 4:
 		OriginalData.Damage += 5.f;
 		OriginalData.Area *= 1.1f;
+		OriginalData.ExplainText = "공격력 5 증가";
 		break;
 	case 5:
 		OriginalData.Damage += 5.f;
+		OriginalData.ExplainText = "공격력 5 증가, 공격범위 10% 증가";
 		break;
 	case 6:
 		OriginalData.Damage += 5.f;
 		OriginalData.Area *= 1.1f;
+		OriginalData.ExplainText = "공격력 5 증가";
 		break;
 	case 7:
 		OriginalData.Damage += 5.f;
+		OriginalData.ExplainText = "공격력 5 증가";
 		break;
 	case 8:
 		OriginalData.Damage += 5.f;
@@ -100,7 +108,7 @@ void UWhip::SpawnCenter()
 
 void UWhip::ApplyStatus(FPlayerData _Data)
 {
-	FWeaponData TempData = { 0, };
+	FWeaponData TempData;
 
 	TempData.Amount = OriginalData.Amount + _Data.Amount;
 	TempData.Damage = OriginalData.Damage * _Data.Might;
