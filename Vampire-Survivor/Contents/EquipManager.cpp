@@ -55,7 +55,7 @@ void UEquipManager::EquipWeapon(EWeapon _Weapon)
 		if (_WeaponPair.first == _Weapon)
 		{
 			_WeaponPair.second->LevelUp();
-			StatusApplyToWeapon();
+			_WeaponPair.second->ApplyStatus(UContentsValue::Player->GetPlayerDataCopy());
 			return;
 		}
 	}
@@ -64,8 +64,8 @@ void UEquipManager::EquipWeapon(EWeapon _Weapon)
 	{
 		std::shared_ptr<UWeapon> Weapon = SpawnWeapon(_Weapon);
 		Weapon->DataInit();
+		Weapon->ApplyStatus(UContentsValue::Player->GetPlayerDataCopy());
 		Weapons.push_back(std::make_pair(_Weapon, Weapon));
-		StatusApplyToWeapon();
 		return;
 	}
 
@@ -84,6 +84,7 @@ void UEquipManager::EquipAccessory(EAccessory _Accessory)
 		{
 			_AccessoryPair.second->LevelUp();
 			AccessoryApply();
+			StatusApplyToWeapon();
 			return;
 		}
 	}
@@ -93,6 +94,7 @@ void UEquipManager::EquipAccessory(EAccessory _Accessory)
 		std::shared_ptr<UAccessory> Accessory= SpawnAccessory(_Accessory);
 		Accessories.push_back(std::make_pair(_Accessory, Accessory));
 		AccessoryApply();
+		StatusApplyToWeapon();
 		return;
 	}
 
