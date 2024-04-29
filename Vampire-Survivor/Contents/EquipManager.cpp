@@ -92,6 +92,7 @@ void UEquipManager::EquipAccessory(EAccessory _Accessory)
 	if (Equipsize < EquipCapacity)
 	{
 		std::shared_ptr<UAccessory> Accessory= SpawnAccessory(_Accessory);
+		Accessory->DataInit();
 		Accessories.push_back(std::make_pair(_Accessory, Accessory));
 		AccessoryApply();
 		StatusApplyToWeapon();

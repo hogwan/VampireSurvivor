@@ -46,6 +46,8 @@ protected:
 	UImage* WeaponInfoBackBoard = nullptr;
 	UImage* PlayerStatusInfoBackBoard = nullptr;
 	UImage* LevelUpBackBoard = nullptr;
+	UTextWidget* LevelUpText = nullptr;
+	UTextWidget* AdditionalMessage = nullptr;
 
 	std::vector<UImage*> WeaponTilesBack;
 	std::vector<UImage*> AccessoryTilesBack;
@@ -53,9 +55,16 @@ protected:
 	std::vector<UImage*> WeaponTiles;
 	std::vector<UImage*> AccessoryTiles;
 
+	std::vector<UImage*> WeaponInfoBack;
 	std::vector<std::vector<UImage*>> WeaponInfo;
+
+	std::vector<UImage*> AccessoryInfoBack;
 	std::vector<std::vector<UImage*>> AccessoryInfo;
-	std::vector<std::vector<UImage*>> PlayerStatusInfo;
+
+	std::vector<UImage*> PlayerStatusInfoSprite;
+	std::vector<std::pair<UTextWidget*, UTextWidget*>> PlayerStatusInfoText;
+
+
 	std::vector<std::vector<UImage*>> LevelUpList;
 	std::vector<std::vector<UTextWidget*>> LevelUpListExplain;
 	std::pair<UImage*, UImage*> SelectArrows;

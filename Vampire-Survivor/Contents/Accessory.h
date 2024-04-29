@@ -5,7 +5,7 @@ struct FAccessoryData
 {
 	std::string ExplainText;
 
-	int Level = 1;
+	int Level = 0;
 
 	float MaxHealth = 0.f;
 	float Recovery = 0.f;
@@ -68,12 +68,12 @@ public:
 	}
 
 	FAccessoryData Data = { "",};
+	virtual void DataInit() = 0;
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	virtual void DataInit() = 0;
 
 	EAccessory AccessoryType = EAccessory::None;
 private:

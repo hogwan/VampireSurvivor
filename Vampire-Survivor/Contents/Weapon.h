@@ -6,7 +6,7 @@ struct FWeaponData
 public:
 	std::string ExplainText;
 
-	int Level;
+	int Level = 0;
 	int Amount;
 	int Penetration;
 	float Damage;
