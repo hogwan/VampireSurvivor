@@ -32,6 +32,7 @@ protected:
 	void UILevelUpdate();
 	void WeaponTilesUpdate();
 	void AccessoryTilesUpdate();
+	void UIPlayerStatusUpdate();
 
 	void LevelUpUIOn();
 	void LevelUpUIOff();

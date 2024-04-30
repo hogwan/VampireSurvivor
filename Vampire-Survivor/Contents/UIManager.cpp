@@ -244,6 +244,49 @@ void UIManager::UISpawn()
 	PlayerStatusInfoSprite[13]->SetSprite("Growth.png");
 	PlayerStatusInfoSprite[14]->SetSprite("AttractorbSprite.png");
 
+	for (int i = 0; i < 15; i++)
+	{
+		if (i == 4 || i == 11)
+		{
+			PlayerStatusInfoText.push_back(std::make_pair(nullptr,nullptr));
+			continue;
+		}
+
+		PlayerStatusInfoText.push_back(std::make_pair(CreateWidget<UTextWidget>(GetWorld(), "StatusInfoText"), CreateWidget<UTextWidget>(GetWorld(), "StatusInfoText")));
+		PlayerStatusInfoText[i].first->AddToViewPort(4);
+		PlayerStatusInfoText[i].first->SetScale(14.f);
+		PlayerStatusInfoText[i].first->SetFont("Liberation Sans 보통");
+		PlayerStatusInfoText[i].first->SetColor(Color8Bit::White);
+		PlayerStatusInfoText[i].first->SetPosition(FVector(-570.f, 130.f - 20.f * i, 10.f));
+		PlayerStatusInfoText[i].first->SetActive(true);
+		PlayerStatusInfoText[i].first->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_LEFT | FW1_TEXT_FLAG::FW1_VCENTER));
+
+		PlayerStatusInfoText[i].second->AddToViewPort(4);
+		PlayerStatusInfoText[i].second->SetScale(14.f);
+		PlayerStatusInfoText[i].second->SetFont("Liberation Sans 보통");
+		PlayerStatusInfoText[i].second->SetColor(Color8Bit::White);
+		PlayerStatusInfoText[i].second->SetPosition(FVector(-400.f, 130.f - 20.f * i, 10.f));
+		PlayerStatusInfoText[i].second->SetActive(true);
+		PlayerStatusInfoText[i].second->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_RIGHT | FW1_TEXT_FLAG::FW1_VCENTER));
+	}
+
+	PlayerStatusInfoText[0].first->SetText("Max Health");
+	PlayerStatusInfoText[1].first->SetText("Recovery");
+	PlayerStatusInfoText[2].first->SetText("Armor");
+	PlayerStatusInfoText[3].first->SetText("MoveSpeed");
+						  
+	PlayerStatusInfoText[5].first->SetText("Might");
+	PlayerStatusInfoText[6].first->SetText("Area");
+	PlayerStatusInfoText[7].first->SetText("Speed");
+	PlayerStatusInfoText[8].first->SetText("Duration");
+	PlayerStatusInfoText[9].first->SetText("Amount");
+	PlayerStatusInfoText[10].first->SetText("Cooldown");
+							
+	PlayerStatusInfoText[12].first->SetText("Luck");
+	PlayerStatusInfoText[13].first->SetText("Growth");
+	PlayerStatusInfoText[14].first->SetText("Magnet");
+
+
 
 	LevelUpBackBoard = CreateWidget<UImage>(GetWorld(), "LevelUpBackBoard");
 	LevelUpBackBoard->AddToViewPort(2);
@@ -352,6 +395,7 @@ void UIManager::UIUpdate()
 	UILevelUpdate();
 	WeaponTilesUpdate();
 	AccessoryTilesUpdate();
+	UIPlayerStatusUpdate();
 
 }
 
@@ -555,6 +599,7 @@ void UIManager::AccessoryTilesUpdate()
 
 		if (IsSelecting)
 		{
+			AccessoryInfoBack[i]->SetActive(true);
 			for (UImage* Info : AccessoryInfo[i])
 			{
 				Info->SetActive(true);
@@ -562,6 +607,7 @@ void UIManager::AccessoryTilesUpdate()
 		}
 		else
 		{
+			AccessoryInfoBack[i]->SetActive(false);
 			for (UImage* Info : AccessoryInfo[i])
 			{
 				Info->SetActive(false);
@@ -718,6 +764,71 @@ void UIManager::AccessoryTilesUpdate()
 			break;
 		}
 		i++;
+	}
+}
+
+void UIManager::UIPlayerStatusUpdate()
+{
+	//float MaxHealth = 0.f;
+	//float Recovery = 0.f;
+	//float Armor = 0.f;
+	//float MoveSpeed = 1.f;
+	//float Might = 0.f;
+	//float Speed = 0.f;
+	//float Duration = 0.f;
+	//float Area = 0.f;
+	//float Cooldown = 0.f;
+	//float Magnet = 1.f;
+	//float Luck = 0.f;
+	//float Growth = 0.f;
+	//float Greed = 0.f;
+	//float Curse = 0.f;
+
+	FAccessoryData Data = UEquipManager::GetAccessoryResult();
+
+	int MaxHealth = 100 + static_cast<int>(Data.MaxHealth);
+	PlayerStatusInfoText[0].second->SetText(std::to_string(MaxHealth));
+
+	float Recovery = Data.Recovery;
+	if (Recovery < 0.01f)
+	{
+		PlayerStatusInfoText[1].second->SetText("-");
+	}
+	else
+	{
+		PlayerStatusInfoText[1].second->SetText(std::to_string(Recovery));
+	}
+
+	float Armor = static_cast<int>(Data.Armor);
+	if (Armor == 0)
+	{
+		PlayerStatusInfoText[2].second->SetText("-");
+	}
+	else
+	{
+		PlayerStatusInfoText[2].second->SetText(std::to_string(Armor));
+	}
+
+	float MoveSpeed = Data.MoveSpeed;
+	if (MoveSpeed < 1.05f)
+	{
+		PlayerStatusInfoText[3].second->SetText("-");
+	}
+	else
+	{
+		int MoveSpeedPercent = static_cast<int>((MoveSpeed - 1.f) * 100.f);
+		PlayerStatusInfoText[3].second->SetText(std::to_string(MoveSpeedPercent) + "%");
+	}
+
+	float MoveSpeed = Data.MoveSpeed;
+	if (MoveSpeed < 1.05f)
+	{
+		PlayerStatusInfoText[5].second->SetText("-");
+	}
+	else
+	{
+		int MoveSpeedPercent = static_cast<int>((MoveSpeed - 1.f) * 100.f);
+		PlayerStatusInfoText[5].second->SetText(std::to_string(MoveSpeedPercent) + "%");
 	}
 }
 

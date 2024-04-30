@@ -31,7 +31,7 @@ public:
 	std::shared_ptr<UWeapon> SpawnWeapon(EWeapon _WeaponType);
 	std::shared_ptr<UAccessory> SpawnAccessory(EAccessory _AccessoryType);
 	
-	FAccessoryData GetAccessoryResult();
+	static FAccessoryData GetAccessoryResult();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
