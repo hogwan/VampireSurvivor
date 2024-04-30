@@ -118,24 +118,25 @@ void UEquipManager::StatusApplyToWeapon()
 void UEquipManager::AccessoryApply()
 {
 	std::shared_ptr<APlayer> Player = UContentsValue::Player;
+	FPlayerData OriginalData = UContentsValue::Player->OriginalData;
 	FPlayerData* Data = Player->GetPlayerDataReference();
 	FAccessoryData AccessoryData = GetAccessoryResult();
-
-	Data->MaxHealth += AccessoryData.MaxHealth;
-	Data->Recovery += AccessoryData.Recovery;
-	Data->Armor += AccessoryData.Armor;
-	Data->MoveSpeed *= AccessoryData.MoveSpeed;
-	Data->Might += AccessoryData.Might;
-	Data->Speed += AccessoryData.Speed;
-	Data->Duration += AccessoryData.Duration;
-	Data->Area += AccessoryData.Area;
-	Data->Cooldown += AccessoryData.Cooldown;
-	Data->Magnet *= AccessoryData.Magnet;
-	Data->Luck += AccessoryData.Luck;
-	Data->Growth += AccessoryData.Growth;
-	Data->Greed += AccessoryData.Greed;
-	Data->Curse += AccessoryData.Curse;
-	Data->Amount += AccessoryData.Amount;
+	
+	Data->MaxHealth = OriginalData.MaxHealth +AccessoryData.MaxHealth;
+	Data->Recovery = OriginalData.Recovery + AccessoryData.Recovery;
+	Data->Armor = OriginalData.Armor + AccessoryData.Armor;
+	Data->MoveSpeed = OriginalData.MoveSpeed * AccessoryData.MoveSpeed;
+	Data->Might = OriginalData.Might + AccessoryData.Might;
+	Data->Speed = OriginalData.Speed + AccessoryData.Speed;
+	Data->Duration = OriginalData.Duration + AccessoryData.Duration;
+	Data->Area = OriginalData.Area + AccessoryData.Area;
+	Data->Cooldown = OriginalData.Cooldown + AccessoryData.Cooldown;
+	Data->Magnet = OriginalData.Magnet * AccessoryData.Magnet;
+	Data->Luck = OriginalData.Luck + AccessoryData.Luck;
+	Data->Growth = OriginalData.Growth + AccessoryData.Growth;
+	Data->Greed = OriginalData.Greed + AccessoryData.Greed;
+	Data->Curse = OriginalData.Curse + AccessoryData.Curse;
+	Data->Amount = OriginalData.Amount + AccessoryData.Amount;
 }
 
 FAccessoryData UEquipManager::GetAccessoryResult()

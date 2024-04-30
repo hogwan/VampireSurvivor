@@ -2,6 +2,7 @@
 #include "KingBibleUnit.h"
 #include "Enemy.h"
 #include "KingBible.h"
+#include "Player.h"
 
 AKingBibleUnit::AKingBibleUnit()
 {
@@ -35,7 +36,14 @@ void AKingBibleUnit::ColLogic()
 		{
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
+			FVector EnemyPos = Opponent->GetActorLocation();
+			FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+
+			FVector DirVector = (EnemyPos - PlayerPos).Normalize3DReturn();
+
 			Opponent->GetEnemyData().Hp -= UKingBible::Data.Damage;
+			Opponent->SetKnockBack(DirVector * UKingBible::Data.KnockbackPower);
+			Opponent->State.ChangeState("KnockBack");
 		}
 	);
 }

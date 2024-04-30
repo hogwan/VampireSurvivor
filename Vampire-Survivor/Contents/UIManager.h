@@ -33,6 +33,10 @@ protected:
 	void WeaponTilesUpdate();
 	void AccessoryTilesUpdate();
 	void UIPlayerStatusUpdate();
+	void KillCountUpdate();
+	void GoldUpdate();
+	
+	int RandomPickLogic();
 
 	void LevelUpUIOn();
 	void LevelUpUIOff();
@@ -49,6 +53,8 @@ protected:
 	UImage* LevelUpBackBoard = nullptr;
 	UTextWidget* LevelUpText = nullptr;
 	UTextWidget* AdditionalMessage = nullptr;
+	UTextWidget* KillCountText = nullptr;
+	UTextWidget* GoldText = nullptr;
 
 	std::vector<UImage*> WeaponTilesBack;
 	std::vector<UImage*> AccessoryTilesBack;

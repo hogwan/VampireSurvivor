@@ -46,6 +46,7 @@ void ASantaWaterUnit::ColLogic()
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
 			Opponent->GetEnemyData().Hp -= USantaWater::Data.Damage;
+			Opponent->State.ChangeState("KnockBack");
 		}
 	);
 }

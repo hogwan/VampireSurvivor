@@ -1,5 +1,7 @@
 #pragma once
 #include "PollingObject.h"
+#include <EngineCore/TextWidget.h>
+#include <EngineCore/StateManager.h>
 
 struct FEnemyData
 {
@@ -12,7 +14,7 @@ public:
 	float MaxKnockBack;
 	float XP;
 };
-// Ό³Έν :
+
 class AEnemy : public APollingObject
 {
 	GENERATED_BODY(APollingObject)
@@ -32,7 +34,13 @@ public:
 		return Data;
 	}
 
-	bool InDetectRange = false;
+	UStateManager State;
+
+	void SetKnockBack(FVector _KnockBackVector)
+	{
+		KnockBackVector = _KnockBackVector * Data.Knockback;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -46,8 +54,18 @@ protected:
 	void RepositionLogic();
 	void SpriteDirCheck();
 
+	void KnockBackStart();
+	void KnockBack(float _DeltaTime);
+
+	void ChasePlayerStart();
+	void ChasePlayer(float _DeltaTime);
+
+	float KnockBackTime = 0.15f;
+	float AccTime = 0.f;
+	FVector KnockBackVector = FVector::Zero;
 	FEnemyData Data = { 0, };
 private:
+
 };
 
 

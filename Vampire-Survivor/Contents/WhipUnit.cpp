@@ -63,7 +63,22 @@ void AWhipUnit::ColLogic()
 		{
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
-			Opponent->GetEnemyData().Hp -= UWhip::Data.Damage;
+			//Opponent->GetEnemyData().Hp -= UWhip::Data.Damage;
+
+			FVector EnemyPos = Opponent->GetActorLocation();
+			FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+
+			if (EnemyPos.X > PlayerPos.X)
+			{
+				Opponent->SetKnockBack(FVector::Right * UWhip::Data.KnockbackPower);
+				Opponent->State.ChangeState("KnockBack");
+			}
+			else
+			{
+				Opponent->SetKnockBack(FVector::Left * UWhip::Data.KnockbackPower);
+				Opponent->State.ChangeState("KnockBack");
+			}
+
 		}
 	);
 }

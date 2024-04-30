@@ -125,5 +125,6 @@ void UKnife::ApplyStatus(FPlayerData _Data)
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
 	Data.Penetration = TempData.Penetration;
+	Data.KnockbackPower = OriginalData.KnockbackPower;
 	RemainTime = Data.Cooldown;
 }

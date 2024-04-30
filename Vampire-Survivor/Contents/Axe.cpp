@@ -42,7 +42,7 @@ void UAxe::DataInit()
 	OriginalData.Duration = 0.f;
 	OriginalData.Area = 50.f;
 	OriginalData.Cooldown = 4.f;
-	OriginalData.KnockbackPower = 100.f;
+	OriginalData.KnockbackPower = 300.f;
 	OriginalData.ExplainText = "투사체 수 1 증가";
 
 	RemainTime = OriginalData.Cooldown;
@@ -62,7 +62,7 @@ void UAxe::LevelUp()
 		OriginalData.Duration = 0.f;
 		OriginalData.Area = 50.f;
 		OriginalData.Cooldown = 4.f;
-		OriginalData.KnockbackPower = 100.f;
+		OriginalData.KnockbackPower = 300.f;
 		OriginalData.ExplainText = "투사체 수 1 증가";
 		break;
 	case 2:
@@ -91,7 +91,7 @@ void UAxe::LevelUp()
 		break;
 	case 8:
 		OriginalData.Damage += 20.f;
-		OriginalData.ExplainText = "최대 레벨 증가";
+		OriginalData.ExplainText = "최대 레벨 도달";
 		break;
 	default:
 		break;
@@ -122,5 +122,6 @@ void UAxe::ApplyStatus(FPlayerData _Data)
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
 	Data.Penetration = TempData.Penetration;
+	Data.KnockbackPower = OriginalData.KnockbackPower;
 	RemainTime = Data.Cooldown;
 }

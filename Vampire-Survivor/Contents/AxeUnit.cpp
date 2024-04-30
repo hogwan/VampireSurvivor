@@ -61,6 +61,9 @@ void AAxeUnit::ColLogic()
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
 			Opponent->GetEnemyData().Hp -= UAxe::Data.Damage;
+			Opponent->SetKnockBack(MoveVector.Normalize3DReturn() * UAxe::Data.KnockbackPower);
+			Opponent->State.ChangeState("KnockBack");
+
 			--Penetration;
 		}
 	);

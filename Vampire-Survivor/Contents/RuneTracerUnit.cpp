@@ -49,6 +49,8 @@ void ARuneTracerUnit::ColLogic()
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
 			Opponent->GetEnemyData().Hp -= URuneTracer::Data.Damage;
+			Opponent->SetKnockBack(MoveVector.Normalize3DReturn() * URuneTracer::Data.KnockbackPower);
+			Opponent->State.ChangeState("KnockBack");
 		}
 	);
 }

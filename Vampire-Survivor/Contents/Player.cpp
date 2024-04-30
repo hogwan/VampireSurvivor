@@ -34,6 +34,8 @@ void APlayer::BeginPlay()
 	DetectCollider->SetCollisionType(ECollisionType::CirCle);
 	DetectCollider->SetScale(FVector(DetectDistance, DetectDistance, 10.f));
 	PushPower = 10.f;
+
+
 }
 
 void APlayer::Tick(float _DeltaTime)
@@ -51,8 +53,6 @@ void APlayer::Tick(float _DeltaTime)
 	RandomEnemyCheck();
 
 	DebugMessageFunction(_DeltaTime);
-
-	Data;
 
 	int a = 0;
 }
@@ -100,10 +100,17 @@ void APlayer::DebugMessageFunction(float _Delta)
 		std::string Msg = std::format("EnemyCount : {}\n", USpawnerManager::EnemyCount);
 		UEngineDebugMsgWindow::PushMsg(Msg);
 	}
+
+	{
+		std::string Msg = std::format("Level : {}\n", Data.Level);
+		UEngineDebugMsgWindow::PushMsg(Msg);
+	}
 }
 
 void APlayer::LevelUpLogic()
 {
+	if (Data.Level == UContentsValue::MaxLevel) return;
+
 	float CurExp = Data.CurExp;
 	float MaxExp = Data.TargetExp;
 

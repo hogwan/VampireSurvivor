@@ -387,6 +387,23 @@ void UIManager::UISpawn()
 	SelectArrows.second->SetScale(Scale);*/
 	SelectArrows.second->SetRotationDeg(FVector(0.f, 0.f, 180.f));
 	SelectArrows.second->ChangeAnimation("Rotate");
+
+	KillCountText = CreateWidget<UTextWidget>(GetWorld(), "KillCount");
+	KillCountText->AddToViewPort(4);
+	KillCountText->SetScale(15.f);
+	KillCountText->SetFont("Liberation Sans 보통");
+	KillCountText->SetColor(Color8Bit::White);
+	KillCountText->SetPosition(FVector(365.f,315.f));
+	KillCountText->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_LEFT | FW1_TEXT_FLAG::FW1_VCENTER));
+
+	GoldText = CreateWidget<UTextWidget>(GetWorld(), "Gold");
+	GoldText->AddToViewPort(4);
+	GoldText->SetScale(15.f);
+	GoldText->SetFont("Liberation Sans 보통");
+	GoldText->SetColor(Color8Bit::White);
+	GoldText->SetPosition(FVector(580.f, 315.f));
+	GoldText->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_LEFT | FW1_TEXT_FLAG::FW1_VCENTER));
+
 }
 
 void UIManager::UIUpdate()
@@ -396,6 +413,8 @@ void UIManager::UIUpdate()
 	WeaponTilesUpdate();
 	AccessoryTilesUpdate();
 	UIPlayerStatusUpdate();
+	KillCountUpdate();
+	GoldUpdate();
 
 }
 
@@ -769,20 +788,6 @@ void UIManager::AccessoryTilesUpdate()
 
 void UIManager::UIPlayerStatusUpdate()
 {
-	//float MaxHealth = 0.f;
-	//float Recovery = 0.f;
-	//float Armor = 0.f;
-	//float MoveSpeed = 1.f;
-	//float Might = 0.f;
-	//float Speed = 0.f;
-	//float Duration = 0.f;
-	//float Area = 0.f;
-	//float Cooldown = 0.f;
-	//float Magnet = 1.f;
-	//float Luck = 0.f;
-	//float Growth = 0.f;
-	//float Greed = 0.f;
-	//float Curse = 0.f;
 
 	FAccessoryData Data = UEquipManager::GetAccessoryResult();
 
@@ -799,7 +804,7 @@ void UIManager::UIPlayerStatusUpdate()
 		PlayerStatusInfoText[1].second->SetText(std::to_string(Recovery));
 	}
 
-	float Armor = static_cast<int>(Data.Armor);
+	int Armor = static_cast<int>(Data.Armor);
 	if (Armor == 0)
 	{
 		PlayerStatusInfoText[2].second->SetText("-");
@@ -817,19 +822,300 @@ void UIManager::UIPlayerStatusUpdate()
 	else
 	{
 		int MoveSpeedPercent = static_cast<int>((MoveSpeed - 1.f) * 100.f);
-		PlayerStatusInfoText[3].second->SetText(std::to_string(MoveSpeedPercent) + "%");
+		PlayerStatusInfoText[3].second->SetText("+" + std::to_string(MoveSpeedPercent) + "%");
 	}
 
-	float MoveSpeed = Data.MoveSpeed;
-	if (MoveSpeed < 1.05f)
+	float Might = Data.Might;
+	if (Might < 1.05f)
 	{
 		PlayerStatusInfoText[5].second->SetText("-");
 	}
 	else
 	{
-		int MoveSpeedPercent = static_cast<int>((MoveSpeed - 1.f) * 100.f);
-		PlayerStatusInfoText[5].second->SetText(std::to_string(MoveSpeedPercent) + "%");
+		int MightPercent = static_cast<int>((Might-1.f) * 100.f);
+		PlayerStatusInfoText[5].second->SetText("+" + std::to_string(MightPercent) + "%");
 	}
+
+	float Area = Data.Area;
+	if (Area < 0.05f)
+	{
+		PlayerStatusInfoText[6].second->SetText("-");
+	}
+	else
+	{
+		int AreaPercent = static_cast<int>(Area * 100.f);
+		PlayerStatusInfoText[6].second->SetText("+" + std::to_string(AreaPercent) + "%");
+	}
+
+	float Speed = Data.Speed;
+	if (Speed < 1.05f)
+	{
+		PlayerStatusInfoText[7].second->SetText("-");
+	}
+	else
+	{
+		int SpeedPercent = static_cast<int>((Speed - 1.f) * 100.f);
+		PlayerStatusInfoText[7].second->SetText("+" + std::to_string(SpeedPercent) + "%");
+	}
+
+	float Duration = Data.Duration;
+	if (Duration < 0.05f)
+	{
+		PlayerStatusInfoText[8].second->SetText("-");
+	}
+	else
+	{
+		int DurationPercent = static_cast<int>(Duration * 100.f);
+		PlayerStatusInfoText[8].second->SetText("+" + std::to_string(DurationPercent) + "%");
+	}
+
+	int Amount = Data.Amount;
+	if (Amount == 0)
+	{
+		PlayerStatusInfoText[9].second->SetText("-");
+	}
+	else
+	{
+		PlayerStatusInfoText[9].second->SetText(std::to_string(Amount));
+	}
+
+	float Cooldown = Data.Cooldown;
+	if (Cooldown < 0.05f)
+	{
+		PlayerStatusInfoText[10].second->SetText("-");
+	}
+	else
+	{
+		int CooldownPercent = static_cast<int>(Cooldown * 100.f);
+		PlayerStatusInfoText[10].second->SetText("+" + std::to_string(CooldownPercent) + "%");
+	}
+
+	float Luck = Data.Luck;
+	if (Luck < 0.05f)
+	{
+		PlayerStatusInfoText[12].second->SetText("-");
+	}
+	else
+	{
+		int LuckPercent = static_cast<int>(Luck * 100.f);
+		PlayerStatusInfoText[12].second->SetText("+" + std::to_string(LuckPercent) + "%");
+	}
+
+	PlayerStatusInfoText[13].second->SetText("-");
+
+	float Magnet = Data.Magnet;
+	if (Magnet < 1.05f)
+	{
+		PlayerStatusInfoText[14].second->SetText("-");
+	}
+	else
+	{
+		int MagnetPercent = static_cast<int>((Magnet - 1.f) * 100.f);
+		PlayerStatusInfoText[14].second->SetText("+" + std::to_string(MagnetPercent) + "%");
+	}
+}
+
+void UIManager::KillCountUpdate()
+{
+	KillCountText->SetText(std::to_string(UContentsValue::KillCount));
+}
+
+void UIManager::GoldUpdate()
+{
+	GoldText->SetText(std::to_string(UContentsValue::Gold));
+}
+
+int UIManager::RandomPickLogic()
+{
+	int Min = static_cast<int>(ESelectList::Axe);
+	int Max = static_cast<int>(ESelectList::Wings);
+
+	int Random = UEngineRandom::MainRandom.RandomInt(Min, Max);
+
+	if (Random < 12)
+	{
+		if (UEquipManager::Weapons.size() >= 6)
+		{
+			int rand = UEngineRandom::MainRandom.RandomInt(0, 5);
+
+			switch (UEquipManager::Weapons[rand].first)
+			{
+			case EWeapon::Axe:
+				Random = static_cast<int>(ESelectList::Axe);
+				if (UAxe::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::Cross:
+				Random = static_cast<int>(ESelectList::Cross);
+				if (UCross::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::FireWand:
+				Random = static_cast<int>(ESelectList::FireWand);
+				if (UFireWand::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::Garlic:
+				Random = static_cast<int>(ESelectList::Garlic);
+				if (UGarlic::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::KingBible:
+				Random = static_cast<int>(ESelectList::KingBible);
+				if (UKingBible::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::Knife:
+				Random = static_cast<int>(ESelectList::Knife);
+				if (UKnife::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::LightingRing:
+				Random = static_cast<int>(ESelectList::LightingRing);
+				if (ULightingRing::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::MagicWand:
+				Random = static_cast<int>(ESelectList::MagicWand);
+				if (UMagicWand::Data.Level >7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::RuneTracer:
+				Random = static_cast<int>(ESelectList::RuneTracer);
+				if (URuneTracer::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::SantaWater:
+				Random = static_cast<int>(ESelectList::SantaWater);
+				if (USantaWater::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EWeapon::Whip:
+				Random = static_cast<int>(ESelectList::Whip);
+				if (UWhip::Data.Level > 7)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			}
+		}
+	}
+	else if (Random < 24)
+	{
+		if (UEquipManager::Accessories.size() >= 6)
+		{
+			int rand = UEngineRandom::MainRandom.RandomInt(0, 5);
+			switch (UEquipManager::Accessories[rand].first)
+			{
+			case EAccessory::Armor:
+				Random = static_cast<int>(ESelectList::Armor);
+				if (UArmor::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::Attractorb:
+				Random = static_cast<int>(ESelectList::Attractorb);
+				if (UAttractorb::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::Bracer:
+				Random = static_cast<int>(ESelectList::Bracer);
+				if (UBracer::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::Candelabrador:
+				Random = static_cast<int>(ESelectList::Candelabrador);
+				if (UCandelabrador::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::Clover:
+				Random = static_cast<int>(ESelectList::Clover);
+				if (UClover::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::Duplicator:
+				Random = static_cast<int>(ESelectList::Duplicator);
+				if (UDuplicator::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::EmptyTome:
+				Random = static_cast<int>(ESelectList::EmptyTome);
+				if (UEmptyTome::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::HollowHeart:
+				Random = static_cast<int>(ESelectList::HollowHeart);
+				if (UHollowHeart::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::Pummarola: 
+				Random = static_cast<int>(ESelectList::Pummarola);
+				if (UPummarola::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::Spellbinder:
+				Random = static_cast<int>(ESelectList::Spellbinder);
+				if (USpellbinder::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::Spinach:
+				Random = static_cast<int>(ESelectList::Spinach);
+				if (USpinach::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			case EAccessory::Wings:
+				Random = static_cast<int>(ESelectList::Wings);
+				if (UWings::Data.Level > 4)
+				{
+					return RandomPickLogic();
+				}
+				break;
+			}
+		}
+	}
+
+	return Random;
 }
 
 void UIManager::LevelUpEventStart()
@@ -839,15 +1125,20 @@ void UIManager::LevelUpEventStart()
 	IsSelecting = true;
 	SelectIndex = 0;
 
-
-	int Min = static_cast<int>(ESelectList::Axe);
-	int Max = static_cast<int>(ESelectList::Wings);
-
 	for (int i = 0; i < 3; i++)
 	{
-		int Random = UEngineRandom::MainRandom.RandomInt(Min, Max);
-
+		int Random = RandomPickLogic();
 		ESelectList List = static_cast<ESelectList>(Random);
+
+		for (ESelectList Selected : InfoVec)
+		{
+			while(List == Selected)
+			{
+				Random = RandomPickLogic();
+				List = static_cast<ESelectList>(Random);
+			}
+		}
+
 
 		switch (List)
 		{
@@ -1533,6 +1824,23 @@ void UIManager::LevelUpUIOn()
 	LevelUpText->SetActive(true);
 	AdditionalMessage->SetActive(true);
 
+	for (std::pair<UTextWidget*, UTextWidget*> StatusText : PlayerStatusInfoText)
+	{
+		if (StatusText.first != nullptr && StatusText.second != nullptr)
+		{
+			StatusText.first->SetActive(true);
+			StatusText.second->SetActive(true);
+		}
+	}
+
+	for (UImage* Sprite : PlayerStatusInfoSprite)
+	{
+		if (Sprite != nullptr)
+		{
+			Sprite->SetActive(true);
+		}
+	}
+
 	for (std::vector<UTextWidget*> Explains : LevelUpListExplain)
 	{
 		for (UTextWidget* Explain : Explains)
@@ -1567,6 +1875,23 @@ void UIManager::LevelUpUIOff()
 	LevelUpBackBoard->SetActive(false);
 	LevelUpText->SetActive(false);
 	AdditionalMessage->SetActive(false);
+
+	for (std::pair<UTextWidget*, UTextWidget*> StatusText : PlayerStatusInfoText)
+	{
+		if (StatusText.first != nullptr && StatusText.second != nullptr)
+		{
+			StatusText.first->SetActive(false);
+			StatusText.second->SetActive(false);
+		}
+	}
+
+	for (UImage* Sprite : PlayerStatusInfoSprite)
+	{
+		if (Sprite != nullptr)
+		{
+			Sprite->SetActive(false);
+		}
+	}
 
 	for (std::vector<UTextWidget*> Explains : LevelUpListExplain)
 	{

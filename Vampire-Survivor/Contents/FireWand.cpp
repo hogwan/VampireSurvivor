@@ -42,7 +42,7 @@ void UFireWand::DataInit()
 	OriginalData.Duration = 2.f;
 	OriginalData.Area = 1.f;
 	OriginalData.Cooldown = 3.f;
-	OriginalData.KnockbackPower = 100.f;
+	OriginalData.KnockbackPower = 200.f;
 	OriginalData.ExplainText = "공격력 10 증가";
 
 	RemainTime = OriginalData.Cooldown;
@@ -62,7 +62,7 @@ void UFireWand::LevelUp()
 		OriginalData.Duration = 2.f;
 		OriginalData.Area = 1.f;
 		OriginalData.Cooldown = 3.f;
-		OriginalData.KnockbackPower = 100.f;
+		OriginalData.KnockbackPower = 200.f;
 		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 2:
@@ -125,5 +125,6 @@ void UFireWand::ApplyStatus(FPlayerData _Data)
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
 	Data.Penetration = TempData.Penetration;
+	Data.KnockbackPower = OriginalData.KnockbackPower;
 	RemainTime = Data.Cooldown;
 }

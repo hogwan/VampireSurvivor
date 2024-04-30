@@ -49,6 +49,8 @@ void AFireWandUnit::ColLogic()
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
 			Opponent->GetEnemyData().Hp -= UFireWand::Data.Damage;
+			Opponent->SetKnockBack(MoveVector.Normalize3DReturn() * UFireWand::Data.KnockbackPower);
+			Opponent->State.ChangeState("KnockBack");
 			Destroy();
 		}
 	);

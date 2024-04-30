@@ -83,6 +83,7 @@ public:
 	{
 		return Data;
 	}
+	FPlayerData OriginalData;
 
 protected:
 	void BeginPlay() override;

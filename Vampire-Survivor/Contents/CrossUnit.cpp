@@ -55,6 +55,8 @@ void ACrossUnit::ColLogic()
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
 			Opponent->GetEnemyData().Hp -= UCross::Data.Damage;
+			Opponent->SetKnockBack(MoveVector.Normalize3DReturn() * UCross::Data.KnockbackPower);
+			Opponent->State.ChangeState("KnockBack");
 		}
 	);
 }

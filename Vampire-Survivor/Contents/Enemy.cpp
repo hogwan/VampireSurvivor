@@ -26,7 +26,16 @@ void AEnemy::BeginPlay()
 	Collider->SetCollisionGroup(ECollisionOrder::Monster);
 	Collider->SetCollisionType(ECollisionType::CirCle);
 
-	
+	State.CreateState("ChasePlayer");
+	State.CreateState("KnockBack");
+
+	State.SetStartFunction("ChasePlayer", std::bind(&AEnemy::ChasePlayerStart,this));
+	State.SetUpdateFunction("ChasePlayer", std::bind(&AEnemy::ChasePlayer, this, std::placeholders::_1));
+
+	State.SetStartFunction("KnockBack", std::bind(&AEnemy::KnockBackStart, this));
+	State.SetUpdateFunction("KnockBack", std::bind(&AEnemy::KnockBack, this, std::placeholders::_1));
+
+	State.ChangeState("ChasePlayer");
 }
 
 void AEnemy::Tick(float _DeltaTime)
@@ -34,13 +43,9 @@ void AEnemy::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 	DeathLogic();
 	RepositionLogic();
-	MoveLogic();
 	ColLogic(_DeltaTime);
-
-	AddActorLocation(MoveVector * _DeltaTime);
-
-	//DetectLogic();
 	SpriteDirCheck();
+	State.Update(_DeltaTime);
 }
 
 void AEnemy::ActiveOn()
@@ -85,7 +90,7 @@ void AEnemy::ColLogic(float _DeltaTime)
 			PushDir.Normalize3D();
 			FVector PushVector = PushDir * PushPower;
 
-			MoveVector += PushVector;
+			AddActorLocation(PushVector * _DeltaTime);
 		}
 	);
 
@@ -118,13 +123,13 @@ void AEnemy::DeathLogic()
 {
 	if (Data.Hp < 0.f)
 	{
-		//ActiveOff();
 		std::shared_ptr<AExp> Exp = GetWorld()->SpawnActor<AExp>("Exp");
 		Exp->SetActorLocation(GetActorLocation());
 		Exp->SetExp(Data.XP);
 
 		Destroy();
-		USpawnerManager::EnemyCount--;
+		--USpawnerManager::EnemyCount;
+		++UContentsValue::KillCount;
 	}
 }
 
@@ -161,5 +166,34 @@ void AEnemy::SpriteDirCheck()
 	{
 		SpriteDir = EEngineDir::Left;
 	}
+}
+
+void AEnemy::KnockBackStart()
+{
+	Renderer->SetPlusColor(FVector(0.5f, 0.5f, 0.5f, 1.f));
+}
+
+void AEnemy::KnockBack(float _DeltaTime)
+{
+	AccTime += _DeltaTime;
+	if (AccTime > KnockBackTime)
+	{
+		AccTime = 0.f;
+		State.ChangeState("ChasePlayer");
+		return;
+	}
+
+	AddActorLocation(KnockBackVector * _DeltaTime);
+}
+
+void AEnemy::ChasePlayerStart()
+{
+	Renderer->SetPlusColor(FVector(0.0f, 0.0f, 0.0f, 1.f));
+}
+
+void AEnemy::ChasePlayer(float _DeltaTime)
+{
+	MoveLogic();
+	AddActorLocation(MoveVector * _DeltaTime);
 }
 

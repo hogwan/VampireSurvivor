@@ -49,6 +49,7 @@ void AGarlicUnit::ColLogic()
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
 			Opponent->GetEnemyData().Hp -= UGarlic::Data.Damage;
+			Opponent->State.ChangeState("KnockBack");
 		}
 	);
 }

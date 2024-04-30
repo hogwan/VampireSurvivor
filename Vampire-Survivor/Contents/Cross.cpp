@@ -40,7 +40,7 @@ void UCross::DataInit()
 	OriginalData.Duration = 0.f;
 	OriginalData.Area = 1.f;
 	OriginalData.Cooldown = 2.f;
-	OriginalData.KnockbackPower = 100.f;
+	OriginalData.KnockbackPower = 200.f;
 	OriginalData.ExplainText = "공격력 10 증가";
 
 	RemainTime = OriginalData.Cooldown;
@@ -60,7 +60,7 @@ void UCross::LevelUp()
 		OriginalData.Duration = 0.f;
 		OriginalData.Area = 1.f;
 		OriginalData.Cooldown = 2.f;
-		OriginalData.KnockbackPower = 100.f;
+		OriginalData.KnockbackPower = 200.f;
 		OriginalData.ExplainText = "공격력 10 증가";
 		break;
 	case 2:
@@ -122,5 +122,6 @@ void UCross::ApplyStatus(FPlayerData _Data)
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
 	Data.Penetration = TempData.Penetration;
+	Data.KnockbackPower = OriginalData.KnockbackPower;
 	RemainTime = Data.Cooldown;
 }

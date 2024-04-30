@@ -54,6 +54,8 @@ void AKnifeUnit::ColLogic()
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
 			Opponent->GetEnemyData().Hp -= UKnife::Data.Damage;
+			Opponent->SetKnockBack(MoveVector.Normalize3DReturn() * UKnife::Data.KnockbackPower);
+			Opponent->State.ChangeState("KnockBack");
 			--Penetration;
 		}
 	);

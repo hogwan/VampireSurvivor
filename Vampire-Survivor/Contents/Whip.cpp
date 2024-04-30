@@ -42,7 +42,7 @@ void UWhip::DataInit()
 	OriginalData.Duration = 0.f;
 	OriginalData.Area = 1.f;
 	OriginalData.Cooldown = 1.35f;
-	OriginalData.KnockbackPower = 100.f;
+	OriginalData.KnockbackPower = 1000.f;
 	OriginalData.ExplainText = "투사체 1 증가";
 
 	RemainTime = OriginalData.Cooldown;
@@ -62,7 +62,7 @@ void UWhip::LevelUp()
 		OriginalData.Duration = 0.f;
 		OriginalData.Area = 100.f;
 		OriginalData.Cooldown = 1.35f;
-		OriginalData.KnockbackPower = 100.f;
+		OriginalData.KnockbackPower = 1000.f;
 		OriginalData.ExplainText = "투사체 1 증가";
 		break;
 	case 2:
@@ -93,6 +93,7 @@ void UWhip::LevelUp()
 		break;
 	case 8:
 		OriginalData.Damage += 5.f;
+		OriginalData.ExplainText = "최대레벨 증가";
 		break;
 	default:
 		break;
@@ -125,6 +126,7 @@ void UWhip::ApplyStatus(FPlayerData _Data)
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
 	Data.Penetration = TempData.Penetration;
+	Data.KnockbackPower = OriginalData.KnockbackPower;
 	RemainTime = Data.Cooldown;
 }
 
