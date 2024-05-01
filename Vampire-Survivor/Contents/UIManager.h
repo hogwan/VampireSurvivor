@@ -35,6 +35,7 @@ protected:
 	void UIPlayerStatusUpdate();
 	void KillCountUpdate();
 	void GoldUpdate();
+	void TimeUpdate(float _DeltaTime);
 	
 	int RandomPickLogic();
 
@@ -55,6 +56,7 @@ protected:
 	UTextWidget* AdditionalMessage = nullptr;
 	UTextWidget* KillCountText = nullptr;
 	UTextWidget* GoldText = nullptr;
+	UTextWidget* TimeUI = nullptr;
 
 	std::vector<UImage*> WeaponTilesBack;
 	std::vector<UImage*> AccessoryTilesBack;

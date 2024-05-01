@@ -17,7 +17,8 @@ void ABat1::BeginPlay()
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.5f, true);
-	Renderer->CreateAnimation("Idle", "BatIDLE.png", 0.1f, 0, 3, true);
+	Renderer->CreateAnimation("Idle", "Bat1", 0.05f, true, 0, 1);
+	Renderer->CreateAnimation("Death", "Bat1", 0.05f, false, 3, 14);
 	Renderer->SetOrder(ERenderOrder::Monster);
 	Renderer->ChangeAnimation("Idle");
 

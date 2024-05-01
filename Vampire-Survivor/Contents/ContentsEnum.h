@@ -119,15 +119,18 @@ enum class EPollingOrder
 	Weapon,
 };
 
-enum class EEnemySpawnData
+enum class EMonsterOrder
 {
-	Bat,
-	Zombie1,
-	Zombie2,
-	Zombie3,
-	Zombie4,
-	Mentis,
+	Bat1,
+	Bat2,
+	Bat3,
+	BossBat1,
+	BossBat2,
+	Ghoul1,
+	Ghoul2,
+	Ghoul3,
 	Skeleton,
-	WereWolf,
-	Medusa,
+	Ghost,
+	Mudman1,
+	Mudman2,
 };

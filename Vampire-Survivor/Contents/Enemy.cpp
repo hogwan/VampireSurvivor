@@ -17,8 +17,6 @@ AEnemy::~AEnemy()
 
 void AEnemy::BeginPlay()
 {
-	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Monster);
-
 	Super::BeginPlay();
 
 	PushPower = 100.f;
@@ -28,6 +26,7 @@ void AEnemy::BeginPlay()
 
 	State.CreateState("ChasePlayer");
 	State.CreateState("KnockBack");
+	State.CreateState("Death");
 
 	State.SetStartFunction("ChasePlayer", std::bind(&AEnemy::ChasePlayerStart,this));
 	State.SetUpdateFunction("ChasePlayer", std::bind(&AEnemy::ChasePlayer, this, std::placeholders::_1));
@@ -35,13 +34,15 @@ void AEnemy::BeginPlay()
 	State.SetStartFunction("KnockBack", std::bind(&AEnemy::KnockBackStart, this));
 	State.SetUpdateFunction("KnockBack", std::bind(&AEnemy::KnockBack, this, std::placeholders::_1));
 
+	State.SetStartFunction("Death", std::bind(&AEnemy::DeathStart, this));
+	State.SetUpdateFunction("Death", std::bind(&AEnemy::Death, this, std::placeholders::_1));
+
 	State.ChangeState("ChasePlayer");
 }
 
 void AEnemy::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	DeathLogic();
 	RepositionLogic();
 	ColLogic(_DeltaTime);
 	SpriteDirCheck();
@@ -119,20 +120,6 @@ void AEnemy::ColLogic(float _DeltaTime)
 	);
 }
 
-void AEnemy::DeathLogic()
-{
-	if (Data.Hp < 0.f)
-	{
-		std::shared_ptr<AExp> Exp = GetWorld()->SpawnActor<AExp>("Exp");
-		Exp->SetActorLocation(GetActorLocation());
-		Exp->SetExp(Data.XP);
-
-		Destroy();
-		--USpawnerManager::EnemyCount;
-		++UContentsValue::KillCount;
-	}
-}
-
 void AEnemy::RepositionLogic()
 {
 	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
@@ -175,6 +162,13 @@ void AEnemy::KnockBackStart()
 
 void AEnemy::KnockBack(float _DeltaTime)
 {
+	if (Data.Hp < 0.f)
+	{
+		State.ChangeState("Death");
+		return;
+	}
+
+
 	AccTime += _DeltaTime;
 	if (AccTime > KnockBackTime)
 	{
@@ -193,7 +187,33 @@ void AEnemy::ChasePlayerStart()
 
 void AEnemy::ChasePlayer(float _DeltaTime)
 {
+	if (Data.Hp < 0.f)
+	{
+		State.ChangeState("Death");
+		return;
+	}
+
 	MoveLogic();
 	AddActorLocation(MoveVector * _DeltaTime);
+}
+
+void AEnemy::DeathStart()
+{
+	Renderer->ChangeAnimation("Death");
+	Renderer->SetPlusColor(FVector(0.0f, 0.0f, 0.0f, 1.f));
+}
+
+void AEnemy::Death(float _DeltaTime)
+{
+	if (Renderer->IsCurAnimationEnd())
+	{
+		std::shared_ptr<AExp> Exp = GetWorld()->SpawnActor<AExp>("Exp");
+		Exp->SetActorLocation(GetActorLocation());
+		Exp->SetExp(Data.XP);
+		--USpawnerManager::EnemyCount;
+		++UContentsValue::KillCount;
+
+		Destroy();
+	}
 }
 

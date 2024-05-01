@@ -49,6 +49,7 @@ void UIManager::BeginPlay()
 void UIManager::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+	TimeUpdate(_DeltaTime);
 	UIUpdate();
 
 	if (IsSelecting)
@@ -404,6 +405,13 @@ void UIManager::UISpawn()
 	GoldText->SetPosition(FVector(580.f, 315.f));
 	GoldText->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_LEFT | FW1_TEXT_FLAG::FW1_VCENTER));
 
+	TimeUI = CreateWidget<UTextWidget>(GetWorld(), "Time");
+	TimeUI->AddToViewPort(4);
+	TimeUI->SetScale(30.f);
+	TimeUI->SetFont("Liberation Sans º¸Åë");
+	TimeUI->SetColor(Color8Bit::White);
+	TimeUI->SetPosition(FVector(0.f, 315.f));
+	TimeUI->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_CENTER | FW1_TEXT_FLAG::FW1_VCENTER));
 }
 
 void UIManager::UIUpdate()
@@ -923,6 +931,23 @@ void UIManager::KillCountUpdate()
 void UIManager::GoldUpdate()
 {
 	GoldText->SetText(std::to_string(UContentsValue::Gold));
+}
+
+void UIManager::TimeUpdate(float _DeltaTime)
+{
+	UContentsValue::Time += _DeltaTime;
+
+	int Time = static_cast<int>(UContentsValue::Time);
+	int Second = Time % 60;
+	int Minute = Time / 60;
+
+	std::string SecondZeroPadding = "00" + std::to_string(Second);
+	std::string MinuteZeroPadding = "00" + std::to_string(Minute);
+
+	std::string SecondText = SecondZeroPadding.substr(SecondZeroPadding.size() - 2, 2);
+	std::string MinuteText = MinuteZeroPadding.substr(MinuteZeroPadding.size() - 2, 2);
+
+	TimeUI->SetText(MinuteText + " : " + SecondText);
 }
 
 int UIManager::RandomPickLogic()

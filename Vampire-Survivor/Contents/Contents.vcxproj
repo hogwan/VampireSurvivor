@@ -191,6 +191,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Bat2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Bat3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BossBat1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BossBat2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Bracer.h">
       <SubType>
       </SubType>
@@ -268,6 +284,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Ghoul1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Ghoul2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Ghoul3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="HollowHeart.h">
       <SubType>
       </SubType>
@@ -320,6 +352,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Mudman1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Mudman2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Player.h">
       <SubType>
       </SubType>
@@ -369,6 +409,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="SantaWaterUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -466,6 +510,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Bat2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Bat3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BossBat1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BossBat2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Bracer.cpp">
       <SubType>
       </SubType>
@@ -542,6 +602,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Ghoul1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Ghoul2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Ghoul3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="HollowHeart.cpp">
       <SubType>
       </SubType>
@@ -591,6 +667,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="MagicWandUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Mudman1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Mudman2.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -647,6 +731,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SantaWaterUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
       <SubType>
       </SubType>
     </ClCompile>

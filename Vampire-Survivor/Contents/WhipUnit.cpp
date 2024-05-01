@@ -63,7 +63,7 @@ void AWhipUnit::ColLogic()
 		{
 			AEnemy* Opponent = dynamic_cast<AEnemy*>(_Collision->GetActor());
 
-			//Opponent->GetEnemyData().Hp -= UWhip::Data.Damage;
+			Opponent->GetEnemyData().Hp -= UWhip::Data.Damage;
 
 			FVector EnemyPos = Opponent->GetActorLocation();
 			FVector PlayerPos = UContentsValue::Player->GetActorLocation();

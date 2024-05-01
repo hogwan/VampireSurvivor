@@ -29,7 +29,6 @@ void UVSCore::Initialize()
 			UEngineSprite::Load(File.GetFullPath());
 		}
 		UEngineSprite::CreateCutting("Player.png", 4, 1);
-		UEngineSprite::CreateCutting("BatIDLE.png", 4, 1);
 		UEngineSprite::CreateCutting("EquipedTile.png", 2, 1); 
 		UEngineSprite::CreateCutting("Exp.png", 3, 1);
 		UEngineSprite::CreateCutting("LevelVal.png", 2, 1);
@@ -53,6 +52,19 @@ void UVSCore::Initialize()
 		Dir.MoveToSearchChild("ContentsResources");
 		Dir.Move("Image");
 		Dir.Move("UI");
+		std::vector<UEngineDirectory> Directorys = Dir.GetAllDirectory();
+		for (size_t i = 0; i < Directorys.size(); i++)
+		{
+			std::string Name = Directorys[i].GetFolderName();
+			UEngineSprite::LoadFolder(Directorys[i].GetFullPath());
+		}
+	}
+
+	{
+		UEngineDirectory Dir;
+		Dir.MoveToSearchChild("ContentsResources");
+		Dir.Move("Image");
+		Dir.Move("Monsters");
 		std::vector<UEngineDirectory> Directorys = Dir.GetAllDirectory();
 		for (size_t i = 0; i < Directorys.size(); i++)
 		{

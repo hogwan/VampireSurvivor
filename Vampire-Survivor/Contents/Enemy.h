@@ -50,7 +50,6 @@ protected:
 
 	void MoveLogic();
 	void ColLogic(float _DeltaTime);
-	void DeathLogic();
 	void RepositionLogic();
 	void SpriteDirCheck();
 
@@ -59,6 +58,9 @@ protected:
 
 	void ChasePlayerStart();
 	void ChasePlayer(float _DeltaTime);
+
+	void DeathStart();
+	void Death(float _DeltaTime);
 
 	float KnockBackTime = 0.15f;
 	float AccTime = 0.f;

@@ -127,6 +127,42 @@
     <Filter Include="Level\TitleGameMode">
       <UniqueIdentifier>{dc246673-c3f9-41da-b569-58080d9993ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Enemy\Bat1">
+      <UniqueIdentifier>{6b8f2208-82c2-4b1e-aaf4-fd76bcf23f32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Bat2">
+      <UniqueIdentifier>{32bd6da5-23ed-485f-9d5a-33611be59ec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Bat3">
+      <UniqueIdentifier>{f82621c4-82da-4a20-afdc-b763c012e924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\BossBat1">
+      <UniqueIdentifier>{f891e4c3-3254-46e4-a922-120977a5aebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\BossBat2">
+      <UniqueIdentifier>{78f5d71e-3db9-4eab-9d62-052227332b6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Ghoul1">
+      <UniqueIdentifier>{bbba2187-7adb-473e-9c94-8508021282f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Ghoul2">
+      <UniqueIdentifier>{78759fbd-adda-47b8-b8f0-4e10375f26a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Ghoul3">
+      <UniqueIdentifier>{f8033190-c6a9-421f-84ba-a13c04be3c6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Skeleton">
+      <UniqueIdentifier>{aaa9a62f-8eea-41dc-a38e-4a9054743bb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Ghost">
+      <UniqueIdentifier>{3a90afca-c7ed-4b81-bdfe-44ea161ffa92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Mudman1">
+      <UniqueIdentifier>{40917365-4539-497e-943f-079fbec1bf4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Mudman2">
+      <UniqueIdentifier>{37e1ed84-5891-4a42-a1b2-b616db292e91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -161,9 +197,6 @@
     </ClInclude>
     <ClInclude Include="SpawnerManager.h">
       <Filter>Object\Spawner</Filter>
-    </ClInclude>
-    <ClInclude Include="Bat1.h">
-      <Filter>Object\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="PollingObject.h">
       <Filter>Object\Polling</Filter>
@@ -336,6 +369,42 @@
     <ClInclude Include="TitleGameMode.h">
       <Filter>Level\TitleGameMode</Filter>
     </ClInclude>
+    <ClInclude Include="Bat1.h">
+      <Filter>Object\Enemy\Bat1</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat2.h">
+      <Filter>Object\Enemy\Bat2</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat3.h">
+      <Filter>Object\Enemy\Bat3</Filter>
+    </ClInclude>
+    <ClInclude Include="BossBat1.h">
+      <Filter>Object\Enemy\BossBat1</Filter>
+    </ClInclude>
+    <ClInclude Include="BossBat2.h">
+      <Filter>Object\Enemy\BossBat2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghoul1.h">
+      <Filter>Object\Enemy\Ghoul1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghoul2.h">
+      <Filter>Object\Enemy\Ghoul2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghoul3.h">
+      <Filter>Object\Enemy\Ghoul3</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Object\Enemy\Ghost</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Object\Enemy\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Mudman1.h">
+      <Filter>Object\Enemy\Mudman1</Filter>
+    </ClInclude>
+    <ClInclude Include="Mudman2.h">
+      <Filter>Object\Enemy\Mudman2</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -367,9 +436,6 @@
     </ClCompile>
     <ClCompile Include="SpawnerManager.cpp">
       <Filter>Object\Spawner</Filter>
-    </ClCompile>
-    <ClCompile Include="Bat1.cpp">
-      <Filter>Object\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="PollingObject.cpp">
       <Filter>Object\Polling</Filter>
@@ -541,6 +607,42 @@
     </ClCompile>
     <ClCompile Include="TitleGameMode.cpp">
       <Filter>Level\TitleGameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat1.cpp">
+      <Filter>Object\Enemy\Bat1</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat2.cpp">
+      <Filter>Object\Enemy\Bat2</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat3.cpp">
+      <Filter>Object\Enemy\Bat3</Filter>
+    </ClCompile>
+    <ClCompile Include="BossBat1.cpp">
+      <Filter>Object\Enemy\BossBat1</Filter>
+    </ClCompile>
+    <ClCompile Include="BossBat2.cpp">
+      <Filter>Object\Enemy\BossBat2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghoul1.cpp">
+      <Filter>Object\Enemy\Ghoul1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghoul2.cpp">
+      <Filter>Object\Enemy\Ghoul2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghoul3.cpp">
+      <Filter>Object\Enemy\Ghoul3</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Object\Enemy\Ghost</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Object\Enemy\Skeleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Mudman1.cpp">
+      <Filter>Object\Enemy\Mudman1</Filter>
+    </ClCompile>
+    <ClCompile Include="Mudman2.cpp">
+      <Filter>Object\Enemy\Mudman2</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

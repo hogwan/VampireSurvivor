@@ -31,6 +31,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	std::shared_ptr<class AEnemy> SpawnMonster();
+
 	/*template<typename Enemy>
 	void EnemySpawn()
 	{
@@ -67,5 +69,8 @@ private:
 
 	float SpawnTime = 5.f;
 	float RemainTime = SpawnTime;
+
+	int MinOrder = 0;
+	int MaxOrder = 0;
 };
 
