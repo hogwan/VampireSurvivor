@@ -13,6 +13,7 @@
 #include "Ghost.h"
 #include "Mudman1.h"
 #include "Mudman2.h"
+#include "Mentis.h"
 #include "SpawnerManager.h"
 #include <EngineBase/EngineRandom.h>
 
@@ -55,7 +56,7 @@ std::shared_ptr<AEnemy> USpawner::SpawnMonster()
 	std::shared_ptr<AEnemy> Monster = nullptr;
 
 	MinOrder = static_cast<int>(EMonsterOrder::Bat1);
-	MaxOrder = static_cast<int>(EMonsterOrder::Mudman2);
+	MaxOrder = static_cast<int>(EMonsterOrder::Mentis);
 
 	int Random = UEngineRandom::MainRandom.RandomInt(MinOrder, MaxOrder);
 
@@ -97,6 +98,9 @@ std::shared_ptr<AEnemy> USpawner::SpawnMonster()
 		break;
 	case EMonsterOrder::Mudman2:
 		Monster = GetWorld()->SpawnActor<AMudman2>("AMudman2");
+		break;
+	case EMonsterOrder::Mentis:
+		Monster = GetWorld()->SpawnActor<AMentis>("AMudman2");
 		break;
 	default:
 		break;

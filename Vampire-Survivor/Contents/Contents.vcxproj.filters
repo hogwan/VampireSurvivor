@@ -163,6 +163,9 @@
     <Filter Include="Object\Enemy\Mudman2">
       <UniqueIdentifier>{37e1ed84-5891-4a42-a1b2-b616db292e91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Enemy\Mentis">
+      <UniqueIdentifier>{2a7d3aed-c0a8-4bc6-9bae-da9a17f6f39f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -405,6 +408,9 @@
     <ClInclude Include="Mudman2.h">
       <Filter>Object\Enemy\Mudman2</Filter>
     </ClInclude>
+    <ClInclude Include="Mentis.h">
+      <Filter>Object\Enemy\Mentis</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -643,6 +649,9 @@
     </ClCompile>
     <ClCompile Include="Mudman2.cpp">
       <Filter>Object\Enemy\Mudman2</Filter>
+    </ClCompile>
+    <ClCompile Include="Mentis.cpp">
+      <Filter>Object\Enemy\Mentis</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

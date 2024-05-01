@@ -133,4 +133,5 @@ enum class EMonsterOrder
 	Ghost,
 	Mudman1,
 	Mudman2,
+	Mentis,
 };
