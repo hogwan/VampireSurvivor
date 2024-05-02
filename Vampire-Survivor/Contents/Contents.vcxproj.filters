@@ -166,6 +166,21 @@
     <Filter Include="Object\Enemy\Mentis">
       <UniqueIdentifier>{2a7d3aed-c0a8-4bc6-9bae-da9a17f6f39f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Enemy\Mummy">
+      <UniqueIdentifier>{0ed59a9e-ede0-4350-9048-d1ff15c75027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\XLBat">
+      <UniqueIdentifier>{746927e3-7516-4b53-829f-f4c020f5d0b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\XLFlower">
+      <UniqueIdentifier>{ae64fda6-f465-488b-89e0-7262b5516139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\XLMummy">
+      <UniqueIdentifier>{9ebea084-628d-42cd-88ed-0222eba81bde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\Werewolf">
+      <UniqueIdentifier>{d4169d1e-d698-493e-8cf9-7c65661517b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -411,6 +426,21 @@
     <ClInclude Include="Mentis.h">
       <Filter>Object\Enemy\Mentis</Filter>
     </ClInclude>
+    <ClInclude Include="Mummy.h">
+      <Filter>Object\Enemy\Mummy</Filter>
+    </ClInclude>
+    <ClInclude Include="XLBat.h">
+      <Filter>Object\Enemy\XLBat</Filter>
+    </ClInclude>
+    <ClInclude Include="XLFlower.h">
+      <Filter>Object\Enemy\XLFlower</Filter>
+    </ClInclude>
+    <ClInclude Include="XLMummy.h">
+      <Filter>Object\Enemy\XLMummy</Filter>
+    </ClInclude>
+    <ClInclude Include="Werewolf.h">
+      <Filter>Object\Enemy\Werewolf</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -652,6 +682,21 @@
     </ClCompile>
     <ClCompile Include="Mentis.cpp">
       <Filter>Object\Enemy\Mentis</Filter>
+    </ClCompile>
+    <ClCompile Include="Mummy.cpp">
+      <Filter>Object\Enemy\Mummy</Filter>
+    </ClCompile>
+    <ClCompile Include="XLBat.cpp">
+      <Filter>Object\Enemy\XLBat</Filter>
+    </ClCompile>
+    <ClCompile Include="XLFlower.cpp">
+      <Filter>Object\Enemy\XLFlower</Filter>
+    </ClCompile>
+    <ClCompile Include="XLMummy.cpp">
+      <Filter>Object\Enemy\XLMummy</Filter>
+    </ClCompile>
+    <ClCompile Include="Werewolf.cpp">
+      <Filter>Object\Enemy\Werewolf</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

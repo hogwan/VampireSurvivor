@@ -440,7 +440,16 @@ void USpawner::Minute_08Start()
 
 void USpawner::Minute_09Start()
 {
+	RandomList.clear();
+	RandomList.push_back(EMonsterOrder::Ghoul1);
+	RandomList.push_back(EMonsterOrder::Ghoul2);
+	RandomList.push_back(EMonsterOrder::Ghoul3);
+	RandomList.push_back(EMonsterOrder::Bat1);
+	RandomList.push_back(EMonsterOrder::Bat2);
+	RandomList.push_back(EMonsterOrder::Bat3);
 
+
+	SpawnTime = 5.f;
 }
 
 void USpawner::Minute_10Start()
