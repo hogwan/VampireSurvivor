@@ -41,6 +41,19 @@ public:
 		KnockBackVector = _KnockBackVector * Data.Knockback;
 	}
 
+	void SetMass(bool _IsMass)
+	{
+		IsMass = _IsMass;
+		Data.Hp = 1;
+	}
+
+	void SetMassDir(FVector _Dir)
+	{
+		_Dir.Normalize3D();
+		MassDir = _Dir;
+	}
+
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -59,6 +72,10 @@ protected:
 	void ChasePlayerStart();
 	void ChasePlayer(float _DeltaTime);
 
+	void MassMoveStart();
+	void MassMove(float _DeltaTime);
+	void MassChangeDir();
+
 	void DeathStart();
 	void Death(float _DeltaTime);
 
@@ -66,6 +83,12 @@ protected:
 	float AccTime = 0.f;
 	FVector KnockBackVector = FVector::Zero;
 	FEnemyData Data = { 0, };
+
+	bool IsMass = false;
+	FVector MassDir = FVector::Zero;
+	FVector MassTargetPos = FVector::Zero;
+	float MassSpeed = 300.f;
+	float MassDirChangeTime = 5.f;
 private:
 
 };

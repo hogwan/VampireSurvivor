@@ -1,19 +1,19 @@
 #include "PreCompile.h"
-#include "XLMummy.h"
+#include "SmallMummy.h"
 
-AXLMummy::AXLMummy() 
+ASmallMummy::ASmallMummy() 
 {
 }
 
-AXLMummy::~AXLMummy() 
+ASmallMummy::~ASmallMummy() 
 {
 }
 
-void AXLMummy::BeginPlay()
+void ASmallMummy::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Renderer->SetAutoSize(1.5f, true);
+	Renderer->SetAutoSize(1.0f, true);
 	Renderer->CreateAnimation("Idle", "XLMummy", 0.1f, true, 0, 2);
 	Renderer->CreateAnimation("Death", "XLMummy", 0.05f, false, 3, 14);
 	Renderer->SetOrder(ERenderOrder::Monster);
@@ -29,7 +29,7 @@ void AXLMummy::BeginPlay()
 	Data.XP = 1;
 }
 
-void AXLMummy::Tick(float _DeltaTime)
+void ASmallMummy::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

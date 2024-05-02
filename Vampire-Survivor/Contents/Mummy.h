@@ -1,19 +1,19 @@
 #pragma once
 #include "Enemy.h"
 // Ό³Έν :
-class Mummy : public AEnemy
+class AMummy : public AEnemy
 {
 	GENERATED_BODY(AEnemy)
 public:
 	// constructor destructor
-	Mummy();
-	~Mummy();
+	AMummy();
+	~AMummy();
 
 	// delete Function
-	Mummy(const Mummy& _Other) = delete;
-	Mummy(Mummy&& _Other) noexcept = delete;
-	Mummy& operator=(const Mummy& _Other) = delete;
-	Mummy& operator=(Mummy&& _Other) noexcept = delete;
+	AMummy(const AMummy& _Other) = delete;
+	AMummy(AMummy&& _Other) noexcept = delete;
+	AMummy& operator=(const AMummy& _Other) = delete;
+	AMummy& operator=(AMummy&& _Other) noexcept = delete;
 
 
 protected:

@@ -1,21 +1,21 @@
 #include "PreCompile.h"
 #include "Werewolf.h"
 
-Werewolf::Werewolf() 
+AWerewolf::AWerewolf() 
 {
 }
 
-Werewolf::~Werewolf() 
+AWerewolf::~AWerewolf() 
 {
 }
 
-void Werewolf::BeginPlay()
+void AWerewolf::BeginPlay()
 {
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.5f, true);
-	Renderer->CreateAnimation("Idle", "Mudman1", 0.1f, true, 0, 2);
-	Renderer->CreateAnimation("Death", "Mudman1", 0.05f, false, 3, 14);
+	Renderer->CreateAnimation("Idle", "Werewolf", 0.1f, true, 0, 2);
+	Renderer->CreateAnimation("Death", "Werewolf", 0.05f, false, 3, 14);
 	Renderer->SetOrder(ERenderOrder::Monster);
 	Renderer->ChangeAnimation("Idle");
 
@@ -29,7 +29,7 @@ void Werewolf::BeginPlay()
 	Data.XP = 1;
 }
 
-void Werewolf::Tick(float _DeltaTime)
+void AWerewolf::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

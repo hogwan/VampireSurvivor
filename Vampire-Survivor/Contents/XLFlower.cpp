@@ -1,21 +1,21 @@
 #include "PreCompile.h"
 #include "XLFlower.h"
 
-XLFlower::XLFlower() 
+AXLFlower::AXLFlower() 
 {
 }
 
-XLFlower::~XLFlower() 
+AXLFlower::~AXLFlower() 
 {
 }
 
-void XLFlower::BeginPlay()
+void AXLFlower::BeginPlay()
 {
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.5f, true);
-	Renderer->CreateAnimation("Idle", "Mudman1", 0.1f, true, 0, 2);
-	Renderer->CreateAnimation("Death", "Mudman1", 0.05f, false, 3, 14);
+	Renderer->CreateAnimation("Idle", "XLFlower", 0.1f, true, 0, 2);
+	Renderer->CreateAnimation("Death", "XLFlower", 0.05f, false, 3, 14);
 	Renderer->SetOrder(ERenderOrder::Monster);
 	Renderer->ChangeAnimation("Idle");
 
@@ -29,7 +29,7 @@ void XLFlower::BeginPlay()
 	Data.XP = 1;
 }
 
-void XLFlower::Tick(float _DeltaTime)
+void AXLFlower::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

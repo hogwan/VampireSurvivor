@@ -126,5 +126,6 @@ void ULightingRing::ApplyStatus(FPlayerData _Data)
 	Data.Area = TempData.Area;
 	Data.Cooldown = TempData.Cooldown;
 	Data.Penetration = TempData.Penetration;
+	Data.ExplainText = OriginalData.ExplainText;
 	RemainTime = Data.Cooldown;
 }

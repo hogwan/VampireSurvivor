@@ -127,6 +127,7 @@ void UWhip::ApplyStatus(FPlayerData _Data)
 	Data.Cooldown = TempData.Cooldown;
 	Data.Penetration = TempData.Penetration;
 	Data.KnockbackPower = OriginalData.KnockbackPower;
+	Data.ExplainText = OriginalData.ExplainText;
 	RemainTime = Data.Cooldown;
 }
 

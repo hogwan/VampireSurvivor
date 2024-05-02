@@ -1,21 +1,21 @@
 #include "PreCompile.h"
 #include "Mummy.h"
 
-Mummy::Mummy() 
+AMummy::AMummy() 
 {
 }
 
-Mummy::~Mummy() 
+AMummy::~AMummy() 
 {
 }
 
-void Mummy::BeginPlay()
+void AMummy::BeginPlay()
 {
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.5f, true);
-	Renderer->CreateAnimation("Idle", "Mudman1", 0.1f, true, 0, 2);
-	Renderer->CreateAnimation("Death", "Mudman1", 0.05f, false, 3, 14);
+	Renderer->CreateAnimation("Idle", "Mummy", 0.1f, true, 0, 2);
+	Renderer->CreateAnimation("Death", "Mummy", 0.05f, false, 3, 14);
 	Renderer->SetOrder(ERenderOrder::Monster);
 	Renderer->ChangeAnimation("Idle");
 
@@ -29,7 +29,7 @@ void Mummy::BeginPlay()
 	Data.XP = 1;
 }
 
-void Mummy::Tick(float _DeltaTime)
+void AMummy::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

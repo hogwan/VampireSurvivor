@@ -2,19 +2,19 @@
 #include "Enemy.h"
 
 // Ό³Έν :
-class XLFlower : public AEnemy
+class AXLFlower : public AEnemy
 {
 	GENERATED_BODY(AEnemy)
 public:
 	// constructor destructor
-	XLFlower();
-	~XLFlower();
+	AXLFlower();
+	~AXLFlower();
 
 	// delete Function
-	XLFlower(const XLFlower& _Other) = delete;
-	XLFlower(XLFlower&& _Other) noexcept = delete;
-	XLFlower& operator=(const XLFlower& _Other) = delete;
-	XLFlower& operator=(XLFlower&& _Other) noexcept = delete;
+	AXLFlower(const AXLFlower& _Other) = delete;
+	AXLFlower(AXLFlower&& _Other) noexcept = delete;
+	AXLFlower& operator=(const AXLFlower& _Other) = delete;
+	AXLFlower& operator=(AXLFlower&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

@@ -1,21 +1,21 @@
 #include "PreCompile.h"
-#include "XLMummy.h"
+#include "SmallFlower.h"
 
-AXLMummy::AXLMummy() 
+ASmallFlower::ASmallFlower() 
 {
 }
 
-AXLMummy::~AXLMummy() 
+ASmallFlower::~ASmallFlower() 
 {
 }
 
-void AXLMummy::BeginPlay()
+void ASmallFlower::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Renderer->SetAutoSize(1.5f, true);
-	Renderer->CreateAnimation("Idle", "XLMummy", 0.1f, true, 0, 2);
-	Renderer->CreateAnimation("Death", "XLMummy", 0.05f, false, 3, 14);
+	Renderer->SetAutoSize(1.f, true);
+	Renderer->CreateAnimation("Idle", "XLFlower", 0.1f, true, 0, 2);
+	Renderer->CreateAnimation("Death", "XLFlower", 0.05f, false, 3, 14);
 	Renderer->SetOrder(ERenderOrder::Monster);
 	Renderer->ChangeAnimation("Idle");
 
@@ -29,7 +29,7 @@ void AXLMummy::BeginPlay()
 	Data.XP = 1;
 }
 
-void AXLMummy::Tick(float _DeltaTime)
+void ASmallFlower::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

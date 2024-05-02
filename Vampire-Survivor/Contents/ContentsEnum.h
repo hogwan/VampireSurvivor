@@ -134,4 +134,12 @@ enum class EMonsterOrder
 	Mudman1,
 	Mudman2,
 	Mentis,
+	Mummy,
+	XLMummy,
+	XLBat,
+	Werewolf,
+	XLFlower,
+	Flower,
+	SmallMummy,
+	SmallFlower,
 };

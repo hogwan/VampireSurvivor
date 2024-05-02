@@ -19,7 +19,7 @@ void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PushPower = 100.f;
+	PushPower = 300.f;
 
 	Collider->SetCollisionGroup(ECollisionOrder::Monster);
 	Collider->SetCollisionType(ECollisionType::CirCle);
@@ -27,12 +27,16 @@ void AEnemy::BeginPlay()
 	State.CreateState("ChasePlayer");
 	State.CreateState("KnockBack");
 	State.CreateState("Death");
+	State.CreateState("MassMove");
 
 	State.SetStartFunction("ChasePlayer", std::bind(&AEnemy::ChasePlayerStart,this));
 	State.SetUpdateFunction("ChasePlayer", std::bind(&AEnemy::ChasePlayer, this, std::placeholders::_1));
 
 	State.SetStartFunction("KnockBack", std::bind(&AEnemy::KnockBackStart, this));
 	State.SetUpdateFunction("KnockBack", std::bind(&AEnemy::KnockBack, this, std::placeholders::_1));
+
+	State.SetStartFunction("MassMove", std::bind(&AEnemy::MassMoveStart, this));
+	State.SetUpdateFunction("MassMove", std::bind(&AEnemy::MassMove, this, std::placeholders::_1));
 
 	State.SetStartFunction("Death", std::bind(&AEnemy::DeathStart, this));
 	State.SetUpdateFunction("Death", std::bind(&AEnemy::Death, this, std::placeholders::_1));
@@ -195,12 +199,54 @@ void AEnemy::ChasePlayer(float _DeltaTime)
 
 	MoveLogic();
 	AddActorLocation(MoveVector * _DeltaTime);
+
+
+	if (IsMass)
+	{
+		State.ChangeState("MassMove");
+	}
+}
+
+void AEnemy::MassMoveStart()
+{
+	DelayCallBack(5.f, [=]
+		{
+			Destroy();
+		});
+}
+
+void AEnemy::MassMove(float _DeltaTime)
+{
+	if (Data.Hp < 0.f)
+	{
+		State.ChangeState("Death");
+		return;
+	}
+
+	AddActorLocation(MassDir * MassSpeed * _DeltaTime);
+}
+
+void AEnemy::MassChangeDir()
+{
+	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+
+	FVector CurPos = GetActorLocation();
+
+	PlayerPos.Z = 0.f;
+	CurPos.Z = 0.f;
+
+	FVector MassDir = (PlayerPos - CurPos).Normalize3DReturn();
+
+	SetMassDir(MassDir);
+
 }
 
 void AEnemy::DeathStart()
 {
 	Renderer->ChangeAnimation("Death");
 	Renderer->SetPlusColor(FVector(0.0f, 0.0f, 0.0f, 1.f));
+
+	Collider->SetActive(false);
 }
 
 void AEnemy::Death(float _DeltaTime)

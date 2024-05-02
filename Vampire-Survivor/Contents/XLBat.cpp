@@ -1,21 +1,21 @@
 #include "PreCompile.h"
 #include "XLBat.h"
 
-XLBat::XLBat() 
+AXLBat::AXLBat() 
 {
 }
 
-XLBat::~XLBat() 
+AXLBat::~AXLBat() 
 {
 }
 
-void XLBat::BeginPlay()
+void AXLBat::BeginPlay()
 {
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.5f, true);
-	Renderer->CreateAnimation("Idle", "Mudman1", 0.1f, true, 0, 2);
-	Renderer->CreateAnimation("Death", "Mudman1", 0.05f, false, 3, 14);
+	Renderer->CreateAnimation("Idle", "XLBat", 0.1f, true, 0, 2);
+	Renderer->CreateAnimation("Death", "XLBat", 0.05f, false, 3, 14);
 	Renderer->SetOrder(ERenderOrder::Monster);
 	Renderer->ChangeAnimation("Idle");
 
@@ -29,7 +29,7 @@ void XLBat::BeginPlay()
 	Data.XP = 1;
 }
 
-void XLBat::Tick(float _DeltaTime)
+void AXLBat::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }

@@ -181,6 +181,15 @@
     <Filter Include="Object\Enemy\Werewolf">
       <UniqueIdentifier>{d4169d1e-d698-493e-8cf9-7c65661517b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Enemy\Flower">
+      <UniqueIdentifier>{5c3965fa-39e2-4243-9148-4adb969b66bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\SmallMummy">
+      <UniqueIdentifier>{9dac0bc2-d841-4703-8750-3dde8efb175d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Enemy\SmallFlower">
+      <UniqueIdentifier>{129e8a5f-1e0d-4f43-a879-be8a50bcb194}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -441,6 +450,15 @@
     <ClInclude Include="Werewolf.h">
       <Filter>Object\Enemy\Werewolf</Filter>
     </ClInclude>
+    <ClInclude Include="Flower.h">
+      <Filter>Object\Enemy\Flower</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallMummy.h">
+      <Filter>Object\Enemy\SmallMummy</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallFlower.h">
+      <Filter>Object\Enemy\SmallFlower</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -697,6 +715,15 @@
     </ClCompile>
     <ClCompile Include="Werewolf.cpp">
       <Filter>Object\Enemy\Werewolf</Filter>
+    </ClCompile>
+    <ClCompile Include="Flower.cpp">
+      <Filter>Object\Enemy\Flower</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallMummy.cpp">
+      <Filter>Object\Enemy\SmallMummy</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallFlower.cpp">
+      <Filter>Object\Enemy\SmallFlower</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
