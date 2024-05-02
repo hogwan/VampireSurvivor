@@ -9,6 +9,7 @@ public:
 	static int KillCount;
 	static int Gold;
 	static int MaxLevel;
+	static int PlayerLevel;
 	static float Time;
 };
 

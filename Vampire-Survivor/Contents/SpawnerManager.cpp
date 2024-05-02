@@ -157,6 +157,21 @@ void USpawnerManager::SpawnBatMass()
 
 void USpawnerManager::SpawnFlowerPrison()
 {
+	for (int i = 0; i < 360; i += 3)
+	{
+		FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+		float XCos = cosf(static_cast<float>(i));
+		float YSin = 0.7f * sinf(static_cast<float>(i));
+
+		float SpawnDistance = 1000.f;
+
+		FVector SpawnPos = PlayerPos + FVector(XCos * SpawnDistance, YSin * SpawnDistance, 0.f);
+
+		std::shared_ptr<AFlower> Flower = GetWorld()->SpawnActor<AFlower>("Flower");
+		Flower->GetEnemyData().MaxHp = 30 * UContentsValue::PlayerLevel;
+		Flower->GetEnemyData().Hp = 30 * UContentsValue::PlayerLevel;
+		Flower->SetActorLocation(SpawnPos);
+	}
 }
 
 
@@ -262,7 +277,7 @@ void USpawnerManager::StateInit()
 		State.SetUpdateFunction("29", std::bind(&USpawnerManager::Minute_29, this, std::placeholders::_1));
 	}
 
-	State.ChangeState("2");
+	State.ChangeState("0");
 }
 
 void USpawnerManager::Minute_00(float _DeltaTime)
@@ -552,8 +567,8 @@ void USpawnerManager::Minute_02Start()
 
 	SpawnTime = 5.f;
 	
-	SpawnBatMass();
-
+	MassSpawnTime = 10.f;
+	SpawnBatMass();																																																																																																																																																																					
 }
 
 void USpawnerManager::Minute_03Start()
@@ -587,6 +602,8 @@ void USpawnerManager::Minute_05Start()
 	SpawnTime = 5.f;
 
 	SpawnBoss(EMonsterOrder::Mentis);
+
+	SpawnFlowerPrison();
 }
 
 void USpawnerManager::Minute_06Start()
@@ -647,6 +664,8 @@ void USpawnerManager::Minute_10Start()
 	SpawnTime = 5.f;
 
 	SpawnBoss(EMonsterOrder::Mentis);
+
+	SpawnFlowerPrison();
 }
 
 void USpawnerManager::Minute_11Start()
@@ -697,6 +716,8 @@ void USpawnerManager::Minute_15Start()
 	RandomList.push_back(EMonsterOrder::Mudman2);
 
 	SpawnTime = 5.f;
+
+	SpawnFlowerPrison();
 }
 
 void USpawnerManager::Minute_16Start()
