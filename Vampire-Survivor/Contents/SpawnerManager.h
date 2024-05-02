@@ -1,7 +1,7 @@
 #pragma once
 #include <EngineCore/Actor.h>
-#include "Spawner.h"
 #include "VSObject.h"
+
 
 // Ό³Έν :
 class USpawnerManager : public AActor
@@ -19,6 +19,7 @@ public:
 	USpawnerManager& operator=(USpawnerManager&& _Other) noexcept = delete;
 
 	static int EnemyCount;
+	static void EventSpawn();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -26,6 +27,7 @@ protected:
 	void SpawnPointInit();
 	void SpawnPointReposition();
 
+
 private:
-	std::vector<std::shared_ptr<USpawner>> Spawners;
+	std::vector<std::shared_ptr<class USpawner>> Spawners;
 };

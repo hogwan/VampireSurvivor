@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "SpawnerManager.h"
 #include "Player.h"
+#include "Spawner.h"
+#include "Mentis.h"
 
 int USpawnerManager::EnemyCount=0;
 
@@ -60,5 +62,16 @@ void USpawnerManager::SpawnPointReposition()
 		FVector SpawnerInitPos = Spawner->GetInitialPos();
 		FVector SpawnerPos = SpawnerInitPos + MoveDistance;
 		Spawner->SetActorLocation(SpawnerPos);
+	}
+}
+
+void USpawnerManager::EventSpawn()
+{
+	float CurTime = UContentsValue::Time;
+
+	int Minute = static_cast<int>(CurTime / 60);
+
+	if (Minute < 2)
+	{
 	}
 }
