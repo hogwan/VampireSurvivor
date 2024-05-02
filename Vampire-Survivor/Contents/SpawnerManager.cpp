@@ -109,35 +109,49 @@ std::shared_ptr<AEnemy> USpawnerManager::SpawnBoss(EMonsterOrder _BossMonsterOrd
 	return Boss;
 }
 
-void USpawnerManager::SpawnBatMass(FVector _InitialPos, FVector _TargetPos)
+void USpawnerManager::SpawnBatMass()
 {
+	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+	float Random = UEngineRandom::MainRandom.RandomFloat(0.f, 360.f);
 
-	FVector MassDir = (_TargetPos - _InitialPos).Normalize3DReturn();
+	FVector DistanceVector = FVector::Right;
+	DistanceVector.RotationZToDeg(Random);
+	DistanceVector *= 1000.f;
 
-	for (int i = 0; i < 40; i++)
+	FVector InitialPos = PlayerPos + DistanceVector;
+	FVector TargetPos = PlayerPos - DistanceVector;
+
+	FVector MassDir = (TargetPos - InitialPos).Normalize3DReturn();
+	
+
+	for (int i = 0; i < 4; i++)
 	{
-		int Random = UEngineRandom::MainRandom.RandomInt(0, 2);
-
-		std::shared_ptr<AEnemy> Bat = nullptr;
-		switch (Random)
+		for (int j = 0; j < 10; j++)
 		{
-		case 0:
-			Bat = GetWorld()->SpawnActor<ABat1>("Bat1");
-			break;
-		case 1:
-			Bat = GetWorld()->SpawnActor<ABat2>("Bat2");
-			break;
-		case 2:
-			Bat = GetWorld()->SpawnActor<ABat3>("Bat3");
-			break;
-		}
+			int Random = UEngineRandom::MainRandom.RandomInt(0, 2);
 
-		Bat->SetActorLocation(_InitialPos);
-		Bat->SetMass(true);
-		DelayCallBack(1.f, [=]
+			std::shared_ptr<AEnemy> Bat = nullptr;
+			switch (Random)
 			{
-				Bat->SetMassDir(MassDir);
-			});
+			case 0:
+				Bat = GetWorld()->SpawnActor<ABat1>("Bat1");
+				break;
+			case 1:
+				Bat = GetWorld()->SpawnActor<ABat2>("Bat2");
+				break;
+			case 2:
+				Bat = GetWorld()->SpawnActor<ABat3>("Bat3");
+				break;
+			}
+
+			Bat->SetActorLocation(InitialPos  + FVector(10.f * i, 10.f*j,0.f));
+			Bat->SetTargetPos(TargetPos);
+			Bat->SetMass(true);
+			DelayCallBack(1.f, [=]
+				{
+					Bat->SetMassDir(MassDir);
+				});
+		}
 	}
 }
 
@@ -271,8 +285,18 @@ void USpawnerManager::Minute_02(float _DeltaTime)
 {
 	if (CurTime > 2)
 	{
+		MassSpawnAcc = 0.f;
 		State.ChangeState("3");
 	}
+
+
+	MassSpawnAcc += _DeltaTime;
+	if (MassSpawnAcc > MassSpawnTime)
+	{
+		MassSpawnAcc = 0.f;
+		SpawnBatMass();
+	}
+
 }
 
 void USpawnerManager::Minute_03(float _DeltaTime)
@@ -527,6 +551,8 @@ void USpawnerManager::Minute_02Start()
 	RandomList.push_back(EMonsterOrder::Ghoul3);
 
 	SpawnTime = 5.f;
+	
+	SpawnBatMass();
 
 }
 

@@ -209,7 +209,7 @@ void AEnemy::ChasePlayer(float _DeltaTime)
 
 void AEnemy::MassMoveStart()
 {
-	DelayCallBack(5.f, [=]
+	DelayCallBack(8.f, [=]
 		{
 			Destroy();
 		});

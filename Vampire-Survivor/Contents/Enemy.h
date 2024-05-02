@@ -52,6 +52,10 @@ public:
 		_Dir.Normalize3D();
 		MassDir = _Dir;
 	}
+	void SetTargetPos(FVector _MassTargetPos)
+	{
+		MassTargetPos = _MassTargetPos;
+	}
 
 
 protected:

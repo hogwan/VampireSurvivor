@@ -33,9 +33,11 @@ protected:
 
 	std::shared_ptr<class AEnemy> SpawnBoss(EMonsterOrder _BossMonsterOrder);
 
-	void SpawnBatMass(FVector _InitialPos, FVector _TargetPos);
+	void SpawnBatMass();
 	void SpawnFlowerPrison();
 
+	float MassSpawnTime = 10.f;
+	float MassSpawnAcc = 0.f;
 	int CurTime = 0;
 
 	void StateInit();
