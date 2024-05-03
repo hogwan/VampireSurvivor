@@ -11,6 +11,13 @@ AGhoul3::~AGhoul3()
 
 void AGhoul3::BeginPlay()
 {
+	Data.MaxHp = 1.f;
+	Data.Speed = 100.f;
+	Data.Power = 10.f;
+	Data.Knockback = 0.8f;
+	Data.MaxKnockBack = 3.f;
+	Data.XP = 1.f;
+
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.5f, true);
@@ -21,12 +28,6 @@ void AGhoul3::BeginPlay()
 
 	Collider->SetScale(FVector(20.f, 20.f, 10.f));
 
-	Data.MaxHp = 10.f;
-	Data.Speed = 50.f;
-	Data.Power = 5.f;
-	Data.Knockback = 1.f;
-	Data.MaxKnockBack = 3.f;
-	Data.XP = 1;
 }
 
 void AGhoul3::Tick(float _DeltaTime)

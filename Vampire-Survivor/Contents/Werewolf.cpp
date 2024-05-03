@@ -11,6 +11,13 @@ AWerewolf::~AWerewolf()
 
 void AWerewolf::BeginPlay()
 {
+	Data.MaxHp = 18.f;
+	Data.Speed = 130.f;
+	Data.Power = 14.f;
+	Data.Knockback = 0.8f;
+	Data.MaxKnockBack = 3.f;
+	Data.XP = 2;
+
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.5f, true);
@@ -21,12 +28,6 @@ void AWerewolf::BeginPlay()
 
 	Collider->SetScale(FVector(20.f, 20.f, 10.f));
 
-	Data.MaxHp = 10.f;
-	Data.Speed = 50.f;
-	Data.Power = 5.f;
-	Data.Knockback = 1.f;
-	Data.MaxKnockBack = 3.f;
-	Data.XP = 1;
 }
 
 void AWerewolf::Tick(float _DeltaTime)

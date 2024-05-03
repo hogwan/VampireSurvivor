@@ -11,6 +11,13 @@ ASmallFlower::~ASmallFlower()
 
 void ASmallFlower::BeginPlay()
 {
+	Data.MaxHp = 10.f;
+	Data.Speed = 80.f;
+	Data.Power = 10.f;
+	Data.Knockback = 0.f;
+	Data.MaxKnockBack = 3.f;
+	Data.XP = 3;
+
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.f, true);
@@ -21,12 +28,6 @@ void ASmallFlower::BeginPlay()
 
 	Collider->SetScale(FVector(20.f, 20.f, 10.f));
 
-	Data.MaxHp = 10.f;
-	Data.Speed = 50.f;
-	Data.Power = 5.f;
-	Data.Knockback = 1.f;
-	Data.MaxKnockBack = 3.f;
-	Data.XP = 1;
 }
 
 void ASmallFlower::Tick(float _DeltaTime)

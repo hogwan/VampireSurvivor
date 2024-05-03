@@ -11,6 +11,13 @@ AMummy::~AMummy()
 
 void AMummy::BeginPlay()
 {
+	Data.MaxHp = 1.5f;
+	Data.Speed = 140.f;
+	Data.Power = 3.f;
+	Data.Knockback = 1.f;
+	Data.MaxKnockBack = 3.f;
+	Data.XP = 2;
+
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.5f, true);
@@ -21,12 +28,6 @@ void AMummy::BeginPlay()
 
 	Collider->SetScale(FVector(20.f, 20.f, 10.f));
 
-	Data.MaxHp = 10.f;
-	Data.Speed = 50.f;
-	Data.Power = 5.f;
-	Data.Knockback = 1.f;
-	Data.MaxKnockBack = 3.f;
-	Data.XP = 1;
 }
 
 void AMummy::Tick(float _DeltaTime)

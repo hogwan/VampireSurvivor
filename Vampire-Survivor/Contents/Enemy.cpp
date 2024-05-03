@@ -42,6 +42,7 @@ void AEnemy::BeginPlay()
 	State.SetUpdateFunction("Death", std::bind(&AEnemy::Death, this, std::placeholders::_1));
 
 	State.ChangeState("ChasePlayer");
+
 }
 
 void AEnemy::Tick(float _DeltaTime)

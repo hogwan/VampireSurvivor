@@ -11,6 +11,13 @@ ABat3::~ABat3()
 
 void ABat3::BeginPlay()
 {
+	Data.MaxHp = 0.5f;
+	Data.Speed = 140.f;
+	Data.Power = 5.f;
+	Data.Knockback = 1.f;
+	Data.MaxKnockBack = 3.f;
+	Data.XP = 1.f;
+
 	Super::BeginPlay();
 
 	Renderer->SetAutoSize(1.5f, true);
@@ -21,12 +28,6 @@ void ABat3::BeginPlay()
 
 	Collider->SetScale(FVector(20.f, 20.f, 10.f));
 
-	Data.MaxHp = 10.f;
-	Data.Speed = 50.f;
-	Data.Power = 5.f;
-	Data.Knockback = 1.f;
-	Data.MaxKnockBack = 3.f;
-	Data.XP = 1;
 }
 
 void ABat3::Tick(float _DeltaTime)
