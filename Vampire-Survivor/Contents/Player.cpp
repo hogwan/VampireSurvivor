@@ -114,6 +114,8 @@ void APlayer::LevelUpLogic()
 	float CurExp = Data.CurExp;
 	float MaxExp = Data.TargetExp;
 
+	++UContentsValue::PlayerLevel;
+
 	if (CurExp >= MaxExp)
 	{
 		++Data.Level;

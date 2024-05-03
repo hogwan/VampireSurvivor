@@ -109,40 +109,69 @@ std::shared_ptr<AEnemy> USpawnerManager::SpawnBoss(EMonsterOrder _BossMonsterOrd
 	return Boss;
 }
 
-void USpawnerManager::SpawnBatMass(FVector _InitialPos, FVector _TargetPos)
+void USpawnerManager::SpawnBatMass()
 {
+	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+	float Random = UEngineRandom::MainRandom.RandomFloat(0.f, 360.f);
 
-	FVector MassDir = (_TargetPos - _InitialPos).Normalize3DReturn();
+	FVector DistanceVector = FVector::Right;
+	DistanceVector.RotationZToDeg(Random);
+	DistanceVector *= 1000.f;
 
-	for (int i = 0; i < 40; i++)
+	FVector InitialPos = PlayerPos + DistanceVector;
+	FVector TargetPos = PlayerPos - DistanceVector;
+
+	FVector MassDir = (TargetPos - InitialPos).Normalize3DReturn();
+	
+
+	for (int i = 0; i < 4; i++)
 	{
-		int Random = UEngineRandom::MainRandom.RandomInt(0, 2);
-
-		std::shared_ptr<AEnemy> Bat = nullptr;
-		switch (Random)
+		for (int j = 0; j < 10; j++)
 		{
-		case 0:
-			Bat = GetWorld()->SpawnActor<ABat1>("Bat1");
-			break;
-		case 1:
-			Bat = GetWorld()->SpawnActor<ABat2>("Bat2");
-			break;
-		case 2:
-			Bat = GetWorld()->SpawnActor<ABat3>("Bat3");
-			break;
-		}
+			int Random = UEngineRandom::MainRandom.RandomInt(0, 2);
 
-		Bat->SetActorLocation(_InitialPos);
-		Bat->SetMass(true);
-		DelayCallBack(1.f, [=]
+			std::shared_ptr<AEnemy> Bat = nullptr;
+			switch (Random)
 			{
-				Bat->SetMassDir(MassDir);
-			});
+			case 0:
+				Bat = GetWorld()->SpawnActor<ABat1>("Bat1");
+				break;
+			case 1:
+				Bat = GetWorld()->SpawnActor<ABat2>("Bat2");
+				break;
+			case 2:
+				Bat = GetWorld()->SpawnActor<ABat3>("Bat3");
+				break;
+			}
+
+			Bat->SetActorLocation(InitialPos  + FVector(10.f * i, 10.f*j,0.f));
+			Bat->SetTargetPos(TargetPos);
+			Bat->SetMass(true);
+			DelayCallBack(1.f, [=]
+				{
+					Bat->SetMassDir(MassDir);
+				});
+		}
 	}
 }
 
 void USpawnerManager::SpawnFlowerPrison()
 {
+	for (int i = 0; i < 360; i += 3)
+	{
+		FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+		float XCos = cosf(static_cast<float>(i));
+		float YSin = 0.7f * sinf(static_cast<float>(i));
+
+		float SpawnDistance = 1000.f;
+
+		FVector SpawnPos = PlayerPos + FVector(XCos * SpawnDistance, YSin * SpawnDistance, 0.f);
+
+		std::shared_ptr<AFlower> Flower = GetWorld()->SpawnActor<AFlower>("Flower");
+		Flower->GetEnemyData().MaxHp = 30 * UContentsValue::PlayerLevel;
+		Flower->GetEnemyData().Hp = 30 * UContentsValue::PlayerLevel;
+		Flower->SetActorLocation(SpawnPos);
+	}
 }
 
 
@@ -248,7 +277,7 @@ void USpawnerManager::StateInit()
 		State.SetUpdateFunction("29", std::bind(&USpawnerManager::Minute_29, this, std::placeholders::_1));
 	}
 
-	State.ChangeState("2");
+	State.ChangeState("0");
 }
 
 void USpawnerManager::Minute_00(float _DeltaTime)
@@ -271,8 +300,18 @@ void USpawnerManager::Minute_02(float _DeltaTime)
 {
 	if (CurTime > 2)
 	{
+		MassSpawnAcc = 0.f;
 		State.ChangeState("3");
 	}
+
+
+	MassSpawnAcc += _DeltaTime;
+	if (MassSpawnAcc > MassSpawnTime)
+	{
+		MassSpawnAcc = 0.f;
+		SpawnBatMass();
+	}
+
 }
 
 void USpawnerManager::Minute_03(float _DeltaTime)
@@ -527,7 +566,9 @@ void USpawnerManager::Minute_02Start()
 	RandomList.push_back(EMonsterOrder::Ghoul3);
 
 	SpawnTime = 5.f;
-
+	
+	MassSpawnTime = 10.f;
+	SpawnBatMass();																																																																																																																																																																					
 }
 
 void USpawnerManager::Minute_03Start()
@@ -561,6 +602,8 @@ void USpawnerManager::Minute_05Start()
 	SpawnTime = 5.f;
 
 	SpawnBoss(EMonsterOrder::Mentis);
+
+	SpawnFlowerPrison();
 }
 
 void USpawnerManager::Minute_06Start()
@@ -621,6 +664,8 @@ void USpawnerManager::Minute_10Start()
 	SpawnTime = 5.f;
 
 	SpawnBoss(EMonsterOrder::Mentis);
+
+	SpawnFlowerPrison();
 }
 
 void USpawnerManager::Minute_11Start()
@@ -671,6 +716,8 @@ void USpawnerManager::Minute_15Start()
 	RandomList.push_back(EMonsterOrder::Mudman2);
 
 	SpawnTime = 5.f;
+
+	SpawnFlowerPrison();
 }
 
 void USpawnerManager::Minute_16Start()

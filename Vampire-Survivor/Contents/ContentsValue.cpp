@@ -7,4 +7,5 @@ FVector UContentsValue::StartPosition;
 int UContentsValue::KillCount = 0;
 int UContentsValue::Gold = 0;
 int UContentsValue::MaxLevel = 75;
+int UContentsValue::PlayerLevel = 1;
 float UContentsValue::Time = 0.f;
