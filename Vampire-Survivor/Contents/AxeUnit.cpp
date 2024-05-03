@@ -3,6 +3,7 @@
 #include "Axe.h"
 #include "Enemy.h"
 #include "Player.h"
+#include "DamageNumber.h"
 
 AAxeUnit::AAxeUnit()
 {
@@ -63,6 +64,11 @@ void AAxeUnit::ColLogic()
 			Opponent->GetEnemyData().Hp -= UAxe::Data.Damage;
 			Opponent->SetKnockBack(MoveVector.Normalize3DReturn() * UAxe::Data.KnockbackPower);
 			Opponent->State.ChangeState("KnockBack");
+
+			FVector EnemyPos = Opponent->GetActorLocation();
+			std::shared_ptr<ADamageNumber> Damage = GetWorld()->SpawnActor<ADamageNumber>("Damage");
+			Damage->SetDamage(UAxe::Data.Damage);
+			Damage->SetActorLocation(EnemyPos + FVector::Up * 10.f);
 
 			--Penetration;
 		}

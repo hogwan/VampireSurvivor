@@ -10,7 +10,7 @@ enum class ERenderOrder
 	PlayerWeapon,
 	Particle,
 	Player,
-
+	DamageSprite,
 };
 
 enum class ECollisionOrder

@@ -2,6 +2,7 @@
 #include "FireWandUnit.h"
 #include "FireWand.h"
 #include "Enemy.h"
+#include "DamageNumber.h"
 
 AFireWandUnit::AFireWandUnit()
 {
@@ -23,7 +24,7 @@ void AFireWandUnit::BeginPlay()
 	Collider->SetCollisionType(ECollisionType::RotRect);
 	Collider->SetScale(FVector(32.f, 36.f, 10.f));
 
-	RemainTime = UFireWand::Data.Duration;
+	RemainTime = UFireWand::Data.Duration + 2.f;
 }
 
 void AFireWandUnit::Tick(float _DeltaTime)
@@ -51,6 +52,12 @@ void AFireWandUnit::ColLogic()
 			Opponent->GetEnemyData().Hp -= UFireWand::Data.Damage;
 			Opponent->SetKnockBack(MoveVector.Normalize3DReturn() * UFireWand::Data.KnockbackPower);
 			Opponent->State.ChangeState("KnockBack");
+
+			FVector EnemyPos = Opponent->GetActorLocation();
+			std::shared_ptr<ADamageNumber> Damage = GetWorld()->SpawnActor<ADamageNumber>("Damage");
+			Damage->SetDamage(UFireWand::Data.Damage);
+			Damage->SetActorLocation(EnemyPos + FVector::Up * 10.f);
+
 			Destroy();
 		}
 	);

@@ -22,7 +22,9 @@ void APlayer::BeginPlay()
 	Super::BeginPlay();
 	StatusInit();
 
-	Renderer->SetSprite("Player.png", 0);
+	Renderer->CreateAnimation("Idle", "Antonio", 1.f, true, 0, 0);
+	Renderer->CreateAnimation("Move", "Antonio", 0.1f, true, 1, 3);
+
 	Renderer->SetAutoSize(1.5f, true);
 	Renderer->SetOrder(ERenderOrder::Player);
 
@@ -35,7 +37,7 @@ void APlayer::BeginPlay()
 	DetectCollider->SetScale(FVector(DetectDistance, DetectDistance, 10.f));
 	PushPower = 10.f;
 
-
+	Renderer->ChangeAnimation("Idle");
 }
 
 void APlayer::Tick(float _DeltaTime)
@@ -114,7 +116,6 @@ void APlayer::LevelUpLogic()
 	float CurExp = Data.CurExp;
 	float MaxExp = Data.TargetExp;
 
-	++UContentsValue::PlayerLevel;
 
 	if (CurExp >= MaxExp)
 	{
@@ -122,6 +123,7 @@ void APlayer::LevelUpLogic()
 		Data.CurExp -= Data.TargetExp;
 		Data.TargetExp = 5.f * static_cast<float>(pow(Data.Level, 2));
 		APlayGameMode::PlayUIManager->LevelUpEventStart();
+		++UContentsValue::PlayerLevel;
 	}
 }
 
@@ -191,6 +193,15 @@ void APlayer::MoveLogic()
 
 	TempVector.Normalize3D();
 	MoveVector = TempVector * Data.MoveSpeed;
+
+	if (MoveVector.Size3D() < 1.f)
+	{
+		Renderer->ChangeAnimation("Idle");
+	}
+	else
+	{
+		Renderer->ChangeAnimation("Move");
+	}
 }
 
 void APlayer::ColLogic()

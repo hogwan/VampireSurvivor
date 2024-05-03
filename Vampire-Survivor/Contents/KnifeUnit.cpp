@@ -3,6 +3,7 @@
 #include "Knife.h"
 #include "Enemy.h"
 #include "Player.h"
+#include "DamageNumber.h"
 
 AKnifeUnit::AKnifeUnit()
 {
@@ -56,6 +57,11 @@ void AKnifeUnit::ColLogic()
 			Opponent->GetEnemyData().Hp -= UKnife::Data.Damage;
 			Opponent->SetKnockBack(MoveVector.Normalize3DReturn() * UKnife::Data.KnockbackPower);
 			Opponent->State.ChangeState("KnockBack");
+
+			FVector EnemyPos = Opponent->GetActorLocation();
+			std::shared_ptr<ADamageNumber> Damage = GetWorld()->SpawnActor<ADamageNumber>("Damage");
+			Damage->SetDamage(UKnife::Data.Damage);
+			Damage->SetActorLocation(EnemyPos + FVector::Up * 10.f);
 			--Penetration;
 		}
 	);

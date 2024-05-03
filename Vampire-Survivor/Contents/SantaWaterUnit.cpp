@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "SantaWaterFlame.h"
 #include <EngineBase/EngineRandom.h>
+#include "DamageNumber.h"
 
 ASantaWaterUnit::ASantaWaterUnit() 
 {
@@ -47,6 +48,11 @@ void ASantaWaterUnit::ColLogic()
 
 			Opponent->GetEnemyData().Hp -= USantaWater::Data.Damage;
 			Opponent->State.ChangeState("KnockBack");
+
+			FVector EnemyPos = Opponent->GetActorLocation();
+			std::shared_ptr<ADamageNumber> Damage = GetWorld()->SpawnActor<ADamageNumber>("Damage");
+			Damage->SetDamage(USantaWater::Data.Damage);
+			Damage->SetActorLocation(EnemyPos + FVector::Up * 10.f);
 		}
 	);
 }

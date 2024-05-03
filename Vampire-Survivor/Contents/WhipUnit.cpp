@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Whip.h"
+#include "DamageNumber.h"
 
 AWhipUnit::AWhipUnit() 
 {
@@ -66,6 +67,10 @@ void AWhipUnit::ColLogic()
 			Opponent->GetEnemyData().Hp -= UWhip::Data.Damage;
 
 			FVector EnemyPos = Opponent->GetActorLocation();
+			std::shared_ptr<ADamageNumber> Damage = GetWorld()->SpawnActor<ADamageNumber>("Damage");
+			Damage->SetDamage(UWhip::Data.Damage);
+			Damage->SetActorLocation(EnemyPos + FVector::Up * 10.f);
+
 			FVector PlayerPos = UContentsValue::Player->GetActorLocation();
 
 			if (EnemyPos.X > PlayerPos.X)

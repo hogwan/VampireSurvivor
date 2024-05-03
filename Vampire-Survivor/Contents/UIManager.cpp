@@ -373,6 +373,7 @@ void UIManager::UISpawn()
 
 	SelectArrows.first = CreateWidget<UImage>(GetWorld(), "ArrowLeft");
 	SelectArrows.first->AddToViewPort(4);
+	SelectArrows.first->SetOrder(1);
 	SelectArrows.first->CreateAnimation("Rotate", "Arrow", 0.1f, true);
 	SelectArrows.first->SetAutoSize(2.f, true);
 	SelectArrows.first->ChangeAnimation("Rotate");
@@ -380,6 +381,7 @@ void UIManager::UISpawn()
 
 	SelectArrows.second = CreateWidget<UImage>(GetWorld(), "ArrowLeft");
 	SelectArrows.second->AddToViewPort(4);
+	SelectArrows.second->SetOrder(1);
 	SelectArrows.second->CreateAnimation("Rotate", "Arrow", 0.1f, true);
 	SelectArrows.second->SetAutoSize(2.f, true);
 	
@@ -1145,7 +1147,7 @@ int UIManager::RandomPickLogic()
 
 void UIManager::LevelUpEventStart()
 {
-	GEngine->SetGlobalTimeScale(0.f);
+	GEngine->SetOrderTimeScale(0, 0.f);
 	LevelUpUIOn();
 	IsSelecting = true;
 	SelectIndex = 0;
@@ -1728,7 +1730,7 @@ void UIManager::LevelUpEventStart()
 void UIManager::LevelUpEventEnd()
 {
 	//레벨업관련 UI 모두 activeoff
-	GEngine->SetGlobalTimeScale(1.f);
+	GEngine->SetOrderTimeScale(0, 1.f);
 	IsSelecting = false;
 	LevelUpUIOff();
 }

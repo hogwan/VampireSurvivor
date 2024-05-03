@@ -171,6 +171,10 @@ void USpawnerManager::SpawnFlowerPrison()
 		Flower->GetEnemyData().MaxHp = 30 * UContentsValue::PlayerLevel;
 		Flower->GetEnemyData().Hp = 30 * UContentsValue::PlayerLevel;
 		Flower->SetActorLocation(SpawnPos);
+		DelayCallBack(30.f, [=]
+			{
+				Flower->Destroy();
+			});
 	}
 }
 

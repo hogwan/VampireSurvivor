@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "KingBible.h"
 #include "Player.h"
+#include "DamageNumber.h"
 
 AKingBibleUnit::AKingBibleUnit()
 {
@@ -44,6 +45,10 @@ void AKingBibleUnit::ColLogic()
 			Opponent->GetEnemyData().Hp -= UKingBible::Data.Damage;
 			Opponent->SetKnockBack(DirVector * UKingBible::Data.KnockbackPower);
 			Opponent->State.ChangeState("KnockBack");
+
+			std::shared_ptr<ADamageNumber> Damage = GetWorld()->SpawnActor<ADamageNumber>("Damage");
+			Damage->SetDamage(UKingBible::Data.Damage);
+			Damage->SetActorLocation(EnemyPos + FVector::Up * 10.f);
 		}
 	);
 }

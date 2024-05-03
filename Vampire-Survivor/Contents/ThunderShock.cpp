@@ -2,6 +2,7 @@
 #include "ThunderShock.h"
 #include "LightingRing.h"
 #include "Enemy.h"
+#include "DamageNumber.h"
 
 AThunderShock::AThunderShock()
 {
@@ -53,6 +54,11 @@ void AThunderShock::ColLogic()
 
 			Opponent->GetEnemyData().Hp -= ULightingRing::Data.Damage;
 			Opponent->State.ChangeState("KnockBack");
+
+			FVector EnemyPos = Opponent->GetActorLocation();
+			std::shared_ptr<ADamageNumber> Damage = GetWorld()->SpawnActor<ADamageNumber>("Damage");
+			Damage->SetDamage(ULightingRing::Data.Damage);
+			Damage->SetActorLocation(EnemyPos + FVector::Up * 10.f);
 		}
 	);
 }

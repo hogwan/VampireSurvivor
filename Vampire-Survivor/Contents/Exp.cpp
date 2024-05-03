@@ -77,7 +77,7 @@ void AExp::ColLogic()
 		{
 			FPlayerData* Data = UContentsValue::Player->GetPlayerDataReference();
 
-			Data->CurExp += ExpAmount;
+			Data->CurExp += ExpAmount * (UContentsValue::PlayerLevel);
 			Destroy();
 		}
 	);
@@ -85,7 +85,7 @@ void AExp::ColLogic()
 
 void AExp::SpriteUpdate()
 {
-	if (ExpAmount > 50.f)
+	if (ExpAmount > 10.f)
 	{
 		Renderer->SetSprite("Exp.png", 2);
 	}

@@ -3,6 +3,7 @@
 #include "Cross.h"
 #include "Enemy.h"
 #include "Player.h"
+#include "DamageNumber.h"
 
 ACrossUnit::ACrossUnit()
 {
@@ -57,8 +58,14 @@ void ACrossUnit::ColLogic()
 			Opponent->GetEnemyData().Hp -= UCross::Data.Damage;
 			Opponent->SetKnockBack(MoveVector.Normalize3DReturn() * UCross::Data.KnockbackPower);
 			Opponent->State.ChangeState("KnockBack");
+
+			FVector EnemyPos = Opponent->GetActorLocation();
+			std::shared_ptr<ADamageNumber> Damage = GetWorld()->SpawnActor<ADamageNumber>("Damage");
+			Damage->SetDamage(UCross::Data.Damage);
+			Damage->SetActorLocation(EnemyPos + FVector::Up * 10.f);
 		}
 	);
+
 }
 
 void ACrossUnit::Release()

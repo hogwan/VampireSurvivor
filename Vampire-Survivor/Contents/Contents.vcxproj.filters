@@ -190,6 +190,9 @@
     <Filter Include="Object\Enemy\SmallFlower">
       <UniqueIdentifier>{129e8a5f-1e0d-4f43-a879-be8a50bcb194}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\DamageNumber">
+      <UniqueIdentifier>{85eb1fdd-ca09-4b26-a6f5-7d1e0704b468}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -459,6 +462,12 @@
     <ClInclude Include="SmallFlower.h">
       <Filter>Object\Enemy\SmallFlower</Filter>
     </ClInclude>
+    <ClInclude Include="DamageNumber.h">
+      <Filter>Object\DamageNumber</Filter>
+    </ClInclude>
+    <ClInclude Include="Number.h">
+      <Filter>Object\DamageNumber</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -724,6 +733,12 @@
     </ClCompile>
     <ClCompile Include="SmallFlower.cpp">
       <Filter>Object\Enemy\SmallFlower</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageNumber.cpp">
+      <Filter>Object\DamageNumber</Filter>
+    </ClCompile>
+    <ClCompile Include="Number.cpp">
+      <Filter>Object\DamageNumber</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

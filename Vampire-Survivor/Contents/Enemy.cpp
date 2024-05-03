@@ -43,6 +43,10 @@ void AEnemy::BeginPlay()
 
 	State.ChangeState("ChasePlayer");
 
+	Data.Speed /= 3.f;
+	Data.MaxHp *= UContentsValue::PlayerLevel;
+	Data.Hp = Data.MaxHp;
+
 }
 
 void AEnemy::Tick(float _DeltaTime)
@@ -246,6 +250,8 @@ void AEnemy::DeathStart()
 {
 	Renderer->ChangeAnimation("Death");
 	Renderer->SetPlusColor(FVector(0.0f, 0.0f, 0.0f, 1.f));
+	--USpawnerManager::EnemyCount;
+	++UContentsValue::KillCount;
 
 	Collider->SetActive(false);
 }
@@ -257,8 +263,6 @@ void AEnemy::Death(float _DeltaTime)
 		std::shared_ptr<AExp> Exp = GetWorld()->SpawnActor<AExp>("Exp");
 		Exp->SetActorLocation(GetActorLocation());
 		Exp->SetExp(Data.XP);
-		--USpawnerManager::EnemyCount;
-		++UContentsValue::KillCount;
 
 		Destroy();
 	}
