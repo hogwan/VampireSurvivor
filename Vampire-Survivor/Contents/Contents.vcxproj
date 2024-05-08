@@ -219,6 +219,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Circuit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CircuitWeapon.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Clover.h">
       <SubType>
       </SubType>
@@ -583,6 +591,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ChestUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Circuit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CircuitWeapon.cpp">
       <SubType>
       </SubType>
     </ClCompile>

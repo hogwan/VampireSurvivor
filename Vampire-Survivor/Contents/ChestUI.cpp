@@ -3,9 +3,11 @@
 #include <EngineCore/TextWidget.h>
 #include <EngineCore/Image.h>
 #include "UIManager.h"
+#include "CircuitWeapon.h"
 
 UChestUI::UChestUI() 
 {
+
 }
 
 UChestUI::~UChestUI() 
@@ -16,6 +18,12 @@ void UChestUI::BeginPlay()
 {
 	SetActive(false);
 	SetActive(true);
+
+	
+
+	std::shared_ptr<CircuitWeapon> CW = GetWorld()->SpawnActor<CircuitWeapon>("Curcuit");
+	CW->SetActorLocation(FVector(-300.f, 0.f, 10.f));
+
 	// UI를 관리하는 개념의 클래스가 된다.
 	{
 		Chest = CreateWidget<UImage>(GetWorld(), "Chest");
@@ -94,9 +102,10 @@ void UChestUI::BeginPlay()
 	}
 
 	StateInit();
-	EventStart();
+	//EventStart();
 
 	AddToViewPort(1);
+	UIOff();
 }
 
 void UChestUI::Tick(float _DeltaTime)
@@ -216,4 +225,5 @@ void UChestUI::UnboxingStart()
 
 void UChestUI::EndWaitStart()
 {
+
 }

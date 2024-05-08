@@ -97,7 +97,17 @@ void UVSCore::Initialize()
 		}
 	}
 
+	{
+		UEngineDirectory Dir;
+		Dir.MoveToSearchChild("ContentsShader");
+		UEngineShader::AutoCompile(Dir);
+	}
 
+	{
+		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("CircuitShader");
+		Mat->SetPixelShader("CircuitShader.fx");
+		Mat->SetVertexShader("CircuitShader.fx");
+	}
 
 
 

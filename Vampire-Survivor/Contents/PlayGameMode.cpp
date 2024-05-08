@@ -8,6 +8,7 @@
 #include <EngineCore/Image.h>
 #include <EngineCore/Camera.h>
 #include "UIManager.h"
+#include "Circuit.h"
 
 std::shared_ptr<class UIManager> APlayGameMode::PlayUIManager;
 std::shared_ptr<UEquipManager> APlayGameMode::EquipManager;
@@ -24,6 +25,8 @@ void APlayGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	//GetWorld()->GetLastTarget()->AddEffect<ACircuit>();
+
 
 	Camera = GetWorld()->GetMainCamera();
 

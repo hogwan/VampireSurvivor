@@ -51,5 +51,7 @@ private:
 	void UnboxingStart();
 	void EndWaitStart();
 
+	class USpriteRenderer* Renderer = nullptr;
+
 };
 
