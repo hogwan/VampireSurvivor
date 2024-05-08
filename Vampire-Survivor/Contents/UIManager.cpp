@@ -1843,6 +1843,18 @@ void UIManager::LevelUpEventTick()
 	SelectArrows.second->SetPosition(RightArrowPos);
 }
 
+void UIManager::ChestEventStart()
+{
+}
+
+void UIManager::ChestEventEnd()
+{
+}
+
+void UIManager::ChestEventTick()
+{
+}
+
 void UIManager::LevelUpUIOn()
 {
 	WeaponInfoBackBoard->SetActive(true);

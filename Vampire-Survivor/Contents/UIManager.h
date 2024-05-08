@@ -21,6 +21,9 @@ public:
 	void LevelUpEventStart();
 	void LevelUpEventEnd();
 	void LevelUpEventTick();
+	void ChestEventStart();
+	void ChestEventEnd();
+	void ChestEventTick();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -83,6 +86,7 @@ protected:
 
 
 	bool IsSelecting = false;
+	bool IsUnboxing = false;
 	int SelectIndex = 0;
 private:
 

@@ -193,6 +193,9 @@
     <Filter Include="Object\DamageNumber">
       <UniqueIdentifier>{85eb1fdd-ca09-4b26-a6f5-7d1e0704b468}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\UIManager\ChestUI">
+      <UniqueIdentifier>{f3102aaa-f3c2-464a-968f-2cd80b5cc2bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -468,6 +471,9 @@
     <ClInclude Include="Number.h">
       <Filter>Object\DamageNumber</Filter>
     </ClInclude>
+    <ClInclude Include="Chest.h">
+      <Filter>Object\UIManager\ChestUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -739,6 +745,9 @@
     </ClCompile>
     <ClCompile Include="Number.cpp">
       <Filter>Object\DamageNumber</Filter>
+    </ClCompile>
+    <ClCompile Include="Chest.cpp">
+      <Filter>Object\UIManager\ChestUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
