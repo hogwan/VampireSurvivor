@@ -32,7 +32,7 @@ void UKingBible::Tick(float _DeltaTime)
 	RemainTime -= _DeltaTime;
 	if (RemainTime < 0.f)
 	{
-		RemainTime = Data.Cooldown + Data.Duration;
+		RemainTime = Data.Cooldown + 3.f;
 		SpawnCenter();
 	}
 
