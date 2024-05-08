@@ -4,6 +4,7 @@
 #include <EngineCore/Image.h>
 #include "UIManager.h"
 #include "CircuitWeapon.h"
+#include "UnboxingLight.h"
 
 UChestUI::UChestUI() 
 {
@@ -16,13 +17,20 @@ UChestUI::~UChestUI()
 
 void UChestUI::BeginPlay()
 {
-	SetActive(false);
-	SetActive(true);
-
 	
+	{
+		Circuit = CreateWidget<CircuitWeapon>(GetWorld(), "Circuit");
+		Circuit->SetPosition(FVector(0.f, -340.f, 10.f));
+		Circuit->AddToViewPort(5);
+		Circuit->SetActive(false);
+	}
 
-	std::shared_ptr<CircuitWeapon> CW = GetWorld()->SpawnActor<CircuitWeapon>("Curcuit");
-	CW->SetActorLocation(FVector(-300.f, 0.f, 10.f));
+	{
+		Light = CreateWidget<UnboxingLight>(GetWorld(), "Light");
+		Light->SetWidgetScale3D(FVector(1280.f, 720.f, 10.f));
+		Light->AddToViewPort(1);
+		Light->SetActive(false);
+	}
 
 	// UI를 관리하는 개념의 클래스가 된다.
 	{
@@ -102,10 +110,10 @@ void UChestUI::BeginPlay()
 	}
 
 	StateInit();
-	//EventStart();
+	EventStart();
 
 	AddToViewPort(1);
-	UIOff();
+	//UIOff();
 }
 
 void UChestUI::Tick(float _DeltaTime)
@@ -136,6 +144,7 @@ void UChestUI::EventTick(float _DeltaTime)
 void UChestUI::EventEnd()
 {
 	GEngine->SetOrderTimeScale(0, 1.f);
+	Circuit->SetActive(false);
 	UIOff();
 	BlueLight->SetActive(false);
 	IsUnboxing = false;
@@ -199,6 +208,11 @@ void UChestUI::Unboxing(float _DeltaTime)
 		return;
 	}
 
+	if (AccTime > TurnOffTime)
+	{
+		Light->TurnOff();
+	}
+
 }
 
 void UChestUI::EndWait(float _DeltaTime)
@@ -220,6 +234,9 @@ void UChestUI::UnboxingStart()
 {
 	Chest->ChangeAnimation("Open");
 	Random = UIManager::RandomPickLogic(static_cast<int>(ESelectList::Axe), static_cast<int>(ESelectList::Whip));
+	Circuit->SetActive(true);
+	Light->SetActive(true);
+	Light->TurnOn();
 	return;
 }
 

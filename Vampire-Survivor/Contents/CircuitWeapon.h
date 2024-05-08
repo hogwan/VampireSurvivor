@@ -1,11 +1,10 @@
 #pragma once
-#include <EngineCore/Actor.h>
-#include "Circuit.h"
+#include <EngineCore/Image.h>
 
 // Ό³Έν :
-class CircuitWeapon : public AActor
+class CircuitWeapon : public UImage
 {
-	GENERATED_BODY(AActor)
+	GENERATED_BODY(UImage)
 public:
 	// constructor destructor
 	CircuitWeapon();
@@ -21,11 +20,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	std::shared_ptr<ACircuit> CircuitEffect = nullptr;
-
-
-	FVector vec = FVector::Zero;
-	USpriteRenderer* Renderer = nullptr;
+	FVector UVVector = FVector::Zero;
 
 private:
 

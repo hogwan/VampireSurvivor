@@ -37,10 +37,13 @@ private:
 	class UTextWidget* ButtonText = nullptr;
 	std::pair<class UImage*, class UImage*> Arrows;
 	class UImage* BlueLight = nullptr;
+	class CircuitWeapon* Circuit = nullptr;
+	class UnboxingLight* Light = nullptr;
 
 	bool IsUnboxing = false;
 	int Random = -1;
 	float UnboxingTime = 6.f;
+	float TurnOffTime = 5.f;
 	float AccTime = 0.f;
 
 	void Wait(float _DeltaTime);
@@ -50,8 +53,6 @@ private:
 	void WaitStart();
 	void UnboxingStart();
 	void EndWaitStart();
-
-	class USpriteRenderer* Renderer = nullptr;
 
 };
 

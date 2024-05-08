@@ -477,11 +477,11 @@
     <ClInclude Include="ChestUI.h">
       <Filter>Object\UIManager\ChestUI</Filter>
     </ClInclude>
-    <ClInclude Include="Circuit.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
     <ClInclude Include="CircuitWeapon.h">
-      <Filter>Object\UIManager</Filter>
+      <Filter>Object\UIManager\ChestUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UnboxingLight.h">
+      <Filter>Object\UIManager\ChestUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -758,11 +758,11 @@
     <ClCompile Include="ChestUI.cpp">
       <Filter>Object\UIManager\ChestUI</Filter>
     </ClCompile>
-    <ClCompile Include="Circuit.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
     <ClCompile Include="CircuitWeapon.cpp">
-      <Filter>Object\UIManager</Filter>
+      <Filter>Object\UIManager\ChestUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UnboxingLight.cpp">
+      <Filter>Object\UIManager\ChestUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

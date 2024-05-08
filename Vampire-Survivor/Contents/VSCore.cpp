@@ -109,6 +109,12 @@ void UVSCore::Initialize()
 		Mat->SetVertexShader("CircuitShader.fx");
 	}
 
+	{
+		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("UnboxingLight");
+		Mat->SetPixelShader("UnboxingLight.fx");
+		Mat->SetVertexShader("UnboxingLight.fx");
+	}
+
 
 
 	UEngineEditorGUI::CreateEditorWindow<ContentsEditerGUI>("ddd");

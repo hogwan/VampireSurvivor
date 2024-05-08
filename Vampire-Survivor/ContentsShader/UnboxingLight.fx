@@ -35,12 +35,10 @@ ImageVSOutPut CircuitShader_VS(FEngineVertex _Input)
     Out.POSITION = mul(Out.POSITION, View);
     Out.POSITION = mul(Out.POSITION, Projection);
     
-    Out.TEXCOORD.x = _Input.TEXCOORD.x;
-    Out.TEXCOORD.y = _Input.TEXCOORD.y;
-    
-    Out.TEXCOORD.x += PlusUV.x;
-    Out.TEXCOORD.y += PlusUV.y;
+    Out.TEXCOORD.x = _Input.TEXCOORD.x + PlusUV.x / 10000.f;
+    Out.TEXCOORD.y = _Input.TEXCOORD.y + PlusUV.x / 10000.f;
 
+    
     return Out;
 }
 
@@ -60,14 +58,54 @@ ImagePSOutPut CircuitShader_PS(ImageVSOutPut _Input)
     ImagePSOutPut Out = (ImagePSOutPut) 0;
 
     Out.COLOR = Sampling(Image, _Input.TEXCOORD);
-    Out.COLOR.xyz += PlusColor.xyz;
-    Out.COLOR.xyzw *= MulColor.xyzw;
+
+    float scala = abs(_Input.TEXCOORD.x - 0.5f);
     
-    if (_Input.TEXCOORD.y - PlusUV.y > 0.3f)
+    if(scala < 0.1f)
     {
-        Out.COLOR.a = 0;
+        Out.COLOR.a = 0.1f;
+    }
+    else if(scala < 0.15f)
+    {
+        Out.COLOR.a = 0.05f;
+    }
+    else if (scala < 0.2f)
+    {
+        Out.COLOR.a = 0.00f;
+    }
+    else if (scala < 0.25f)
+    {
+        Out.COLOR.a = 0.05f;
+    }
+    else if (scala < 0.3f)
+    {
+        Out.COLOR.a = 0.00f;
+    }
+    else if (scala < 0.35f)
+    {
+        Out.COLOR.a = -0.05f;
+    }
+    else if (scala < 0.4f)
+    {
+        Out.COLOR.a = -0.1f;
+    }
+    else if (scala < 0.45f)
+    {
+        Out.COLOR.a = -0.15f;
+    }
+    else if (scala < 0.5f)
+    {
+        Out.COLOR.a = -0.2f;
     }
 
-
-     return Out;
+    
+    Out.COLOR.xyzw += PlusColor.xyzw;
+    Out.COLOR.xyzw *= MulColor.xyzw;
+    
+    if(Out.COLOR.a < 0.f)
+    {
+        Out.COLOR.a = 0.f;
+    }
+    
+    return Out;
 }
