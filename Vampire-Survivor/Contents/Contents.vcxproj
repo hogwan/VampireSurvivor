@@ -215,7 +215,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Chest.h">
+    <ClInclude Include="ChestUI.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -582,7 +582,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Chest.cpp">
+    <ClCompile Include="ChestUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -29,7 +29,9 @@
 #include "Spellbinder.h"
 #include "Spinach.h"
 #include "Wings.h"
+#include "ChestUI.h"
 
+UChestUI* UIManager::ChestUI = nullptr;
 
 UIManager::UIManager() 
 {
@@ -414,6 +416,8 @@ void UIManager::UISpawn()
 	TimeUI->SetColor(Color8Bit::White);
 	TimeUI->SetPosition(FVector(0.f, 315.f));
 	TimeUI->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_CENTER | FW1_TEXT_FLAG::FW1_VCENTER));
+
+	ChestUI = CreateWidget<UChestUI>(GetWorld(), "Chest");
 }
 
 void UIManager::UIUpdate()
@@ -952,12 +956,9 @@ void UIManager::TimeUpdate(float _DeltaTime)
 	TimeUI->SetText(MinuteText + " : " + SecondText);
 }
 
-int UIManager::RandomPickLogic()
+int UIManager::RandomPickLogic(int _Min, int _Max)
 {
-	int Min = static_cast<int>(ESelectList::Axe);
-	int Max = static_cast<int>(ESelectList::Wings);
-
-	int Random = UEngineRandom::MainRandom.RandomInt(Min, Max);
+	int Random = UEngineRandom::MainRandom.RandomInt(_Min, _Max);
 
 	if (Random < 12)
 	{
@@ -971,77 +972,77 @@ int UIManager::RandomPickLogic()
 				Random = static_cast<int>(ESelectList::Axe);
 				if (UAxe::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::Cross:
 				Random = static_cast<int>(ESelectList::Cross);
 				if (UCross::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::FireWand:
 				Random = static_cast<int>(ESelectList::FireWand);
 				if (UFireWand::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::Garlic:
 				Random = static_cast<int>(ESelectList::Garlic);
 				if (UGarlic::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::KingBible:
 				Random = static_cast<int>(ESelectList::KingBible);
 				if (UKingBible::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::Knife:
 				Random = static_cast<int>(ESelectList::Knife);
 				if (UKnife::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::LightingRing:
 				Random = static_cast<int>(ESelectList::LightingRing);
 				if (ULightingRing::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::MagicWand:
 				Random = static_cast<int>(ESelectList::MagicWand);
 				if (UMagicWand::Data.Level >7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::RuneTracer:
 				Random = static_cast<int>(ESelectList::RuneTracer);
 				if (URuneTracer::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::SantaWater:
 				Random = static_cast<int>(ESelectList::SantaWater);
 				if (USantaWater::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EWeapon::Whip:
 				Random = static_cast<int>(ESelectList::Whip);
 				if (UWhip::Data.Level > 7)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			}
@@ -1058,84 +1059,84 @@ int UIManager::RandomPickLogic()
 				Random = static_cast<int>(ESelectList::Armor);
 				if (UArmor::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::Attractorb:
 				Random = static_cast<int>(ESelectList::Attractorb);
 				if (UAttractorb::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::Bracer:
 				Random = static_cast<int>(ESelectList::Bracer);
 				if (UBracer::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::Candelabrador:
 				Random = static_cast<int>(ESelectList::Candelabrador);
 				if (UCandelabrador::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::Clover:
 				Random = static_cast<int>(ESelectList::Clover);
 				if (UClover::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::Duplicator:
 				Random = static_cast<int>(ESelectList::Duplicator);
 				if (UDuplicator::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::EmptyTome:
 				Random = static_cast<int>(ESelectList::EmptyTome);
 				if (UEmptyTome::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::HollowHeart:
 				Random = static_cast<int>(ESelectList::HollowHeart);
 				if (UHollowHeart::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::Pummarola: 
 				Random = static_cast<int>(ESelectList::Pummarola);
 				if (UPummarola::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::Spellbinder:
 				Random = static_cast<int>(ESelectList::Spellbinder);
 				if (USpellbinder::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::Spinach:
 				Random = static_cast<int>(ESelectList::Spinach);
 				if (USpinach::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			case EAccessory::Wings:
 				Random = static_cast<int>(ESelectList::Wings);
 				if (UWings::Data.Level > 4)
 				{
-					return RandomPickLogic();
+					return RandomPickLogic(_Min, _Max);
 				}
 				break;
 			}
@@ -1154,14 +1155,14 @@ void UIManager::LevelUpEventStart()
 
 	for (int i = 0; i < 3; i++)
 	{
-		int Random = RandomPickLogic();
+		int Random = RandomPickLogic(static_cast<int>(ESelectList::Axe), static_cast<int>(ESelectList::Wings));
 		ESelectList List = static_cast<ESelectList>(Random);
 
 		for (ESelectList Selected : InfoVec)
 		{
 			while(List == Selected)
 			{
-				Random = RandomPickLogic();
+				Random = RandomPickLogic(static_cast<int>(ESelectList::Axe), static_cast<int>(ESelectList::Wings));
 				List = static_cast<ESelectList>(Random);
 			}
 		}
@@ -1843,17 +1844,6 @@ void UIManager::LevelUpEventTick()
 	SelectArrows.second->SetPosition(RightArrowPos);
 }
 
-void UIManager::ChestEventStart()
-{
-}
-
-void UIManager::ChestEventEnd()
-{
-}
-
-void UIManager::ChestEventTick()
-{
-}
 
 void UIManager::LevelUpUIOn()
 {

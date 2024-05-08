@@ -471,7 +471,7 @@
     <ClInclude Include="Number.h">
       <Filter>Object\DamageNumber</Filter>
     </ClInclude>
-    <ClInclude Include="Chest.h">
+    <ClInclude Include="ChestUI.h">
       <Filter>Object\UIManager\ChestUI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -746,7 +746,7 @@
     <ClCompile Include="Number.cpp">
       <Filter>Object\DamageNumber</Filter>
     </ClCompile>
-    <ClCompile Include="Chest.cpp">
+    <ClCompile Include="ChestUI.cpp">
       <Filter>Object\UIManager\ChestUI</Filter>
     </ClCompile>
   </ItemGroup>

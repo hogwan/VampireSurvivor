@@ -21,9 +21,9 @@ public:
 	void LevelUpEventStart();
 	void LevelUpEventEnd();
 	void LevelUpEventTick();
-	void ChestEventStart();
-	void ChestEventEnd();
-	void ChestEventTick();
+
+	static class UChestUI* ChestUI;
+	static int RandomPickLogic(int _Min, int _Max);
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -39,8 +39,6 @@ protected:
 	void KillCountUpdate();
 	void GoldUpdate();
 	void TimeUpdate(float _DeltaTime);
-	
-	int RandomPickLogic();
 
 	void LevelUpUIOn();
 	void LevelUpUIOff();
