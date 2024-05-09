@@ -167,6 +167,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="AttractExpItem.h" />
     <ClInclude Include="AttractItem.h">
       <SubType>
       </SubType>
@@ -284,6 +285,9 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FireCenter.h" />
+    <ClInclude Include="FireItem.h" />
+    <ClInclude Include="FireUnit.h" />
     <ClInclude Include="FireWand.h">
       <SubType>
       </SubType>
@@ -562,6 +566,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="AttractExpItem.cpp" />
     <ClCompile Include="AttractItem.cpp">
       <SubType>
       </SubType>
@@ -678,6 +683,9 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FireCenter.cpp" />
+    <ClCompile Include="FireItem.cpp" />
+    <ClCompile Include="FireUnit.cpp" />
     <ClCompile Include="FireWand.cpp">
       <SubType>
       </SubType>

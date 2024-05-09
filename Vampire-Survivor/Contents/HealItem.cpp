@@ -13,6 +13,14 @@ HealItem::~HealItem()
 void HealItem::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Renderer->SetSprite("HealItem.png");
+	Renderer->SetAutoSize(2.f, true);
+	Renderer->SetOrder(ERenderOrder::Exp);
+
+	Collider->SetCollisionGroup(ECollisionOrder::Exp);
+	Collider->SetCollisionType(ECollisionType::CirCle);
+	Collider->SetScale(FVector(32.f, 28.f, 0.f));
 }
 
 void HealItem::Tick(float _DeltaTime)

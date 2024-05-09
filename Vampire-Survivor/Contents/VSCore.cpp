@@ -89,6 +89,19 @@ void UVSCore::Initialize()
 	{
 		UEngineDirectory Dir;
 		Dir.MoveToSearchChild("ContentsResources");
+		Dir.Move("Image");
+		Dir.Move("DropItems");
+		std::vector<UEngineDirectory> Directorys = Dir.GetAllDirectory();
+		for (size_t i = 0; i < Directorys.size(); i++)
+		{
+			std::string Name = Directorys[i].GetFolderName();
+			UEngineSprite::LoadFolder(Directorys[i].GetFullPath());
+		}
+	}
+
+	{
+		UEngineDirectory Dir;
+		Dir.MoveToSearchChild("ContentsResources");
 		Dir.Move("Sound");
 		std::vector<UEngineFile> Files = Dir.GetAllFile({ ".wav" });
 		for (UEngineFile& File : Files)

@@ -257,6 +257,8 @@ void UChestUI::EventStart()
 	GEngine->SetOrderTimeScale(0, 0.f);
 	IsUnboxing = true;
 	UIOn();
+	ButtonText->SetText("¿­±â");
+	AccGold = 0.f;
 	State.ChangeState("Wait");
 }
 

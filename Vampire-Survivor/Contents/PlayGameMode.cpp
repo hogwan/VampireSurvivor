@@ -9,6 +9,9 @@
 #include <EngineCore/Camera.h>
 #include "UIManager.h"
 #include "Chest.h"
+#include "HealItem.h"
+#include "AttractExpItem.h"
+#include "FireItem.h"
 
 std::shared_ptr<UIManager> APlayGameMode::PlayUIManager;
 std::shared_ptr<UEquipManager> APlayGameMode::EquipManager;
@@ -65,6 +68,15 @@ void APlayGameMode::BeginPlay()
 
 	std::shared_ptr<Chest> Ch = GetWorld()->SpawnActor<Chest>("Chest");
 	Ch->SetActorLocation(FVector(300.f, 0.f, 0.f));
+
+	std::shared_ptr<HealItem> Heal = GetWorld()->SpawnActor<HealItem>("Heal");
+	Heal->SetActorLocation(FVector(200.f, 0.f, 0.f));
+
+	std::shared_ptr<AttractExpItem> Attract= GetWorld()->SpawnActor<AttractExpItem>("Attract");
+	Attract->SetActorLocation(FVector(100.f, 0.f, 0.f));
+
+	std::shared_ptr<FireItem> Fire = GetWorld()->SpawnActor<FireItem>("Attract");
+	Fire->SetActorLocation(FVector(-100.f, 0.f, 0.f));
 }
 
 void APlayGameMode::Tick(float _DeltaTime)

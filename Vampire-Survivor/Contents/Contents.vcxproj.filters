@@ -516,6 +516,18 @@
     <ClInclude Include="HealItem.h">
       <Filter>Object\Item\Heal</Filter>
     </ClInclude>
+    <ClInclude Include="AttractExpItem.h">
+      <Filter>Object\Item\Attract</Filter>
+    </ClInclude>
+    <ClInclude Include="FireItem.h">
+      <Filter>Object\Item\Fire</Filter>
+    </ClInclude>
+    <ClInclude Include="FireCenter.h">
+      <Filter>Object\Item\Fire</Filter>
+    </ClInclude>
+    <ClInclude Include="FireUnit.h">
+      <Filter>Object\Item\Fire</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -811,6 +823,18 @@
     </ClCompile>
     <ClCompile Include="HealItem.cpp">
       <Filter>Object\Item\Heal</Filter>
+    </ClCompile>
+    <ClCompile Include="AttractExpItem.cpp">
+      <Filter>Object\Item\Attract</Filter>
+    </ClCompile>
+    <ClCompile Include="FireItem.cpp">
+      <Filter>Object\Item\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="FireCenter.cpp">
+      <Filter>Object\Item\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="FireUnit.cpp">
+      <Filter>Object\Item\Fire</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
