@@ -227,6 +227,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Coin.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ContentsEditerGUI.h">
       <SubType>
       </SubType>
@@ -313,6 +317,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Ghoul3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GoldCoin.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -437,6 +445,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="SantaWaterUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SilverCoin.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -602,6 +614,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ContentsEditerGUI.cpp">
       <SubType>
       </SubType>
@@ -687,6 +703,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Ghoul3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GoldCoin.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -815,6 +835,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SantaWaterUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SilverCoin.cpp">
       <SubType>
       </SubType>
     </ClCompile>

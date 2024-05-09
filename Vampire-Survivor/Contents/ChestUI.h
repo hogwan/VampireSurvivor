@@ -39,6 +39,7 @@ private:
 	class UImage* BlueLight = nullptr;
 	class CircuitWeapon* Circuit = nullptr;
 	class UnboxingLight* Light = nullptr;
+	std::vector<class Coin> CoinVec;
 
 	bool IsUnboxing = false;
 	int Random = -1;

@@ -483,6 +483,15 @@
     <ClInclude Include="UnboxingLight.h">
       <Filter>Object\UIManager\ChestUI</Filter>
     </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Object\UIManager\ChestUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GoldCoin.h">
+      <Filter>Object\UIManager\ChestUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SilverCoin.h">
+      <Filter>Object\UIManager\ChestUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -762,6 +771,15 @@
       <Filter>Object\UIManager\ChestUI</Filter>
     </ClCompile>
     <ClCompile Include="UnboxingLight.cpp">
+      <Filter>Object\UIManager\ChestUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Object\UIManager\ChestUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GoldCoin.cpp">
+      <Filter>Object\UIManager\ChestUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SilverCoin.cpp">
       <Filter>Object\UIManager\ChestUI</Filter>
     </ClCompile>
   </ItemGroup>
