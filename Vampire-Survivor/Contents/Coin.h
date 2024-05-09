@@ -2,23 +2,25 @@
 #include <EngineCore/Image.h>
 
 // Ό³Έν :
-class Coin : public UImage
+class ACoin : public UImage
 {
 	GENERATED_BODY(UImage)
 public:
 	// constructor destructor
-	Coin();
-	~Coin();
+	ACoin();
+	~ACoin();
 
 	// delete Function
-	Coin(const Coin& _Other) = delete;
-	Coin(Coin&& _Other) noexcept = delete;
-	Coin& operator=(const Coin& _Other) = delete;
-	Coin& operator=(Coin&& _Other) noexcept = delete;
+	ACoin(const ACoin& _Other) = delete;
+	ACoin(ACoin&& _Other) noexcept = delete;
+	ACoin& operator=(const ACoin& _Other) = delete;
+	ACoin& operator=(ACoin&& _Other) noexcept = delete;
 
 	inline void SetInitialVector(FVector _InitVec, float _ThrowPower)
 	{
 		MoveVector = _InitVec * _ThrowPower;
+		SetActive(true);
+		ChangeAnimation("Spin");
 	}
 
 protected:

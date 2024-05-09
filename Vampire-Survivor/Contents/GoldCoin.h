@@ -2,23 +2,25 @@
 #include "Coin.h"
 
 // Ό³Έν :
-class GoldCoin : public Coin
+class AGoldCoin : public ACoin
 {
-	GENERATED_BODY(Coin)
+	GENERATED_BODY(ACoin)
 public:
 	// constructor destructor
-	GoldCoin();
-	~GoldCoin();
+	AGoldCoin();
+	~AGoldCoin();
 
 	// delete Function
-	GoldCoin(const GoldCoin& _Other) = delete;
-	GoldCoin(GoldCoin&& _Other) noexcept = delete;
-	GoldCoin& operator=(const GoldCoin& _Other) = delete;
-	GoldCoin& operator=(GoldCoin&& _Other) noexcept = delete;
+	AGoldCoin(const AGoldCoin& _Other) = delete;
+	AGoldCoin(AGoldCoin&& _Other) noexcept = delete;
+	AGoldCoin& operator=(const AGoldCoin& _Other) = delete;
+	AGoldCoin& operator=(AGoldCoin&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+
+
 
 private:
 

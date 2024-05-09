@@ -1,21 +1,21 @@
 #include "PreCompile.h"
 #include "Coin.h"
 
-Coin::Coin() 
+ACoin::ACoin() 
 {
 }
 
-Coin::~Coin() 
+ACoin::~ACoin() 
 {
 }
 
-void Coin::BeginPlay()
+void ACoin::BeginPlay()
 {
 	Super::BeginPlay();
 
 }
 
-void Coin::Tick(float _DeltaTime)
+void ACoin::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	GravityCheck(_DeltaTime);
@@ -24,12 +24,12 @@ void Coin::Tick(float _DeltaTime)
 	AddPosition(MoveVector * _DeltaTime);
 }
 
-void Coin::GravityCheck(float _DeltaTime)
+void ACoin::GravityCheck(float _DeltaTime)
 {
-	MoveVector += FVector::Down * Gravity;
+	MoveVector += FVector::Down * Gravity * _DeltaTime;
 }
 
-void Coin::ReflectCheck()
+void ACoin::ReflectCheck()
 {
 	FVector CurPos = GetLocalPosition();
 

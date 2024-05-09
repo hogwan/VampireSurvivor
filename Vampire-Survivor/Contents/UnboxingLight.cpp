@@ -24,7 +24,7 @@ void UnboxingLight::Tick(float _DeltaTime)
 
 	if (IsOn)
 	{
-		PlusAlpha += 0.1f * _DeltaTime;
+		PlusAlpha += 0.15f * _DeltaTime;
 	}
 	else
 	{

@@ -36,7 +36,7 @@ ImageVSOutPut CircuitShader_VS(FEngineVertex _Input)
     Out.POSITION = mul(Out.POSITION, Projection);
     
     Out.TEXCOORD.x = _Input.TEXCOORD.x + PlusUV.x / 10000.f;
-    Out.TEXCOORD.y = _Input.TEXCOORD.y + PlusUV.x / 10000.f;
+    Out.TEXCOORD.y = _Input.TEXCOORD.y + PlusUV.y / 10000.f;
 
     
     return Out;
