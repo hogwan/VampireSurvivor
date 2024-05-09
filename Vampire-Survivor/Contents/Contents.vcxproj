@@ -332,6 +332,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="HealItem.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="HollowHeart.h">
       <SubType>
       </SubType>
@@ -413,14 +417,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PlayGameMode.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="PollingManager.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="PollingObject.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -730,6 +726,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="HealItem.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="HollowHeart.cpp">
       <SubType>
       </SubType>
@@ -811,14 +811,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PlayGameMode.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="PollingManager.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="PollingObject.cpp">
       <SubType>
       </SubType>
     </ClCompile>

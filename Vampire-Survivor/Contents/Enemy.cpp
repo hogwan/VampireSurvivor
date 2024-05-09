@@ -59,16 +59,6 @@ void AEnemy::Tick(float _DeltaTime)
 	State.Update(_DeltaTime);
 }
 
-void AEnemy::ActiveOn()
-{
-	Super::ActiveOn();
-	Data.Hp = Data.MaxHp;
-}
-
-void AEnemy::ActiveOff()
-{
-	Super::ActiveOff();
-}
 
 void AEnemy::MoveLogic()
 {

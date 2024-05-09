@@ -1,6 +1,5 @@
 #pragma once
 #include <EngineCore/Actor.h>
-#include "PollingManager.h"
 #include <EngineCore/StateManager.h>
 
 // Ό³Έν :

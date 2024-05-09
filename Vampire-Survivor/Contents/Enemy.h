@@ -1,5 +1,5 @@
 #pragma once
-#include "PollingObject.h"
+#include "VSObject.h"
 #include <EngineCore/TextWidget.h>
 #include <EngineCore/StateManager.h>
 
@@ -15,9 +15,9 @@ public:
 	float XP;
 };
 
-class AEnemy : public APollingObject
+class AEnemy : public AVSObject
 {
-	GENERATED_BODY(APollingObject)
+	GENERATED_BODY(AVSObject)
 public:
 	// constructor destructor
 	AEnemy();
@@ -65,9 +65,6 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
-	void ActiveOn() override;
-	void ActiveOff() override;
 
 	void MoveLogic();
 	void ColLogic(float _DeltaTime);
