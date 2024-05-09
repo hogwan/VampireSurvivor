@@ -57,6 +57,10 @@ public:
 		MassTargetPos = _MassTargetPos;
 	}
 
+	void SetBoss()
+	{
+		IsBoss = true;
+	}
 
 protected:
 	void BeginPlay() override;
@@ -93,6 +97,8 @@ protected:
 	FVector MassTargetPos = FVector::Zero;
 	float MassSpeed = 300.f;
 	float MassDirChangeTime = 5.f;
+
+	bool IsBoss = false;
 private:
 
 };

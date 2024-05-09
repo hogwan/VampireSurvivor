@@ -106,6 +106,8 @@ std::shared_ptr<AEnemy> USpawnerManager::SpawnBoss(EMonsterOrder _BossMonsterOrd
 
 	Boss->SetActorLocation(UContentsValue::Player->GetActorLocation() + FVector(1000.f, 0.f, 0.f));
 
+	Boss->SetBoss();
+
 	return Boss;
 }
 

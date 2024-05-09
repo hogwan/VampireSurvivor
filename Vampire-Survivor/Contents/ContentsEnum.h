@@ -4,9 +4,9 @@ enum class ERenderOrder
 {
 	Back,
 	Title,
-	Exp,
 	Monster,
 	Garlic,
+	Exp,
 	PlayerWeapon,
 	Particle,
 	Player,

@@ -27,48 +27,6 @@ void AExp::Tick(float _DeltaTime)
 
 	SpriteUpdate();
 	ColLogic();
-	if (AttractOn)
-	{
-		ChasePlayerLogic(_DeltaTime);
-	}
-	else
-	{
-		AttactCheckLogic();
-	}
-}
-
-void AExp::AttactCheckLogic()
-{
-	FPlayerData PlayerData = UContentsValue::Player->GetPlayerDataCopy();
-	
-	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
-	FVector CurPos = GetActorLocation();
-	PlayerPos.Z = 0.f;
-	CurPos.Z = 0.f;
-
-	float Distance = (PlayerPos - CurPos).Size3D();
-
-	float Reach = 30.f + PlayerData.Magnet;
-
-	if (Distance < Reach)
-	{
-		AttractOn = true;
-	}
-}
-
-void AExp::ChasePlayerLogic(float _DeltaTime)
-{
-	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
-	FVector CurPos = GetActorLocation();
-	PlayerPos.Z = 0.f;
-	CurPos.Z = 0.f;
-
-	FVector MoveDir = (PlayerPos - CurPos).Normalize3DReturn();
-
-	Speed += Accel * _DeltaTime;
-	MoveVector = MoveDir * Speed;
-
-	AddActorLocation(MoveVector * _DeltaTime);
 }
 
 void AExp::ColLogic()
@@ -96,6 +54,25 @@ void AExp::SpriteUpdate()
 	else
 	{
 		Renderer->SetSprite("Exp.png", 0);
+	}
+}
+
+void AExp::AttactCheckLogic()
+{
+	FPlayerData PlayerData = UContentsValue::Player->GetPlayerDataCopy();
+
+	FVector PlayerPos = UContentsValue::Player->GetActorLocation();
+	FVector CurPos = GetActorLocation();
+	PlayerPos.Z = 0.f;
+	CurPos.Z = 0.f;
+
+	float Distance = (PlayerPos - CurPos).Size3D();
+
+	float Reach = 30.f + PlayerData.Magnet + UContentsValue::MaxMagnet;
+
+	if (Distance < Reach)
+	{
+		AttractOn = true;
 	}
 }
 

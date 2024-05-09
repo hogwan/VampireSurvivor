@@ -11,5 +11,6 @@ public:
 	static int MaxLevel;
 	static int PlayerLevel;
 	static float Time;
+	static float MaxMagnet;
 };
 

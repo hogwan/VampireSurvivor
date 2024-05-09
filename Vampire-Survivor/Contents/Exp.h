@@ -1,10 +1,10 @@
 #pragma once
-#include "VSObject.h"
+#include "AttractItem.h"
 
 // Ό³Έν :
-class AExp : public AVSObject
+class AExp : public AttractItem
 {
-	GENERATED_BODY(AVSObject)
+	GENERATED_BODY(AttractItem)
 public:
 	// constructor destructor
 	AExp();
@@ -25,18 +25,12 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void AttactCheckLogic();
-	void ChasePlayerLogic(float _DeltaTime);
 	void ColLogic();
 	void SpriteUpdate();
 
-	FVector MoveVector = FVector::Zero;
-	float Accel = 300.f;
-	float Speed = 0.f;
-
+	void AttactCheckLogic() override;
 
 	float ExpAmount = 0.f;
-	bool AttractOn = false;
 private:
 
 };

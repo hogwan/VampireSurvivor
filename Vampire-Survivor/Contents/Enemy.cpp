@@ -5,6 +5,7 @@
 #include <EngineCore/SpriteInstancingRender.h>
 #include "SpawnerManager.h"
 #include "Exp.h"
+#include "Chest.h"
 
 AEnemy::AEnemy() 
 {
@@ -254,6 +255,13 @@ void AEnemy::DeathStart()
 	++UContentsValue::KillCount;
 
 	Collider->SetActive(false);
+
+	if (IsBoss)
+	{
+		std::shared_ptr<Chest> Ch = GetWorld()->SpawnActor<Chest>("Chest");
+
+		Ch->SetActorLocation(GetActorLocation());
+	}
 }
 
 void AEnemy::Death(float _DeltaTime)

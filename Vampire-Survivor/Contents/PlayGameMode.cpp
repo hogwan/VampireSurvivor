@@ -8,8 +8,9 @@
 #include <EngineCore/Image.h>
 #include <EngineCore/Camera.h>
 #include "UIManager.h"
+#include "Chest.h"
 
-std::shared_ptr<class UIManager> APlayGameMode::PlayUIManager;
+std::shared_ptr<UIManager> APlayGameMode::PlayUIManager;
 std::shared_ptr<UEquipManager> APlayGameMode::EquipManager;
 
 APlayGameMode::APlayGameMode()
@@ -61,6 +62,9 @@ void APlayGameMode::BeginPlay()
 	//EquipManager->EquipAccessory(EAccessory::Pummarola);
 	//EquipManager->EquipAccessory(EAccessory::Wings);
 	//EquipManager->EquipAccessory(EAccessory::Spinach);
+
+	std::shared_ptr<Chest> Ch = GetWorld()->SpawnActor<Chest>("Chest");
+	Ch->SetActorLocation(FVector(300.f, 0.f, 0.f));
 }
 
 void APlayGameMode::Tick(float _DeltaTime)

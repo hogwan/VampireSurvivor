@@ -9,3 +9,4 @@ int UContentsValue::Gold = 0;
 int UContentsValue::MaxLevel = 75;
 int UContentsValue::PlayerLevel = 1;
 float UContentsValue::Time = 0.f;
+float UContentsValue::MaxMagnet = 0.f;

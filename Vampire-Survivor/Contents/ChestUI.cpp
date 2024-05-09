@@ -8,6 +8,19 @@
 #include "UnboxingLight.h"
 #include "GoldCoin.h"
 #include "SilverCoin.h"
+#include "EquipManager.h"
+#include "PlayGameMode.h"
+#include "KingBible.h"
+#include "MagicWand.h"
+#include "Whip.h"
+#include "Knife.h"
+#include "Axe.h"
+#include "Cross.h"
+#include "FireWand.h"
+#include "Garlic.h"
+#include "SantaWater.h"
+#include "RuneTracer.h"
+#include "LightingRing.h"
 
 UChestUI::UChestUI() 
 {
@@ -112,6 +125,100 @@ void UChestUI::BeginPlay()
 		BlueLight->SetActive(false);
 	}
 
+	{
+		GoldStatus.first = CreateWidget<UTextWidget>(GetWorld(), "GoldText");
+		GoldStatus.first->SetScale(30.f);
+		GoldStatus.first->SetFont("Liberation Sans 보통");
+		GoldStatus.first->SetColor(Color8Bit::Yellow);
+		GoldStatus.first->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_CENTER | FW1_TEXT_FLAG::FW1_VCENTER));
+		GoldStatus.first->SetPosition({ 0, -200 });
+		GoldStatus.first->AddToViewPort(3);
+		GoldStatus.first->SetActive(false);
+
+		GoldStatus.second = CreateWidget<UImage>(GetWorld(), "GoldSprite");
+		GoldStatus.second->SetSprite("CoinSpinGold_0.png");
+		GoldStatus.second->SetAutoSize(2.f, true);
+		GoldStatus.second->SetPosition({ 0, -200 });
+		GoldStatus.second->AddToViewPort(3);
+		GoldStatus.second->SetActive(false);
+	}
+
+	{
+		SelectedWeapon.push_back(CreateWidget<UImage>(GetWorld(), "WeaponSprite"));
+		SelectedWeapon[0]->SetAutoSize(2.f, true);
+		SelectedWeapon[0]->SetPosition({ 0.f, 50.f });
+		SelectedWeapon[0]->AddToViewPort(6);
+		SelectedWeapon[0]->SetActive(false);
+
+		SelectedWeapon.push_back(CreateWidget<UImage>(GetWorld(), "WeaponSpriteBack"));
+		SelectedWeapon[1]->SetMaterial("Sphere");
+		SelectedWeapon[1]->SetPlusColor(FVector(0.1f, 0.1f, 0.1f));
+		SelectedWeapon[1]->SetAutoSize(1.f, true);
+		SelectedWeapon[1]->SetPosition({ 0.f, 50.f });
+		SelectedWeapon[1]->SetSprite("ItemEffect.png");
+		SelectedWeapon[1]->AddToViewPort(5);
+		SelectedWeapon[1]->SetActive(false);
+
+		SelectedWeapon.push_back(CreateWidget<UImage>(GetWorld(), "FX"));
+		SelectedWeapon[2]->SetScale(FVector(100.f, 100.f, 10.f));
+		SelectedWeapon[2]->SetPosition({ 0.f, 50.f });
+		SelectedWeapon[2]->SetSprite("Chestfx.png");
+		SelectedWeapon[2]->AddToViewPort(4);
+		SelectedWeapon[2]->SetActive(false);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		ExplainSpriteVec.push_back(CreateWidget<UImage>(GetWorld(), "ExplainSprite"));
+		ExplainSpriteVec[i]->SetActive(false);
+	}
+
+	{
+		ExplainSpriteVec[0]->SetSprite("Explain.png");
+		ExplainSpriteVec[0]->SetWidgetScale3D(FVector(500.f, 120.f, 10.f));
+		ExplainSpriteVec[0]->SetPosition(FVector(0.f, -300.f, 10.f));
+		ExplainSpriteVec[0]->AddToViewPort(5);
+		ExplainSpriteVec[0]->SetPlusColor(FVector(0.2f, 0.2f, 0.2f));
+
+		ExplainSpriteVec[1]->SetSprite("ItemBox.png");
+		ExplainSpriteVec[1]->SetAutoSize(2.f, true);
+		ExplainSpriteVec[1]->SetPosition(FVector(-200.f, -300.f, 10.f));
+		ExplainSpriteVec[1]->AddToViewPort(6);
+
+		ExplainSpriteVec[2]->SetAutoSize(2.f, true);
+		ExplainSpriteVec[2]->SetPosition(FVector(-200.f, -300.f, 10.f));
+		ExplainSpriteVec[2]->AddToViewPort(7);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		ExplainTextVec.push_back(CreateWidget<UTextWidget>(GetWorld(), "ExplainText"));
+		ExplainTextVec[i]->SetActive(false);
+	}
+
+	{
+		ExplainTextVec[0]->SetScale(15.f);
+		ExplainTextVec[0]->SetFont("Liberation Sans 보통");
+		ExplainTextVec[0]->SetColor(Color8Bit::White);
+		ExplainTextVec[0]->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_CENTER | FW1_TEXT_FLAG::FW1_VCENTER));
+		ExplainTextVec[0]->SetPosition({ -200.f, -250.f });
+		ExplainTextVec[0]->AddToViewPort(6);
+
+		ExplainTextVec[1]->SetScale(15.f);
+		ExplainTextVec[1]->SetFont("Liberation Sans 보통");
+		ExplainTextVec[1]->SetColor(Color8Bit::Yellow);
+		ExplainTextVec[1]->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_CENTER | FW1_TEXT_FLAG::FW1_VCENTER));
+		ExplainTextVec[1]->SetPosition({ 0.f, -250.f });
+		ExplainTextVec[1]->AddToViewPort(6);
+
+		ExplainTextVec[2]->SetScale(15.f);
+		ExplainTextVec[2]->SetFont("Liberation Sans 보통");
+		ExplainTextVec[2]->SetColor(Color8Bit::White);
+		ExplainTextVec[2]->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_LEFT | FW1_TEXT_FLAG::FW1_VCENTER));
+		ExplainTextVec[2]->SetPosition({ -150.f, -300.f });
+		ExplainTextVec[2]->AddToViewPort(6);
+	}
+
 	for (int i = 0; i < 50; i++)
 	{
 		int rand = UEngineRandom::MainRandom.RandomInt(0, 1);
@@ -130,12 +237,9 @@ void UChestUI::BeginPlay()
 
 
 	StateInit();
-	EventStart();
+	UIOff();
 
 	AddToViewPort(1);
-	//UIOff();
-
-
 
 }
 
@@ -167,9 +271,7 @@ void UChestUI::EventTick(float _DeltaTime)
 void UChestUI::EventEnd()
 {
 	GEngine->SetOrderTimeScale(0, 1.f);
-	Circuit->SetActive(false);
 	UIOff();
-	BlueLight->SetActive(false);
 	IsUnboxing = false;
 }
 
@@ -193,6 +295,23 @@ void UChestUI::UIOff()
 	ButtonText->SetActive(false);
 	Arrows.first->SetActive(false);
 	Arrows.second->SetActive(false);
+	Circuit->SetActive(false);
+	BlueLight->SetActive(false);
+	GoldStatus.first->SetActive(false);
+	GoldStatus.second->SetActive(false);
+
+	for (int i = 0; i < 3; i++)
+	{
+		SelectedWeapon[i]->SetActive(false);
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		ExplainTextVec[i]->SetActive(false);
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		ExplainSpriteVec[i]->SetActive(false);
+	}
 }
 
 void UChestUI::StateInit()
@@ -240,6 +359,11 @@ void UChestUI::Unboxing(float _DeltaTime)
 		Light->TurnOff();
 	}
 
+	float IncreaseSpeed = ObtainGold / UnboxingTime;
+	AccGold += IncreaseSpeed * _DeltaTime;
+	GoldStatus.first->SetText(std::to_string(AccGold).substr(0,5));
+
+
 	CoinTimeAcc += _DeltaTime;
 	if (CoinTimeAcc > CoinThrowTime)
 	{
@@ -272,6 +396,25 @@ void UChestUI::AfterUnboxing(float _DeltaTime)
 		AfterUnboxingAcc = 0.f;
 		State.ChangeState("EndWait");
 	}
+
+	SelectedWeapon[2]->AddRotationDeg(FVector(0.f, 0.f, 90.f * _DeltaTime));
+
+	if (!Bigger)
+	{
+		SelectedWeapon[2]->AddWidgetScale3D(FVector(50.f, 50.f, 0.f) * _DeltaTime);
+	}
+	else
+	{
+		SelectedWeapon[2]->AddWidgetScale3D(FVector(-50.f, -50.f, 0.f) * _DeltaTime);
+	}
+
+	SwitchAccTime += _DeltaTime;
+	if (SwitchAccTime > SwitchTime)
+	{
+		SwitchAccTime = 0.f;
+		Bigger = !Bigger;
+	}
+
 }
 
 void UChestUI::EndWait(float _DeltaTime)
@@ -284,8 +427,27 @@ void UChestUI::EndWait(float _DeltaTime)
 
 	if (UEngineInput::IsDown(VK_SPACE))
 	{
+		ItemEquipLogic();
 		EventEnd();
 		return;
+	}
+
+	SelectedWeapon[2]->AddRotationDeg(FVector(0.f, 0.f, 90.f * _DeltaTime));
+
+	if (!Bigger)
+	{
+		SelectedWeapon[2]->AddWidgetScale3D(FVector(50.f, 50.f, 0.f) * _DeltaTime);
+	}
+	else
+	{
+		SelectedWeapon[2]->AddWidgetScale3D(FVector(-50.f, -50.f, 0.f) * _DeltaTime);
+	}
+
+	SwitchAccTime += _DeltaTime;
+	if (SwitchAccTime > SwitchTime)
+	{
+		SwitchAccTime = 0.f;
+		Bigger = !Bigger;
 	}
 }
 
@@ -299,7 +461,8 @@ void UChestUI::UnboxingStart()
 {
 	Chest->ChangeAnimation("Open");
 	Random = UIManager::RandomPickLogic(static_cast<int>(ESelectList::Axe), static_cast<int>(ESelectList::Whip));
-	ObtainGold = UEngineRandom::MainRandom.RandomFloat(50.f, 100.f);
+	ItemSelectLogic();
+	ObtainGold = static_cast<float>(UEngineRandom::MainRandom.RandomInt(50, 100));
 	Circuit->SetActive(true);
 	Light->SetActive(true);
 	Light->TurnOn();
@@ -310,16 +473,244 @@ void UChestUI::UnboxingStart()
 	Arrows.first->SetActive(false);
 	Arrows.second->SetActive(false);
 
-	//goldsprite, goldText ActiveOn
+	GoldStatus.first->SetPosition(FVector(0.f, -200.f, 10.f));
+	GoldStatus.first->SetActive(true);
 
+	GoldStatus.second->SetPosition(FVector(50.f, -200.f, 10.f));
+	GoldStatus.second->SetActive(true);
 }
 
 void UChestUI::AfterUnboxingStart()
 {
 	Circuit->SetActive(false);
+	GoldStatus.first->SetText(std::to_string(ObtainGold).substr(0, 5));
+	SelectedWeapon[2]->SetActive(true);
+	SelectedWeapon[1]->SetActive(true);
+	SelectedWeapon[0]->SetActive(true);
 }
 
 void UChestUI::EndWaitStart()
 {
+	BlueLight->SetActive(false);
+	GoldStatus.first->SetPosition(FVector(0.f, 200.f, 10.f));
+	GoldStatus.second->SetPosition(FVector(50.f, 200.f, 10.f));
 
+	for (int i = 0; i < 3; i++)
+	{
+		ExplainSpriteVec[i]->SetActive(true);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		ExplainTextVec[i]->SetActive(true);
+	}
+}
+
+void UChestUI::ItemSelectLogic()
+{
+	ESelectList List = static_cast<ESelectList>(Random);
+	switch (List)
+	{
+	case ESelectList::Axe:
+	{
+		SelectedWeapon[0]->SetSprite("AxeSprite.png");
+		std::string ExplainText = UAxe::Data.ExplainText;
+		int CurLevel = UAxe::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("AxeSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("Axe");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	case ESelectList::Cross:
+	{
+		SelectedWeapon[0]->SetSprite("CrossSprite.png");
+		std::string ExplainText = UCross::Data.ExplainText;
+		int CurLevel = UCross::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("CrossSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("Cross");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	case ESelectList::FireWand:
+	{
+		SelectedWeapon[0]->SetSprite("FireWandSprite.png");
+		std::string ExplainText = UFireWand::Data.ExplainText;
+		int CurLevel = UFireWand::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("FireWandSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("FireWand");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	case ESelectList::Garlic:
+	{
+		SelectedWeapon[0]->SetSprite("GarlicSprite.png");
+		std::string ExplainText = UGarlic::Data.ExplainText;
+		int CurLevel = UGarlic::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("GarlicSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("Garlic");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	case ESelectList::KingBible:
+	{
+		SelectedWeapon[0]->SetSprite("KingBibleSprite.png");
+		std::string ExplainText = UKingBible::Data.ExplainText;
+		int CurLevel = UKingBible::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("KingBibleSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("KingBible");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	case ESelectList::Knife:
+	{
+		SelectedWeapon[0]->SetSprite("KnifeSprite.png");
+		std::string ExplainText = UKnife::Data.ExplainText;
+		int CurLevel = UKnife::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("KnifeSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("Knife");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	case ESelectList::LightingRing:
+	{
+		SelectedWeapon[0]->SetSprite("LightingRingSprite.png");
+		std::string ExplainText = ULightingRing::Data.ExplainText;
+		int CurLevel = ULightingRing::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("LightingRingSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("LightingRing");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	case ESelectList::MagicWand:
+	{
+		SelectedWeapon[0]->SetSprite("MagicWandSprite.png");
+		std::string ExplainText = UMagicWand::Data.ExplainText;
+		int CurLevel = UMagicWand::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("MagicWandSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("MagicWand");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	case ESelectList::RuneTracer:
+	{
+		SelectedWeapon[0]->SetSprite("RuneTracerSprite.png");
+		std::string ExplainText = URuneTracer::Data.ExplainText;
+		int CurLevel = URuneTracer::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("RuneTracerSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("RuneTracer");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+
+	}
+	case ESelectList::SantaWater:
+	{
+		SelectedWeapon[0]->SetSprite("SantaWaterSprite.png");
+		std::string ExplainText = USantaWater::Data.ExplainText;
+		int CurLevel = USantaWater::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("SantaWaterSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("SantaWater");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	case ESelectList::Whip:
+	{
+		SelectedWeapon[0]->SetSprite("WhipSprite.png");
+		std::string ExplainText = UWhip::Data.ExplainText;
+		int CurLevel = UWhip::Data.Level;
+
+		ExplainSpriteVec[2]->SetSprite("WhipSprite.png");
+		ExplainTextVec[0]->SetText("레벨: " + std::to_string(CurLevel + 1));
+		ExplainTextVec[1]->SetText("Whip");
+		ExplainTextVec[2]->SetText(ExplainText);
+		break;
+	}
+	default:
+		break;
+	}
+}
+
+void UChestUI::ItemEquipLogic()
+{
+	ESelectList List = static_cast<ESelectList>(Random);
+	switch (List)
+	{
+	case ESelectList::Axe:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::Axe);
+		break;
+	}
+	case ESelectList::Cross:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::Cross);
+		break;
+	}
+	case ESelectList::FireWand:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::FireWand);
+		break;
+	}
+	case ESelectList::Garlic:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::Garlic);
+		break;
+	}
+	case ESelectList::KingBible:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::KingBible);
+		break;
+	}
+	case ESelectList::Knife:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::Knife);
+		break;
+	}
+	case ESelectList::LightingRing:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::LightingRing);
+		break;
+	}
+	case ESelectList::MagicWand:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::MagicWand);
+		break;
+	}
+	case ESelectList::RuneTracer:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::RuneTracer);
+		break;
+
+	}
+	case ESelectList::SantaWater:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::SantaWater);
+		break;
+	}
+	case ESelectList::Whip:
+	{
+		APlayGameMode::EquipManager->EquipWeapon(EWeapon::Whip);
+		break;
+	}
+	default:
+		break;
+	}
 }

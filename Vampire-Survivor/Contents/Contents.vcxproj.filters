@@ -118,9 +118,6 @@
     <Filter Include="ContentsEditor">
       <UniqueIdentifier>{f3cbf5ec-57ce-4f03-8f85-f47e74597434}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Exp">
-      <UniqueIdentifier>{2844fe27-ec9a-4663-bc58-890f3469ca86}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\UIManager">
       <UniqueIdentifier>{a3de9e2e-a147-4710-ae19-8f4e5ed9ad76}</UniqueIdentifier>
     </Filter>
@@ -198,6 +195,15 @@
     </Filter>
     <Filter Include="Shader">
       <UniqueIdentifier>{54e384ab-7386-4d91-b1d9-c4398e13e45f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Item">
+      <UniqueIdentifier>{17edb672-a625-45cf-83ea-fa32aa31a87c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Item\Chest">
+      <UniqueIdentifier>{1147202f-55b4-408d-9219-0ec6082231ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Item\Exp">
+      <UniqueIdentifier>{2844fe27-ec9a-4663-bc58-890f3469ca86}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -397,7 +403,7 @@
       <Filter>Object\EquipManager</Filter>
     </ClInclude>
     <ClInclude Include="Exp.h">
-      <Filter>Object\Exp</Filter>
+      <Filter>Object\Item\Exp</Filter>
     </ClInclude>
     <ClInclude Include="UIManager.h">
       <Filter>Object\UIManager</Filter>
@@ -491,6 +497,15 @@
     </ClInclude>
     <ClInclude Include="SilverCoin.h">
       <Filter>Object\UIManager\ChestUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Chest.h">
+      <Filter>Object\Item\Chest</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="AttractItem.h">
+      <Filter>Object\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -687,7 +702,7 @@
       <Filter>Object\EquipManager</Filter>
     </ClCompile>
     <ClCompile Include="Exp.cpp">
-      <Filter>Object\Exp</Filter>
+      <Filter>Object\Item\Exp</Filter>
     </ClCompile>
     <ClCompile Include="UIManager.cpp">
       <Filter>Object\UIManager</Filter>
@@ -781,6 +796,15 @@
     </ClCompile>
     <ClCompile Include="SilverCoin.cpp">
       <Filter>Object\UIManager\ChestUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Chest.cpp">
+      <Filter>Object\Item\Chest</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="AttractItem.cpp">
+      <Filter>Object\Item</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

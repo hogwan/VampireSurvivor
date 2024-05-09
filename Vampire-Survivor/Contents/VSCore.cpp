@@ -115,6 +115,12 @@ void UVSCore::Initialize()
 		Mat->SetVertexShader("UnboxingLight.fx");
 	}
 
+	{
+		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("Sphere");
+		Mat->SetPixelShader("Sphere.fx");
+		Mat->SetVertexShader("Sphere.fx");
+	}
+
 
 
 	UEngineEditorGUI::CreateEditorWindow<ContentsEditerGUI>("ddd");

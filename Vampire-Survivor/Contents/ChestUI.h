@@ -40,8 +40,11 @@ private:
 	class CircuitWeapon* Circuit = nullptr;
 	class UnboxingLight* Light = nullptr;
 	std::pair<class UTextWidget*, class UImage*> GoldStatus;
-	
+	std::vector<class UImage*> SelectedWeapon;
+
 	std::vector<class ACoin*> CoinVec;
+	std::vector<class UImage*> ExplainSpriteVec;
+	std::vector<class UTextWidget*> ExplainTextVec;
 
 	bool IsUnboxing = false;
 	int Random = -1;
@@ -59,6 +62,10 @@ private:
 	float CoinTimeAcc = 0.f;
 	int CoinNumber = 0;
 
+	bool Bigger = false;
+	float SwitchTime = 2.f;
+	float SwitchAccTime = 0.f;
+
 	void Wait(float _DeltaTime);
 	void Unboxing(float _DeltaTime);
 	void AfterUnboxing(float _DeltaTime);
@@ -69,5 +76,8 @@ private:
 	void AfterUnboxingStart();
 	void EndWaitStart();
 
+
+	void ItemSelectLogic();
+	void ItemEquipLogic();
 };
 
