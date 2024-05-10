@@ -33,7 +33,7 @@ UChestUI::~UChestUI()
 
 void UChestUI::BeginPlay()
 {
-	
+	Super::BeginPlay();
 	{
 		Circuit = CreateWidget<CircuitWeapon>(GetWorld(), "Circuit");
 		Circuit->SetPosition(FVector(0.f, -340.f, 10.f));
@@ -245,6 +245,7 @@ void UChestUI::BeginPlay()
 
 void UChestUI::Tick(float _DeltaTime)
 {
+	Super::Tick(_DeltaTime);
 	if (IsUnboxing)
 	{
 		EventTick(_DeltaTime);

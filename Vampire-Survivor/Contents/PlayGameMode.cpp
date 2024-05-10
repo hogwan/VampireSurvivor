@@ -59,7 +59,6 @@ void APlayGameMode::BeginPlay()
 
 	GetWorld()->SpawnActor<USpawnerManager>("SpawnerManager");
 	EquipManager = GetWorld()->SpawnActor<UEquipManager>("EquipManager");
-
 	PlayUIManager = GetWorld()->SpawnActor<UIManager>("UIManager");
 	//EquipManager->EquipWeapon(EWeapon::Axe);
 	//EquipManager->EquipWeapon(EWeapon::Cross);

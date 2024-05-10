@@ -16,6 +16,10 @@ public:
 	UDeathUI& operator=(const UDeathUI& _Other) = delete;
 	UDeathUI& operator=(UDeathUI&& _Other) noexcept = delete;
 
+	void EventStart();
+	void EventTick(float _DeltaTime);
+	void EventEnd();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -25,7 +29,8 @@ protected:
 	class UImage* Button = nullptr;
 	class UTextWidget* ButtonText = nullptr;
 	std::pair<class UImage*, class UImage*> Arrows;
-private:
 
+private:
+	bool IsDeath = false;
 };
 

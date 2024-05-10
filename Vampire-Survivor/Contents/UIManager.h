@@ -75,14 +75,12 @@ protected:
 	std::vector<UImage*> PlayerStatusInfoSprite;
 	std::vector<std::pair<UTextWidget*, UTextWidget*>> PlayerStatusInfoText;
 
-
 	std::vector<std::vector<UImage*>> LevelUpList;
 	std::vector<std::vector<UTextWidget*>> LevelUpListExplain;
 	std::pair<UImage*, UImage*> SelectArrows;
 
 	std::list<ESelectList> SelectList;
 	std::vector<ESelectList> InfoVec;
-
 
 	bool IsSelecting = false;
 	bool IsUnboxing = false;

@@ -5,6 +5,7 @@
 // Ό³Έν :
 class UChestUI : public UWidget
 {
+	GENERATED_BODY(UWidget)
 	// constructor destructor
 public:
 	UChestUI();
