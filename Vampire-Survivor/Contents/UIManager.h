@@ -23,6 +23,7 @@ public:
 	void LevelUpEventTick();
 
 	static class UChestUI* ChestUI;
+	static class UDeathUI* DeathUI;
 	static int RandomPickLogic(int _Min, int _Max);
 protected:
 	void BeginPlay() override;

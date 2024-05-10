@@ -30,8 +30,10 @@
 #include "Spinach.h"
 #include "Wings.h"
 #include "ChestUI.h"
+#include "DeathUI.h"
 
 UChestUI* UIManager::ChestUI = nullptr;
+UDeathUI* UIManager::DeathUI = nullptr;
 
 UIManager::UIManager() 
 {
@@ -418,6 +420,7 @@ void UIManager::UISpawn()
 	TimeUI->SetFlag(static_cast<FW1_TEXT_FLAG>(FW1_TEXT_FLAG::FW1_CENTER | FW1_TEXT_FLAG::FW1_VCENTER));
 
 	ChestUI = CreateWidget<UChestUI>(GetWorld(), "Chest");
+	DeathUI = CreateWidget<UDeathUI>(GetWorld(), "DeathUI");
 }
 
 void UIManager::UIUpdate()

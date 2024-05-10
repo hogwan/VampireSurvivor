@@ -21,6 +21,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	class UImage* BackGround = nullptr;
+	class UImage* GameOver = nullptr;
 	class UImage* Button = nullptr;
 	class UTextWidget* ButtonText = nullptr;
 	std::pair<class UImage*, class UImage*> Arrows;
