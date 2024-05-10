@@ -23,10 +23,10 @@ void ASmallFlower::BeginPlay()
 	Renderer->SetAutoSize(1.f, true);
 	Renderer->CreateAnimation("Idle", "XLFlower", 0.1f, true, 0, 2);
 	Renderer->CreateAnimation("Death", "XLFlower", 0.05f, false, 3, 14);
-	Renderer->SetOrder(ERenderOrder::Monster);
+	Renderer->SetOrder(ERenderOrder::SmallFlower);
 	Renderer->ChangeAnimation("Idle");
 
-	Collider->SetScale(FVector(20.f, 20.f, 10.f));
+	Collider->SetScale(FVector(50.f, 50.f, 10.f));
 
 }
 

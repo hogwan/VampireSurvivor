@@ -18,7 +18,7 @@ void Chest::BeginPlay()
 
 	Renderer->SetSprite("ChestDrop.png");
 	Renderer->SetAutoSize(2.f, true);
-	Renderer->SetOrder(ERenderOrder::Exp);
+	Renderer->SetOrder(ERenderOrder::Item);
 
 	Collider->SetCollisionGroup(ECollisionOrder::Exp);
 	Collider->SetCollisionType(ECollisionType::CirCle);

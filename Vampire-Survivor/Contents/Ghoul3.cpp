@@ -23,10 +23,10 @@ void AGhoul3::BeginPlay()
 	Renderer->SetAutoSize(1.5f, true);
 	Renderer->CreateAnimation("Idle", "Ghoul3", 0.1f, true, 0, 2);
 	Renderer->CreateAnimation("Death", "Ghoul3", 0.05f, false, 3, 14);
-	Renderer->SetOrder(ERenderOrder::Monster);
+	Renderer->SetOrder(ERenderOrder::Ghoul3);
 	Renderer->ChangeAnimation("Idle");
 
-	Collider->SetScale(FVector(20.f, 20.f, 10.f));
+	Collider->SetScale(FVector(40.f, 40.f, 10.f));
 
 }
 

@@ -239,6 +239,7 @@ void AEnemy::MassChangeDir()
 
 void AEnemy::DeathStart()
 {
+	Renderer->SetOrder(ERenderOrder::Monster);
 	Renderer->ChangeAnimation("Death");
 	Renderer->SetPlusColor(FVector(0.0f, 0.0f, 0.0f, 1.f));
 	--USpawnerManager::EnemyCount;

@@ -23,6 +23,7 @@
 #include "Flower.h"
 #include "SmallFlower.h"
 #include "SpawnerManager.h"
+#include "Torch.h"
 #include <EngineBase/EngineRandom.h>
 
 USpawner::USpawner() 
@@ -50,13 +51,26 @@ void USpawner::Tick(float _DeltaTime)
 	RemainTime -= _DeltaTime;
 	if (RemainTime < 0.f)
 	{
-		if (USpawnerManager::EnemyCount >= 500) return;
+		if (USpawnerManager::EnemyCount >= 400) return;
 
 		RemainTime = USpawnerManager::SpawnTime;
 		std::shared_ptr<AEnemy> Monster = SpawnMonster();
 		Monster->SetActorLocation(CurPos);
 
 		USpawnerManager::EnemyCount++;
+	}
+
+	TorchSpawnAcc += _DeltaTime;
+	if (TorchSpawnAcc > TorchSpawnCooldown)
+	{
+		TorchSpawnAcc = 0.f;
+		int Random = UEngineRandom::MainRandom.RandomInt(1, 100);
+
+		if (Random <= 5)
+		{
+			std::shared_ptr<Torch> ATorch = GetWorld()->SpawnActor<Torch>("Torch");
+			ATorch->SetActorLocation(CurPos);
+		}
 	}
 }
 

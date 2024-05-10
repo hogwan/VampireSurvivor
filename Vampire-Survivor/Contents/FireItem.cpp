@@ -16,7 +16,7 @@ void FireItem::BeginPlay()
 
 	Renderer->CreateAnimation("Idle", "FireItem", 0.1f, true);
 	Renderer->SetAutoSize(2.f, true);
-	Renderer->SetOrder(ERenderOrder::Exp);
+	Renderer->SetOrder(ERenderOrder::Item);
 
 	Collider->SetCollisionGroup(ECollisionOrder::Exp);
 	Collider->SetCollisionType(ECollisionType::CirCle);

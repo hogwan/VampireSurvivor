@@ -202,9 +202,6 @@
     <Filter Include="Object\Item\Heal">
       <UniqueIdentifier>{17f578bf-d708-4f65-8f62-e24b3fa3d5e2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Item\Frozen">
-      <UniqueIdentifier>{a698a5e9-4721-469e-a9bd-e6b8d20a6fee}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Item\Fire">
       <UniqueIdentifier>{fb341de4-48a2-430c-99de-8996345895ff}</UniqueIdentifier>
     </Filter>
@@ -214,8 +211,8 @@
     <Filter Include="Object\Item\Token">
       <UniqueIdentifier>{4b48622a-977d-497f-bfcf-37f78e0e6f8e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Item\AllKill">
-      <UniqueIdentifier>{0c50f2f3-cf70-4687-880a-5046d8dfd7d1}</UniqueIdentifier>
+    <Filter Include="Object\Item\Torch">
+      <UniqueIdentifier>{3c121093-aaa8-4e37-9c4e-4724c61baac2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -528,6 +525,9 @@
     <ClInclude Include="FireUnit.h">
       <Filter>Object\Item\Fire</Filter>
     </ClInclude>
+    <ClInclude Include="Torch.h">
+      <Filter>Object\Item\Torch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -835,6 +835,9 @@
     </ClCompile>
     <ClCompile Include="FireUnit.cpp">
       <Filter>Object\Item\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch.cpp">
+      <Filter>Object\Item\Torch</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

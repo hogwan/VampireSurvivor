@@ -5,12 +5,35 @@ enum class ERenderOrder
 	Back,
 	Title,
 	Monster,
+
+	Bat1,
+	Bat2,
+	Bat3,
+	Flower,
+	Ghost,
+	Ghoul1,
+	Ghoul2,
+	Ghoul3,
+	Mudman1,
+	Mudman2,
+	Mummy,
+	Skeleton,
+	SmallFlower,
+	SmallMummy,
+	Werewolf,
+	XLBat,
+
 	Garlic,
-	Exp,
+	Item,
 	PlayerWeapon,
 	Particle,
 	Player,
 	DamageSprite,
+
+	Exp,
+	RedExp,
+	GreenExp,
+
 };
 
 enum class ECollisionOrder
@@ -142,4 +165,13 @@ enum class EMonsterOrder
 	Flower,
 	SmallMummy,
 	SmallFlower,
+};
+
+enum class EDropItemOrder
+{
+	None,
+	Attract,
+	Fire,
+	Heal,
+	Coin,
 };

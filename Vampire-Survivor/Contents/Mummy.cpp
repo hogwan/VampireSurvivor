@@ -23,10 +23,10 @@ void AMummy::BeginPlay()
 	Renderer->SetAutoSize(1.5f, true);
 	Renderer->CreateAnimation("Idle", "Mummy", 0.1f, true, 0, 2);
 	Renderer->CreateAnimation("Death", "Mummy", 0.05f, false, 3, 14);
-	Renderer->SetOrder(ERenderOrder::Monster);
+	Renderer->SetOrder(ERenderOrder::Mummy);
 	Renderer->ChangeAnimation("Idle");
 
-	Collider->SetScale(FVector(20.f, 20.f, 10.f));
+	Collider->SetScale(FVector(40.f, 40.f, 10.f));
 
 }
 

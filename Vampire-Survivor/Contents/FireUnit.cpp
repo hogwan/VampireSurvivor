@@ -19,7 +19,7 @@ void FireUnit::BeginPlay()
 	Renderer->SetSprite("FireEffect.png");
 	Renderer->SetScale(FVector(50.f,50.f,10.f));
 	Renderer->SetOrder(ERenderOrder::Particle);
-	Renderer->SetMulColor(FVector(0.8f, 1.f, 1.f, 0.7f));
+	Renderer->SetMulColor(FVector(1.f, 1.f, 1.f, 0.7f));
 
 	Collider->SetCollisionGroup(ECollisionOrder::Exp);
 	Collider->SetCollisionType(ECollisionType::CirCle);

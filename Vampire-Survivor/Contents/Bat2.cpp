@@ -23,10 +23,10 @@ void ABat2::BeginPlay()
 	Renderer->SetAutoSize(1.5f, true);
 	Renderer->CreateAnimation("Idle", "Bat2", 0.05f, true, 0, 1);
 	Renderer->CreateAnimation("Death", "Bat2", 0.05f, false, 3, 14);
-	Renderer->SetOrder(ERenderOrder::Monster);
+	Renderer->SetOrder(ERenderOrder::Bat2);
 	Renderer->ChangeAnimation("Idle");
 
-	Collider->SetScale(FVector(20.f, 20.f, 10.f));
+	Collider->SetScale(FVector(30.f, 30.f, 10.f));
 
 }
 

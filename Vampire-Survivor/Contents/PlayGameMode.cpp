@@ -12,6 +12,7 @@
 #include "HealItem.h"
 #include "AttractExpItem.h"
 #include "FireItem.h"
+#include <EngineCore/SpriteInstancingRender.h>
 
 std::shared_ptr<UIManager> APlayGameMode::PlayUIManager;
 std::shared_ptr<UEquipManager> APlayGameMode::EquipManager;
@@ -28,6 +29,24 @@ void APlayGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Bat1);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Bat2);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Bat3);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Flower);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Ghost);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Ghoul1);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Ghoul2);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Ghoul3);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Mudman1);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Mudman2);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Mummy);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Skeleton);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::SmallFlower);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::SmallMummy);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::Werewolf);
+	GetWorld()->InstancingOn<USpriteInstancingRender>(ERenderOrder::XLBat);
+
+
 	Camera = GetWorld()->GetMainCamera();
 
 	std::shared_ptr<UEngineTexture> Tex = UEngineTexture::FindRes("BG_1.png");
@@ -52,7 +71,7 @@ void APlayGameMode::BeginPlay()
 	//EquipManager->EquipWeapon(EWeapon::MagicWand);
 	//EquipManager->EquipWeapon(EWeapon::RuneTracer);
 	//EquipManager->EquipWeapon(EWeapon::SantaWater);
-	EquipManager->EquipWeapon(EWeapon::Whip);
+	//EquipManager->EquipWeapon(EWeapon::Whip);
 	
 	//EquipManager->EquipAccessory(EAccessory::Armor);
 	//EquipManager->EquipAccessory(EAccessory::Attractorb);

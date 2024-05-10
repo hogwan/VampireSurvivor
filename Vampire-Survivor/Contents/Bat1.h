@@ -15,7 +15,6 @@ public:
 	ABat1(ABat1&& _Other) noexcept = delete;
 	ABat1& operator=(const ABat1& _Other) = delete;
 	ABat1& operator=(ABat1&& _Other) noexcept = delete;
-	static EPollingOrder PollingOrder;
 
 protected:
 	void BeginPlay() override;

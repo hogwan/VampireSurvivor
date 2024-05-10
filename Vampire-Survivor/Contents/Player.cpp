@@ -51,12 +51,15 @@ void APlayer::Tick(float _DeltaTime)
 	
 	AddActorLocation(MoveVector * _DeltaTime);
 
-	NearEnemyCheck();
-	RandomEnemyCheck();
+	//NearEnemyCheck();
+	//RandomEnemyCheck();
 
 	DebugMessageFunction(_DeltaTime);
 
-	int a = 0;
+	if (Data.Hp > Data.MaxHealth) return;
+
+	Data.Hp += Data.Recovery * _DeltaTime;
+
 }
 
 void APlayer::NearEnemyCheck()
