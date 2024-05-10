@@ -89,7 +89,6 @@ public:
 		VertexUVValue.PlusUV = _UVPlus;
 	}
 
-
 protected:
 	void MaterialSettingEnd() override;
 	void Tick(float _DetaTime) override;

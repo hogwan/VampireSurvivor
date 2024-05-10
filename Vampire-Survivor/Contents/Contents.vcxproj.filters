@@ -214,6 +214,9 @@
     <Filter Include="Object\Item\Torch">
       <UniqueIdentifier>{3c121093-aaa8-4e37-9c4e-4724c61baac2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\UIManager\DeathUI">
+      <UniqueIdentifier>{e89de0b9-f5ac-4cc8-b58c-71840a8b5f74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VSCore.h">
@@ -528,6 +531,12 @@
     <ClInclude Include="Torch.h">
       <Filter>Object\Item\Torch</Filter>
     </ClInclude>
+    <ClInclude Include="Token.h">
+      <Filter>Object\Item\Token</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathUI.h">
+      <Filter>Object\UIManager\DeathUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -838,6 +847,12 @@
     </ClCompile>
     <ClCompile Include="Torch.cpp">
       <Filter>Object\Item\Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="Token.cpp">
+      <Filter>Object\Item\Token</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathUI.cpp">
+      <Filter>Object\UIManager\DeathUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

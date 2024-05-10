@@ -71,7 +71,7 @@ void APlayGameMode::BeginPlay()
 	//EquipManager->EquipWeapon(EWeapon::MagicWand);
 	//EquipManager->EquipWeapon(EWeapon::RuneTracer);
 	//EquipManager->EquipWeapon(EWeapon::SantaWater);
-	//EquipManager->EquipWeapon(EWeapon::Whip);
+	EquipManager->EquipWeapon(EWeapon::Whip);
 	
 	//EquipManager->EquipAccessory(EAccessory::Armor);
 	//EquipManager->EquipAccessory(EAccessory::Attractorb);

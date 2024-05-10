@@ -123,25 +123,6 @@ enum class EUI
 
 };
 
-enum class EPollingOrder
-{
-	None,
-	Bat1,
-	Bat2,
-	Bat3,
-	Zombie1,
-	Zombie2,
-	Zombie3,
-	Zombie4,
-	Mentis,
-	Skeleton,
-	WereWolf,
-	Medusa,
-	Experience,
-	Money,
-	Weapon,
-};
-
 enum class EMonsterOrder
 {
 	Bat1,

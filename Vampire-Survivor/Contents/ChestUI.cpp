@@ -273,6 +273,8 @@ void UChestUI::EventTick(float _DeltaTime)
 void UChestUI::EventEnd()
 {
 	GEngine->SetOrderTimeScale(0, 1.f);
+	UContentsValue::Gold += static_cast<int>(AccGold);
+	AccGold = 0.f;
 	UIOff();
 	IsUnboxing = false;
 }

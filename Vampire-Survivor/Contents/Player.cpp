@@ -51,8 +51,8 @@ void APlayer::Tick(float _DeltaTime)
 	
 	AddActorLocation(MoveVector * _DeltaTime);
 
-	//NearEnemyCheck();
-	//RandomEnemyCheck();
+	NearEnemyCheck();
+	RandomEnemyCheck();
 
 	DebugMessageFunction(_DeltaTime);
 

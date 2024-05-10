@@ -3,6 +3,7 @@
 #include "FireItem.h"
 #include "AttractExpItem.h"
 #include "HealItem.h"
+#include "Token.h"
 #include <EngineBase/EngineRandom.h>
 
 Torch::Torch() 
@@ -59,14 +60,14 @@ void Torch::ColLogic()
 			}
 			case EDropItemOrder::Heal:
 			{
-				std::shared_ptr<HealItem> AHealItem = GetWorld()->SpawnActor<HealItem>("AttractItem");
+				std::shared_ptr<HealItem> AHealItem = GetWorld()->SpawnActor<HealItem>("Chicken");
 				AHealItem->SetActorLocation(GetActorLocation());
 				break;
 			}
 			case EDropItemOrder::Coin:
 			{
-				/*std::shared_ptr<CoinItem> ACoinItem = GetWorld()->SpawnActor<CoinItem>("AttractItem");
-				ACoinItem->SetActorLocation(GetActorLocation());*/
+				std::shared_ptr<Token> TokenItem = GetWorld()->SpawnActor<Token>("Token");
+				TokenItem->SetActorLocation(GetActorLocation());
 				break;
 			}
 			}
