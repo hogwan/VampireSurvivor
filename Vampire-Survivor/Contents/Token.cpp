@@ -25,6 +25,7 @@ void Token::BeginPlay()
 void Token::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+	ColLogic();
 }
 
 void Token::ColLogic()

@@ -187,9 +187,6 @@
     <Filter Include="Object\UIManager\ChestUI">
       <UniqueIdentifier>{f3102aaa-f3c2-464a-968f-2cd80b5cc2bc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shader">
-      <UniqueIdentifier>{54e384ab-7386-4d91-b1d9-c4398e13e45f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Item">
       <UniqueIdentifier>{17edb672-a625-45cf-83ea-fa32aa31a87c}</UniqueIdentifier>
     </Filter>
@@ -213,9 +210,6 @@
     </Filter>
     <Filter Include="Object\Item\Torch">
       <UniqueIdentifier>{3c121093-aaa8-4e37-9c4e-4724c61baac2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UIManager\DeathUI">
-      <UniqueIdentifier>{e89de0b9-f5ac-4cc8-b58c-71840a8b5f74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -534,9 +528,6 @@
     <ClInclude Include="Token.h">
       <Filter>Object\Item\Token</Filter>
     </ClInclude>
-    <ClInclude Include="DeathUI.h">
-      <Filter>Object\UIManager\DeathUI</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VSCore.cpp">
@@ -850,9 +841,6 @@
     </ClCompile>
     <ClCompile Include="Token.cpp">
       <Filter>Object\Item\Token</Filter>
-    </ClCompile>
-    <ClCompile Include="DeathUI.cpp">
-      <Filter>Object\UIManager\DeathUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

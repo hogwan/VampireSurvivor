@@ -265,10 +265,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="DeathUI.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Duplicator.h">
       <SubType>
       </SubType>
@@ -672,10 +668,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="DamageNumber.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="DeathUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>

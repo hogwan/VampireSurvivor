@@ -103,6 +103,7 @@ protected:
 	void RandomEnemyCheck();
 	void DebugMessageFunction(float _Delta);
 	void LevelUpLogic();
+	void DeathLogic();
 	void StatusInit();
 	FPlayerData Data = { 0, };
  private:

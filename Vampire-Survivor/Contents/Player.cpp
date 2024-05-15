@@ -43,8 +43,8 @@ void APlayer::BeginPlay()
 void APlayer::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
 	MoveVector = FVector::Zero;
+	DeathLogic();
 	MoveLogic();
 	ColLogic();
 	LevelUpLogic();
@@ -127,6 +127,15 @@ void APlayer::LevelUpLogic()
 		Data.TargetExp = 5.f * static_cast<float>(pow(Data.Level, 2));
 		APlayGameMode::PlayUIManager->LevelUpEventStart();
 		++UContentsValue::PlayerLevel;
+	}
+}
+
+void APlayer::DeathLogic()
+{
+	if (Data.Hp < 0.f)
+	{
+		APlayGameMode::PlayUIManager->DeathEventStart();
+		return;
 	}
 }
 

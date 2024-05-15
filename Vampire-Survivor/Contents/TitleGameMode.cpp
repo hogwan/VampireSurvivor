@@ -20,6 +20,15 @@ ATitleGameMode::ATitleGameMode()
 	BlackBack = CreateDefaultSubObject<USpriteRenderer>("BlackBack");
 	BlackBack->SetupAttachment(Root);
 
+	LeftCharactor = CreateDefaultSubObject<USpriteRenderer>("LeftCharactor");
+	LeftCharactor->SetupAttachment(Root);
+
+	CenterCharactor = CreateDefaultSubObject<USpriteRenderer>("CenterCharactor");
+	CenterCharactor->SetupAttachment(Root);
+
+	RightCharactor = CreateDefaultSubObject<USpriteRenderer>("RightCharactor");
+	RightCharactor->SetupAttachment(Root);
+
 	SetRoot(Root);
 }
 
@@ -58,37 +67,20 @@ void ATitleGameMode::BeginPlay()
 	BlackBack->SetOrder(ERenderOrder::Title);
 	BlackBack->SetMulColor(FVector(1.f, 1.f, 1.f, 0.5f));
 
+
+	Buttons.first = CreateWidget<UImage>(GetWorld(), "GameStartButton");
+	Buttons.first->AddToViewPort(1);
+	Buttons.first->SetSprite("BlueButton.png");
+	Buttons.first->SetScale(FVector(220.f, 70.f, 10.f));
+	Buttons.first->SetPosition(FVector(0.f, -100.f));
 	
-
-	Buttons.push_back(std::pair(nullptr, nullptr));
-	Buttons.push_back(std::pair(nullptr, nullptr));
-
-	Buttons[0].first = CreateWidget<UImage>(GetWorld(), "GameStartButton");
-	Buttons[0].first->AddToViewPort(1);
-	Buttons[0].first->SetSprite("BlueButton.png");
-	Buttons[0].first->SetScale(FVector(220.f, 70.f, 10.f));
-	Buttons[0].first->SetPosition(FVector(0.f, -50.f));
-	
-	Buttons[0].second = CreateWidget<UTextWidget>(GetWorld(), "GameStartButton");
-	Buttons[0].second->SetFont("Liberation Sans 보통");
-	Buttons[0].second->SetScale(30.0f);
-	Buttons[0].second->SetColor(Color8Bit::White);
-	Buttons[0].second->SetPosition({ 0.f, -50.f });
-	Buttons[0].second->SetText("시작");
-	Buttons[0].second->AddToViewPort(3);
-
-	Buttons[1].first = CreateWidget<UImage>(GetWorld(), "PowerUpButton");
-	Buttons[1].first->AddToViewPort(1);
-	Buttons[1].first->SetSprite("GreenButton.png");
-	Buttons[1].first->SetScale(FVector(150.f, 70.f, 10.f));
-	Buttons[1].first->SetPosition(FVector(0.f, -200.f));
-	Buttons[1].second = CreateWidget<UTextWidget>(GetWorld(), "GameStartButton");
-	Buttons[1].second->SetFont("Liberation Sans 보통");
-	Buttons[1].second->SetScale(30.0f);
-	Buttons[1].second->SetColor(Color8Bit::White);
-	Buttons[1].second->SetPosition(FVector(0.f, -200.f));
-	Buttons[1].second->SetText("강화");
-	Buttons[1].second->AddToViewPort(3);
+	Buttons.second = CreateWidget<UTextWidget>(GetWorld(), "GameStartButton");
+	Buttons.second->SetFont("Liberation Sans 보통");
+	Buttons.second->SetScale(30.0f);
+	Buttons.second->SetColor(Color8Bit::White);
+	Buttons.second->SetPosition({ 0.f, -100.f });
+	Buttons.second->SetText("시작");
+	Buttons.second->AddToViewPort(3);
 
 
 	SelectArrows.first = CreateWidget<UImage>(GetWorld(), "ArrowLeft");
@@ -114,46 +106,18 @@ void ATitleGameMode::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	if (UEngineInput::IsDown(VK_DOWN))
-	{
-		if (SelectIndex > 0) return;
-
-		SelectIndex++;
-	}
-
-	if (UEngineInput::IsDown(VK_UP))
-	{
-		if (SelectIndex == 0) return;
-
-		SelectIndex--;
-	}
-
 	if (UEngineInput::IsDown(VK_SPACE))
 	{
-		switch (SelectIndex)
-		{
-		case 0:
-			GEngine->ChangeLevel("PlayLevel");
-			break;
-		case 1 :
-			OpenPowerUpUI();
-			break;
-		default:
-			break;
-		}
+
+		GEngine->ChangeLevel("PlayLevel");
 	}
 
 
 
-	FVector ButtonPos = Buttons[SelectIndex].first->GetWorldPosition();
-	FVector ButtonScale = Buttons[SelectIndex].first->GetWidgetScale3D();
+	FVector ButtonPos = Buttons.first->GetWorldPosition();
+	FVector ButtonScale = Buttons.first->GetWidgetScale3D();
 	SelectArrows.first->SetPosition(FVector(ButtonPos.X - ButtonScale.X / 2.f - 20.f, ButtonPos.Y, 10.f));
 	SelectArrows.second->SetPosition(FVector(ButtonPos.X + ButtonScale.X / 2.f + 20.f, ButtonPos.Y, 10.f));
 
 	
 }
-
-void ATitleGameMode::OpenPowerUpUI()
-{
-}
-

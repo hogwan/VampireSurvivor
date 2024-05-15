@@ -22,6 +22,10 @@ public:
 	void LevelUpEventEnd();
 	void LevelUpEventTick();
 
+	void DeathEventStart();
+	void DeathEventEnd();
+	void DeathEventTick();
+
 	static class UChestUI* ChestUI;
 	static class UDeathUI* DeathUI;
 	static int RandomPickLogic(int _Min, int _Max);
@@ -85,7 +89,14 @@ protected:
 	bool IsSelecting = false;
 	bool IsUnboxing = false;
 	int SelectIndex = 0;
-private:
 
+
+	UImage* BackGround = nullptr;
+	UImage* GameOver = nullptr;
+	UImage* Button = nullptr;
+	UTextWidget* ButtonText = nullptr;
+	std::pair<UImage*, UImage*> Arrows;
+private:
+	bool IsDeath = false;
 };
 

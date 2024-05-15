@@ -27,13 +27,13 @@ protected:
 	USpriteRenderer* Cash = nullptr;
 	USpriteRenderer* CashBoard = nullptr;
 	USpriteRenderer* BlackBack = nullptr;
+	USpriteRenderer* LeftCharactor = nullptr;
+	USpriteRenderer* CenterCharactor = nullptr;
+	USpriteRenderer* RightCharactor = nullptr;
 
-
-	int SelectIndex = 0;
-	std::vector<std::pair<UImage*, UTextWidget*>> Buttons;
+	std::pair<UImage*, UTextWidget*> Buttons;
 	std::pair<UImage*, UImage*> SelectArrows;
 
-	void OpenPowerUpUI();
 
 	
 private:

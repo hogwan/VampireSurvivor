@@ -1,10 +1,10 @@
 #pragma once
-#include "AttractItem.h"
+#include "Item.h"
 
 // Ό³Έν :
-class Token : public AttractItem
+class Token : public Item
 {
-	GENERATED_BODY(AttractItem)
+	GENERATED_BODY(Item)
 public:
 	// constructor destructor
 	Token();

@@ -12,6 +12,7 @@
 #include "HealItem.h"
 #include "AttractExpItem.h"
 #include "FireItem.h"
+#include "Token.h"
 #include <EngineCore/SpriteInstancingRender.h>
 
 std::shared_ptr<UIManager> APlayGameMode::PlayUIManager;
@@ -70,7 +71,7 @@ void APlayGameMode::BeginPlay()
 	//EquipManager->EquipWeapon(EWeapon::MagicWand);
 	//EquipManager->EquipWeapon(EWeapon::RuneTracer);
 	//EquipManager->EquipWeapon(EWeapon::SantaWater);
-	EquipManager->EquipWeapon(EWeapon::Whip);
+	//EquipManager->EquipWeapon(EWeapon::Whip);
 	
 	//EquipManager->EquipAccessory(EAccessory::Armor);
 	//EquipManager->EquipAccessory(EAccessory::Attractorb);
@@ -86,6 +87,12 @@ void APlayGameMode::BeginPlay()
 
 	std::shared_ptr<Chest> Ch = GetWorld()->SpawnActor<Chest>("Chest");
 	Ch->SetActorLocation(FVector(300.f, 0.f, 0.f));
+
+	std::shared_ptr<Chest> Ch2 = GetWorld()->SpawnActor<Chest>("Chest");
+	Ch2->SetActorLocation(FVector(-300.f, 0.f, 0.f));
+
+	std::shared_ptr<Token> Coin = GetWorld()->SpawnActor<Token>("Coin");
+	Coin->SetActorLocation(FVector(-250.f, 0.f, 0.f));
 
 	std::shared_ptr<HealItem> Heal = GetWorld()->SpawnActor<HealItem>("Heal");
 	Heal->SetActorLocation(FVector(200.f, 0.f, 0.f));

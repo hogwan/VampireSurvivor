@@ -35,7 +35,7 @@ void AExp::ColLogic()
 		{
 			FPlayerData* Data = UContentsValue::Player->GetPlayerDataReference();
 
-			//Data->CurExp += ExpAmount * (UContentsValue::PlayerLevel);
+			Data->CurExp += ExpAmount * (UContentsValue::PlayerLevel);
 			Destroy();
 		}
 	);

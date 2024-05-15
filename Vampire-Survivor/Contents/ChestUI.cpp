@@ -41,13 +41,6 @@ void UChestUI::BeginPlay()
 		Circuit->SetActive(false);
 	}
 
-	{
-		Light = CreateWidget<UnboxingLight>(GetWorld(), "Light");
-		Light->SetWidgetScale3D(FVector(1280.f, 720.f, 10.f));
-		Light->AddToViewPort(1);
-		Light->SetActive(false);
-	}
-
 	// UI를 관리하는 개념의 클래스가 된다.
 	{
 		Chest = CreateWidget<UImage>(GetWorld(), "Chest");
@@ -255,6 +248,13 @@ void UChestUI::Tick(float _DeltaTime)
 
 void UChestUI::EventStart()
 {
+	{
+		Light = CreateWidget<UnboxingLight>(GetWorld(), "Light");
+		Light->SetWidgetScale3D(FVector(1280.f, 720.f, 10.f));
+		Light->AddToViewPort(1);
+		Light->SetActive(false);
+	}
+
 	GEngine->SetOrderTimeScale(0, 0.f);
 	IsUnboxing = true;
 	UIOn();
