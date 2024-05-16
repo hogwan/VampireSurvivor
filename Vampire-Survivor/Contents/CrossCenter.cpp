@@ -40,6 +40,7 @@ void ACrossCenter::Tick(float _DeltaTime)
 
 void ACrossCenter::ThrowLogic()
 {
+	UEngineSound::SoundPlay("cross_01.wav");
 	AEnemy* Target = UContentsValue::Player->GetNearestEnemy();
 	if (Target == nullptr)
 	{

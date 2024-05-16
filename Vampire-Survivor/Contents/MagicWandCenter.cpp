@@ -45,6 +45,7 @@ void AMagicWandCenter::ShootLogic()
 		++ShootCount;
 		return;
 	}
+	UEngineSound::SoundPlay("MagicWand.wav");
 	FVector DirVector = Target->GetActorLocation() - GetActorLocation();
 	DirVector.Z = 0.f;
 	DirVector.Normalize3D();

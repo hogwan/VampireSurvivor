@@ -71,7 +71,7 @@ void APlayGameMode::BeginPlay()
 	//EquipManager->EquipWeapon(EWeapon::MagicWand);
 	//EquipManager->EquipWeapon(EWeapon::RuneTracer);
 	//EquipManager->EquipWeapon(EWeapon::SantaWater);
-	//EquipManager->EquipWeapon(EWeapon::Whip);
+	EquipManager->EquipWeapon(EWeapon::Whip);
 	
 	//EquipManager->EquipAccessory(EAccessory::Armor);
 	//EquipManager->EquipAccessory(EAccessory::Attractorb);
@@ -102,6 +102,15 @@ void APlayGameMode::BeginPlay()
 
 	std::shared_ptr<FireItem> Fire = GetWorld()->SpawnActor<FireItem>("Attract");
 	Fire->SetActorLocation(FVector(-100.f, 0.f, 0.f));
+}
+
+void APlayGameMode::LevelStart(ULevel* _PrevLevel)
+{
+	Super::LevelStart(_PrevLevel);
+
+	UContentsValue::MainBGM = UEngineSound::SoundPlay("MainBGM.wav");
+	UContentsValue::MainBGM.Loop();
+
 }
 
 void APlayGameMode::Tick(float _DeltaTime)

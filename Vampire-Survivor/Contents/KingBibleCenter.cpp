@@ -78,6 +78,7 @@ void AKingBibleCenter::PushBible()
 
 void AKingBibleCenter::SpawnBible()
 {
+	UEngineSound::SoundPlay("book_01.wav");
 	PosInit();
 	BiblePosUpdate();
 }

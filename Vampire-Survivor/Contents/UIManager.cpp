@@ -1210,6 +1210,8 @@ int UIManager::RandomPickLogic(int _Min, int _Max)
 
 void UIManager::LevelUpEventStart()
 {
+	UContentsValue::MainBGM.Off();
+	UEngineSound::SoundPlay("LevelUp.wav");
 	GEngine->SetOrderTimeScale(0, 0.f);
 	LevelUpUIOn();
 	IsSelecting = true;
@@ -1796,6 +1798,7 @@ void UIManager::LevelUpEventEnd()
 	GEngine->SetOrderTimeScale(0, 1.f);
 	IsSelecting = false;
 	LevelUpUIOff();
+	UContentsValue::MainBGM.On();
 }
 
 void UIManager::LevelUpEventTick()
@@ -1908,6 +1911,8 @@ void UIManager::LevelUpEventTick()
 
 void UIManager::DeathEventStart()
 {
+	UEngineSound::SoundPlay("GameOver.wav");
+	UContentsValue::MainBGM.Off();
 	GEngine->SetOrderTimeScale(0, 0.f);
 	IsDeath = true;
 

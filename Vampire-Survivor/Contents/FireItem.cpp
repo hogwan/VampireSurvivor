@@ -36,6 +36,7 @@ void FireItem::ColLogic()
 {
 	Collider->CollisionEnter(ECollisionOrder::Player, [=](std::shared_ptr<UCollision> _Collision)
 		{
+			UEngineSound::SoundPlay("sfx_sounds_powerup2.wav");
 			GetWorld()->SpawnActor<FireCenter>("FireCenter");
 			Destroy();
 		}

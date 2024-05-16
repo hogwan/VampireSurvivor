@@ -44,6 +44,8 @@ void ARuneTracerCenter::ShootLogic()
 		++ShootCount;
 		return;
 	}
+
+	UEngineSound::SoundPlay("Projectile.wav");
 	FVector DirVector = Target->GetActorLocation() - GetActorLocation();
 	DirVector.Z = 0.f;
 	DirVector.Normalize3D();

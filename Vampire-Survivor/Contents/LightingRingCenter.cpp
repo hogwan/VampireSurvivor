@@ -46,6 +46,7 @@ void ALightingRingCenter::SpawnThunderLogic()
 		return;
 	}
 
+	UEngineSound::SoundPlay("sfx_lightningimpact.wav");
 	std::shared_ptr<ALightingRingUnit> LightingUnit = GetWorld()->SpawnActor<ALightingRingUnit>("LightingRingUnit");
 	LightingUnit->SetActorLocation(RandomTarget->GetActorLocation());
 

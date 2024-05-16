@@ -261,6 +261,8 @@ void UChestUI::EventStart()
 	ButtonText->SetText("¿­±â");
 	AccGold = 0.f;
 	State.ChangeState("Wait");
+	UEngineSound::SoundPlay("FoundChest.wav");
+	UContentsValue::MainBGM.Off();
 }
 
 void UChestUI::EventTick(float _DeltaTime)
@@ -278,6 +280,7 @@ void UChestUI::EventEnd()
 	AccGold = 0.f;
 	UIOff();
 	IsUnboxing = false;
+	UContentsValue::MainBGM.On();
 }
 
 void UChestUI::UIOn()
@@ -464,6 +467,7 @@ void UChestUI::WaitStart()
 
 void UChestUI::UnboxingStart()
 {
+	UEngineSound::SoundPlay("Chest1.wav");
 	Chest->ChangeAnimation("Open");
 	Random = UIManager::RandomPickLogic(static_cast<int>(ESelectList::Axe), static_cast<int>(ESelectList::Whip));
 	ItemSelectLogic();

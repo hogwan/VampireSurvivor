@@ -146,6 +146,7 @@ void USpawnerManager::SpawnBatMass()
 				break;
 			}
 
+			USpawnerManager::EnemyCount++;
 			Bat->SetActorLocation(InitialPos  + FVector(10.f * i, 10.f*j,0.f));
 			Bat->SetTargetPos(TargetPos);
 			Bat->SetMass(true);
@@ -169,6 +170,7 @@ void USpawnerManager::SpawnFlowerPrison()
 
 		FVector SpawnPos = PlayerPos + FVector(XCos * SpawnDistance, YSin * SpawnDistance, 0.f);
 
+		USpawnerManager::EnemyCount++;
 		std::shared_ptr<AFlower> Flower = GetWorld()->SpawnActor<AFlower>("Flower");
 		Flower->GetEnemyData().MaxHp = 30 * UContentsValue::PlayerLevel;
 		Flower->GetEnemyData().Hp = 30 * UContentsValue::PlayerLevel;
@@ -605,7 +607,7 @@ void USpawnerManager::Minute_05Start()
 
 	RandomList.push_back(EMonsterOrder::Mudman2);
 
-	SpawnTime = 5.f;
+	SpawnTime = 20.f;
 
 	SpawnBoss(EMonsterOrder::Mentis);
 
@@ -620,7 +622,7 @@ void USpawnerManager::Minute_06Start()
 	RandomList.push_back(EMonsterOrder::Ghoul2);
 	RandomList.push_back(EMonsterOrder::Ghoul3);
 
-	SpawnTime = 5.f;
+	SpawnTime = 10.f;
 }
 
 void USpawnerManager::Minute_07Start()
@@ -631,7 +633,7 @@ void USpawnerManager::Minute_07Start()
 	RandomList.push_back(EMonsterOrder::Bat3);
 	RandomList.push_back(EMonsterOrder::Mudman1);
 
-	SpawnTime = 5.f;
+	SpawnTime = 10.f;
 
 	SpawnBoss(EMonsterOrder::BossBat1);
 
@@ -655,7 +657,7 @@ void USpawnerManager::Minute_09Start()
 	RandomList.push_back(EMonsterOrder::Ghoul3);
 	RandomList.push_back(EMonsterOrder::XLBat);
 
-	SpawnTime = 5.f;
+	SpawnTime = 10.f;
 
 	SpawnBoss(EMonsterOrder::BossBat2);
 }
@@ -679,7 +681,7 @@ void USpawnerManager::Minute_11Start()
 	RandomList.clear();
 	RandomList.push_back(EMonsterOrder::Skeleton);
 
-	SpawnTime = 0.5f;
+	SpawnTime = 3.f;
 }
 
 void USpawnerManager::Minute_12Start()

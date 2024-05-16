@@ -35,6 +35,7 @@ void AExp::ColLogic()
 		{
 			FPlayerData* Data = UContentsValue::Player->GetPlayerDataReference();
 
+			UEngineSound::SoundPlay("sfx_gem.wav");
 			Data->CurExp += ExpAmount * (UContentsValue::PlayerLevel);
 			Destroy();
 		}

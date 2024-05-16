@@ -35,6 +35,7 @@ void HealItem::ColLogic()
 		{
 			FPlayerData* Data = UContentsValue::Player->GetPlayerDataReference();
 
+			UEngineSound::SoundPlay("sfx_sounds_powerup2.wav");
 			Data->Hp += 30.f;
 			if (Data->Hp > Data->MaxHealth)
 			{

@@ -109,4 +109,6 @@ protected:
  private:
 	void MoveLogic();
 	void ColLogic();
+
+	bool IsDeath = false;
 };

@@ -27,14 +27,17 @@ void AWhipCenter::WhipSpawnLogic()
 {
 	if (Data.Amount <= 1)
 	{
+		UEngineSound::SoundPlay("Whiplash.wav");
 		std::shared_ptr<AWhipUnit> FirstWhip = GetWorld()->SpawnActor<AWhipUnit>("Center");
 		Destroy();
 	}
 	else
 	{
+		UEngineSound::SoundPlay("Whiplash.wav");
 		std::shared_ptr<AWhipUnit> FirstWhip = GetWorld()->SpawnActor<AWhipUnit>("Center");
 		DelayCallBack(SecondTerm, [=]
 			{
+				UEngineSound::SoundPlay("Whiplash.wav");
 				std::shared_ptr<AWhipUnit> SecondWhip = GetWorld()->SpawnActor<AWhipUnit>("Center");
 				SecondWhip->SetActorRotation(FVector(0.f, 0.f, 180.f));
 				Destroy();

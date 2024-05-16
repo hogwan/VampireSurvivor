@@ -40,7 +40,7 @@ void UGarlic::DataInit()
 	OriginalData.Speed = 0.f;
 	OriginalData.Duration = 0.f;
 	OriginalData.Area = 1.f;
-	OriginalData.Cooldown = 0.5f;
+	OriginalData.Cooldown = 2.f;
 	OriginalData.KnockbackPower = 100.f;
 	OriginalData.ExplainText = "공격범위 40% 증가, 공격력 2 증가";
 
@@ -60,7 +60,7 @@ void UGarlic::LevelUp()
 		OriginalData.Speed = 0.f;
 		OriginalData.Duration = 0.f;
 		OriginalData.Area = 1.f;
-		OriginalData.Cooldown = 0.5f;
+		OriginalData.Cooldown = 2.f;
 		OriginalData.KnockbackPower = 100.f;
 		OriginalData.ExplainText = "공격범위 40% 증가, 공격력 2 증가";
 		break;

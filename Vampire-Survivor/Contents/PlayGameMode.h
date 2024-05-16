@@ -34,6 +34,7 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+	void LevelStart(ULevel* _PrevLevel) override;
 
 	std::shared_ptr<class APlayer> Player;
 	std::vector<std::shared_ptr<class ABackGroundMap>> Grounds;

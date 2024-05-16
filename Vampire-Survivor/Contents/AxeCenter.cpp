@@ -39,6 +39,7 @@ void AAxeCenter::Tick(float _DeltaTime)
 
 void AAxeCenter::ThrowLogic()
 {
+	UEngineSound::SoundPlay("ax_01.wav");
 	FVector DirVector = FVector::Up;
 
 	float RandomAngle = UEngineRandom::MainRandom.RandomFloat(-Data.Area / 2.f, Data.Area / 2.f);

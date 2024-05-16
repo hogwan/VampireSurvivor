@@ -44,7 +44,10 @@ void APlayer::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	MoveVector = FVector::Zero;
-	DeathLogic();
+	if (!IsDeath)
+	{
+		DeathLogic();
+	}
 	MoveLogic();
 	ColLogic();
 	LevelUpLogic();
@@ -134,6 +137,7 @@ void APlayer::DeathLogic()
 {
 	if (Data.Hp < 0.f)
 	{
+		IsDeath = true;
 		APlayGameMode::PlayUIManager->DeathEventStart();
 		return;
 	}

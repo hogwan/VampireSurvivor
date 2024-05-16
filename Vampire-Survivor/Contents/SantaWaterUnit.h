@@ -32,7 +32,7 @@ protected:
 	FVector Gravity = FVector(0.f, -500.f, 0.f);
 
 	float RotationSpeed = 720.f;
-	float DamageTerm = 0.2f;
+	float DamageTerm = 1.f;
 	float RemainTime = 0.f;
 	float Duration = 0.f;
 	FVector TargetPos = FVector::Zero;

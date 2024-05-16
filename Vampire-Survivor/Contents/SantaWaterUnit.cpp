@@ -137,6 +137,7 @@ void ASantaWaterUnit::StateInit()
 
 	State.SetStartFunction("Spread", [=]
 		{
+			UEngineSound::SoundPlay("flame_sound.wav");
 			Renderer->SetSprite("CircleFX.png");
 			Renderer->SetScale(FVector(100.f, 100.f, 10.f));
 			Renderer->SetPlusColor({ 0.f, 0.f, 0.5f });

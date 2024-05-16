@@ -105,7 +105,7 @@ void AEnemy::ColLogic(float _DeltaTime)
 				return;
 			}
 
-			PlayerData->Hp -= Data.Power * _DeltaTime;
+			PlayerData->Hp -= Data.Power * 10.f * _DeltaTime;
 
 			FVector OpponentPos = Opponent->GetActorLocation();
 			FVector CurPos = GetActorLocation();
@@ -157,6 +157,7 @@ void AEnemy::SpriteDirCheck()
 
 void AEnemy::KnockBackStart()
 {
+	UEngineSound::SoundPlay("Hit.wav");
 	Renderer->SetPlusColor(FVector(0.5f, 0.5f, 0.5f, 1.f));
 }
 

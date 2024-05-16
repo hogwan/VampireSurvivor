@@ -32,7 +32,7 @@ void AKnifeCenter::Tick(float _DeltaTime)
 
 void AKnifeCenter::SpawnLogic(float _DeltaTime)
 {
-
+	UEngineSound::SoundPlay("Projectile.wav");
 	RemainTime -= _DeltaTime;
 	if (RemainTime < 0.f)
 	{

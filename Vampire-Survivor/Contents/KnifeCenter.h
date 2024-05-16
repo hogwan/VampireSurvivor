@@ -21,7 +21,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	float Offset = 5.f;
-	float SpawnInterval = 0.08f;
+	float SpawnInterval = 0.5f;
 	float RemainTime = 0.f;
 	int RemainKnifeCount = 0;
 

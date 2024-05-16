@@ -12,5 +12,6 @@ public:
 	static int PlayerLevel;
 	static float Time;
 	static float MaxMagnet;
+	static UEngineSoundPlayer MainBGM;
 };
 

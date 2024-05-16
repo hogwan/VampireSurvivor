@@ -108,7 +108,7 @@ void ATitleGameMode::Tick(float _DeltaTime)
 
 	if (UEngineInput::IsDown(VK_SPACE))
 	{
-
+		UEngineSound::SoundPlay("sfx_sounds_pause7_in.wav");
 		GEngine->ChangeLevel("PlayLevel");
 	}
 
@@ -120,4 +120,11 @@ void ATitleGameMode::Tick(float _DeltaTime)
 	SelectArrows.second->SetPosition(FVector(ButtonPos.X + ButtonScale.X / 2.f + 20.f, ButtonPos.Y, 10.f));
 
 	
+}
+
+void ATitleGameMode::LevelStart(ULevel* _PrevLevel)
+{
+	Super::LevelStart(_PrevLevel);
+	
+	UEngineSound::SoundPlay("sfx_titleIntro.wav");
 }

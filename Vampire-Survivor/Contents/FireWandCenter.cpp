@@ -35,6 +35,7 @@ void AFireWandCenter::SpawnProjectileLogic()
 		return;
 	}
 
+	UEngineSound::SoundPlay("Fire.wav");
 	FVector DirVector = RandomTarget->GetActorLocation() - GetActorLocation();
 	DirVector.Normalize3D();
 

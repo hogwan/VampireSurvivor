@@ -12,7 +12,7 @@ ASantaWaterFlame::~ASantaWaterFlame()
 void ASantaWaterFlame::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	Renderer->SetSprite("FlameFX.png");
 	Renderer->SetScale(FVector(2.f, 3.f, 10.f));
 	Renderer->SetOrder(ERenderOrder::Particle);

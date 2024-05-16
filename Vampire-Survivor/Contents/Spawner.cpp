@@ -51,7 +51,7 @@ void USpawner::Tick(float _DeltaTime)
 	RemainTime -= _DeltaTime;
 	if (RemainTime < 0.f)
 	{
-		if (USpawnerManager::EnemyCount >= 400) return;
+		if (USpawnerManager::EnemyCount >= 300) return;
 
 		RemainTime = USpawnerManager::SpawnTime;
 		std::shared_ptr<AEnemy> Monster = SpawnMonster();
