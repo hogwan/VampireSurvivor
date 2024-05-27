@@ -23,7 +23,7 @@ protected:
 
 	float ThrowForce = 0.f;
 
-	void ThrowLogic();
+	void UnitSpawnLogic() override;
 private:
 
 };

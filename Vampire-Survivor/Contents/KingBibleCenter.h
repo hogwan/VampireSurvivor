@@ -21,7 +21,7 @@ protected:
 	void PushInfo();
 	void PushBible();
 	void PosInit();
-	void SpawnBible();
+	void UnitSpawnLogic() override;
 	void DestroyBible();
 	void BiblePosUpdate();
 	void RotateBible(float _DeltaTime);

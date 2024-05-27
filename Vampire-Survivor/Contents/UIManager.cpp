@@ -1926,7 +1926,7 @@ void UIManager::DeathEventStart()
 
 void UIManager::DeathEventEnd()
 {
-	exit(0);
+	GEngine->EngineWindow.Off();
 }
 
 void UIManager::DeathEventTick()

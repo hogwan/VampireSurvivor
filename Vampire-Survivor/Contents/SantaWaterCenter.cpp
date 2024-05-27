@@ -23,12 +23,12 @@ void ASantaWaterCenter::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	SpawnLogic();
+	UnitSpawnLogic();
 }
 
 
 
-void ASantaWaterCenter::SpawnLogic()
+void ASantaWaterCenter::UnitSpawnLogic()
 {
 	FVector CurPos = GetActorLocation();
 	std::shared_ptr<ASantaWaterUnit> SantaWaterUnit = GetWorld()->SpawnActor<ASantaWaterUnit>("SantaWaterUnit");

@@ -20,10 +20,10 @@ void AGarlicCenter::BeginPlay()
 void AGarlicCenter::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	SpawnLogic();
+	UnitSpawnLogic();
 }
 
-void AGarlicCenter::SpawnLogic()
+void AGarlicCenter::UnitSpawnLogic()
 {
 	std::shared_ptr<AGarlicUnit> GarlicUnit = GetWorld()->SpawnActor<AGarlicUnit>("GarlicUnit");
 	GarlicUnit->SetActorLocation(GetActorLocation());

@@ -31,6 +31,10 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	
+	void SpawnEnemy(float _DeltaTime);
+	void SpawnTorch(float _DeltaTime);
+
+
 
 	std::shared_ptr<class AEnemy> SpawnMonster();
 

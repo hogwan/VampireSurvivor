@@ -21,7 +21,7 @@ protected:
 	float RemainTime = 0.f;
 	float Term = 0.01f;
 
-	void SpawnThunderLogic();
+	void UnitSpawnLogic() override;
 private:
 
 };

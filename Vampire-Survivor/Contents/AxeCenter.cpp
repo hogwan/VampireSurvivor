@@ -33,11 +33,11 @@ void AAxeCenter::Tick(float _DeltaTime)
 	if (RemainTime < 0.f)
 	{
 		RemainTime = ThrowTerm;
-		ThrowLogic();
+		UnitSpawnLogic();
 	}
 }
 
-void AAxeCenter::ThrowLogic()
+void AAxeCenter::UnitSpawnLogic()
 {
 	UEngineSound::SoundPlay("ax_01.wav");
 	FVector DirVector = FVector::Up;

@@ -32,11 +32,11 @@ void ARuneTracerCenter::Tick(float _DeltaTime)
 	if (RemainTime < 0.f)
 	{
 		RemainTime = ShootTerm;
-		ShootLogic();
+		UnitSpawnLogic();
 	}
 }
 
-void ARuneTracerCenter::ShootLogic()
+void ARuneTracerCenter::UnitSpawnLogic()
 {
 	Target = UContentsValue::Player->GetNearestEnemy();
 	if (Target == nullptr)

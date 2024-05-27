@@ -26,7 +26,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 	
 	FVector TargetPos = FVector::Zero;
-	void SpawnLogic();
+	void UnitSpawnLogic() override;
 	
 private:
 

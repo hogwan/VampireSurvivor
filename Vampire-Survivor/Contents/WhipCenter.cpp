@@ -15,7 +15,7 @@ void AWhipCenter::BeginPlay()
 {
 	Super::BeginPlay();
 	SetData(UWhip::Data);
-	WhipSpawnLogic();
+	UnitSpawnLogic();
 }
 
 void AWhipCenter::Tick(float _DeltaTime)
@@ -23,7 +23,7 @@ void AWhipCenter::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 }
 
-void AWhipCenter::WhipSpawnLogic()
+void AWhipCenter::UnitSpawnLogic()
 {
 	if (Data.Amount <= 1)
 	{

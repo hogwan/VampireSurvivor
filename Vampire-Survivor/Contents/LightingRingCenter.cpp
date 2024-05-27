@@ -33,11 +33,11 @@ void ALightingRingCenter::Tick(float _DeltaTime)
 	if (RemainTime < 0.f)
 	{
 		RemainTime = Term;
-		SpawnThunderLogic();
+		UnitSpawnLogic();
 	}
 }
 
-void ALightingRingCenter::SpawnThunderLogic()
+void ALightingRingCenter::UnitSpawnLogic()
 {
 	AEnemy* RandomTarget = UContentsValue::Player->GetRandomEnemy();
 	if (RandomTarget == nullptr)

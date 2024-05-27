@@ -32,12 +32,12 @@ void AMagicWandCenter::Tick(float _DeltaTime)
 	if (RemainTime < 0.f)
 	{
 		RemainTime = ShootTerm;
-		ShootLogic();
+		UnitSpawnLogic();
 	}
 
 }
 
-void AMagicWandCenter::ShootLogic()
+void AMagicWandCenter::UnitSpawnLogic()
 {
 	Target = UContentsValue::Player->GetNearestEnemy();
 	if (Target == nullptr)

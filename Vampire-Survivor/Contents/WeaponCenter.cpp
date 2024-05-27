@@ -22,6 +22,11 @@ void AWeaponCenter::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	Reposition();
+}
+
+void AWeaponCenter::Reposition()
+{
 	FVector CenterPos = UContentsValue::Player->GetActorLocation();
 	SetActorLocation(CenterPos);
 }

@@ -38,7 +38,6 @@ public:
 	}
 
 	virtual void ApplyStatus(struct FPlayerData _Data) = 0;
-
 	virtual void LevelUp() = 0;
 	virtual void DataInit() = 0;
 protected:

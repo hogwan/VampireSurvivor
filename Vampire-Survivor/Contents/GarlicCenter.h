@@ -17,7 +17,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void SpawnLogic();
+	void UnitSpawnLogic() override;
 
 	float RemainTime = 0.f;
 private:

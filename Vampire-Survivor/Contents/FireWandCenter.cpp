@@ -23,10 +23,10 @@ void AFireWandCenter::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	SpawnProjectileLogic();
+	UnitSpawnLogic();
 }
 
-void AFireWandCenter::SpawnProjectileLogic()
+void AFireWandCenter::UnitSpawnLogic()
 {
 	AEnemy* RandomTarget = UContentsValue::Player->GetRandomEnemy();
 	if (RandomTarget == nullptr)

@@ -46,6 +46,13 @@ void USpawner::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	
+	SpawnEnemy(_DeltaTime);
+	SpawnTorch(_DeltaTime);
+
+}
+
+void USpawner::SpawnEnemy(float _DeltaTime)
+{
 	CurPos = GetActorLocation();
 
 	RemainTime -= _DeltaTime;
@@ -59,6 +66,11 @@ void USpawner::Tick(float _DeltaTime)
 
 		USpawnerManager::EnemyCount++;
 	}
+}
+
+void USpawner::SpawnTorch(float _DeltaTime)
+{
+	CurPos = GetActorLocation();
 
 	TorchSpawnAcc += _DeltaTime;
 	if (TorchSpawnAcc > TorchSpawnCooldown)

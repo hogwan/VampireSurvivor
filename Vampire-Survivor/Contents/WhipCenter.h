@@ -27,7 +27,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void WhipSpawnLogic();
+	void UnitSpawnLogic() override;
 
 	float SecondTerm = 0.1f;
 

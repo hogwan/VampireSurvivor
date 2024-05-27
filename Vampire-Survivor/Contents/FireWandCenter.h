@@ -17,7 +17,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void SpawnProjectileLogic();
+	void UnitSpawnLogic() override;
 private:
 
 };

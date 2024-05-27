@@ -17,7 +17,7 @@ void AKingBibleCenter::BeginPlay()
 	Super::BeginPlay();
 
 	PushBible();
-	SpawnBible();
+	UnitSpawnLogic();
 	DelayCallBack(Data.Duration, [=] {
 		DestroyBible();
 		});
@@ -76,7 +76,7 @@ void AKingBibleCenter::PushBible()
 	}
 }
 
-void AKingBibleCenter::SpawnBible()
+void AKingBibleCenter::UnitSpawnLogic()
 {
 	UEngineSound::SoundPlay("book_01.wav");
 	PosInit();

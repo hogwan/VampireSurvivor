@@ -19,7 +19,7 @@ protected:
 
 	float ShootTerm = 0.2f;
 	float RemainTime = 0.f;
-	void ShootLogic();
+	void UnitSpawnLogic() override;
 	int ShootCount = 0;
 
 	class AEnemy* Target = nullptr;

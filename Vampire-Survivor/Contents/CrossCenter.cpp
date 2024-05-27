@@ -34,11 +34,11 @@ void ACrossCenter::Tick(float _DeltaTime)
 	if (RemainTime < 0.f)
 	{
 		RemainTime = ThrowTerm;
-		ThrowLogic();
+		UnitSpawnLogic();
 	}
 }
 
-void ACrossCenter::ThrowLogic()
+void ACrossCenter::UnitSpawnLogic()
 {
 	UEngineSound::SoundPlay("cross_01.wav");
 	AEnemy* Target = UContentsValue::Player->GetNearestEnemy();
